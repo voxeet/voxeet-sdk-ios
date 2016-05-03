@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3666F6E4BC773CE63B04DEEC247C2D58831D84DA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1D8E366803E1E3D20858F872BC77ADF92FE0B260" : 0,
+    "3666F6E4BC773CE63B04DEEC247C2D58831D84DA" : 0,
+    "A764842CDA0BE5A0083F27BA5DE503E3BC93560C" : 0,
+    "B48D7384EEC7B6EA53E6E7C8DEA4047070A618DB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "253748AC-D122-46C2-ADEB-1051E578D4E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1D8E366803E1E3D20858F872BC77ADF92FE0B260" : "ios-sdk-rest\/core-media\/",
+    "3666F6E4BC773CE63B04DEEC247C2D58831D84DA" : "VoxeetSDK%20Sample\/",
+    "A764842CDA0BE5A0083F27BA5DE503E3BC93560C" : "ios-sdk-rest\/core-media\/thirdparty\/msm3d\/",
+    "B48D7384EEC7B6EA53E6E7C8DEA4047070A618DB" : "ios-sdk-rest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VoxeetSDK Sample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VoxeetSDK Sample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:voxeet\/core-media.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1D8E366803E1E3D20858F872BC77ADF92FE0B260"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:voxeet\/ios-sdk-rest-sample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3666F6E4BC773CE63B04DEEC247C2D58831D84DA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:voxeet\/msm3d.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A764842CDA0BE5A0083F27BA5DE503E3BC93560C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:voxeet\/ios-sdk-rest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B48D7384EEC7B6EA53E6E7C8DEA4047070A618DB"
+    }
+  ]
+}

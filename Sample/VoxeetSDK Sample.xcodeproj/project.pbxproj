@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC197BCD1CD8FDF300D26D1C /* VoxeetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */; };
+		CC197BCF1CD8FE0200D26D1C /* VoxeetSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCD8B66C1CD266DD00831710 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8B66B1CD266DD00831710 /* Conference.swift */; };
+		CCF12CA31CCA5EFC000D0D12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */; };
+		CCF12CA51CCA5EFC000D0D12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */; };
+		CCF12CA81CCA5EFC000D0D12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */; };
+		CCF12CAB1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */; };
+		CCF12CAD1CCA5EFC000D0D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */; };
+		CCF12CB01CCA5EFC000D0D12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */; };
+		CCF12CBB1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */; };
+		CCF12CC61CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCF12CB71CCA5EFC000D0D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCF12C971CCA5EFC000D0D12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCF12C9E1CCA5EFC000D0D12;
+			remoteInfo = "VoxeetSDK Sample";
+		};
+		CCF12CC21CCA5EFC000D0D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCF12C971CCA5EFC000D0D12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCF12C9E1CCA5EFC000D0D12;
+			remoteInfo = "VoxeetSDK Sample";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC197BD01CD8FE0200D26D1C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC197BCF1CD8FE0200D26D1C /* VoxeetSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoxeetSDK.framework; path = ../VoxeetSDK/VoxeetSDK.framework; sourceTree = "<group>"; };
+		CCD8B66B1CD266DD00831710 /* Conference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
+		CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoxeetSDK Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCF12CA71CCA5EFC000D0D12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoxeetSDK_Sample.xcdatamodel; sourceTree = "<group>"; };
+		CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CCF12CAF1CCA5EFC000D0D12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CCF12CB11CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoxeetSDK SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoxeetSDK_SampleTests.swift; sourceTree = "<group>"; };
+		CCF12CBC1CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoxeetSDK SampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoxeetSDK_SampleUITests.swift; sourceTree = "<group>"; };
+		CCF12CC71CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CCF12C9C1CCA5EFC000D0D12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC197BCD1CD8FDF300D26D1C /* VoxeetSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CB31CCA5EFC000D0D12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CBE1CCA5EFC000D0D12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CCF12C961CCA5EFC000D0D12 = {
+			isa = PBXGroup;
+			children = (
+				CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */,
+				CCF12CA11CCA5EFC000D0D12 /* VoxeetSDK Sample */,
+				CCF12CB91CCA5EFC000D0D12 /* VoxeetSDK SampleTests */,
+				CCF12CC41CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */,
+				CCF12CA01CCA5EFC000D0D12 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCF12CA01CCA5EFC000D0D12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */,
+				CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */,
+				CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCF12CA11CCA5EFC000D0D12 /* VoxeetSDK Sample */ = {
+			isa = PBXGroup;
+			children = (
+				CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */,
+				CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */,
+				CCD8B66B1CD266DD00831710 /* Conference.swift */,
+				CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */,
+				CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */,
+				CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */,
+				CCF12CB11CCA5EFC000D0D12 /* Info.plist */,
+				CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */,
+			);
+			path = "VoxeetSDK Sample";
+			sourceTree = "<group>";
+		};
+		CCF12CB91CCA5EFC000D0D12 /* VoxeetSDK SampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */,
+				CCF12CBC1CCA5EFC000D0D12 /* Info.plist */,
+			);
+			path = "VoxeetSDK SampleTests";
+			sourceTree = "<group>";
+		};
+		CCF12CC41CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */,
+				CCF12CC71CCA5EFC000D0D12 /* Info.plist */,
+			);
+			path = "VoxeetSDK SampleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF12CCA1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK Sample" */;
+			buildPhases = (
+				CCF12C9B1CCA5EFC000D0D12 /* Sources */,
+				CCF12C9C1CCA5EFC000D0D12 /* Frameworks */,
+				CCF12C9D1CCA5EFC000D0D12 /* Resources */,
+				CC197BD01CD8FE0200D26D1C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VoxeetSDK Sample";
+			productName = "VoxeetSDK Sample";
+			productReference = CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CCF12CB51CCA5EFC000D0D12 /* VoxeetSDK SampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF12CCD1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleTests" */;
+			buildPhases = (
+				CCF12CB21CCA5EFC000D0D12 /* Sources */,
+				CCF12CB31CCA5EFC000D0D12 /* Frameworks */,
+				CCF12CB41CCA5EFC000D0D12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCF12CB81CCA5EFC000D0D12 /* PBXTargetDependency */,
+			);
+			name = "VoxeetSDK SampleTests";
+			productName = "VoxeetSDK SampleTests";
+			productReference = CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CCF12CC01CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF12CD01CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleUITests" */;
+			buildPhases = (
+				CCF12CBD1CCA5EFC000D0D12 /* Sources */,
+				CCF12CBE1CCA5EFC000D0D12 /* Frameworks */,
+				CCF12CBF1CCA5EFC000D0D12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCF12CC31CCA5EFC000D0D12 /* PBXTargetDependency */,
+			);
+			name = "VoxeetSDK SampleUITests";
+			productName = "VoxeetSDK SampleUITests";
+			productReference = CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CCF12C971CCA5EFC000D0D12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Corentin Larroque";
+				TargetAttributes = {
+					CCF12C9E1CCA5EFC000D0D12 = {
+						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					CCF12CB51CCA5EFC000D0D12 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = CCF12C9E1CCA5EFC000D0D12;
+					};
+					CCF12CC01CCA5EFC000D0D12 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = CCF12C9E1CCA5EFC000D0D12;
+					};
+				};
+			};
+			buildConfigurationList = CCF12C9A1CCA5EFC000D0D12 /* Build configuration list for PBXProject "VoxeetSDK Sample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CCF12C961CCA5EFC000D0D12;
+			productRefGroup = CCF12CA01CCA5EFC000D0D12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */,
+				CCF12CB51CCA5EFC000D0D12 /* VoxeetSDK SampleTests */,
+				CCF12CC01CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CCF12C9D1CCA5EFC000D0D12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF12CB01CCA5EFC000D0D12 /* LaunchScreen.storyboard in Resources */,
+				CCF12CAD1CCA5EFC000D0D12 /* Assets.xcassets in Resources */,
+				CCF12CA81CCA5EFC000D0D12 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CB41CCA5EFC000D0D12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CBF1CCA5EFC000D0D12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CCF12C9B1CCA5EFC000D0D12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF12CA51CCA5EFC000D0D12 /* ViewController.swift in Sources */,
+				CCF12CAB1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld in Sources */,
+				CCF12CA31CCA5EFC000D0D12 /* AppDelegate.swift in Sources */,
+				CCD8B66C1CD266DD00831710 /* Conference.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CB21CCA5EFC000D0D12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF12CBB1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF12CBD1CCA5EFC000D0D12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF12CC61CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCF12CB81CCA5EFC000D0D12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */;
+			targetProxy = CCF12CB71CCA5EFC000D0D12 /* PBXContainerItemProxy */;
+		};
+		CCF12CC31CCA5EFC000D0D12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */;
+			targetProxy = CCF12CC21CCA5EFC000D0D12 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF12CA71CCA5EFC000D0D12 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF12CAF1CCA5EFC000D0D12 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CCF12CC81CCA5EFC000D0D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCF12CC91CCA5EFC000D0D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CCF12CCB1CCA5EFC000D0D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VoxeetSDK/";
+				INFOPLIST_FILE = "VoxeetSDK Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CCF12CCC1CCA5EFC000D0D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VoxeetSDK/";
+				INFOPLIST_FILE = "VoxeetSDK Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CCF12CCE1CCA5EFC000D0D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "VoxeetSDK SampleTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoxeetSDK Sample.app/VoxeetSDK Sample";
+			};
+			name = Debug;
+		};
+		CCF12CCF1CCA5EFC000D0D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "VoxeetSDK SampleTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoxeetSDK Sample.app/VoxeetSDK Sample";
+			};
+			name = Release;
+		};
+		CCF12CD11CCA5EFC000D0D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "VoxeetSDK SampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "VoxeetSDK Sample";
+			};
+			name = Debug;
+		};
+		CCF12CD21CCA5EFC000D0D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "VoxeetSDK SampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "VoxeetSDK Sample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CCF12C9A1CCA5EFC000D0D12 /* Build configuration list for PBXProject "VoxeetSDK Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF12CC81CCA5EFC000D0D12 /* Debug */,
+				CCF12CC91CCA5EFC000D0D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCF12CCA1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF12CCB1CCA5EFC000D0D12 /* Debug */,
+				CCF12CCC1CCA5EFC000D0D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCF12CCD1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF12CCE1CCA5EFC000D0D12 /* Debug */,
+				CCF12CCF1CCA5EFC000D0D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCF12CD01CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF12CD11CCA5EFC000D0D12 /* Debug */,
+				CCF12CD21CCA5EFC000D0D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */,
+			);
+			currentVersion = CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */;
+			path = VoxeetSDK_Sample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CCF12C971CCA5EFC000D0D12 /* Project object */;
+}

@@ -126,8 +126,8 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 SWIFT_PROTOCOL("_TtP9VoxeetSDK20VTConferenceDelegate_")
 @protocol VTConferenceDelegate
 @optional
-- (void)userDidEnter:(NSString * _Nonnull)userID;
-- (void)userDidLeave:(NSString * _Nonnull)userID;
+- (void)userDidJoin:(NSString * _Nonnull)userID;
+- (void)userDidLeft:(NSString * _Nonnull)userID;
 - (void)messageReceived:(NSString * _Nonnull)userID message:(NSString * _Nonnull)message;
 @end
 

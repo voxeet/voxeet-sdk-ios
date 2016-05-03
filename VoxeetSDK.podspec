@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0"
   s.summary      = "iOS library for Voxeet"
   s.homepage     = "http://voxeet.com"
-  s.author       = { "Voxeet, Inc" => "contact@voxeet.com" }
+  s.author       = { "Voxeet, Inc" => "support@voxeet.com" }
   s.platform     = :ios
   s.source       = { :git => "https://github.com/voxeet/ios-sdk-sample.git", :tag => "1.0" }
   s.source_files =  'VoxeetSDK/VoxeetSDK.framework/Headers/*.h'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.license      = {
     :type => 'Copyright',
     :text => <<-LICENSE
-      Copyright 2015 Voxeet, Inc. All rights reserved.
+      Copyright 2016 Voxeet, Inc. All rights reserved.
       LICENSE
   }
 end

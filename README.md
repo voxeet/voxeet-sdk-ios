@@ -16,7 +16,7 @@ The SDK is a Swift library allowing users to:
 
 You need to disable Bitcode in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
 
-To enable background mode, go in Xcode to your target settings -> 'Capabilities' -> 'Background Modes'  
+To enable background mode, go to your target settings -> 'Capabilities' -> 'Background Modes'  
 Turn on 'Audio, AirPlay and Picture in Picture'  
 Turn on 'Voice over IP'
 
@@ -39,6 +39,28 @@ Then, run the following command:
 
 ```bash
 $ pod install
+```
+
+## SDK Initialization
+
+Initialize the SDK in the AppDelegate.swift of your application:
+
+```swift
+import VoxeetSDK
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+        // Initialization of the Voxeet SDK.
+        VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+
+        return true
+    }
+    
+    ...
+}
 ```
 
 ## Usage
@@ -159,25 +181,33 @@ VoxeetSDK.sharedInstance.messageReceived = { userID, message in
 }
 ```
 
-## SDK Initialization
+## Available enums
 
-Initialize the SDK in the AppDelegate.swift of your application:
+### Session state:
 
 ```swift
-import VoxeetSDK
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
-        // Initialization of the Voxeet SDK.
-        VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
-
-        return true
+public enum SessionState {
+        case NotConnected
+        case Connected
+        case Connecting
+        case Reconnecting
     }
-    
-    ...
+```
+
+### Error handler:
+
+```swift
+public enum VTErrorType: ErrorType {
+    case Credential(String)
+    case InternalServer
+    case AccessToken
+    case Identify
+    case LeaveConference
+    case CreateConference
+    case JoinConference
+    case SendBroadcastMessage
+    case ServerError(String?)
+    case Error(ErrorType?)
 }
 ```
 
@@ -188,10 +218,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 The Voxeet iOS SDK uses a number of open source projects to work properly:
 
-* [Starscream](https://github.com/daltoniam/Starscream) - A type-safe HTTP client for Android and Java.
-* [Alamofire](https://github.com/Alamofire/Alamofire) - Android optimized event bus.
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Jackson is a suite of data-processing tools for Java.
+* [Starscream](https://github.com/daltoniam/Starscream) - Starscream is a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
+* [Alamofire](https://github.com/Alamofire/Alamofire) - Alamofire is an HTTP networking library written in Swift.
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
 
 ## Sample Application
 
-A sample application is available on this [public repository](https://github.com/) on GitHub.
+A sample application is available on this [public repository](https://github.com/voxeet/ios-sdk-sample/tree/master/Sample) on GitHub.

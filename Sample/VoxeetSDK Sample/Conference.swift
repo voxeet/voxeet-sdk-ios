@@ -143,6 +143,14 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        // Mutes a user.
+        let user = users[indexPath.row]
+        VoxeetSDK.sharedInstance.muteUser(user, mute: !VoxeetSDK.sharedInstance.isUserMuted(user))
+    }
 }
 
 /*

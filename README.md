@@ -12,6 +12,10 @@ The SDK is a Swift library allowing users to:
   - iOS 8.0+
   - Xcode 7.3+
 
+## Sample Application
+
+A sample application is available on this [public repository](https://github.com/voxeet/ios-sdk-sample/tree/master/Sample) on GitHub.
+
 ## Installing the iOS SDK
 
 You need to disable Bitcode in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
@@ -145,7 +149,7 @@ VoxeetSDK.sharedInstance.sendMessage("message", completion: { (error) in
 
 ```swift
 class myClass: VTSessionStateDelegate {
-    func didSessionStateChanged(state: VoxeetSDK.SessionState) {
+    func didSessionStateChanged(state: VTSessionState) {
     }
 }
 ```
@@ -186,12 +190,12 @@ VoxeetSDK.sharedInstance.messageReceived = { userID, message in
 ### Session state:
 
 ```swift
-public enum SessionState {
-        case NotConnected
-        case Connected
-        case Connecting
-        case Reconnecting
-    }
+public enum VTSessionState {
+    case NotConnected
+    case Connected
+    case Connecting
+    case Reconnecting
+}
 ```
 
 ### Error handler:
@@ -221,7 +225,3 @@ The Voxeet iOS SDK uses a number of open source projects to work properly:
 * [Starscream](https://github.com/daltoniam/Starscream) - Starscream is a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
 * [Alamofire](https://github.com/Alamofire/Alamofire) - Alamofire is an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
-
-## Sample Application
-
-A sample application is available on this [public repository](https://github.com/voxeet/ios-sdk-sample/tree/master/Sample) on GitHub.

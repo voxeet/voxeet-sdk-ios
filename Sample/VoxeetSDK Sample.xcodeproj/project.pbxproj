@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC197BCD1CD8FDF300D26D1C /* VoxeetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */; };
-		CC197BCF1CD8FE0200D26D1C /* VoxeetSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E4856541CDA4D9B00E684E1 /* Elephant-mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */; };
+		CC793F691CDA52BA005FB812 /* VoxeetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC793F671CDA529B005FB812 /* VoxeetSDK.framework */; };
+		CC793F6A1CDA52BA005FB812 /* VoxeetSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC793F671CDA529B005FB812 /* VoxeetSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCD8B66C1CD266DD00831710 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8B66B1CD266DD00831710 /* Conference.swift */; };
 		CCF12CA31CCA5EFC000D0D12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */; };
 		CCF12CA51CCA5EFC000D0D12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */; };
@@ -38,13 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CC197BD01CD8FE0200D26D1C /* Embed Frameworks */ = {
+		CCDC55561CCA63490086C2FA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CC197BCF1CD8FE0200D26D1C /* VoxeetSDK.framework in Embed Frameworks */,
+				CC793F6A1CDA52BA005FB812 /* VoxeetSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoxeetSDK.framework; path = ../VoxeetSDK/VoxeetSDK.framework; sourceTree = "<group>"; };
+		6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Elephant-mono.mp3"; sourceTree = "<group>"; };
+		CC793F671CDA529B005FB812 /* VoxeetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoxeetSDK.framework; path = ../VoxeetSDK/VoxeetSDK.framework; sourceTree = "<group>"; };
 		CCD8B66B1CD266DD00831710 /* Conference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
 		CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoxeetSDK Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC197BCD1CD8FDF300D26D1C /* VoxeetSDK.framework in Frameworks */,
+				CC793F691CDA52BA005FB812 /* VoxeetSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +101,7 @@
 		CCF12C961CCA5EFC000D0D12 = {
 			isa = PBXGroup;
 			children = (
-				CC197BC61CD8FBFD00D26D1C /* VoxeetSDK.framework */,
+				CC793F671CDA529B005FB812 /* VoxeetSDK.framework */,
 				CCF12CA11CCA5EFC000D0D12 /* VoxeetSDK Sample */,
 				CCF12CB91CCA5EFC000D0D12 /* VoxeetSDK SampleTests */,
 				CCF12CC41CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */,
@@ -128,6 +130,7 @@
 				CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */,
 				CCF12CB11CCA5EFC000D0D12 /* Info.plist */,
 				CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */,
+				6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */,
 			);
 			path = "VoxeetSDK Sample";
 			sourceTree = "<group>";
@@ -160,7 +163,7 @@
 				CCF12C9B1CCA5EFC000D0D12 /* Sources */,
 				CCF12C9C1CCA5EFC000D0D12 /* Frameworks */,
 				CCF12C9D1CCA5EFC000D0D12 /* Resources */,
-				CC197BD01CD8FE0200D26D1C /* Embed Frameworks */,
+				CCDC55561CCA63490086C2FA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,6 +265,7 @@
 			files = (
 				CCF12CB01CCA5EFC000D0D12 /* LaunchScreen.storyboard in Resources */,
 				CCF12CAD1CCA5EFC000D0D12 /* Assets.xcassets in Resources */,
+				6E4856541CDA4D9B00E684E1 /* Elephant-mono.mp3 in Resources */,
 				CCF12CA81CCA5EFC000D0D12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VoxeetSDK/";
 				INFOPLIST_FILE = "VoxeetSDK Sample/Info.plist";
@@ -448,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../VoxeetSDK/";
 				INFOPLIST_FILE = "VoxeetSDK Sample/Info.plist";

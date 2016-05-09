@@ -84,8 +84,8 @@ class ViewController: UIViewController {
                 do {
                     elephantSound = try VTAudioSound(url: NSURL(fileURLWithPath: path))
                     elephantSound?.volume = 1
-                    elephantSound?.angle = -5
-                    elephantSound?.distance = 5
+                    elephantSound?.angle = -1
+                    elephantSound?.distance = 0.5
                 } catch let error {
                     // Debug.
                     print("::DEBUG:: <audioEngineDemo> \(error)")

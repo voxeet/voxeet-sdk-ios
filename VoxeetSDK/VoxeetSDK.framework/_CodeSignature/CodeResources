@@ -74,19 +74,19 @@
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		MwVo1OpZX8bW7PAPXDIeqQIYpYA=
+		tZZWsQRdygevZyGzjh0ny8zW11c=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		6amDREHmSeAoQDs97BQlrNIszfM=
+		8aUoWMK+rfpQGB+5e2zAz3LE2G4=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		m7T/zX0Addn6utE363Arg16F6C8=
+		Bxxy7a78HjLDfeMdt4Qs0Ra13kA=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		j3ryw3WgDEfZatm7U03i3IlCvt8=
+		f36sqL9keorkNv7gRSaaBPnnmwE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -275,44 +275,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MwVo1OpZX8bW7PAPXDIeqQIYpYA=
+			tZZWsQRdygevZyGzjh0ny8zW11c=
 			</data>
 			<key>hash2</key>
 			<data>
-			cGuvSEsOvsRUaP6WJYEmOR96e1LwihqzVqsKfJEUjWI=
+			oZzBPPtuZ43mbcnjKabiMnFWiVapUMOvkLrUpP+ILUw=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6amDREHmSeAoQDs97BQlrNIszfM=
+			8aUoWMK+rfpQGB+5e2zAz3LE2G4=
 			</data>
 			<key>hash2</key>
 			<data>
-			WkrG+G1/nAS5geEkqUz36+d0KF9lt+95WoNn8UOYPIM=
+			X9lJYv1668NmAeGNBcsa/35+SX1k84SMFrNP1zRQtoc=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			m7T/zX0Addn6utE363Arg16F6C8=
+			Bxxy7a78HjLDfeMdt4Qs0Ra13kA=
 			</data>
 			<key>hash2</key>
 			<data>
-			IYKXsCpsk6Remh+VVEJnZza1qIA0lglz8q55AUSs1AQ=
+			fS8wYKH1aq6+o8udDPxYQIqqhPzrZvMYHqouQeQpBvs=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			j3ryw3WgDEfZatm7U03i3IlCvt8=
+			f36sqL9keorkNv7gRSaaBPnnmwE=
 			</data>
 			<key>hash2</key>
 			<data>
-			UsyZShkEkXJNDOYmzHumt9mYCrfB9FuyDr9xID0SCfI=
+			iwEI2eYqoV6I/se8j3E4ZFsotERqgDk1bvegyqR2jns=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

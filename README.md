@@ -7,6 +7,15 @@ The SDK is a Swift library allowing users to:
   - Change sounds angle and direction for each conference user
   - Broadcast messages to other participants
 
+## Table of contents
+
+  1. [Requirements](#requirements)
+  1. [Sample Application](#sample-application)
+  1. [Installing the iOS SDK](#installing-the-ios-sdk)
+  1. [SDK Initialization](#sdk-initialization)
+  1. [Usage](#usage)
+  1. [Available delegates / callbacks](#available-delegates-callbacks)
+
 ## Requirements
 
   - iOS 8.0+
@@ -45,6 +54,25 @@ Then, run the following command:
 $ pod install
 ```
 
+### Installation with Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "voxeet/ios-sdk-sample" ~> 1.0
+```
+
+Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project.
+
 ## SDK Initialization
 
 Initialize the SDK in the AppDelegate.swift of your application:
@@ -69,8 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ## Usage
 
-### Initializing  
-  
+### Initializing
+
 ```swift
 VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
 ```
@@ -143,6 +171,51 @@ VoxeetSDK.sharedInstance.sendMessage("message", completion: { (error) in
 })
 ```
 
+### Muting / Unmuting a user
+
+```swift
+VoxeetSDK.sharedInstance.muteUser("userID", mute: true)
+```
+
+### Checking if a user is muted
+
+```swift
+let isMute = VoxeetSDK.sharedInstance.isUserMuted("userID")
+```
+
+### Changing output device
+
+```swift
+if VoxeetSDK.sharedInstance.setOutputDevice(VTOutputDeviceType.BuildInReceiver) {
+    print("The output device has been changed.")
+}
+```
+
+### Getting output devices
+
+```swift
+let (currentOutputDevice, availableOutputDevices) = VoxeetSDK.sharedInstance.getOutputDevices()
+```
+
+### Connecting the SDK with the API (manually)
+
+This optional method is automatically called before a regular request anyway. For example 'createDemoConference' calls internally 'connect'.
+
+```swift
+VoxeetSDK.sharedInstance.connect { (error) in
+}
+```
+
+### Disonnecting the SDK with the API (manually)
+
+This optional method can help to disconnect the SDK if you don't use it anymore.
+
+```swift
+VoxeetSDK.sharedInstance.disconnect { (error) in
+}
+```
+
+
 ## Available delegates / callbacks
 
 ### Session
@@ -198,6 +271,21 @@ public enum VTSessionState {
 }
 ```
 
+### Output devices:
+
+```swift
+public enum VTOutputDeviceType: Int {
+    case BuildInReceiver
+    case BuiltInSpeaker
+    case Headset
+    case LineOut
+    case Bluetooth
+    case CarAudio
+    case HDMI
+    case AirPlay
+}
+```
+
 ### Error handler:
 
 ```swift
@@ -216,7 +304,8 @@ public enum VTErrorType: ErrorType {
 ```
 
 ## Version
-0.8.0
+
+1.0.1.3
 
 ## Tech
 
@@ -225,3 +314,5 @@ The Voxeet iOS SDK uses a number of open source projects to work properly:
 * [Starscream](https://github.com/daltoniam/Starscream) - Starscream is a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
 * [Alamofire](https://github.com/Alamofire/Alamofire) - Alamofire is an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
+
+© Voxeet, 2016

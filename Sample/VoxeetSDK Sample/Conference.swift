@@ -75,7 +75,7 @@ class Conference: UIViewController {
             if let textField = alertController.textFields?[0],
                 let message = textField.text {
                 // Sending a broadcast message.
-                VoxeetSDK.sharedInstance.sendMessage(message, completion: { (error) in
+                VoxeetSDK.sharedInstance.sendBroadcastMessage(message, completion: { (error) in
                     // Debug.
                     print("::DEBUG:: <sendBroadcastMessage> \(error)")
                 })

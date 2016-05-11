@@ -13,7 +13,6 @@ import VoxeetSDK
 let VTConfID = "VTConfID"
 
 class ViewController: UIViewController {
-    var elephantSound: VTAudioSound?
     
     /*
      *   MARK: Load
@@ -75,33 +74,6 @@ class ViewController: UIViewController {
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func audioEngineDemo(sender: UIButton) {
-        // Initializes VTAudioSound.
-        if elephantSound == nil {
-            if let path = NSBundle.mainBundle().pathForResource("Elephant-mono", ofType: "mp3") {
-                do {
-                    elephantSound = try VTAudioSound(url: NSURL(fileURLWithPath: path))
-                    elephantSound?.volume = 1
-                    elephantSound?.angle = -1
-                    elephantSound?.distance = 0.5
-                } catch let error {
-                    // Debug.
-                    print("::DEBUG:: <audioEngineDemo> \(error)")
-                }
-            }
-        }
-        
-        // Play sound.
-        do {
-            try elephantSound?.play({ (finish) in
-                //finished playing
-            })
-        } catch let error {
-            // Debug.
-            print("::DEBUG:: <audioEngineDemo> \(error)")
-        }
     }
     
     /*

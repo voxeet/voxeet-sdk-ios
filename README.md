@@ -13,7 +13,8 @@ The SDK is a Swift library allowing users to:
   1. [Sample Application](#sample-application)
   1. [Installing the iOS SDK](#installing-the-ios-sdk)
   1. [SDK Initialization](#sdk-initialization)
-  1. [Usage](#usage)
+  1. [SDK Usage](#sdk-usage)
+  1. [VTAudioSound Usage](#vtaudiosound-usage)
   1. [Available delegates / callbacks](#available-delegates-callbacks)
 
 ## Requirements
@@ -95,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## Usage
+## SDK Usage
 
 ### Initializing
 
@@ -164,10 +165,10 @@ let (angle, distance) = VoxeetSDK.sharedInstance.getUserPosition("userID")
 let users = VoxeetSDK.sharedInstance.getConferenceUsers()
 ```
 
-### Sending message in a conference
+### Sending broadcast message in a conference
 
 ```swift
-VoxeetSDK.sharedInstance.sendMessage("message", completion: { (error) in
+VoxeetSDK.sharedInstance.sendBroadcastMessage("message", completion: { (error) in
 })
 ```
 
@@ -303,9 +304,95 @@ public enum VTErrorType: ErrorType {
 }
 ```
 
+## VTAudioSound Usage
+
+VTAudioSound helps you to play a 3DHD sound into your application.  
+The sound must be encoded in **mono** to be played spatialized.
+
+### Initializing
+
+```swift
+var sound: VTAudioSound?
+
+if let path = NSBundle.mainBundle().pathForResource("myFile", ofType: "mp3") {
+    do {
+        sound = try VTAudioSound(url: NSURL(fileURLWithPath: path))
+    } catch let error {
+        // Debug.
+        print("::DEBUG:: \(error)")
+    }
+}
+```
+
+### Playing sound
+
+```swift
+try? sound?.play() {
+    // Debug.
+    print("::DEBUG:: The sound has finished being played.")
+}
+```
+
+### Stopping sound
+
+```swift
+sound?.stop()
+```
+
+### Checking if the sound is playing
+
+```swift
+let isPlaying = sound?.isPlaying
+```
+
+### Looping on the current sound
+
+```swift
+sound?.loop = true
+```
+
+### Getting filename of the sound
+
+```swift
+let filename = sound?.filename
+```
+
+### Setting / Getting volume
+
+```swift
+// The range of valid values are from 0.0 to 1.0.
+sound?.volume = 1
+```
+
+```swift
+let volume = sound?.volume
+```
+
+### Setting / Getting angle
+
+```swift
+// The range of valid values are from -1.0 to 1.0.
+sound?.angle = 0
+```
+
+```swift
+let angle = sound?.angle
+```
+
+### Setting / Getting distance
+
+```swift
+// The range of valid values are from 0.0 to 1.0.
+sound?.distance = 0
+```
+
+```swift
+let distance = sound?.distance
+```
+
 ## Version
 
-1.0.1.3
+1.0.1.4
 
 ## Tech
 

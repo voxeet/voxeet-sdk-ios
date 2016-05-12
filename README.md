@@ -46,7 +46,10 @@ To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in yo
 
 ```ruby
 use_frameworks!
-pod 'VoxeetSDK', '~> 1.0'
+
+target "YourTarget" do
+       pod 'VoxeetSDK', '~> 1.0'
+end
 ```
 
 Then, run the following command:

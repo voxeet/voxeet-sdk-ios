@@ -15,7 +15,7 @@ let VTConfID = "VTConfID"
 class ViewController: UIViewController {
     
     /*
-     *   MARK: Load
+     *  MARK: Load
      */
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     /*
-     *   MARK: Action
+     *  MARK: Action
      */
     
     @IBAction func createConference(sender: AnyObject) {
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     }
     
     /*
-     *   MARK: Present conference viewController
+     *  MARK: Present conference viewController
      */
     
     private func presentConferenceVC(confID: String) {

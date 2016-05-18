@@ -30,7 +30,7 @@ class AudioEngineDemo: UIViewController {
     }
     
     /*
-     *   MARK: Actions
+     *  MARK: Actions
      */
     
     @IBAction func angle(sender: UISlider) {

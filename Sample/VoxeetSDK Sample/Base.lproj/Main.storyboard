@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fuu-F5-zJx">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -133,7 +132,7 @@
                                                             </connections>
                                                         </slider>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="tPj-qh-l9a" firstAttribute="leading" secondItem="xgJ-oV-t7P" secondAttribute="leading" constant="20" id="BBe-yY-MeQ"/>
                                                         <constraint firstItem="tPj-qh-l9a" firstAttribute="centerY" secondItem="xgJ-oV-t7P" secondAttribute="centerY" id="JTD-Ie-d79"/>
@@ -151,7 +150,7 @@
                                                             </connections>
                                                         </slider>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="djw-ln-jw9" secondAttribute="trailing" constant="20" id="f1a-Eu-Y0O"/>
                                                         <constraint firstAttribute="height" constant="46" id="igc-vH-PfQ"/>
@@ -165,6 +164,13 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hLW-Kv-B81">
+                                                    <rect key="frame" x="290" y="67" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="ntU-1y-Ztw"/>
+                                                        <constraint firstAttribute="height" constant="20" id="w9P-xZ-nLE"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6KG-4j-2lj" firstAttribute="trailing" secondItem="HPO-Of-aAZ" secondAttribute="trailingMargin" id="GmA-Mi-Fc4"/>
@@ -173,7 +179,9 @@
                                                 <constraint firstItem="6KG-4j-2lj" firstAttribute="leading" secondItem="HPO-Of-aAZ" secondAttribute="leadingMargin" id="ayg-OC-uv6"/>
                                                 <constraint firstAttribute="bottom" secondItem="G2e-jv-f0E" secondAttribute="bottom" id="c7f-Ec-ZiO"/>
                                                 <constraint firstAttribute="trailing" secondItem="G2e-jv-f0E" secondAttribute="trailing" id="fK3-gP-LqG"/>
+                                                <constraint firstItem="hLW-Kv-B81" firstAttribute="centerX" secondItem="HPO-Of-aAZ" secondAttribute="centerX" id="nWm-G6-hie"/>
                                                 <constraint firstAttribute="bottom" secondItem="xgJ-oV-t7P" secondAttribute="bottom" id="oR9-0u-0Pa"/>
+                                                <constraint firstItem="hLW-Kv-B81" firstAttribute="centerY" secondItem="djw-ln-jw9" secondAttribute="centerY" id="qDf-zX-JjK"/>
                                                 <constraint firstItem="6KG-4j-2lj" firstAttribute="top" secondItem="HPO-Of-aAZ" secondAttribute="topMargin" constant="20" id="vGV-Fd-c9t"/>
                                                 <constraint firstItem="G2e-jv-f0E" firstAttribute="leading" secondItem="xgJ-oV-t7P" secondAttribute="trailing" id="wUj-5D-lRf"/>
                                             </constraints>
@@ -182,6 +190,7 @@
                                             <outlet property="angleSlider" destination="tPj-qh-l9a" id="aad-BD-vUX"/>
                                             <outlet property="distanceSlider" destination="djw-ln-jw9" id="ZlR-sv-5hr"/>
                                             <outlet property="userLabel" destination="6KG-4j-2lj" id="Nzc-6a-T8j"/>
+                                            <outlet property="userPhoto" destination="hLW-Kv-B81" id="shM-IR-tol"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -350,7 +359,6 @@
         <!--Navigation Controller-->
         <scene sceneID="82T-hF-KFi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kvk-wF-ikc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fuu-F5-zJx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zk4-M9-4CH">
@@ -366,6 +374,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aVs-EW-wwX"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvk-wF-ikc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="427" y="580"/>
         </scene>

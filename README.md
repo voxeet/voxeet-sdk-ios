@@ -107,14 +107,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
 ```
 
-### Creating a demo conference  
+If you use external login like O365, LDAP, or custom login to retrieve contact details it's now possible to also add your contact ID with the display name and the photo URL avatar.  
+This allows you to ask guest users to introduce themselves and provide their display name and for your authenticated users in your enterprise or for your clients the ID that can be retrieved from O365 (name, department, etc).
+
+```swift
+VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret", externalID: "ID", name: "name", avatarURL: "URL")
+```
+
+### Creating a demo conference
 
 ```swift
 VoxeetSDK.sharedInstance.createDemoConference { (error) in 
 }
 ```
 
-### Creating a conference  
+### Creating a conference
 
 ```swift
 VoxeetSDK.sharedInstance.createConference(success: { (confID, confAlias) in
@@ -122,7 +129,7 @@ VoxeetSDK.sharedInstance.createConference(success: { (confID, confAlias) in
 })
 ```
 
-### Joining a conference  
+### Joining a conference
 
 ```swift
 VoxeetSDK.sharedInstance.joinConference(conferenceID: confID) { (error) in
@@ -134,14 +141,14 @@ VoxeetSDK.sharedInstance.joinConference(conferenceAlias: confAlias) { (error) in
 }
 ```
 
-### Leaving a conference  
+### Leaving a conference
 
 ```swift
 VoxeetSDK.sharedInstance.leaveConference { (error) in
 }
 ```
 
-### Changing user position  
+### Changing user position
 
 ```swift
 // Values for angle and distance are between: angle = [-1, 1] and distance = [0, 1]
@@ -162,7 +169,7 @@ VoxeetSDK.sharedInstance.setUserDistance("userID", distance: 0)
 let (angle, distance) = VoxeetSDK.sharedInstance.getUserPosition("userID")
 ```
 
-### Getting current conference users
+### Getting current conference users ID
 
 ```swift
 let users = VoxeetSDK.sharedInstance.getConferenceUsers()
@@ -297,7 +304,6 @@ public enum VTErrorType: ErrorType {
     case Credential(String)
     case InternalServer
     case AccessToken
-    case Identify
     case LeaveConference
     case CreateConference
     case JoinConference
@@ -395,7 +401,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.4
+1.0.1.5
 
 ## Tech
 
@@ -404,5 +410,6 @@ The Voxeet iOS SDK uses a number of open source projects to work properly:
 * [Starscream](https://github.com/daltoniam/Starscream) - Starscream is a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
 * [Alamofire](https://github.com/Alamofire/Alamofire) - Alamofire is an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
+* [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) - Crypto related functions and helpers for Swift implemented in Swift.
 
 © Voxeet, 2016

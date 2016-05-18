@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
         // Initialization of the Voxeet SDK.
         VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
         

@@ -117,14 +117,14 @@ VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerS
 ### Creating a demo conference
 
 ```swift
-VoxeetSDK.sharedInstance.createDemoConference { (error) in 
+VoxeetSDK.sharedInstance.conference.createDemo { (error) in 
 }
 ```
 
 ### Creating a conference
 
 ```swift
-VoxeetSDK.sharedInstance.createConference(success: { (confID, confAlias) in
+VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
     }, fail: { (error) in
 })
 ```
@@ -132,19 +132,19 @@ VoxeetSDK.sharedInstance.createConference(success: { (confID, confAlias) in
 ### Joining a conference
 
 ```swift
-VoxeetSDK.sharedInstance.joinConference(conferenceID: confID) { (error) in
+VoxeetSDK.sharedInstance.conference.join(conferenceID: confID) { (error) in
 }
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.joinConference(conferenceAlias: confAlias) { (error) in
+VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confAlias) { (error) in
 }
 ```
 
 ### Leaving a conference
 
 ```swift
-VoxeetSDK.sharedInstance.leaveConference { (error) in
+VoxeetSDK.sharedInstance.conference.leave { (error) in
 }
 ```
 
@@ -152,52 +152,52 @@ VoxeetSDK.sharedInstance.leaveConference { (error) in
 
 ```swift
 // Values for angle and distance are between: angle = [-1, 1] and distance = [0, 1]
-VoxeetSDK.sharedInstance.setUserPosition("userID", angle: 0, distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserPosition("userID", angle: 0, distance: 0)
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.setUserAngle("userID", angle: 0)
+VoxeetSDK.sharedInstance.conference.setUserAngle("userID", angle: 0)
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.setUserDistance("userID", distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserDistance("userID", distance: 0)
 ```
 
 ### Getting a specific user position
 
 ```swift
-let (angle, distance) = VoxeetSDK.sharedInstance.getUserPosition("userID")
+let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition("userID")
 ```
 
-### Getting current conference users ID
+### Getting current conference users
 
 ```swift
-let users = VoxeetSDK.sharedInstance.getConferenceUsers()
+let users = VoxeetSDK.sharedInstance.conference.getConferenceUsers()
 ```
 
 ### Sending broadcast message in a conference
 
 ```swift
-VoxeetSDK.sharedInstance.sendBroadcastMessage("message", completion: { (error) in
+VoxeetSDK.sharedInstance.conference.sendBroadcastMessage("message", completion: { (error) in
 })
 ```
 
 ### Muting / Unmuting a user
 
 ```swift
-VoxeetSDK.sharedInstance.muteUser("userID", mute: true)
+VoxeetSDK.sharedInstance.conference.muteUser("userID", mute: true)
 ```
 
 ### Checking if a user is muted
 
 ```swift
-let isMute = VoxeetSDK.sharedInstance.isUserMuted("userID")
+let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted("userID")
 ```
 
 ### Changing output device
 
 ```swift
-if VoxeetSDK.sharedInstance.setOutputDevice(VTOutputDeviceType.BuildInReceiver) {
+if VoxeetSDK.sharedInstance.conference.setOutputDevice(VTOutputDeviceType.BuildInReceiver) {
     print("The output device has been changed.")
 }
 ```
@@ -205,7 +205,7 @@ if VoxeetSDK.sharedInstance.setOutputDevice(VTOutputDeviceType.BuildInReceiver) 
 ### Getting output devices
 
 ```swift
-let (currentOutputDevice, availableOutputDevices) = VoxeetSDK.sharedInstance.getOutputDevices()
+let (currentOutputDevice, availableOutputDevices) = VoxeetSDK.sharedInstance.conference.getOutputDevices()
 ```
 
 ### Connecting the SDK with the API (manually)
@@ -226,13 +226,17 @@ VoxeetSDK.sharedInstance.disconnect { (error) in
 }
 ```
 
-
 ## Available delegates / callbacks
 
 ### Session
 
 ```swift
 class myClass: VTSessionStateDelegate {
+    init() {
+        // Session delegate.
+        VoxeetSDK.sharedInstance.sessionStateDelegate = self
+    }
+
     func didSessionStateChanged(state: VTSessionState) {
     }
 }
@@ -247,25 +251,30 @@ VoxeetSDK.sharedInstance.didSessionChanged = { state in
 
 ```swift
 class myClass: VTConferenceDelegate {
-    func userDidJoin(userID: String) {
+    init() {
+        // Conference delegate.
+        VoxeetSDK.sharedInstance.conference.delegate = self
+    }
+
+    func userDidJoin(userID: String, userInfo: [String: String]) {
     }
     
-    func userDidLeft(userID: String) {
+    func userDidLeft(userID: String, userInfo: [String: String]) {
     }
     
-    func messageReceived(userID: String, message: String) {
+    func messageReceived(userID: String, userInfo: [String: String], message: String) {
     }
 }
 ```
 or
 ```swift
-VoxeetSDK.sharedInstance.userDidJoin = { userID in
+VoxeetSDK.sharedInstance.conference.userDidJoin = { (userID, userInfo) in
 }
         
-VoxeetSDK.sharedInstance.userDidLeft = { userID in
+VoxeetSDK.sharedInstance.conference.userDidLeft = { (userID, userInfo) in
 }
         
-VoxeetSDK.sharedInstance.messageReceived = { userID, message in
+VoxeetSDK.sharedInstance.conference.messageReceived = { (userID, userInfo, message) in
 }
 ```
 
@@ -401,7 +410,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.5
+1.0.1.6
 
 ## Tech
 

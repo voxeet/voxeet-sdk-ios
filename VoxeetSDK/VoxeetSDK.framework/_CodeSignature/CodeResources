@@ -12,6 +12,10 @@
 		<data>
 		jsXlpCSnwlrqTCdzI+kKGRRfM1o=
 		</data>
+		<key>Headers/ITBlockingQueue.h</key>
+		<data>
+		mKxBq5OlP53KIqAoUkgBGF6AqSs=
+		</data>
 		<key>Headers/MediaAPI.h</key>
 		<data>
 		gbYGXOeQ98kqjlU6vEZ+VY2fbGE=
@@ -23,6 +27,14 @@
 		<key>Headers/NetworkReporting.h</key>
 		<data>
 		rIgl+6LM1mfsjPKgETPY7QBTCQQ=
+		</data>
+		<key>Headers/PendingPeerOperation.h</key>
+		<data>
+		jFCPKg7kjUDU6fP7U8LQ6230+l4=
+		</data>
+		<key>Headers/ProxySettings.h</key>
+		<data>
+		lWlnKrlVmyHpHpULoKVJv239e9Y=
 		</data>
 		<key>Headers/ReceiverNetworkStatistics.h</key>
 		<data>
@@ -56,6 +68,10 @@
 		<data>
 		Tj4mW+r+mEtJwi/HYgnwfFdwOfk=
 		</data>
+		<key>Headers/VoxeetMediaBridge.h</key>
+		<data>
+		I0b3J3w6tfLt4F2Feu99lA/HLIE=
+		</data>
 		<key>Headers/VoxeetMediaDelegate.h</key>
 		<data>
 		mO97ceZ1svAkZP+lr8STwboprM0=
@@ -68,25 +84,33 @@
 		<data>
 		x+puE2IqfqLRs2Tk2WKWR7/l2JI=
 		</data>
+		<key>Headers/WrappedConnectionObserver.h</key>
+		<data>
+		pZJhC7MiHqrqzp7echgTyGb3CdY=
+		</data>
+		<key>Headers/WrappedSessionObserver.h</key>
+		<data>
+		FK+1ypN17M9wCe42Y0OyECGn9vM=
+		</data>
 		<key>Info.plist</key>
 		<data>
 		jyNiADxqK7i3i5TQEiWKWaz1KN4=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		usqbZIspvkwktEUrGDHgazKw09k=
+		oqxPvFVu2R7GtHb0FrL7SAlnDRU=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		l84Ahu4CGf57cKqfU5Tb2NKRSy4=
+		RdreK0BGta3ppHAYDwAzSVFiD6U=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		TI0DWQE9isBiikpuqTbBsHTgSKQ=
+		bvBTAz62R45km9PWy3ZYYDJ/kIQ=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		eiWlRfdfvNHAwNs5p5KG62+kVTs=
+		OjLvC/ewAIvOI0UUhzfSpf+4cwc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -115,6 +139,17 @@
 			<key>hash2</key>
 			<data>
 			l5vW4n/2drd3/56Y5Z99EK20wPKqUTJI+JTV63dhmGc=
+			</data>
+		</dict>
+		<key>Headers/ITBlockingQueue.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mKxBq5OlP53KIqAoUkgBGF6AqSs=
+			</data>
+			<key>hash2</key>
+			<data>
+			XIpgyyweCaOvcB/+TbMF+qpPEQzkkTtAeAQTwF8FO/Y=
 			</data>
 		</dict>
 		<key>Headers/MediaAPI.h</key>
@@ -148,6 +183,28 @@
 			<key>hash2</key>
 			<data>
 			XNzIGkDXSBREccn2gobyojk0DmvrifIKqlzXczWXaD4=
+			</data>
+		</dict>
+		<key>Headers/PendingPeerOperation.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jFCPKg7kjUDU6fP7U8LQ6230+l4=
+			</data>
+			<key>hash2</key>
+			<data>
+			hpvCIZQcdFm32ilzVB3xcrSKpW7NlZtTS3Xf+d9to24=
+			</data>
+		</dict>
+		<key>Headers/ProxySettings.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lWlnKrlVmyHpHpULoKVJv239e9Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			dQ1WFQfAG17uhKG3fH4gJytOoUCYjiStvJSnYIwVtTg=
 			</data>
 		</dict>
 		<key>Headers/ReceiverNetworkStatistics.h</key>
@@ -238,6 +295,17 @@
 			A0J4SeFFHruzqbkqTskWvP2BYshuWDPM7Z0o7OxytgM=
 			</data>
 		</dict>
+		<key>Headers/VoxeetMediaBridge.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			I0b3J3w6tfLt4F2Feu99lA/HLIE=
+			</data>
+			<key>hash2</key>
+			<data>
+			j9G/tv8eLKOFynmOjPHjC08QV2hZvE3kKCZ2Cr+3w5Q=
+			</data>
+		</dict>
 		<key>Headers/VoxeetMediaDelegate.h</key>
 		<dict>
 			<key>hash</key>
@@ -271,48 +339,70 @@
 			vIt45CYZjFfCVqkRzgZn9T8BCuUMkUnP/72/ml48ZQo=
 			</data>
 		</dict>
+		<key>Headers/WrappedConnectionObserver.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pZJhC7MiHqrqzp7echgTyGb3CdY=
+			</data>
+			<key>hash2</key>
+			<data>
+			FquXhN3Vkap2S01LpKmGDtWAovLncjVaamEAoBPH+N0=
+			</data>
+		</dict>
+		<key>Headers/WrappedSessionObserver.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FK+1ypN17M9wCe42Y0OyECGn9vM=
+			</data>
+			<key>hash2</key>
+			<data>
+			lQqu9gLGvcQCKyS+sWxkqDymoo+902r0QQF8XT01zdY=
+			</data>
+		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			usqbZIspvkwktEUrGDHgazKw09k=
+			oqxPvFVu2R7GtHb0FrL7SAlnDRU=
 			</data>
 			<key>hash2</key>
 			<data>
-			MidCnuJf8DgwsU8t93VeSVTXxjKsnN324wpZc9Aimis=
+			2qlgXBtuMjIkF6/xFGxmY4129JOwcXsVlbUrrTxb9g8=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l84Ahu4CGf57cKqfU5Tb2NKRSy4=
+			RdreK0BGta3ppHAYDwAzSVFiD6U=
 			</data>
 			<key>hash2</key>
 			<data>
-			d/g/Ct3JNJFjxq2tYLir23GJcc35PW5WYA+EulMAn+M=
+			9iTFF1D/0kIQRhbBTHPYG+YcR7RGGcOykvHaH5A8Tl0=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TI0DWQE9isBiikpuqTbBsHTgSKQ=
+			bvBTAz62R45km9PWy3ZYYDJ/kIQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			/ZNwrR0MoIgXVDkQS06I+F7bsGVjwCPuxWxxpOx7tfQ=
+			YmXCrLq8KgsPpgdyzAaGXVtKXFC8KZNc1HlCEN4oNqU=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eiWlRfdfvNHAwNs5p5KG62+kVTs=
+			OjLvC/ewAIvOI0UUhzfSpf+4cwc=
 			</data>
 			<key>hash2</key>
 			<data>
-			iUz8g79aUOyit3B1hVDJDfTQZkfIESdesD8cW6OqwNA=
+			ccOcG/rC2z8o/ddPxZogXh3S0vvLirVVAH5xe6AVNY8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

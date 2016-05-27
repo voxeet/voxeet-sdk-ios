@@ -47,7 +47,7 @@ class Conference: UIViewController {
         // Joining / Launching demo.
         if let confID = conferenceID {
             // Joining Conference.
-            VoxeetSDK.sharedInstance.joinConference(conferenceAlias: confID) { (error) in
+            VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID) { (error) in
                 if error != nil {
                     // Debug.
                     print("::DEBUG:: <joinConference> \(error)")
@@ -59,7 +59,7 @@ class Conference: UIViewController {
             conferenceIDLabel.text = "Demo"
             
             // Creating Voxeet demo conference.
-            VoxeetSDK.sharedInstance.createDemoConference { (error) in
+            VoxeetSDK.sharedInstance.conference.createDemo { (error) in
                 if error != nil {
                     // Debug.
                     print("::DEBUG:: <createDemoConference> \(error)")
@@ -70,7 +70,7 @@ class Conference: UIViewController {
         }
         
         // Conference delegate.
-        VoxeetSDK.sharedInstance.conferenceDelegate = self
+        VoxeetSDK.sharedInstance.conference.delegate = self
     }
     
     /*
@@ -86,7 +86,7 @@ class Conference: UIViewController {
             if let textField = alertController.textFields?[0],
                 let message = textField.text {
                 // Sending a broadcast message.
-                VoxeetSDK.sharedInstance.sendBroadcastMessage(message, completion: { (error) in
+                VoxeetSDK.sharedInstance.conference.sendBroadcastMessage(message, completion: { (error) in
                     // Debug.
                     print("::DEBUG:: <sendBroadcastMessage> \(error)")
                 })
@@ -106,7 +106,7 @@ class Conference: UIViewController {
     }
     
     @IBAction func hangUp(sender: AnyObject) {
-        VoxeetSDK.sharedInstance.leaveConference { (error) in
+        VoxeetSDK.sharedInstance.conference.leave { (error) in
             // Debug.
             print("::DEBUG:: <leaveConference> \(error)")
             
@@ -180,13 +180,13 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         }
         
         // Slider update.
-        if let position = VoxeetSDK.sharedInstance.getUserPosition(user.userID) {
+        if let position = VoxeetSDK.sharedInstance.conference.getUserPosition(user.userID) {
             cell.angleSlider.setValue(position.angle, animated: false)
             cell.distanceSlider.setValue(position.distance, animated: false)
         }
         
         // Background update.
-        cell.backgroundColor = VoxeetSDK.sharedInstance.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
+        cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
         
         return cell
     }
@@ -196,11 +196,11 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         
         // Mutes a user.
         let user = users[indexPath.row]
-        VoxeetSDK.sharedInstance.muteUser(user.userID, mute: !VoxeetSDK.sharedInstance.isUserMuted(user.userID))
+        VoxeetSDK.sharedInstance.conference.muteUser(user.userID, mute: !VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID))
         
         // Update background color.
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            cell.backgroundColor = VoxeetSDK.sharedInstance.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
+            cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
         }
     }
 }
@@ -225,7 +225,7 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <angle> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.setUserAngle(userLabel.text!, angle: sender.value)
+        VoxeetSDK.sharedInstance.conference.setUserAngle(userLabel.text!, angle: sender.value)
     }
     
     @IBAction func distance(sender: UISlider) {
@@ -233,6 +233,6 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <distance> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.setUserDistance(userLabel.text!, distance: sender.value)
+        VoxeetSDK.sharedInstance.conference.setUserDistance(userLabel.text!, distance: sender.value)
     }
 }

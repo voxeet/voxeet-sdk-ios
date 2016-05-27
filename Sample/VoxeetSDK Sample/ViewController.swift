@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     @IBAction func createConference(sender: AnyObject) {
         // Conference creation.
-        VoxeetSDK.sharedInstance.createConference(success: { (confID, confAlias) in
+        VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
             // Debug.
             print("::DEBUG:: <createConference> \(confID), \(confAlias)")
             

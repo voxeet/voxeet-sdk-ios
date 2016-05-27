@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
         
         // Session delegate.
         VoxeetSDK.sharedInstance.sessionStateDelegate = self
-        
+     
         return true
     }
     

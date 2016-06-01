@@ -148,6 +148,18 @@ VoxeetSDK.sharedInstance.conference.leave { (error) in
 }
 ```
 
+### Getting current conference users
+
+```swift
+let users = VoxeetSDK.sharedInstance.conference.getUsers()
+```
+
+### Getting a specific user's information
+
+```swift
+let infos = VoxeetSDK.sharedInstance.conference.getUserInfo("userID")
+```
+
 ### Changing user position
 
 ```swift
@@ -167,12 +179,6 @@ VoxeetSDK.sharedInstance.conference.setUserDistance("userID", distance: 0)
 
 ```swift
 let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition("userID")
-```
-
-### Getting current conference users
-
-```swift
-let users = VoxeetSDK.sharedInstance.conference.getConferenceUsers()
 ```
 
 ### Sending broadcast message in a conference
@@ -256,13 +262,13 @@ class myClass: VTConferenceDelegate {
         VoxeetSDK.sharedInstance.conference.delegate = self
     }
 
-    func userDidJoin(userID: String, userInfo: [String: String]) {
+    func userDidJoin(userID: String, userInfo: [String: AnyObject]) {
     }
     
-    func userDidLeft(userID: String, userInfo: [String: String]) {
+    func userDidLeft(userID: String, userInfo: [String: AnyObject]) {
     }
     
-    func messageReceived(userID: String, userInfo: [String: String], message: String) {
+    func messageReceived(userID: String, userInfo: [String: AnyObject], message: String) {
     }
 }
 ```
@@ -410,7 +416,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.6
+1.0.1.7
 
 ## Tech
 

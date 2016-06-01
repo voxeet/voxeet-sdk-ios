@@ -120,17 +120,17 @@ class Conference: UIViewController {
  */
 
 extension Conference: VTConferenceDelegate {
-    func userDidJoin(userID: String, userInfo: [String: String]) {
-        users.append(User(userID: userID, externalID: userInfo["externalId"], avatarUrl: userInfo["avatarUrl"], name: userInfo["name"]))
+    func userDidJoin(userID: String, userInfo: [String: AnyObject]) {
+        users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
         tableView.reloadData()
     }
     
-    func userDidLeft(userID: String, userInfo: [String: String]) {
+    func userDidLeft(userID: String, userInfo: [String: AnyObject]) {
         users = users.filter({ $0.userID != userID })
         tableView.reloadData()
     }
     
-    func messageReceived(userID: String, userInfo: [String: String], message: String) {
+    func messageReceived(userID: String, userInfo: [String: AnyObject], message: String) {
         if let name = users.filter({ $0.userID == userID }).first?.name {
             broadcastMessageTextView.text = "\(name): \(message)"
         } else {

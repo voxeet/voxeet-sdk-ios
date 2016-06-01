@@ -126,9 +126,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 SWIFT_PROTOCOL("_TtP9VoxeetSDK20VTConferenceDelegate_")
 @protocol VTConferenceDelegate
 @optional
-- (void)userDidJoin:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, NSString *> * _Nonnull)userInfo;
-- (void)userDidLeft:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, NSString *> * _Nonnull)userInfo;
-- (void)messageReceived:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, NSString *> * _Nonnull)userInfo message:(NSString * _Nonnull)message;
+- (void)userDidJoin:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
+- (void)userDidLeft:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
+- (void)messageReceived:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo message:(NSString * _Nonnull)message;
 @end
 
 #pragma clang diagnostic pop

@@ -151,42 +151,11 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableViewCell", forIndexPath: indexPath) as! ConferenceTableViewCell
         
+        // Getting the current user.
         let user = users[indexPath.row]
         
-        // Cell label.
-        if let name = user.name {
-            cell.userLabel.text = name
-        } else {
-            cell.userLabel.text = user.userID
-        }
-        
-        // Cell avatar.
-        if let avatarURL = user.avatarUrl {
-            let imgURL: NSURL = NSURL(string: avatarURL)!
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-                if error == nil {
-                    if let data = data {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            cell.userPhoto.image = UIImage(data: data)
-                        }
-                    }
-                } else {
-                    // Debug.
-                    print("::DEBUG:: <avatar> \(error?.localizedDescription)")
-                }
-            }
-            task.resume()
-        }
-        
-        // Slider update.
-        if let position = VoxeetSDK.sharedInstance.conference.getUserPosition(user.userID) {
-            cell.angleSlider.setValue(position.angle, animated: false)
-            cell.distanceSlider.setValue(position.distance, animated: false)
-        }
-        
-        // Background update.
-        cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
+        // Setting up the cell.
+        cell.setUp(user)
         
         return cell
     }
@@ -216,6 +185,52 @@ class ConferenceTableViewCell: UITableViewCell {
     @IBOutlet weak var angleSlider: UISlider!
     @IBOutlet weak var distanceSlider: UISlider!
     
+    // Data.
+    var currentUser: User!
+    
+    /*
+     *  MARK: Set Up
+     */
+    
+    func setUp(currentUser: User) {
+        self.currentUser = currentUser
+        
+        // Cell label.
+        if let name = currentUser.name {
+            userLabel.text = name
+        } else {
+            userLabel.text = currentUser.userID
+        }
+        
+        // Cell avatar.
+        if let avatarURL = currentUser.avatarUrl {
+            let imgURL: NSURL = NSURL(string: avatarURL)!
+            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                if error == nil {
+                    if let data = data {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.userPhoto.image = UIImage(data: data)
+                        }
+                    }
+                } else {
+                    // Debug.
+                    print("::DEBUG:: <avatar> \(error?.localizedDescription)")
+                }
+            }
+            task.resume()
+        }
+        
+        // Slider update.
+        if let position = VoxeetSDK.sharedInstance.conference.getUserPosition(currentUser.userID) {
+            self.angleSlider.setValue(position.angle, animated: false)
+            self.distanceSlider.setValue(position.distance, animated: false)
+        }
+        
+        // Background update.
+        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(currentUser.userID) ? UIColor.redColor() : UIColor.whiteColor()
+    }
+    
     /*
      *  MARK: Action
      */
@@ -225,7 +240,7 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <angle> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserAngle(userLabel.text!, angle: sender.value)
+        VoxeetSDK.sharedInstance.conference.setUserAngle(currentUser.userID, angle: sender.value)
     }
     
     @IBAction func distance(sender: UISlider) {
@@ -233,6 +248,6 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <distance> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserDistance(userLabel.text!, distance: sender.value)
+        VoxeetSDK.sharedInstance.conference.setUserDistance(currentUser.userID, distance: sender.value)
     }
 }

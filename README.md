@@ -416,7 +416,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.7
+1.0.1.8
 
 ## Tech
 

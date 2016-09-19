@@ -63,10 +63,9 @@ class ViewController: UIViewController {
         // Alert textField.
         alertController.addTextFieldWithConfigurationHandler { (textField) in
             textField.placeholder = "Conference ID"
-            textField.keyboardType = .NumberPad
             textField.clearButtonMode = .WhileEditing
             
-            // Setting the textfield text by the previous text saved.
+            // Setting the textfield's text with the previous text saved (NSUserDefaults).
             let text = NSUserDefaults.standardUserDefaults().stringForKey(VTConfID)
             textField.text = text
         }

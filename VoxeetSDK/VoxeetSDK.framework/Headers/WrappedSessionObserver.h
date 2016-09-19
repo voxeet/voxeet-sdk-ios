@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "talk/app/webrtc/peerconnectioninterface.h"
-#include "webrtc/base/scoped_ptr.h"
+#include "webrtc/api/peerconnectioninterface.h"
 #import "VoxeetMediaDelegate.h"
 
 #include "connection_owner.h"

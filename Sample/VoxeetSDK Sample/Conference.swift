@@ -29,15 +29,17 @@ class Conference: UIViewController {
     @IBOutlet weak var conferenceIDLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var broadcastMessageTextView: UITextView!
+    @IBOutlet weak var screenShareView: VideoRenderer!
+    @IBOutlet weak var ownCameraView: VideoRenderer!
     
     // Current conference ID.
     var conferenceID: String?
     
-    // Users' ID.
+    // Users' data.
     var users = [User]()
     
     /*
-     *  MARK: Load
+     *  MARK: Load / Unload
      */
     
     override func viewDidLoad() {
@@ -46,6 +48,9 @@ class Conference: UIViewController {
         
         // Joining / Launching demo.
         if let confID = conferenceID {
+            // Conference media delegate.
+            VoxeetSDK.sharedInstance.conference.mediaDelegate = self
+            
             // Joining Conference.
             VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID) { (error) in
                 if error != nil {
@@ -71,6 +76,11 @@ class Conference: UIViewController {
         
         // Conference delegate.
         VoxeetSDK.sharedInstance.conference.delegate = self
+    }
+    
+    deinit {
+        // Debug.
+        print("::DEBUG:: <deinitConference>")
     }
     
     /*
@@ -105,6 +115,16 @@ class Conference: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func switchAudioRoute(button: UIButton) {
+        if button.selected {
+            VoxeetSDK.sharedInstance.conference.setOutputDevice(.BuildInReceiver)
+        } else {
+            VoxeetSDK.sharedInstance.conference.setOutputDevice(.BuiltInSpeaker)
+        }
+                
+        button.selected = !button.selected
+    }
+    
     @IBAction func hangUp(sender: AnyObject) {
         VoxeetSDK.sharedInstance.conference.leave { (error) in
             // Debug.
@@ -113,6 +133,10 @@ class Conference: UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
+    
+    @IBAction func switchCamera(sender: AnyObject) {
+        VoxeetSDK.sharedInstance.conference.flipCamera()
+    }
 }
 
 /*
@@ -120,12 +144,12 @@ class Conference: UIViewController {
  */
 
 extension Conference: VTConferenceDelegate {
-    func userDidJoin(userID: String, userInfo: [String: AnyObject]) {
+    func userJoined(userID: String, userInfo: [String: AnyObject]) {
         users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
         tableView.reloadData()
     }
     
-    func userDidLeft(userID: String, userInfo: [String: AnyObject]) {
+    func userLeft(userID: String, userInfo: [String: AnyObject]) {
         users = users.filter({ $0.userID != userID })
         tableView.reloadData()
     }
@@ -136,6 +160,38 @@ extension Conference: VTConferenceDelegate {
         } else {
             broadcastMessageTextView.text = "\(userID): \(message)"
         }
+    }
+}
+
+/*
+ *  MARK: - Voxeet SDK conference media delegate
+ */
+
+extension Conference: VTConferenceMediaDelegate {
+    func streamAdded(stream: MediaStream, peerID: String) {
+        if let ownUserID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID where ownUserID == peerID {
+            // Attaching own user's video stream.
+            ownCameraView.hidden = false
+            VoxeetSDK.sharedInstance.conference.attachMediaStream(ownCameraView, stream: stream)
+        } else if let index = self.users.indexOf({ $0.userID == peerID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
+            // Attaching user's video stream.
+            cell.userVideoView.hidden = false
+            VoxeetSDK.sharedInstance.conference.attachMediaStream(cell.userVideoView, stream: stream)
+        }
+    }
+    
+    func streamRemoved(peerID: String) {
+        if let index = self.users.indexOf({ $0.userID == peerID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
+            cell.userVideoView.hidden = true
+        }
+    }
+    
+    func streamScreenShareAdded(stream: MediaStream, peerID: String) {
+        // Attaching a video stream to a renderer.
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(screenShareView, stream: stream)
+    }
+    
+    func streamScreenShareRemoved(peerID: String) {
     }
 }
 
@@ -171,83 +227,5 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
         }
-    }
-}
-
-/*
- *  MARK: - Conference tableView cell
- */
-
-class ConferenceTableViewCell: UITableViewCell {
-    // UI.
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var angleSlider: UISlider!
-    @IBOutlet weak var distanceSlider: UISlider!
-    
-    // Data.
-    var currentUser: User!
-    
-    /*
-     *  MARK: Set Up
-     */
-    
-    func setUp(currentUser: User) {
-        self.currentUser = currentUser
-        
-        // Cell label.
-        if let name = currentUser.name {
-            userLabel.text = name
-        } else {
-            userLabel.text = currentUser.userID
-        }
-        
-        // Cell avatar.
-        if let avatarURL = currentUser.avatarUrl {
-            let imgURL: NSURL = NSURL(string: avatarURL)!
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-                if error == nil {
-                    if let data = data {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.userPhoto.image = UIImage(data: data)
-                        }
-                    }
-                } else {
-                    // Debug.
-                    print("::DEBUG:: <avatar> \(error?.localizedDescription)")
-                }
-            }
-            task.resume()
-        }
-        
-        // Slider update.
-        if let position = VoxeetSDK.sharedInstance.conference.getUserPosition(currentUser.userID) {
-            self.angleSlider.setValue(position.angle, animated: false)
-            self.distanceSlider.setValue(position.distance, animated: false)
-        }
-        
-        // Background update.
-        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(currentUser.userID) ? UIColor.redColor() : UIColor.whiteColor()
-    }
-    
-    /*
-     *  MARK: Action
-     */
-    
-    @IBAction func angle(sender: UISlider) {
-        // Debug.
-        print("::DEBUG:: <angle> \(sender.value)")
-        
-        // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserAngle(currentUser.userID, angle: sender.value)
-    }
-    
-    @IBAction func distance(sender: UISlider) {
-        // Debug.
-        print("::DEBUG:: <distance> \(sender.value)")
-        
-        // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserDistance(currentUser.userID, distance: sender.value)
     }
 }

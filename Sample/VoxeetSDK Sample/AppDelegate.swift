@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
     
     // MARK: - VTSessionState Delegate
     
-    func didSessionStateChanged(state: VTSessionState) {
+    func sessionStateChanged(state: VTSessionState) {
         // Debug.
         print("::DEBUG:: <sessionStateChanged> \(state)")
     }

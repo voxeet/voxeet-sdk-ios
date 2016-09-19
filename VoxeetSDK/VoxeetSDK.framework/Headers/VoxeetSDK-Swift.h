@@ -94,10 +94,29 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import Foundation;
 @import Foundation.NSURLSession;
+@import ObjectiveC;
 #endif
+
+#import <VoxeetSDK/VoxeetSDK.h>
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+
+@interface NSData (SWIFT_EXTENSION(VoxeetSDK))
+
+/// Two octet checksum as defined in RFC-4880. Sum of all octets, mod 65536
+- (uint16_t)checksum;
+@end
+
+
+@interface NSData (SWIFT_EXTENSION(VoxeetSDK))
+- (NSString * _Nonnull)toHexString;
+@end
+
+
+@interface NSMutableData (SWIFT_EXTENSION(VoxeetSDK))
+@end
+
 
 @interface NSNumber (SWIFT_EXTENSION(VoxeetSDK))
 @end
@@ -122,13 +141,110 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 @interface NSURLSession (SWIFT_EXTENSION(VoxeetSDK))
 @end
 
+@class MediaStream;
+@protocol VTConferenceDelegate;
+@protocol VTConferenceMediaDelegate;
+
+SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
+@interface VTConference : NSObject <MediaAPIDelegate>
+
+/// Conference delegate.
+@property (nonatomic, weak) id <VTConferenceDelegate> _Nullable delegate;
+@property (nonatomic, copy) void (^ _Nullable userJoined)(NSString * _Nonnull userID, NSDictionary<NSString *, id> * _Nonnull userInfo);
+@property (nonatomic, copy) void (^ _Nullable userLeft)(NSString * _Nonnull userID, NSDictionary<NSString *, id> * _Nonnull userInfo);
+@property (nonatomic, copy) void (^ _Nullable messageReceived)(NSString * _Nonnull userID, NSDictionary<NSString *, id> * _Nonnull userInfo, NSString * _Nonnull message);
+
+/// Conference media delegate.
+@property (nonatomic, weak) id <VTConferenceMediaDelegate> _Nullable mediaDelegate;
+@property (nonatomic, copy) void (^ _Nullable streamAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull peerID);
+@property (nonatomic, copy) void (^ _Nullable streamRemoved)(NSString * _Nonnull peerID);
+@property (nonatomic, copy) void (^ _Nullable streamScreenShareAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull peerID);
+@property (nonatomic, copy) void (^ _Nullable streamScreenShareRemoved)(NSString * _Nonnull peerID);
+- (void)streamAddedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
+- (void)streamRemovedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
+- (void)screenShareStreamAddedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
+- (void)screenShareStreamRemovedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
+@end
+
+
+@interface VTConference (SWIFT_EXTENSION(VoxeetSDK))
+@end
+
+@class VideoRenderer;
+
+@interface VTConference (SWIFT_EXTENSION(VoxeetSDK))
+
+/// Getting a specific user's information.
+///
+/// \returns  Returns all information in a <code>Dictionary
+/// </code>.
+- (NSDictionary<NSString *, id> * _Nonnull)getUserInfo:(NSString * _Nonnull)userID;
+
+/// Changing the user position.
+///
+/// \param userID User ID.
+///
+/// \param angle Changes the user position with an angle.
+///
+/// \param distance Changes the user position with a distance.
+- (void)setUserPosition:(NSString * _Nonnull)userID angle:(double)angle distance:(double)distance;
+
+/// Changing the user position (with just an angle, see setUserPosition(userID: String, angle: Double, distance: Double)).
+///
+/// \param userID User ID.
+///
+/// \param angle Changes the user position with an angle.
+- (void)setUserAngle:(NSString * _Nonnull)userID angle:(double)angle;
+
+/// Changing the user position (with just a distance, see setUserPosition(userID: String, angle: Double, distance: Double)).
+///
+/// \param userID User ID.
+///
+/// \param distance Changes the user position with a distance.
+- (void)setUserDistance:(NSString * _Nonnull)userID distance:(double)distance;
+
+/// Muting / Unmuting a user.
+///
+/// \param userID User ID.
+///
+/// \param mute Mute or unmute a user.
+- (void)muteUser:(NSString * _Nonnull)userID mute:(BOOL)mute;
+
+/// Checking if a user is currently muted or not.
+///
+/// \param userID User ID.
+///
+/// \returns  Return a boolean that indicates if a user is currently muted.
+- (BOOL)isUserMuted:(NSString * _Nonnull)userID;
+
+/// Attaching a media stream to a renderer.
+///
+/// \param renderer The view renderer that will display the video.
+///
+/// \param stream Stream to be rendered into the view.
+- (void)attachMediaStream:(VideoRenderer * _Nonnull)renderer stream:(MediaStream * _Nonnull)stream;
+
+/// Flip the camera (front/back).
+- (void)flipCamera;
+@end
+
 
 SWIFT_PROTOCOL("_TtP9VoxeetSDK20VTConferenceDelegate_")
 @protocol VTConferenceDelegate
 @optional
-- (void)userDidJoin:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
-- (void)userDidLeft:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
+- (void)userJoined:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
+- (void)userLeft:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
 - (void)messageReceived:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo message:(NSString * _Nonnull)message;
+@end
+
+
+SWIFT_PROTOCOL("_TtP9VoxeetSDK25VTConferenceMediaDelegate_")
+@protocol VTConferenceMediaDelegate
+@optional
+- (void)streamAdded:(MediaStream * _Nonnull)stream peerID:(NSString * _Nonnull)peerID;
+- (void)streamRemoved:(NSString * _Nonnull)peerID;
+- (void)streamScreenShareAdded:(MediaStream * _Nonnull)stream peerID:(NSString * _Nonnull)peerID;
+- (void)streamScreenShareRemoved:(NSString * _Nonnull)peerID;
 @end
 
 #pragma clang diagnostic pop

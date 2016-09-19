@@ -35,12 +35,12 @@ class AudioEngineDemo: UIViewController {
     
     @IBAction func angle(sender: UISlider) {
         // Updating sound spatialization.
-        elephantSound?.angle = sender.value
+        elephantSound?.angle = Double(sender.value)
     }
     
     @IBAction func distance(sender: UISlider) {
         // Updating sound spatialization.
-        elephantSound?.distance = sender.value
+        elephantSound?.distance = Double(sender.value)
     }
     
     @IBAction func loop(sender: UISwitch) {

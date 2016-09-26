@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MediaStream;
+
 @protocol VoxeetMediaDelegate <NSObject>
 
 - (void)audioRouteChanged:(NSNumber *)route;
@@ -19,4 +21,9 @@
 - (void)iceGatheringCompletedForPeer:(NSString *)peerId;
 - (void)printTraceWithLevel:(int)level withMessage:(const char*)message ofLength:(int)length;
 - (void)callBackOnChannel:(int)channel withErrorCode:(int)errCode;
+- (void)streamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+- (void)streamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+- (void)screenStreamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+- (void)screenStreamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+
 @end

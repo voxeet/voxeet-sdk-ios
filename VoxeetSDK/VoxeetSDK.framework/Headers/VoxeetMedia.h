@@ -12,6 +12,8 @@
 #import "AudioCoreCodec.h"
 #import "NetworkReporting.h"
 #import "AudioSettings.h"
+#import "VideoRenderer.h"
+#import "MediaStream.h"
 
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <CoreBluetooth/CBService.h>
@@ -48,6 +50,8 @@ typedef enum{
 //@property (readwrite, nonatomic) CBCentralManager *manager;
 @property (nonatomic, assign) id <VoxeetMediaDelegate> delegate;
 - (id)initWithLocalPeer:(NSString *)localPeerId audioSettings:(AudioSettings *)settings;
+- (void)attachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
+- (void)unattachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
 - (BOOL)needSwitchToPstn;
 - (BOOL)createConnectionWithPeer:(NSString *)peerId isMaster:(BOOL)isMaster;
 - (BOOL)closeConnectionWithPeer:(NSString *)peerId;
@@ -84,10 +88,11 @@ typedef enum{
 - (void)stopAudioDevice;
 - (void)startAudioDevice;
 - (void)stop;
-- (void) dealloc;
+- (void)dealloc;
 - (void)printTraceWithLevel:(int)level withMessage:(const char*)message ofLength:(int)length;
 - (void)callbackOnChannel:(int)channel withErrorCode:(int)errCode;
--(void)stopTimerDelegate;
+- (void)stopTimerDelegate;
+- (void)flipCamera;
 #pragma mark - Old audio core methods
 
 

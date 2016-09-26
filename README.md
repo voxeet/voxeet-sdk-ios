@@ -1,11 +1,14 @@
 # Voxeet iOS SDK
 
-The SDK is a Swift library allowing users to:
+![Voxeet SDK logo](http://www.voxeet.com/wp-content/uploads/2016/05/SDK-API-768x180.png "Voxeet SDK logo")
+
+The Voxeet SDK is a Swift library allowing users to:
 
   - Create demo/normal conferences
   - Join conferences
   - Change sounds angle and direction for each conference user
   - Broadcast messages to other participants
+  - Send and receive video stream
 
 ## Table of contents
 
@@ -20,7 +23,13 @@ The SDK is a Swift library allowing users to:
 ## Requirements
 
   - iOS 8.0+
-  - Xcode 7.3+
+  - Xcode 7.3+  
+
+Branch **swift3**:
+
+  - iOS 9.0+
+  - Xcode 8.0+
+  - Swift 3.0+
 
 ## Sample Application
 
@@ -31,8 +40,12 @@ A sample application is available on this [public repository](https://github.com
 You need to disable Bitcode in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
 
 To enable background mode, go to your target settings -> 'Capabilities' -> 'Background Modes'  
-Turn on 'Audio, AirPlay and Picture in Picture'  
-Turn on 'Voice over IP'
+- Turn on 'Audio, AirPlay and Picture in Picture'  
+- Turn on 'Voice over IP'
+
+Privacy permissions, in your plist add two new keys: 
+- Privacy - Camera Usage Description
+- Privacy - Microphone Usage Description
 
 ### Installation with CocoaPods
 
@@ -148,6 +161,20 @@ VoxeetSDK.sharedInstance.conference.leave { (error) in
 }
 ```
 
+### Getting a specific conference status
+
+```swift
+VoxeetSDK.sharedInstance.conference.status(conferenceID: "", success: { (json) in
+    }) { (error) in
+}
+```
+
+### Getting own users
+
+```swift
+let ownUser = VoxeetSDK.sharedInstance.conference.getOwnUser()
+```
+
 ### Getting current conference users
 
 ```swift
@@ -164,21 +191,21 @@ let infos = VoxeetSDK.sharedInstance.conference.getUserInfo("userID")
 
 ```swift
 // Values for angle and distance are between: angle = [-1, 1] and distance = [0, 1]
-VoxeetSDK.sharedInstance.conference.setUserPosition("userID", angle: 0, distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserPosition(angle: 0, distance: 0, userID: "userID")
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.conference.setUserAngle("userID", angle: 0)
+VoxeetSDK.sharedInstance.conference.setUserAngle(0, userID: "userID")
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.conference.setUserDistance("userID", distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserDistance(0, userID: "userID")
 ```
 
 ### Getting a specific user position
 
 ```swift
-let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition("userID")
+let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition(userID: "userID")
 ```
 
 ### Sending broadcast message in a conference
@@ -191,13 +218,31 @@ VoxeetSDK.sharedInstance.conference.sendBroadcastMessage("message", completion: 
 ### Muting / Unmuting a user
 
 ```swift
-VoxeetSDK.sharedInstance.conference.muteUser("userID", mute: true)
+VoxeetSDK.sharedInstance.conference.muteUser(true, userID: "userID")
 ```
 
 ### Checking if a user is muted
 
 ```swift
-let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted("userID")
+let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: "userID")
+```
+
+### Attaching a media stream to a renderer
+
+```swift
+VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
+```
+
+### Getting the participant's voice level
+
+```swift
+VoxeetSDK.sharedInstance.conference.getVoiceLevel("userID")
+```
+
+### Flipping the device camera (front/back)
+
+```swift
+VoxeetSDK.sharedInstance.conference.flipCamera()
 ```
 
 ### Changing output device
@@ -243,13 +288,13 @@ class myClass: VTSessionStateDelegate {
         VoxeetSDK.sharedInstance.sessionStateDelegate = self
     }
 
-    func didSessionStateChanged(state: VTSessionState) {
+    func sessionStateChanged(state: VTSessionState) {
     }
 }
 ```
 or
 ```swift
-VoxeetSDK.sharedInstance.didSessionChanged = { state in
+VoxeetSDK.sharedInstance.sessionStateChanged = { state in
 }
 ```
 
@@ -262,10 +307,10 @@ class myClass: VTConferenceDelegate {
         VoxeetSDK.sharedInstance.conference.delegate = self
     }
 
-    func userDidJoin(userID: String, userInfo: [String: AnyObject]) {
+    func userJoined(userID: String, userInfo: [String: AnyObject]) {
     }
     
-    func userDidLeft(userID: String, userInfo: [String: AnyObject]) {
+    func userLeft(userID: String, userInfo: [String: AnyObject]) {
     }
     
     func messageReceived(userID: String, userInfo: [String: AnyObject], message: String) {
@@ -274,13 +319,56 @@ class myClass: VTConferenceDelegate {
 ```
 or
 ```swift
-VoxeetSDK.sharedInstance.conference.userDidJoin = { (userID, userInfo) in
+VoxeetSDK.sharedInstance.conference.userJoined = { (userID, userInfo) in
 }
         
-VoxeetSDK.sharedInstance.conference.userDidLeft = { (userID, userInfo) in
+VoxeetSDK.sharedInstance.conference.userLeft = { (userID, userInfo) in
 }
         
 VoxeetSDK.sharedInstance.conference.messageReceived = { (userID, userInfo, message) in
+}
+```
+
+### Conference media
+
+```swift
+class myClass: VTConferenceMediaDelegate {
+    @IBOutlet weak var videoRenderer: VideoRenderer!
+
+    init() {
+        // Conference media delegate.
+        VoxeetSDK.sharedInstance.conference.mediaDelegate = self
+    }
+
+    func streamAdded(stream: MediaStream, peerID: String) {
+        // Attaching a video stream to a renderer.
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+    }
+    
+    func streamRemovedForPeer(peerID: String) {
+    }
+    
+    func streamScreenShareAdded(stream: MediaStream, peerID: String) {
+        // Attaching a video stream to a renderer.
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+    }
+    
+    func streamScreenShareRemoved(peerID: String) {
+    }
+}
+```
+or
+```swift
+VoxeetSDK.sharedInstance.conference.streamAdded = { (stream: MediaStream, peerID: String) in
+}
+
+VoxeetSDK.sharedInstance.conference.streamRemoved = { (peerID: String) in
+}
+
+VoxeetSDK.sharedInstance.conference.streamScreenShareAdded = { (stream: MediaStream, peerID: String) in
+}
+
+VoxeetSDK.sharedInstance.conference.streamScreenShareRemoved = { (peerID: String) in
 }
 ```
 
@@ -319,6 +407,7 @@ public enum VTErrorType: ErrorType {
     case Credential(String)
     case InternalServer
     case AccessToken
+    case NoLiveConference
     case LeaveConference
     case CreateConference
     case JoinConference
@@ -330,7 +419,7 @@ public enum VTErrorType: ErrorType {
 
 ## VTAudioSound Usage
 
-VTAudioSound helps you to play a 3DHD sound into your application.  
+VTAudioSound helps you to play a TrueVoice 3D audio sound into your application.  
 The sound must be encoded in **mono** to be played spatialized.
 
 ### Initializing
@@ -416,7 +505,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.8
+1.0.2
 
 ## Tech
 

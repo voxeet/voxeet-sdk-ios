@@ -4,6 +4,90 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Frameworks/Alamofire.framework/Alamofire</key>
+		<data>
+		t388Iw0vp15voF7wKauey3/2M8o=
+		</data>
+		<key>Frameworks/Alamofire.framework/Info.plist</key>
+		<data>
+		nwCykNXZGGlWetoshOxb94eZn3M=
+		</data>
+		<key>Frameworks/Alamofire.framework/_CodeSignature/CodeResources</key>
+		<data>
+		HedL1lKFSldc5Sdsnryq5cKtAM0=
+		</data>
+		<key>Frameworks/CryptoSwift.framework/CryptoSwift</key>
+		<data>
+		6Hp79kRbSUlKn9PB01dSGBsBByo=
+		</data>
+		<key>Frameworks/CryptoSwift.framework/Info.plist</key>
+		<data>
+		zUqAkD1xPCevo3iWTkluxOEw2jo=
+		</data>
+		<key>Frameworks/CryptoSwift.framework/_CodeSignature/CodeResources</key>
+		<data>
+		7Fxct8gn8xpi0istL7Y6X0jRRxM=
+		</data>
+		<key>Frameworks/Starscream.framework/Info.plist</key>
+		<data>
+		r4brDwOVzimxbv6V+iuRJL0G9Fs=
+		</data>
+		<key>Frameworks/Starscream.framework/Starscream</key>
+		<data>
+		m/grEFSkLnK22gGI3s1OdXaQ9K4=
+		</data>
+		<key>Frameworks/Starscream.framework/_CodeSignature/CodeResources</key>
+		<data>
+		6e/Lx0SpSU63ULguBHxDtQDNUjE=
+		</data>
+		<key>Frameworks/libswiftAVFoundation.dylib</key>
+		<data>
+		ruwk4JLgvZi/TWps4cl1/BpbI/Y=
+		</data>
+		<key>Frameworks/libswiftCore.dylib</key>
+		<data>
+		ZPTqNi+KQqkYWLfak5gYgc5pVGM=
+		</data>
+		<key>Frameworks/libswiftCoreAudio.dylib</key>
+		<data>
+		UqDolBWTBhUQ1Takfi/hsDiIFIc=
+		</data>
+		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<data>
+		adcXxcYsFbqBX7xsG84IL1+f7O8=
+		</data>
+		<key>Frameworks/libswiftCoreImage.dylib</key>
+		<data>
+		k215Sfh+meHwUDMztq4DTuDXjs0=
+		</data>
+		<key>Frameworks/libswiftCoreMedia.dylib</key>
+		<data>
+		G2XnW+f+r/F9kuGRggzXhzlBVCs=
+		</data>
+		<key>Frameworks/libswiftDarwin.dylib</key>
+		<data>
+		nFrKnk9xw649jtd6eFmheTKqJvU=
+		</data>
+		<key>Frameworks/libswiftDispatch.dylib</key>
+		<data>
+		mn4i3Q3Hr2NUhwB+q2Z5sBpAr/Q=
+		</data>
+		<key>Frameworks/libswiftFoundation.dylib</key>
+		<data>
+		6GrtRb44C8P8Eahv/QaPR80zfsY=
+		</data>
+		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<data>
+		3iKdsr30iXHVnk/J7eoW2/FeHz8=
+		</data>
+		<key>Frameworks/libswiftUIKit.dylib</key>
+		<data>
+		xTo2Z7l9vyqf6QQAxFr1/h/9AUM=
+		</data>
+		<key>Frameworks/libswiftos.dylib</key>
+		<data>
+		VQvaGDL9daJIVa2hhINf6vhiwtE=
+		</data>
 		<key>Headers/AudioCoreCodec.h</key>
 		<data>
 		4Zs7SB1pss+2D1bHXGZ+FDlMBLI=
@@ -12,13 +96,21 @@
 		<data>
 		jsXlpCSnwlrqTCdzI+kKGRRfM1o=
 		</data>
+		<key>Headers/EAGLVideoView.h</key>
+		<data>
+		tkehhvu80xGZBCO6kVA0NsSFJQA=
+		</data>
 		<key>Headers/ITBlockingQueue.h</key>
 		<data>
 		mKxBq5OlP53KIqAoUkgBGF6AqSs=
 		</data>
 		<key>Headers/MediaAPI.h</key>
 		<data>
-		gbYGXOeQ98kqjlU6vEZ+VY2fbGE=
+		kPSIp3pCYnsbF4UbfEukq6RybOs=
+		</data>
+		<key>Headers/MediaStream.h</key>
+		<data>
+		I4cZTGuFkBRNuKBhedaDfOt6a7M=
 		</data>
 		<key>Headers/NetworkCodec.h</key>
 		<data>
@@ -27,6 +119,10 @@
 		<key>Headers/NetworkReporting.h</key>
 		<data>
 		rIgl+6LM1mfsjPKgETPY7QBTCQQ=
+		</data>
+		<key>Headers/OpenGLVideoRenderer.h</key>
+		<data>
+		oHHIUWWEZF81h+FNirdRSpP9Rjo=
 		</data>
 		<key>Headers/PendingPeerOperation.h</key>
 		<data>
@@ -64,9 +160,21 @@
 		<data>
 		BC18yH0dtdOgjDjWXsr5yyzaBp8=
 		</data>
+		<key>Headers/VideoFrame.h</key>
+		<data>
+		NWQRrTjd33cAcJX907MaJ/9Hs98=
+		</data>
+		<key>Headers/VideoRenderer.h</key>
+		<data>
+		SzpzyZiegLsI8ZECYQiYs1dTsPs=
+		</data>
+		<key>Headers/VideoRendererAdapter.h</key>
+		<data>
+		4d+Z5uTr4j7AByb0VUZ66OFKjFw=
+		</data>
 		<key>Headers/VoxeetMedia.h</key>
 		<data>
-		Tj4mW+r+mEtJwi/HYgnwfFdwOfk=
+		m+UDRhJPwgzLKqGeuVpIPaIYjWg=
 		</data>
 		<key>Headers/VoxeetMediaBridge.h</key>
 		<data>
@@ -74,15 +182,15 @@
 		</data>
 		<key>Headers/VoxeetMediaDelegate.h</key>
 		<data>
-		mO97ceZ1svAkZP+lr8STwboprM0=
+		g1fajicvfiTQPQZ84D0mWJvK+nA=
 		</data>
 		<key>Headers/VoxeetSDK-Swift.h</key>
 		<data>
-		aycTRJSyPIBJ8CtWXLS7S0C2mx0=
+		4q/cVM1TGX5nxSDEtslWKKxGQJ0=
 		</data>
 		<key>Headers/VoxeetSDK.h</key>
 		<data>
-		x+puE2IqfqLRs2Tk2WKWR7/l2JI=
+		pLWikUHKF/ED0ymr7/pmG+3Sauk=
 		</data>
 		<key>Headers/WrappedConnectionObserver.h</key>
 		<data>
@@ -90,35 +198,270 @@
 		</data>
 		<key>Headers/WrappedSessionObserver.h</key>
 		<data>
-		FK+1ypN17M9wCe42Y0OyECGn9vM=
+		QDFHZBRSDkr7412cBOBxy/94A3A=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		jyNiADxqK7i3i5TQEiWKWaz1KN4=
+		G8LZ5lojkifFeeevhhleThpkk/w=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		TuVYMfC/DKayzP5rvuaRY7sGm1Q=
+		AwMoujWCXazrXB1GrKzgO2BBijg=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		Ntjv3lOYu6vlurOnQBIexsNqDxk=
+		MF64g64wapia5Gq28UFN/5bmBv0=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		qQ8dm2M+m1imDxWhU2vzqrUU5i0=
+		EN6QGb1Dc2DtZQ6AhCnmKPC/iBQ=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ghqnA6Tf4/J111b77KkwR+kFvGc=
+		V9NhAq8Rre4taHeXPJMNZmkMnRo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		D9fdpuhuX07SVOS8yPbGfPP6gds=
 		</data>
+		<key>libswiftRemoteMirror.dylib</key>
+		<data>
+		MsIcUqmJN0JaYX6TgW+wYsQpXko=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/Alamofire.framework/Alamofire</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t388Iw0vp15voF7wKauey3/2M8o=
+			</data>
+			<key>hash2</key>
+			<data>
+			DscLDGtA/y++8w7KjNpcRunEPEzPwGxlPfOr6yss2iU=
+			</data>
+		</dict>
+		<key>Frameworks/Alamofire.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nwCykNXZGGlWetoshOxb94eZn3M=
+			</data>
+			<key>hash2</key>
+			<data>
+			xe+mTd+hx8WGxeNkpAHdEYir7lx16Yyx1BePH+mdCJo=
+			</data>
+		</dict>
+		<key>Frameworks/Alamofire.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HedL1lKFSldc5Sdsnryq5cKtAM0=
+			</data>
+			<key>hash2</key>
+			<data>
+			LTBn5kgIJX6z8OwT6hINVfQa4xgjLG6qsj3zG7OYtjo=
+			</data>
+		</dict>
+		<key>Frameworks/CryptoSwift.framework/CryptoSwift</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6Hp79kRbSUlKn9PB01dSGBsBByo=
+			</data>
+			<key>hash2</key>
+			<data>
+			v1f83XNqBE6v9IwCJ4w1Zoov6oZTQ2reTpTfO3PkXJw=
+			</data>
+		</dict>
+		<key>Frameworks/CryptoSwift.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zUqAkD1xPCevo3iWTkluxOEw2jo=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZMK+4dBjxPRG2scXJu0lgQc0CheYqGUYNTWQQqQuFmE=
+			</data>
+		</dict>
+		<key>Frameworks/CryptoSwift.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7Fxct8gn8xpi0istL7Y6X0jRRxM=
+			</data>
+			<key>hash2</key>
+			<data>
+			CCLeIY2xixUoJS/yDtA204etFaguDJjnZLa8cL6VXGg=
+			</data>
+		</dict>
+		<key>Frameworks/Starscream.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r4brDwOVzimxbv6V+iuRJL0G9Fs=
+			</data>
+			<key>hash2</key>
+			<data>
+			uDYBVRvPVCDrABaxkNLyHsbTrLk8AD6p/59E2he91tU=
+			</data>
+		</dict>
+		<key>Frameworks/Starscream.framework/Starscream</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			m/grEFSkLnK22gGI3s1OdXaQ9K4=
+			</data>
+			<key>hash2</key>
+			<data>
+			b4vaAY9qrVyu3zAjXW4iLBXR9zvWB3YoCPhUsJTZE1U=
+			</data>
+		</dict>
+		<key>Frameworks/Starscream.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6e/Lx0SpSU63ULguBHxDtQDNUjE=
+			</data>
+			<key>hash2</key>
+			<data>
+			nvkjubqcssYIdKWadi9Zgfsx/XCd/w1XWe6sbbCVWhA=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftAVFoundation.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ruwk4JLgvZi/TWps4cl1/BpbI/Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			h93UBX/DKOS0Nk6ukZ8sDvoNxTjzdkjAFUl5EaLQAbs=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCore.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZPTqNi+KQqkYWLfak5gYgc5pVGM=
+			</data>
+			<key>hash2</key>
+			<data>
+			k266LnoDh7n9Qne1TdnLCoAoVqkoUoDYbo4YrYh/Hp4=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreAudio.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UqDolBWTBhUQ1Takfi/hsDiIFIc=
+			</data>
+			<key>hash2</key>
+			<data>
+			ovEnqaiZ5GpBaZ5eBJQ6SUsUUf59yax6YsIJzmw6ckE=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			adcXxcYsFbqBX7xsG84IL1+f7O8=
+			</data>
+			<key>hash2</key>
+			<data>
+			oF3tAE374jaTzWqn+R4wA5rLDXFNWwfu0t7GhFNhD0g=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreImage.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			k215Sfh+meHwUDMztq4DTuDXjs0=
+			</data>
+			<key>hash2</key>
+			<data>
+			Za7qvddnNnYpdOH9nWbMu4oBWp5H4DP8YaQIkR8Zc3k=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftCoreMedia.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			G2XnW+f+r/F9kuGRggzXhzlBVCs=
+			</data>
+			<key>hash2</key>
+			<data>
+			hBC3fCgW057qT8SoYkL/RpRl9nOm13ceC8lPNgl/TbA=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftDarwin.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nFrKnk9xw649jtd6eFmheTKqJvU=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZGEmoMaHFipHEZ3UncWxVYRcPhnnRyoxbMKGy6G6dOE=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftDispatch.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mn4i3Q3Hr2NUhwB+q2Z5sBpAr/Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			UVCvzElVzDHcjgFjAnZzzF6cRNG1DPZv71kmFulsTP0=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftFoundation.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6GrtRb44C8P8Eahv/QaPR80zfsY=
+			</data>
+			<key>hash2</key>
+			<data>
+			01nbAdKyejQ/gn9tfYCbQDgKnTR/0X6repuvr5wxzcI=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3iKdsr30iXHVnk/J7eoW2/FeHz8=
+			</data>
+			<key>hash2</key>
+			<data>
+			UTCeV7YzRL2iyK9yrCeDU74YkNs/bwExqYxTXLdAUTM=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftUIKit.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xTo2Z7l9vyqf6QQAxFr1/h/9AUM=
+			</data>
+			<key>hash2</key>
+			<data>
+			Fdb9bMam9Xg3tNUsgsKfh/ILSRLScRyxWUMvuQ06rZo=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftos.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			VQvaGDL9daJIVa2hhINf6vhiwtE=
+			</data>
+			<key>hash2</key>
+			<data>
+			lOLkDhdvE6j/NHNZUu7/hXNRYDqMyVZ6qdRogWzsV3g=
+			</data>
+		</dict>
 		<key>Headers/AudioCoreCodec.h</key>
 		<dict>
 			<key>hash</key>
@@ -141,6 +484,17 @@
 			l5vW4n/2drd3/56Y5Z99EK20wPKqUTJI+JTV63dhmGc=
 			</data>
 		</dict>
+		<key>Headers/EAGLVideoView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tkehhvu80xGZBCO6kVA0NsSFJQA=
+			</data>
+			<key>hash2</key>
+			<data>
+			fdcJ5xC2eR3vEhyEZIASHMVUj9GBiaJ7btF8KFwTGqY=
+			</data>
+		</dict>
 		<key>Headers/ITBlockingQueue.h</key>
 		<dict>
 			<key>hash</key>
@@ -156,11 +510,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gbYGXOeQ98kqjlU6vEZ+VY2fbGE=
+			kPSIp3pCYnsbF4UbfEukq6RybOs=
 			</data>
 			<key>hash2</key>
 			<data>
-			YC3SJ8rJx2noI6KBxN8z76I+OYL9/xuzMpbR9/3DP6w=
+			i4xeKlrklOwtBis2r5bk9Ev4I8AxKSqhkGDNmYgDB6g=
+			</data>
+		</dict>
+		<key>Headers/MediaStream.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			I4cZTGuFkBRNuKBhedaDfOt6a7M=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZWvFRvskjYNvVewhBCHGcIP4UnqWOOy6GDotGVqJhWQ=
 			</data>
 		</dict>
 		<key>Headers/NetworkCodec.h</key>
@@ -183,6 +548,17 @@
 			<key>hash2</key>
 			<data>
 			XNzIGkDXSBREccn2gobyojk0DmvrifIKqlzXczWXaD4=
+			</data>
+		</dict>
+		<key>Headers/OpenGLVideoRenderer.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oHHIUWWEZF81h+FNirdRSpP9Rjo=
+			</data>
+			<key>hash2</key>
+			<data>
+			IBD7jkVEolDLJDG+kYtAhbS6eYl+2JQfzv0Upw9lWvY=
 			</data>
 		</dict>
 		<key>Headers/PendingPeerOperation.h</key>
@@ -284,15 +660,48 @@
 			aYJbIQ6hjheCbo9egUo7bcPMtlfsWkfO7/91M2kxR54=
 			</data>
 		</dict>
+		<key>Headers/VideoFrame.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NWQRrTjd33cAcJX907MaJ/9Hs98=
+			</data>
+			<key>hash2</key>
+			<data>
+			1k8th2/+h48VgrztT6p7JjsLiCJ9TPCXRxGnGYZsobM=
+			</data>
+		</dict>
+		<key>Headers/VideoRenderer.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SzpzyZiegLsI8ZECYQiYs1dTsPs=
+			</data>
+			<key>hash2</key>
+			<data>
+			f/UMy36L4Sid+fW0MMi6MSmgxI14WG++FCCM3B+sNMY=
+			</data>
+		</dict>
+		<key>Headers/VideoRendererAdapter.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4d+Z5uTr4j7AByb0VUZ66OFKjFw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wOKi03VWbsOBELr1GBXdO8db7k5IFFr8pQWfe9r5CGY=
+			</data>
+		</dict>
 		<key>Headers/VoxeetMedia.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Tj4mW+r+mEtJwi/HYgnwfFdwOfk=
+			m+UDRhJPwgzLKqGeuVpIPaIYjWg=
 			</data>
 			<key>hash2</key>
 			<data>
-			A0J4SeFFHruzqbkqTskWvP2BYshuWDPM7Z0o7OxytgM=
+			N4Zs/MumqHtuhu48idvQS0z1pH8vANu8BYV9R7Sx7R4=
 			</data>
 		</dict>
 		<key>Headers/VoxeetMediaBridge.h</key>
@@ -310,33 +719,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mO97ceZ1svAkZP+lr8STwboprM0=
+			g1fajicvfiTQPQZ84D0mWJvK+nA=
 			</data>
 			<key>hash2</key>
 			<data>
-			VbpTLR/es4BtXYjMG5Ng5LNcKZb5KSS4dZJSoij8tnE=
+			1wsnNXFDhJkFxKIH1xDEi/2scyKKBNmE+Vn1J3eIo0E=
 			</data>
 		</dict>
 		<key>Headers/VoxeetSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aycTRJSyPIBJ8CtWXLS7S0C2mx0=
+			4q/cVM1TGX5nxSDEtslWKKxGQJ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			o8gJ+gSTndalFTX+bx29fbY8AbcRK5appem0JJptCGA=
+			GF9dCbVqi+aOi9w42ayhESm/hxuo7oqWVJD5DbRlqXE=
 			</data>
 		</dict>
 		<key>Headers/VoxeetSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			x+puE2IqfqLRs2Tk2WKWR7/l2JI=
+			pLWikUHKF/ED0ymr7/pmG+3Sauk=
 			</data>
 			<key>hash2</key>
 			<data>
-			vIt45CYZjFfCVqkRzgZn9T8BCuUMkUnP/72/ml48ZQo=
+			+qn/kGF9VTv6fiehDr+00nycpMvap4qixIg58Fwe45E=
 			</data>
 		</dict>
 		<key>Headers/WrappedConnectionObserver.h</key>
@@ -354,55 +763,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FK+1ypN17M9wCe42Y0OyECGn9vM=
+			QDFHZBRSDkr7412cBOBxy/94A3A=
 			</data>
 			<key>hash2</key>
 			<data>
-			lQqu9gLGvcQCKyS+sWxkqDymoo+902r0QQF8XT01zdY=
+			iFvFZjpjHspAaMeR4eEQhPjCTkSuaOK5zB8S8s2WXXY=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TuVYMfC/DKayzP5rvuaRY7sGm1Q=
+			AwMoujWCXazrXB1GrKzgO2BBijg=
 			</data>
 			<key>hash2</key>
 			<data>
-			BTIjaZtmG3SrBZRFRGbX9s5MnirXXkWVqmfTCo26fb4=
+			48Kvk+j9GHzSUscyFXHF4dfXBIKhUFyRGZTP1Sw4u20=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ntjv3lOYu6vlurOnQBIexsNqDxk=
+			MF64g64wapia5Gq28UFN/5bmBv0=
 			</data>
 			<key>hash2</key>
 			<data>
-			jLa1qS4SE+ZxnElt+UpkYbGtepIQZR+ghJscX41kUfY=
+			6JJoFtHnh39KJTCH3+j9H7juagBYfkhyajgNcEU1mdM=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qQ8dm2M+m1imDxWhU2vzqrUU5i0=
+			EN6QGb1Dc2DtZQ6AhCnmKPC/iBQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			iCMeTS/2Tw7udL0w0WMoL+JISbAPG09MAJWlr4tTi7Q=
+			WG5I3vm2J9WRZIZIdaLdHi8N6U6YBKSFM4TzKx65lf8=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ghqnA6Tf4/J111b77KkwR+kFvGc=
+			V9NhAq8Rre4taHeXPJMNZmkMnRo=
 			</data>
 			<key>hash2</key>
 			<data>
-			RvL20H16Nd2ukdjddGOA167ZJg3nkc0knnY66pS6MlA=
+			Hh82RvaAjVLsW7J0xk/UNtdE20Ek90zh+6VJsuk59kM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -414,6 +823,17 @@
 			<key>hash2</key>
 			<data>
 			NOwo6qzfIP4Vu0mpXHeuaD6FhFtYXAnK9Bc5VRirmL8=
+			</data>
+		</dict>
+		<key>libswiftRemoteMirror.dylib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MsIcUqmJN0JaYX6TgW+wYsQpXko=
+			</data>
+			<key>hash2</key>
+			<data>
+			dzXjnO4rfJVgZgswQFCsduPEuiT5n/MQYW9SacYWGKI=
 			</data>
 		</dict>
 	</dict>

@@ -29,3 +29,7 @@ FOUNDATION_EXPORT const unsigned char VoxeetSDKVersionString[];
 #import "VoxeetMediaDelegate.h"
 #import "AudioCoreCodec.h"
 #import "NetworkReporting.h"
+#import "VideoFrame.h"
+#import "VideoRenderer.h"
+#import "MediaStream.h"
+#import "EAGLVideoView.h"

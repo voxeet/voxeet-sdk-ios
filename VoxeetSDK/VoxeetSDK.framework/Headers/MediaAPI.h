@@ -15,8 +15,19 @@
 #import "SenderNetworkStatistics.h"
 #import "ReceiverNetworkStatistics.h"
 #import "NetworkCodec.h"
+#import "VideoRenderer.h"
+#import "MediaStream.h"
+
+@protocol MediaAPIDelegate <NSObject>
+  - (void)streamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+  - (void)streamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+  - (void)screenShareStreamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+  - (void)screenShareStreamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+@end
 
 @interface MediaAPI : NSObject <VoxeetMediaDelegate, AudioSettingsDelegate>
+
+@property (nonatomic, assign) id<MediaAPIDelegate> delegate;
 
 @property (strong, nonatomic) NSMutableDictionary *pendingOperations;
 @property (strong, nonatomic) SdpCandidates *peerCandidates;
@@ -41,6 +52,8 @@
 - (void)changePeerPosition:(NSString *)peerId withAngle:(double)angle andDistance:(double)distance;
 - (void)changePeerPosition:(NSString *)peerId withAngle:(double)angle distance:(double)distance andGain:(float)gain;
 - (void)changeGain:(float)gain forPeer:(NSString *)peerId;
+- (void)attachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
+- (void)unattachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
 
 - (void)muteRecording;
 - (void)unmuteRecording;
@@ -58,5 +71,7 @@
 - (BOOL)isLoudSpeakerActive;
 - (BOOL)shouldBeMono;
 - (void)stopTimerDelegate;
+
+- (void)flipCamera;
 
 @end

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
      *  MARK: Action
      */
     
-    @IBAction func createConference(sender: AnyObject) {
+    @IBAction func createConference(_ sender: AnyObject) {
         // Conference creation.
         VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
             // Debug.
@@ -41,12 +41,12 @@ class ViewController: UIViewController {
         })
     }
     
-    @IBAction func joinConference(sender: AnyObject) {
+    @IBAction func joinConference(_ sender: AnyObject) {
         // Alert view.
-        let alertController = UIAlertController(title: "Conference ID", message: "Please input the conference ID:", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Conference ID", message: "Please input the conference ID:", preferredStyle: .alert)
         
         // Alert actions.
-        let confirmAction = UIAlertAction(title: "Join", style: .Default) { (_) in
+        let confirmAction = UIAlertAction(title: "Join", style: .default) { (_) in
             if let textField = alertController.textFields?[0],
                 let confID = textField.text {
                 
@@ -54,36 +54,35 @@ class ViewController: UIViewController {
                 self.presentConferenceVC(confID)
                 
                 // Save the current conference ID.
-                NSUserDefaults.standardUserDefaults().setObject(confID, forKey: VTConfID)
-                NSUserDefaults.standardUserDefaults().synchronize()
+                UserDefaults.standard.set(confID, forKey: VTConfID)
+                UserDefaults.standard.synchronize()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
         // Alert textField.
-        alertController.addTextFieldWithConfigurationHandler { (textField) in
+        alertController.addTextField { (textField) in
             textField.placeholder = "Conference ID"
-            textField.keyboardType = .NumberPad
-            textField.clearButtonMode = .WhileEditing
+            textField.clearButtonMode = .whileEditing
             
-            // Setting the textfield text by the previous text saved.
-            let text = NSUserDefaults.standardUserDefaults().stringForKey(VTConfID)
+            // Setting the textfield's text with the previous text saved (NSUserDefaults).
+            let text = UserDefaults.standard.string(forKey: VTConfID)
             textField.text = text
         }
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     /*
      *  MARK: Present conference viewController
      */
     
-    private func presentConferenceVC(confID: String) {
+    fileprivate func presentConferenceVC(_ confID: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let conferenceVC = storyboard.instantiateViewControllerWithIdentifier("Conference") as! Conference
+        let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! Conference
         conferenceVC.conferenceID = confID
-        self.presentViewController(conferenceVC, animated: true, completion: nil)
+        self.present(conferenceVC, animated: true, completion: nil)
     }
 }

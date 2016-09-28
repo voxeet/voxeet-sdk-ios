@@ -22,11 +22,6 @@ The Voxeet SDK is a Swift library allowing users to:
 
 ## Requirements
 
-  - iOS 8.0+
-  - Xcode 7.3+  
-
-Branch **swift3**:
-
   - iOS 9.0+
   - Xcode 8.0+
   - Swift 3.0+
@@ -61,7 +56,7 @@ To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in yo
 use_frameworks!
 
 target "YourTarget" do
-       pod 'VoxeetSDK', '~> 1.0'
+       pod 'VoxeetSDK', '>= 1.0.2'
 end
 ```
 
@@ -85,7 +80,7 @@ $ brew install carthage
 To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "voxeet/ios-sdk-sample" ~> 1.0
+github "voxeet/ios-sdk-sample" >= 1.0.2
 ```
 
 Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project.
@@ -103,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         // Initialization of the Voxeet SDK.
-        VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+        VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
 
         return true
     }
@@ -117,14 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ### Initializing
 
 ```swift
-VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
 ```
 
 If you use external login like O365, LDAP, or custom login to retrieve contact details it's now possible to also add your contact ID with the display name and the photo URL avatar.  
 This allows you to ask guest users to introduce themselves and provide their display name and for your authenticated users in your enterprise or for your clients the ID that can be retrieved from O365 (name, department, etc).
 
 ```swift
-VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret", externalID: "ID", name: "name", avatarURL: "URL")
+VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret", externalID: "ID", name: "name", avatarURL: "URL")
 ```
 
 ### Creating a demo conference
@@ -342,7 +337,7 @@ class myClass: VTConferenceMediaDelegate {
 
     func streamAdded(stream: MediaStream, peerID: String) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
     }
     
     func streamRemovedForPeer(peerID: String) {
@@ -350,7 +345,7 @@ class myClass: VTConferenceMediaDelegate {
     
     func streamScreenShareAdded(stream: MediaStream, peerID: String) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
     }
     
     func streamScreenShareRemoved(peerID: String) {

@@ -122,6 +122,487 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @interface NSNumber (SWIFT_EXTENSION(VoxeetSDK))
 @end
 
+
+@interface NSNumber (SWIFT_EXTENSION(VoxeetSDK))
+@end
+
+@class NSURLSession;
+@class NSURLAuthenticationChallenge;
+@class NSURLCredential;
+@class NSURLSessionTask;
+@class NSHTTPURLResponse;
+@class NSInputStream;
+@class NSURLSessionDataTask;
+@class NSURLResponse;
+@class NSURLSessionDownloadTask;
+@class NSCachedURLResponse;
+@class NSURLSessionStreamTask;
+@class NSOutputStream;
+
+/**
+  Responsible for handling all delegate callbacks for the underlying session.
+*/
+SWIFT_CLASS("_TtC9VoxeetSDK15SessionDelegate")
+@interface SessionDelegate : NSObject
+/**
+  Overrides default behavior for URLSessionDelegate method \code
+  urlSession(_:didBecomeInvalidWithError:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable sessionDidBecomeInvalidWithError)(NSURLSession * _Nonnull, NSError * _Nullable);
+/**
+  Overrides all behavior for URLSessionDelegate method \code
+  urlSession(_:didReceive:completionHandler:)
+  \endcode and requires the caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable sessionDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, void (^ _Nonnull)(enum NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+/**
+  Overrides default behavior for URLSessionDelegate method \code
+  urlSessionDidFinishEvents(forBackgroundURLSession:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable sessionDidFinishEventsForBackgroundURLSession)(NSURLSession * _Nonnull);
+/**
+  Overrides default behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:willPerformHTTPRedirection:newRequest:completionHandler:)
+  \endcode.
+*/
+@property (nonatomic, copy) NSURLRequest * _Nullable (^ _Nullable taskWillPerformHTTPRedirection)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSHTTPURLResponse * _Nonnull, NSURLRequest * _Nonnull);
+/**
+  Overrides all behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:willPerformHTTPRedirection:newRequest:completionHandler:)
+  \endcode and
+  requires the caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable taskWillPerformHTTPRedirectionWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSHTTPURLResponse * _Nonnull, NSURLRequest * _Nonnull, void (^ _Nonnull)(NSURLRequest * _Nullable));
+/**
+  Overrides all behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:didReceive:completionHandler:)
+  \endcode and
+  requires the caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable taskDidReceiveChallengeWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSURLAuthenticationChallenge * _Nonnull, void (^ _Nonnull)(enum NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable));
+/**
+  Overrides default behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:needNewBodyStream:)
+  \endcode.
+*/
+@property (nonatomic, copy) NSInputStream * _Nullable (^ _Nullable taskNeedNewBodyStream)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull);
+/**
+  Overrides all behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:needNewBodyStream:)
+  \endcode and
+  requires the caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable taskNeedNewBodyStreamWithCompletion)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, void (^ _Nonnull)(NSInputStream * _Nullable));
+/**
+  Overrides default behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable taskDidSendBodyData)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, int64_t, int64_t, int64_t);
+/**
+  Overrides default behavior for URLSessionTaskDelegate method \code
+  urlSession(_:task:didCompleteWithError:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable taskDidComplete)(NSURLSession * _Nonnull, NSURLSessionTask * _Nonnull, NSError * _Nullable);
+/**
+  Overrides default behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:didReceive:completionHandler:)
+  \endcode.
+*/
+@property (nonatomic, copy) enum NSURLSessionResponseDisposition (^ _Nullable dataTaskDidReceiveResponse)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSURLResponse * _Nonnull);
+/**
+  Overrides all behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:didReceive:completionHandler:)
+  \endcode and
+  requires caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable dataTaskDidReceiveResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSURLResponse * _Nonnull, void (^ _Nonnull)(enum NSURLSessionResponseDisposition));
+/**
+  Overrides default behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:didBecome:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable dataTaskDidBecomeDownloadTask)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSURLSessionDownloadTask * _Nonnull);
+/**
+  Overrides default behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:didReceive:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable dataTaskDidReceiveData)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSData * _Nonnull);
+/**
+  Overrides default behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:willCacheResponse:completionHandler:)
+  \endcode.
+*/
+@property (nonatomic, copy) NSCachedURLResponse * _Nullable (^ _Nullable dataTaskWillCacheResponse)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSCachedURLResponse * _Nonnull);
+/**
+  Overrides all behavior for URLSessionDataDelegate method \code
+  urlSession(_:dataTask:willCacheResponse:completionHandler:)
+  \endcode and
+  requires caller to call the \code
+  completionHandler
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable dataTaskWillCacheResponseWithCompletion)(NSURLSession * _Nonnull, NSURLSessionDataTask * _Nonnull, NSCachedURLResponse * _Nonnull, void (^ _Nonnull)(NSCachedURLResponse * _Nullable));
+/**
+  Overrides default behavior for URLSessionDownloadDelegate method \code
+  urlSession(_:downloadTask:didFinishDownloadingTo:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable downloadTaskDidFinishDownloadingToURL)(NSURLSession * _Nonnull, NSURLSessionDownloadTask * _Nonnull, NSURL * _Nonnull);
+/**
+  Overrides default behavior for URLSessionDownloadDelegate method \code
+  urlSession(_:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable downloadTaskDidWriteData)(NSURLSession * _Nonnull, NSURLSessionDownloadTask * _Nonnull, int64_t, int64_t, int64_t);
+/**
+  Overrides default behavior for URLSessionDownloadDelegate method \code
+  urlSession(_:downloadTask:didResumeAtOffset:expectedTotalBytes:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable downloadTaskDidResumeAtOffset)(NSURLSession * _Nonnull, NSURLSessionDownloadTask * _Nonnull, int64_t, int64_t);
+/**
+  Overrides default behavior for URLSessionStreamDelegate method \code
+  urlSession(_:readClosedFor:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable streamTaskReadClosed)(NSURLSession * _Nonnull, NSURLSessionStreamTask * _Nonnull);
+/**
+  Overrides default behavior for URLSessionStreamDelegate method \code
+  urlSession(_:writeClosedFor:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable streamTaskWriteClosed)(NSURLSession * _Nonnull, NSURLSessionStreamTask * _Nonnull);
+/**
+  Overrides default behavior for URLSessionStreamDelegate method \code
+  urlSession(_:betterRouteDiscoveredFor:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable streamTaskBetterRouteDiscovered)(NSURLSession * _Nonnull, NSURLSessionStreamTask * _Nonnull);
+/**
+  Overrides default behavior for URLSessionStreamDelegate method \code
+  urlSession(_:streamTask:didBecome:outputStream:)
+  \endcode.
+*/
+@property (nonatomic, copy) void (^ _Nullable streamTaskDidBecomeInputAndOutputStreams)(NSURLSession * _Nonnull, NSURLSessionStreamTask * _Nonnull, NSInputStream * _Nonnull, NSOutputStream * _Nonnull);
+/**
+  Initializes the \code
+  SessionDelegate
+  \endcode instance.
+
+  returns:
+  The new \code
+  SessionDelegate
+  \endcode instance.
+*/
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+/**
+  Returns a \code
+  Bool
+  \endcode indicating whether the \code
+  SessionDelegate
+  \endcode implements or inherits a method that can respond
+  to a specified message.
+  \param selector A selector that identifies a message.
+
+
+  returns:
+  \code
+  true
+  \endcode if the receiver implements or inherits a method that can respond to selector, otherwise \code
+  false
+  \endcode.
+*/
+- (BOOL)respondsToSelector:(SEL _Nonnull)selector;
+@end
+
+
+@interface SessionDelegate (SWIFT_EXTENSION(VoxeetSDK)) <NSURLSessionDownloadDelegate>
+/**
+  Tells the delegate that a download task has finished downloading.
+  \param session The session containing the download task that finished.
+
+  \param downloadTask The download task that finished.
+
+  \param location A file URL for the temporary file. Because the file is temporary, you must either
+  open the file for reading or move it to a permanent location in your app’s sandbox
+  container directory before returning from this delegate method.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didFinishDownloadingToURL:(NSURL * _Nonnull)location;
+/**
+  Periodically informs the delegate about the download’s progress.
+  \param session The session containing the download task.
+
+  \param downloadTask The download task.
+
+  \param bytesWritten The number of bytes transferred since the last time this delegate
+  method was called.
+
+  \param totalBytesWritten The total number of bytes transferred so far.
+
+  \param totalBytesExpectedToWrite The expected length of the file, as provided by the Content-Length
+  header. If this header was not provided, the value is
+  \code
+  NSURLSessionTransferSizeUnknown
+  \endcode.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite;
+/**
+  Tells the delegate that the download task has resumed downloading.
+  \param session The session containing the download task that finished.
+
+  \param downloadTask The download task that resumed. See explanation in the discussion.
+
+  \param fileOffset If the file’s cache policy or last modified date prevents reuse of the
+  existing content, then this value is zero. Otherwise, this value is an
+  integer representing the number of bytes on disk that do not need to be
+  retrieved again.
+
+  \param expectedTotalBytes The expected length of the file, as provided by the Content-Length header.
+  If this header was not provided, the value is NSURLSessionTransferSizeUnknown.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes;
+@end
+
+
+@interface SessionDelegate (SWIFT_EXTENSION(VoxeetSDK)) <NSURLSessionDelegate>
+/**
+  Tells the delegate that the session has been invalidated.
+  \param session The session object that was invalidated.
+
+  \param error The error that caused invalidation, or nil if the invalidation was explicit.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
+/**
+  Requests credentials from the delegate in response to a session-level authentication request from the
+  remote server.
+  \param session The session containing the task that requested authentication.
+
+  \param challenge An object that contains the request for authentication.
+
+  \param completionHandler A handler that your delegate method must call providing the disposition
+  and credential.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(enum NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+/**
+  Tells the delegate that all messages enqueued for a session have been delivered.
+  \param session The session that no longer has any outstanding requests.
+
+*/
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession * _Nonnull)session;
+@end
+
+
+@interface SessionDelegate (SWIFT_EXTENSION(VoxeetSDK)) <NSURLSessionDataDelegate>
+/**
+  Tells the delegate that the data task received the initial reply (headers) from the server.
+  \param session The session containing the data task that received an initial reply.
+
+  \param dataTask The data task that received an initial reply.
+
+  \param response A URL response object populated with headers.
+
+  \param completionHandler A completion handler that your code calls to continue the transfer, passing a
+  constant to indicate whether the transfer should continue as a data task or
+  should become a download task.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveResponse:(NSURLResponse * _Nonnull)response completionHandler:(void (^ _Nonnull)(enum NSURLSessionResponseDisposition))completionHandler;
+/**
+  Tells the delegate that the data task was changed to a download task.
+  \param session The session containing the task that was replaced by a download task.
+
+  \param dataTask The data task that was replaced by a download task.
+
+  \param downloadTask The new download task that replaced the data task.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask;
+/**
+  Tells the delegate that the data task has received some of the expected data.
+  \param session The session containing the data task that provided data.
+
+  \param dataTask The data task that provided data.
+
+  \param data A data object containing the transferred data.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask didReceiveData:(NSData * _Nonnull)data;
+/**
+  Asks the delegate whether the data (or upload) task should store the response in the cache.
+  \param session The session containing the data (or upload) task.
+
+  \param dataTask The data (or upload) task.
+
+  \param proposedResponse The default caching behavior. This behavior is determined based on the current
+  caching policy and the values of certain received headers, such as the Pragma
+  and Cache-Control headers.
+
+  \param completionHandler A block that your handler must call, providing either the original proposed
+  response, a modified version of that response, or NULL to prevent caching the
+  response. If your delegate implements this method, it must call this completion
+  handler; otherwise, your app leaks memory.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask willCacheResponse:(NSCachedURLResponse * _Nonnull)proposedResponse completionHandler:(void (^ _Nonnull)(NSCachedURLResponse * _Nullable))completionHandler;
+@end
+
+
+@interface SessionDelegate (SWIFT_EXTENSION(VoxeetSDK)) <NSURLSessionStreamDelegate>
+/**
+  Tells the delegate that the read side of the connection has been closed.
+  \param session The session.
+
+  \param streamTask The stream task.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session readClosedForStreamTask:(NSURLSessionStreamTask * _Nonnull)streamTask;
+/**
+  Tells the delegate that the write side of the connection has been closed.
+  \param session The session.
+
+  \param streamTask The stream task.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session writeClosedForStreamTask:(NSURLSessionStreamTask * _Nonnull)streamTask;
+/**
+  Tells the delegate that the system has determined that a better route to the host is available.
+  \param session The session.
+
+  \param streamTask The stream task.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session betterRouteDiscoveredForStreamTask:(NSURLSessionStreamTask * _Nonnull)streamTask;
+/**
+  Tells the delegate that the stream task has been completed and provides the unopened stream objects.
+  \param session The session.
+
+  \param streamTask The stream task.
+
+  \param inputStream The new input stream.
+
+  \param outputStream The new output stream.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session streamTask:(NSURLSessionStreamTask * _Nonnull)streamTask didBecomeInputStream:(NSInputStream * _Nonnull)inputStream outputStream:(NSOutputStream * _Nonnull)outputStream;
+@end
+
+@class NSURLSessionTaskMetrics;
+
+@interface SessionDelegate (SWIFT_EXTENSION(VoxeetSDK)) <NSURLSessionTaskDelegate>
+/**
+  Tells the delegate that the remote server requested an HTTP redirect.
+  \param session The session containing the task whose request resulted in a redirect.
+
+  \param task The task whose request resulted in a redirect.
+
+  \param response An object containing the server’s response to the original request.
+
+  \param request A URL request object filled out with the new location.
+
+  \param completionHandler A closure that your handler should call with either the value of the request
+  parameter, a modified URL request object, or NULL to refuse the redirect and
+  return the body of the redirect response.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task willPerformHTTPRedirection:(NSHTTPURLResponse * _Nonnull)response newRequest:(NSURLRequest * _Nonnull)request completionHandler:(void (^ _Nonnull)(NSURLRequest * _Nullable))completionHandler;
+/**
+  Requests credentials from the delegate in response to an authentication request from the remote server.
+  \param session The session containing the task whose request requires authentication.
+
+  \param task The task whose request requires authentication.
+
+  \param challenge An object that contains the request for authentication.
+
+  \param completionHandler A handler that your delegate method must call providing the disposition
+  and credential.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(enum NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+/**
+  Tells the delegate when a task requires a new request body stream to send to the remote server.
+  \param session The session containing the task that needs a new body stream.
+
+  \param task The task that needs a new body stream.
+
+  \param completionHandler A completion handler that your delegate method should call with the new body stream.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task needNewBodyStream:(void (^ _Nonnull)(NSInputStream * _Nullable))completionHandler;
+/**
+  Periodically informs the delegate of the progress of sending body content to the server.
+  \param session The session containing the data task.
+
+  \param task The data task.
+
+  \param bytesSent The number of bytes sent since the last time this delegate method was called.
+
+  \param totalBytesSent The total number of bytes sent so far.
+
+  \param totalBytesExpectedToSend The expected length of the body data.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend;
+/**
+  Tells the delegate that the session finished collecting metrics for the task.
+  \param session The session collecting the metrics.
+
+  \param task The task whose metrics have been collected.
+
+  \param metrics The collected metrics.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didFinishCollectingMetrics:(NSURLSessionTaskMetrics * _Nonnull)metrics;
+/**
+  Tells the delegate that the task finished transferring data.
+  \param session The session containing the task whose request finished transferring data.
+
+  \param task The task whose request finished transferring data.
+
+  \param error If an error occurred, an error object indicating how the transfer failed, otherwise nil.
+
+*/
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
+@end
+
+@class NSOperationQueue;
+
+/**
+  The task delegate is responsible for handling all delegate callbacks for the underlying task as well as
+  executing all operations attached to the serial operation queue upon task completion.
+*/
+SWIFT_CLASS("_TtC9VoxeetSDK12TaskDelegate")
+@interface TaskDelegate : NSObject
+/**
+  The serial operation queue used to execute all operations after the task completes.
+*/
+@property (nonatomic, readonly, strong) NSOperationQueue * _Nonnull queue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+@interface NSURLSession (SWIFT_EXTENSION(VoxeetSDK))
+@end
+
 @class MediaStream;
 @protocol VTConferenceDelegate;
 @protocol VTConferenceMediaDelegate;
@@ -254,6 +735,66 @@ SWIFT_PROTOCOL("_TtP9VoxeetSDK25VTConferenceMediaDelegate_")
 - (void)streamRemovedWithUserID:(NSString * _Nonnull)userID;
 - (void)streamScreenShareAddedWithStream:(MediaStream * _Nonnull)stream userID:(NSString * _Nonnull)userID;
 - (void)streamScreenShareRemovedWithUserID:(NSString * _Nonnull)userID;
+@end
+
+@class OS_dispatch_queue;
+@class NSError;
+@class NSStream;
+
+SWIFT_CLASS("_TtC9VoxeetSDK9WebSocket")
+@interface WebSocket : NSObject <NSStreamDelegate>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ErrorDomain;)
++ (NSString * _Nonnull)ErrorDomain;
+@property (nonatomic, strong) OS_dispatch_queue * _Nonnull callbackQueue;
+@property (nonatomic, copy) void (^ _Nullable onConnect)(void);
+@property (nonatomic, copy) void (^ _Nullable onDisconnect)(NSError * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable onText)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onData)(NSData * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onPong)(NSData * _Nullable);
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
+@property (nonatomic) BOOL voipEnabled;
+@property (nonatomic) BOOL disableSSLCertValidation;
+@property (nonatomic, copy) NSString * _Nullable origin;
+@property (nonatomic) NSInteger timeout;
+@property (nonatomic, readonly) BOOL isConnected;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull currentURL;
+/**
+  Used for setting protocols.
+*/
+- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url protocols:(NSArray<NSString *> * _Nullable)protocols OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url writeQueueQOS:(enum NSQualityOfService)writeQueueQOS protocols:(NSArray<NSString *> * _Nullable)protocols;
+/**
+  Connect to the WebSocket server on a background thread.
+*/
+- (void)connect;
+/**
+  Write a string to the websocket. This sends it as a text frame.
+  If you supply a non-nil completion block, I will perform it when the write completes.
+  \param str The string to write.
+
+  \param completion The (optional) completion handler.
+
+*/
+- (void)writeWithString:(NSString * _Nonnull)string completion:(void (^ _Nullable)(void))completion;
+/**
+  Write binary data to the websocket. This sends it as a binary frame.
+  If you supply a non-nil completion block, I will perform it when the write completes.
+  \param data The data to write.
+
+  \param completion The (optional) completion handler.
+
+*/
+- (void)writeWithData:(NSData * _Nonnull)data completion:(void (^ _Nullable)(void))completion;
+/**
+  Write a ping to the websocket. This sends it as a control frame.
+  Yodel a   sound  to the planet.    This sends it as an astroid. http://youtu.be/Eu5ZJELRiJ8?t=42s
+*/
+- (void)writeWithPing:(NSData * _Nonnull)ping completion:(void (^ _Nullable)(void))completion;
+/**
+  Delegate for the stream methods. Processes incoming bytes
+*/
+- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 #pragma clang diagnostic pop

@@ -19,31 +19,27 @@
 #import "MediaStream.h"
 
 @protocol MediaAPIDelegate <NSObject>
-  - (void)streamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
-  - (void)streamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
-  - (void)screenShareStreamAddedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
-  - (void)screenShareStreamRemovedForPeer:(NSString*)peerId withStream:(MediaStream*)mediaStream;
+  - (void)streamAddedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
+  - (void)streamRemovedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
+  - (void)screenShareStreamAddedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
+  - (void)screenShareStreamRemovedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
 @end
 
-@interface MediaAPI : NSObject <VoxeetMediaDelegate, AudioSettingsDelegate>
+@interface MediaAPI : NSObject <VoxeetMediaDelegate>
 
 @property (nonatomic, assign) id<MediaAPIDelegate> delegate;
-
 @property (strong, nonatomic) NSMutableDictionary *pendingOperations;
 @property (strong, nonatomic) SdpCandidates *peerCandidates;
-
 @property (strong, nonatomic) VoxeetMedia *wrapper;
-@property (strong ,nonatomic) AudioSettings *audioSettings;
-
+@property (strong, nonatomic) AudioSettings *audioSettings;
 @property (copy, nonatomic) void(^audioRouteChangedBlock)(NSNumber *);
 
-- (id)initWithLocalUser:(NSString *)localUserId settings:(AudioSettings *)audioSettings andAudioRouteChangedBlock:(void(^)(NSNumber *))routeChangedBlock;
-- (void)reset;
--(void)forceSpeaker:(BOOL)force;
-- (void)stopAudioDevice;
-- (void)startAudioDevice;
+- (id)initWithLocalUser:(NSString *)localUserId settings:(AudioSettings *)audioSettings andCompletionBlock:(void(^)(void))completionBlock;
 - (void)stop;
-- (void)initAudioSession:(BOOL)isHardwareAEC;
+- (void)setHardwareAEC:(BOOL)isHardwareAEC;
+- (BOOL)isHardwareAEC;
+- (void)setLoudSpeakerStatus:(BOOL)isEnable;
+- (BOOL)isLoudSpeakerActive;
 - (BOOL)needSwitchToPstn;
 - (SdpMessage *)createOfferForPeer:(NSString *)peerId isMaster:(BOOL)isMaster;
 - (SdpMessage *)createAnswerForPeer:(NSString *)peerId withSSRC:(UInt32)ssrc offer:(SdpDescription *)offer andCandidates:(NSArray *)candidates isMaster:(BOOL)isMaster;
@@ -52,26 +48,12 @@
 - (void)changePeerPosition:(NSString *)peerId withAngle:(double)angle andDistance:(double)distance;
 - (void)changePeerPosition:(NSString *)peerId withAngle:(double)angle distance:(double)distance andGain:(float)gain;
 - (void)changeGain:(float)gain forPeer:(NSString *)peerId;
-- (void)attachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
-- (void)unattachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
-
+- (void)attachMediaStream:(id<VideoRenderer>)renderer withStream:(MediaStream *)stream;
+- (void)unattachMediaStream:(id<VideoRenderer>)renderer withStream:(MediaStream *)stream;
 - (void)muteRecording;
 - (void)unmuteRecording;
 - (double)getLocalVuMeterLevel;
 - (double)getPeerVuMeterLevel:(NSString *)peerId;
-- (SenderNetworkStatistics *)getLocalNetworkReporting;
-- (ReceiverNetworkStatistics *)getPeerNetworkReporting:(NSString *)peerId;
-
-- (NetworkCodec *)getPeerNetworkCodec;
-- (void)updateQuality:(int)qualityValue;
-- (NSArray *)getDevicesList;
-- (BOOL)hasHeadsetPlugged;
-- (void)SetHardwareAEC:(BOOL)isAEC;
-- (void)setLoudSpeakerActive:(BOOL)isActive;
-- (BOOL)isLoudSpeakerActive;
-- (BOOL)shouldBeMono;
-- (void)stopTimerDelegate;
-
 - (void)flipCamera;
 
 @end

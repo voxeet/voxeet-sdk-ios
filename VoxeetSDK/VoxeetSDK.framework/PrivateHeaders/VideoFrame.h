@@ -33,7 +33,7 @@
 @property(nonatomic, readonly) int64_t timeStamp;
 
 /** The native handle should be a pixel buffer on iOS. */
-@property(nonatomic, readonly) CVPixelBufferRef nativeHandle;
+@property(nonatomic, readonly, nonnull) CVPixelBufferRef nativeHandle;
 
 /** If the frame is backed by a CVPixelBuffer, creates a backing i420 frame.
  *  Calling the yuv plane properties will call this method if needed.

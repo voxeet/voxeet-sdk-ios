@@ -53,6 +53,9 @@ class ConferenceTableViewCell: UITableViewCell {
             task.resume()
         }
         
+        // Setting user distance to 0.
+        VoxeetSDK.sharedInstance.conference.setUserDistance(0, userID: currentUser.userID)
+        
         // Slider update.
         let position = VoxeetSDK.sharedInstance.conference.getUserPosition(userID: currentUser.userID)
         self.angleSlider.setValue(Float(position.angle), animated: false)

@@ -699,6 +699,20 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 */
 - (BOOL)isUserMutedWithUserID:(NSString * _Nonnull)userID;
 /**
+  Switching between BuiltInSpeaker and BuildInReceiver.
+*/
+- (void)switchDeviceSpeaker;
+/**
+  Switching between BuiltInSpeaker and BuildInReceiver.
+  \param forceBuiltInSpeaker Forces the audio to get set on the main speaker if \code
+  true
+  \endcode. If the value is \code
+  false
+  \endcode the buildInReceiver will be forced.
+
+*/
+- (void)switchDeviceSpeakerWithForceBuiltInSpeaker:(BOOL)forceBuiltInSpeaker;
+/**
   Attaching a media stream to a renderer.
   \param stream Stream to be rendered into the view.
 
@@ -706,6 +720,14 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 
 */
 - (void)attachMediaStream:(MediaStream * _Nonnull)stream renderer:(VideoRenderer * _Nonnull)renderer;
+/**
+  Unattaching a media stream to a renderer.
+  \param stream Stream to be rendered into the view.
+
+  \param renderer The view renderer that will display the video.
+
+*/
+- (void)unattachMediaStream:(MediaStream * _Nonnull)stream renderer:(VideoRenderer * _Nonnull)renderer;
 /**
   Getting the participant’s voice level.
   \param userID User ID.

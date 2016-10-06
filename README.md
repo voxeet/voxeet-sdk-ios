@@ -222,36 +222,37 @@ VoxeetSDK.sharedInstance.conference.muteUser(true, userID: "userID")
 let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: "userID")
 ```
 
+### Getting the participant's voice level
+
+```swift
+VoxeetSDK.sharedInstance.conference.getVoiceLevel(userID: "userID")
+```
+
+### Switching between BuiltInSpeaker and BuildInReceiver
+
+```swift
+VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
+
+// You can also force the BuiltInSpeaker / BuildInReceiver
+VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker(forceBuiltInSpeaker: true)
+```
+
 ### Attaching a media stream to a renderer
 
 ```swift
 VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
 ```
 
-### Getting the participant's voice level
+### Unattaching a media stream to a renderer
 
 ```swift
-VoxeetSDK.sharedInstance.conference.getVoiceLevel("userID")
+VoxeetSDK.sharedInstance.conference.unattachMediaStream(stream, renderer: videoRenderer)
 ```
 
 ### Flipping the device camera (front/back)
 
 ```swift
 VoxeetSDK.sharedInstance.conference.flipCamera()
-```
-
-### Changing output device
-
-```swift
-if VoxeetSDK.sharedInstance.conference.setOutputDevice(VTOutputDeviceType.BuildInReceiver) {
-    print("The output device has been changed.")
-}
-```
-
-### Getting output devices
-
-```swift
-let (currentOutputDevice, availableOutputDevices) = VoxeetSDK.sharedInstance.conference.getOutputDevices()
 ```
 
 ### Connecting the SDK with the API (manually)
@@ -380,21 +381,6 @@ public enum VTSessionState {
 }
 ```
 
-### Output devices:
-
-```swift
-public enum VTOutputDeviceType: Int {
-    case BuildInReceiver
-    case BuiltInSpeaker
-    case Headset
-    case LineOut
-    case Bluetooth
-    case CarAudio
-    case HDMI
-    case AirPlay
-}
-```
-
 ### Error handler:
 
 ```swift
@@ -500,7 +486,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.2
+1.0.2.2
 
 ## Tech
 

@@ -13,6 +13,6 @@
 @property (assign, nonatomic) NSInteger rtcpBytesSent;
 @property (assign, nonatomic) NSInteger rtcpPacketsSent;
 
-+ (SenderNetworkStatistics *)senderStatisticsFromNetworkReporting:(id/*SenderNetworkReport **/)reporting;
+//+ (SenderNetworkStatistics *)senderStatisticsFromNetworkReporting:(id/*SenderNetworkReport **/)reporting;
 
 @end

@@ -115,12 +115,8 @@ class Conference: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func switchAudioRoute(_ button: UIButton) {
-        if button.isSelected {
-            VoxeetSDK.sharedInstance.conference.setOutputDevice(.buildInReceiver)
-        } else {
-            VoxeetSDK.sharedInstance.conference.setOutputDevice(.builtInSpeaker)
-        }
+    @IBAction func switchDeviceSpeaker(_ button: UIButton) {
+        VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
         
         button.isSelected = !button.isSelected
     }

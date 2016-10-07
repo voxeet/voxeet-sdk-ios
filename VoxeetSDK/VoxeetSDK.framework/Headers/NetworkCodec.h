@@ -20,6 +20,6 @@ typedef enum {
 @property (assign, nonatomic) NSInteger numChannels;
 @property (assign, nonatomic) NSInteger rate;
 
-- (id)initWithPayloadType:(PayloadType)type name:(NSString *)name frequency:(NSInteger)frequency packetSize:(NSInteger)packetSize numChannels:(NSInteger)numChannels andRate:(NSInteger)rate;
+//- (id)initWithPayloadType:(PayloadType)type name:(NSString *)name frequency:(NSInteger)frequency packetSize:(NSInteger)packetSize numChannels:(NSInteger)numChannels andRate:(NSInteger)rate;
 
 @end

@@ -16,13 +16,9 @@
 		<data>
 		tkehhvu80xGZBCO6kVA0NsSFJQA=
 		</data>
-		<key>Headers/ITBlockingQueue.h</key>
-		<data>
-		mKxBq5OlP53KIqAoUkgBGF6AqSs=
-		</data>
 		<key>Headers/MediaAPI.h</key>
 		<data>
-		kPSIp3pCYnsbF4UbfEukq6RybOs=
+		U8kYXmQb7PRiFqFVROfVylFTenE=
 		</data>
 		<key>Headers/MediaStream.h</key>
 		<data>
@@ -30,27 +26,15 @@
 		</data>
 		<key>Headers/NetworkCodec.h</key>
 		<data>
-		ZNaQsODgINZTPeAuQPYruCkcZo4=
+		sAaEBr6MWkJoDnYekLv3o6WzGtQ=
 		</data>
 		<key>Headers/NetworkReporting.h</key>
 		<data>
 		rIgl+6LM1mfsjPKgETPY7QBTCQQ=
 		</data>
-		<key>Headers/OpenGLVideoRenderer.h</key>
-		<data>
-		oHHIUWWEZF81h+FNirdRSpP9Rjo=
-		</data>
-		<key>Headers/PendingPeerOperation.h</key>
-		<data>
-		jFCPKg7kjUDU6fP7U8LQ6230+l4=
-		</data>
-		<key>Headers/ProxySettings.h</key>
-		<data>
-		lWlnKrlVmyHpHpULoKVJv239e9Y=
-		</data>
 		<key>Headers/ReceiverNetworkStatistics.h</key>
 		<data>
-		tI3a+9UPRTjTLWZ2tvlpkdCDnUs=
+		HeXZyHQgzNBHTkfu0hHNgTD7OLI=
 		</data>
 		<key>Headers/SdpCandidate.h</key>
 		<data>
@@ -70,31 +54,19 @@
 		</data>
 		<key>Headers/SenderNetworkStatistics.h</key>
 		<data>
-		7GftDIWtIGRGCypgMOp/SYTtJe0=
+		oXpVKqlLYLe88c9oOiZ3jqQ7YyE=
 		</data>
 		<key>Headers/StunSettings.h</key>
 		<data>
 		BC18yH0dtdOgjDjWXsr5yyzaBp8=
 		</data>
-		<key>Headers/VideoFrame.h</key>
-		<data>
-		NWQRrTjd33cAcJX907MaJ/9Hs98=
-		</data>
 		<key>Headers/VideoRenderer.h</key>
 		<data>
 		SzpzyZiegLsI8ZECYQiYs1dTsPs=
 		</data>
-		<key>Headers/VideoRendererAdapter.h</key>
-		<data>
-		4d+Z5uTr4j7AByb0VUZ66OFKjFw=
-		</data>
 		<key>Headers/VoxeetMedia.h</key>
 		<data>
-		m+UDRhJPwgzLKqGeuVpIPaIYjWg=
-		</data>
-		<key>Headers/VoxeetMediaBridge.h</key>
-		<data>
-		I0b3J3w6tfLt4F2Feu99lA/HLIE=
+		rFmO1IYjUICsPlGl064iyxSsOUI=
 		</data>
 		<key>Headers/VoxeetMediaDelegate.h</key>
 		<data>
@@ -102,43 +74,91 @@
 		</data>
 		<key>Headers/VoxeetSDK-Swift.h</key>
 		<data>
-		tP9ZV01UGnwpLtgGFcZr+E/oiao=
+		++IoFLt1cHv5HHsAsW/rHA2rl9Y=
 		</data>
 		<key>Headers/VoxeetSDK.h</key>
 		<data>
-		pLWikUHKF/ED0ymr7/pmG+3Sauk=
-		</data>
-		<key>Headers/WrappedConnectionObserver.h</key>
-		<data>
-		pZJhC7MiHqrqzp7echgTyGb3CdY=
-		</data>
-		<key>Headers/WrappedSessionObserver.h</key>
-		<data>
-		QDFHZBRSDkr7412cBOBxy/94A3A=
+		eJuOkvP6+HoEfXbMTVV51V5Fdlo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IzR0y3mD4zzrzqGh1gNp+nYaHhk=
+		gcJ3nSoFheXSKxO7TkyH54A0zNw=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		eeR81v+BY3AN9OuftHN6p7zqyL4=
+		/q8uy/UglWvcWVWcSqIfq52IbTU=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		DTqdeQYDf5WdpgFqd+ibPB9g9t8=
+		zDgPmWzq81ous90P2vVEel49C3E=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		XTMvSb5z7oxrD/WVHZIhkjMbd4g=
+		V1KYDMrHliRFhtl6AFMdOui6l4I=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ZTMV364x5VoxLqxHHhnsCjia7/c=
+		qLVEtn7StcMe4TnjDGbFLQY4DKY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		D9fdpuhuX07SVOS8yPbGfPP6gds=
+		</data>
+		<key>PrivateHeaders/AVFoundationVideoCapturer.h</key>
+		<data>
+		o3ThdVZ3U1H9qFlhS1YEsAEZ+Y0=
+		</data>
+		<key>PrivateHeaders/Dispatcher+Private.h</key>
+		<data>
+		Fw9n2lPrOVoFOYpESRjmgEp5qyE=
+		</data>
+		<key>PrivateHeaders/ITBlockingQueue.h</key>
+		<data>
+		mKxBq5OlP53KIqAoUkgBGF6AqSs=
+		</data>
+		<key>PrivateHeaders/MediaStream+Private.h</key>
+		<data>
+		idS/J/ueS0hkhP4LeVkZRUPQJU4=
+		</data>
+		<key>PrivateHeaders/OpenGLVideoRenderer.h</key>
+		<data>
+		oHHIUWWEZF81h+FNirdRSpP9Rjo=
+		</data>
+		<key>PrivateHeaders/PendingPeerOperation.h</key>
+		<data>
+		jFCPKg7kjUDU6fP7U8LQ6230+l4=
+		</data>
+		<key>PrivateHeaders/ProxySettings.h</key>
+		<data>
+		lWlnKrlVmyHpHpULoKVJv239e9Y=
+		</data>
+		<key>PrivateHeaders/VideoFrame+Private.h</key>
+		<data>
+		zF9NIM+c/YogDK7IxyCFUTs3KIs=
+		</data>
+		<key>PrivateHeaders/VideoFrame.h</key>
+		<data>
+		1hvulLbFWx7yQ2ZW/RJjkYimYC4=
+		</data>
+		<key>PrivateHeaders/VideoRendererAdapter+Private.h</key>
+		<data>
+		Hbdv8jyU8oPlLbbkS/K0DMDUQfA=
+		</data>
+		<key>PrivateHeaders/VideoRendererAdapter.h</key>
+		<data>
+		4d+Z5uTr4j7AByb0VUZ66OFKjFw=
+		</data>
+		<key>PrivateHeaders/VoxeetMediaBridge.h</key>
+		<data>
+		I0b3J3w6tfLt4F2Feu99lA/HLIE=
+		</data>
+		<key>PrivateHeaders/WrappedConnectionObserver.h</key>
+		<data>
+		pZJhC7MiHqrqzp7echgTyGb3CdY=
+		</data>
+		<key>PrivateHeaders/WrappedSessionObserver.h</key>
+		<data>
+		QDFHZBRSDkr7412cBOBxy/94A3A=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -176,26 +196,15 @@
 			fdcJ5xC2eR3vEhyEZIASHMVUj9GBiaJ7btF8KFwTGqY=
 			</data>
 		</dict>
-		<key>Headers/ITBlockingQueue.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			mKxBq5OlP53KIqAoUkgBGF6AqSs=
-			</data>
-			<key>hash2</key>
-			<data>
-			XIpgyyweCaOvcB/+TbMF+qpPEQzkkTtAeAQTwF8FO/Y=
-			</data>
-		</dict>
 		<key>Headers/MediaAPI.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kPSIp3pCYnsbF4UbfEukq6RybOs=
+			U8kYXmQb7PRiFqFVROfVylFTenE=
 			</data>
 			<key>hash2</key>
 			<data>
-			i4xeKlrklOwtBis2r5bk9Ev4I8AxKSqhkGDNmYgDB6g=
+			0qelTx/agkjxGZB+u5g6F/neK3Ks/ZBN+gV5Yx68M7c=
 			</data>
 		</dict>
 		<key>Headers/MediaStream.h</key>
@@ -213,11 +222,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZNaQsODgINZTPeAuQPYruCkcZo4=
+			sAaEBr6MWkJoDnYekLv3o6WzGtQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			dYTYx5oOc2KFyYPEmzFQTQ6H31ujpv2Xqy8TPR5rTWQ=
+			93c6vR+dKogvJXQP5Oq1umMMskrmi66WFsHtzpE7VoQ=
 			</data>
 		</dict>
 		<key>Headers/NetworkReporting.h</key>
@@ -231,48 +240,15 @@
 			XNzIGkDXSBREccn2gobyojk0DmvrifIKqlzXczWXaD4=
 			</data>
 		</dict>
-		<key>Headers/OpenGLVideoRenderer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			oHHIUWWEZF81h+FNirdRSpP9Rjo=
-			</data>
-			<key>hash2</key>
-			<data>
-			IBD7jkVEolDLJDG+kYtAhbS6eYl+2JQfzv0Upw9lWvY=
-			</data>
-		</dict>
-		<key>Headers/PendingPeerOperation.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			jFCPKg7kjUDU6fP7U8LQ6230+l4=
-			</data>
-			<key>hash2</key>
-			<data>
-			hpvCIZQcdFm32ilzVB3xcrSKpW7NlZtTS3Xf+d9to24=
-			</data>
-		</dict>
-		<key>Headers/ProxySettings.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			lWlnKrlVmyHpHpULoKVJv239e9Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			dQ1WFQfAG17uhKG3fH4gJytOoUCYjiStvJSnYIwVtTg=
-			</data>
-		</dict>
 		<key>Headers/ReceiverNetworkStatistics.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tI3a+9UPRTjTLWZ2tvlpkdCDnUs=
+			HeXZyHQgzNBHTkfu0hHNgTD7OLI=
 			</data>
 			<key>hash2</key>
 			<data>
-			9bd7i5gg44uKZG726FnNWa6VscDaK0sN77eURmQwBKY=
+			dX9nWlDC5gL2fh0MmdRdLb0QFDMyirUQSy3bUzae+j4=
 			</data>
 		</dict>
 		<key>Headers/SdpCandidate.h</key>
@@ -323,11 +299,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7GftDIWtIGRGCypgMOp/SYTtJe0=
+			oXpVKqlLYLe88c9oOiZ3jqQ7YyE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ff2Sw7XTblNqHqVyvKIPtgU/n+uc9ay4kQSRDCroFQA=
+			aMKEVDpboQ0e/fLT+9tcQqqXAjOlGqPOy3lmkKjKjGk=
 			</data>
 		</dict>
 		<key>Headers/StunSettings.h</key>
@@ -341,17 +317,6 @@
 			aYJbIQ6hjheCbo9egUo7bcPMtlfsWkfO7/91M2kxR54=
 			</data>
 		</dict>
-		<key>Headers/VideoFrame.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NWQRrTjd33cAcJX907MaJ/9Hs98=
-			</data>
-			<key>hash2</key>
-			<data>
-			1k8th2/+h48VgrztT6p7JjsLiCJ9TPCXRxGnGYZsobM=
-			</data>
-		</dict>
 		<key>Headers/VideoRenderer.h</key>
 		<dict>
 			<key>hash</key>
@@ -363,37 +328,15 @@
 			f/UMy36L4Sid+fW0MMi6MSmgxI14WG++FCCM3B+sNMY=
 			</data>
 		</dict>
-		<key>Headers/VideoRendererAdapter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			4d+Z5uTr4j7AByb0VUZ66OFKjFw=
-			</data>
-			<key>hash2</key>
-			<data>
-			wOKi03VWbsOBELr1GBXdO8db7k5IFFr8pQWfe9r5CGY=
-			</data>
-		</dict>
 		<key>Headers/VoxeetMedia.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			m+UDRhJPwgzLKqGeuVpIPaIYjWg=
+			rFmO1IYjUICsPlGl064iyxSsOUI=
 			</data>
 			<key>hash2</key>
 			<data>
-			N4Zs/MumqHtuhu48idvQS0z1pH8vANu8BYV9R7Sx7R4=
-			</data>
-		</dict>
-		<key>Headers/VoxeetMediaBridge.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			I0b3J3w6tfLt4F2Feu99lA/HLIE=
-			</data>
-			<key>hash2</key>
-			<data>
-			j9G/tv8eLKOFynmOjPHjC08QV2hZvE3kKCZ2Cr+3w5Q=
+			7Our0saFmG2Hr7MDkG6+Evw+Z6OKc82xIYJnHAsMJTY=
 			</data>
 		</dict>
 		<key>Headers/VoxeetMediaDelegate.h</key>
@@ -411,88 +354,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tP9ZV01UGnwpLtgGFcZr+E/oiao=
+			++IoFLt1cHv5HHsAsW/rHA2rl9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			OAARV0j3eUAOq2az61ePtFCnoD6L/40JPKEcBHq0a0k=
+			zkV+aTmrBeQ9cPrHCa0/Lgz+qwrjXhGNu7cDhtnHBoM=
 			</data>
 		</dict>
 		<key>Headers/VoxeetSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pLWikUHKF/ED0ymr7/pmG+3Sauk=
+			eJuOkvP6+HoEfXbMTVV51V5Fdlo=
 			</data>
 			<key>hash2</key>
 			<data>
-			+qn/kGF9VTv6fiehDr+00nycpMvap4qixIg58Fwe45E=
-			</data>
-		</dict>
-		<key>Headers/WrappedConnectionObserver.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			pZJhC7MiHqrqzp7echgTyGb3CdY=
-			</data>
-			<key>hash2</key>
-			<data>
-			FquXhN3Vkap2S01LpKmGDtWAovLncjVaamEAoBPH+N0=
-			</data>
-		</dict>
-		<key>Headers/WrappedSessionObserver.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			QDFHZBRSDkr7412cBOBxy/94A3A=
-			</data>
-			<key>hash2</key>
-			<data>
-			iFvFZjpjHspAaMeR4eEQhPjCTkSuaOK5zB8S8s2WXXY=
+			Zuf9RfSz/t1oxM2aWJAoxWJwAKdDvZTcG9t/Uyf5/bo=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eeR81v+BY3AN9OuftHN6p7zqyL4=
+			/q8uy/UglWvcWVWcSqIfq52IbTU=
 			</data>
 			<key>hash2</key>
 			<data>
-			3TSZYaB3TCgpzQXz8+4O4Bxo8gwxprRx3fvkuC95qak=
+			3YjbvLrGBlDbHIHXQUmE2KK6TVezhc1OkZ8ruQzx5CM=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DTqdeQYDf5WdpgFqd+ibPB9g9t8=
+			zDgPmWzq81ous90P2vVEel49C3E=
 			</data>
 			<key>hash2</key>
 			<data>
-			1h9Uco6OaKo9IfTmufl9cfEdkCId0LZu93loCpnAnKw=
+			uKKO4pgtx16eH7oD6V1xSr1ogmQ3pglX/NWAGTQcE8o=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XTMvSb5z7oxrD/WVHZIhkjMbd4g=
+			V1KYDMrHliRFhtl6AFMdOui6l4I=
 			</data>
 			<key>hash2</key>
 			<data>
-			LLg0+pQgUs2xD3NpaitaoDT9uk98cr80ARKBFCdEz9Y=
+			HcJuXFQX/Vts8AfZfogkHYoCEqn09VJry0rYNnDkOag=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZTMV364x5VoxLqxHHhnsCjia7/c=
+			qLVEtn7StcMe4TnjDGbFLQY4DKY=
 			</data>
 			<key>hash2</key>
 			<data>
-			vCvV6mB5HjT8fV3RMrSFXaen0ccVZbFH8BB7lEgdQaI=
+			H6MsN1K4QUJAnP+LnHQQq5BsK7j5SIpf/0qu+DeN4N4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -504,6 +425,160 @@
 			<key>hash2</key>
 			<data>
 			NOwo6qzfIP4Vu0mpXHeuaD6FhFtYXAnK9Bc5VRirmL8=
+			</data>
+		</dict>
+		<key>PrivateHeaders/AVFoundationVideoCapturer.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			o3ThdVZ3U1H9qFlhS1YEsAEZ+Y0=
+			</data>
+			<key>hash2</key>
+			<data>
+			iyI2zYgIm1OzI6hu5PFqwPuf5hc7pD16N0WzhOLxQKw=
+			</data>
+		</dict>
+		<key>PrivateHeaders/Dispatcher+Private.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Fw9n2lPrOVoFOYpESRjmgEp5qyE=
+			</data>
+			<key>hash2</key>
+			<data>
+			fsjbO+5z2CEzCTJ3NpZEa975VV5XrDjtNzofvpvht5Q=
+			</data>
+		</dict>
+		<key>PrivateHeaders/ITBlockingQueue.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mKxBq5OlP53KIqAoUkgBGF6AqSs=
+			</data>
+			<key>hash2</key>
+			<data>
+			XIpgyyweCaOvcB/+TbMF+qpPEQzkkTtAeAQTwF8FO/Y=
+			</data>
+		</dict>
+		<key>PrivateHeaders/MediaStream+Private.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			idS/J/ueS0hkhP4LeVkZRUPQJU4=
+			</data>
+			<key>hash2</key>
+			<data>
+			zxQ6Fdw6+af41XxwMwIEarczQeDZXUyCNgi+R46hW2o=
+			</data>
+		</dict>
+		<key>PrivateHeaders/OpenGLVideoRenderer.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oHHIUWWEZF81h+FNirdRSpP9Rjo=
+			</data>
+			<key>hash2</key>
+			<data>
+			IBD7jkVEolDLJDG+kYtAhbS6eYl+2JQfzv0Upw9lWvY=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PendingPeerOperation.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jFCPKg7kjUDU6fP7U8LQ6230+l4=
+			</data>
+			<key>hash2</key>
+			<data>
+			hpvCIZQcdFm32ilzVB3xcrSKpW7NlZtTS3Xf+d9to24=
+			</data>
+		</dict>
+		<key>PrivateHeaders/ProxySettings.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lWlnKrlVmyHpHpULoKVJv239e9Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			dQ1WFQfAG17uhKG3fH4gJytOoUCYjiStvJSnYIwVtTg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/VideoFrame+Private.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zF9NIM+c/YogDK7IxyCFUTs3KIs=
+			</data>
+			<key>hash2</key>
+			<data>
+			yQW4tSAXDksZQuB7sKIz3M0fj4qbcYkaKazxOs0UN/U=
+			</data>
+		</dict>
+		<key>PrivateHeaders/VideoFrame.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1hvulLbFWx7yQ2ZW/RJjkYimYC4=
+			</data>
+			<key>hash2</key>
+			<data>
+			DItad8ZA2YpTEijuDSJbbVoUc3NBZIVKVX8p+6JZA+g=
+			</data>
+		</dict>
+		<key>PrivateHeaders/VideoRendererAdapter+Private.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Hbdv8jyU8oPlLbbkS/K0DMDUQfA=
+			</data>
+			<key>hash2</key>
+			<data>
+			ViXr/dqHiOlij78NwKB/R5UzjQxxKmCkEvi8Cuw0f4A=
+			</data>
+		</dict>
+		<key>PrivateHeaders/VideoRendererAdapter.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4d+Z5uTr4j7AByb0VUZ66OFKjFw=
+			</data>
+			<key>hash2</key>
+			<data>
+			wOKi03VWbsOBELr1GBXdO8db7k5IFFr8pQWfe9r5CGY=
+			</data>
+		</dict>
+		<key>PrivateHeaders/VoxeetMediaBridge.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			I0b3J3w6tfLt4F2Feu99lA/HLIE=
+			</data>
+			<key>hash2</key>
+			<data>
+			j9G/tv8eLKOFynmOjPHjC08QV2hZvE3kKCZ2Cr+3w5Q=
+			</data>
+		</dict>
+		<key>PrivateHeaders/WrappedConnectionObserver.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pZJhC7MiHqrqzp7echgTyGb3CdY=
+			</data>
+			<key>hash2</key>
+			<data>
+			FquXhN3Vkap2S01LpKmGDtWAovLncjVaamEAoBPH+N0=
+			</data>
+		</dict>
+		<key>PrivateHeaders/WrappedSessionObserver.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QDFHZBRSDkr7412cBOBxy/94A3A=
+			</data>
+			<key>hash2</key>
+			<data>
+			iFvFZjpjHspAaMeR4eEQhPjCTkSuaOK5zB8S8s2WXXY=
 			</data>
 		</dict>
 	</dict>

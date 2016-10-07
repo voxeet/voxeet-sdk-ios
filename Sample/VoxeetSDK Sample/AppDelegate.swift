@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Initialization of the Voxeet SDK.
-        VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+        VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
         
         // Session delegate.
         VoxeetSDK.sharedInstance.sessionStateDelegate = self

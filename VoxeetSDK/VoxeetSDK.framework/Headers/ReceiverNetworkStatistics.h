@@ -26,8 +26,7 @@
 @property (assign, nonatomic) NSUInteger rtcpJitterSamples;
 @property (assign, nonatomic) NSInteger rtcpRoundTripTime;
 
-+ (ReceiverNetworkStatistics *)receiverStatisticsFromNetworkReporting:(id/*ReceiverNetworkReport **/)reporting;
-
+//+ (ReceiverNetworkStatistics *)receiverStatisticsFromNetworkReporting:(id/*ReceiverNetworkReport **/)reporting;
 
 /*
 

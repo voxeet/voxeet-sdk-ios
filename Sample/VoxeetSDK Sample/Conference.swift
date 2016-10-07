@@ -116,11 +116,7 @@ class Conference: UIViewController {
     }
     
     @IBAction func switchAudioRoute(button: UIButton) {
-        if button.selected {
-            VoxeetSDK.sharedInstance.conference.setOutputDevice(.BuildInReceiver)
-        } else {
-            VoxeetSDK.sharedInstance.conference.setOutputDevice(.BuiltInSpeaker)
-        }
+        VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
                 
         button.selected = !button.selected
     }
@@ -168,30 +164,31 @@ extension Conference: VTConferenceDelegate {
  */
 
 extension Conference: VTConferenceMediaDelegate {
-    func streamAdded(stream: MediaStream, peerID: String) {
-        if let ownUserID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID where ownUserID == peerID {
+    
+    func streamAdded(stream: MediaStream, userID: String) {
+        if let ownUserID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID where ownUserID == userID {
             // Attaching own user's video stream.
             ownCameraView.hidden = false
-            VoxeetSDK.sharedInstance.conference.attachMediaStream(ownCameraView, stream: stream)
-        } else if let index = self.users.indexOf({ $0.userID == peerID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
+            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: ownCameraView)
+        } else if let index = self.users.indexOf({ $0.userID == userID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
             // Attaching user's video stream.
             cell.userVideoView.hidden = false
-            VoxeetSDK.sharedInstance.conference.attachMediaStream(cell.userVideoView, stream: stream)
+            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: cell.userVideoView)
         }
     }
     
-    func streamRemoved(peerID: String) {
-        if let index = self.users.indexOf({ $0.userID == peerID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
+    func streamRemoved(userID: String) {
+        if let index = self.users.indexOf({ $0.userID == userID }), let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? ConferenceTableViewCell {
             cell.userVideoView.hidden = true
         }
     }
     
-    func streamScreenShareAdded(stream: MediaStream, peerID: String) {
+    func streamScreenShareAdded(stream: MediaStream, userID: String) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(screenShareView, stream: stream)
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: screenShareView)
     }
     
-    func streamScreenShareRemoved(peerID: String) {
+    func streamScreenShareRemoved(userID: String) {
     }
 }
 
@@ -221,11 +218,11 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         
         // Mutes a user.
         let user = users[indexPath.row]
-        VoxeetSDK.sharedInstance.conference.muteUser(user.userID, mute: !VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID))
+        VoxeetSDK.sharedInstance.conference.muteUser(!VoxeetSDK.sharedInstance.conference.isUserMuted(userID: user.userID), userID: user.userID)
         
         // Update background color.
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(user.userID) ? UIColor.redColor() : UIColor.whiteColor()
+            cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: user.userID) ? UIColor.redColor() : UIColor.whiteColor()
         }
     }
 }

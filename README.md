@@ -34,15 +34,20 @@ A sample application is available on this [public repository](https://github.com
 You need to disable Bitcode in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
 
 To enable background mode, go to your target settings -> 'Capabilities' -> 'Background Modes'  
-Turn on 'Audio, AirPlay and Picture in Picture'  
-Turn on 'Voice over IP'
+- Turn on 'Audio, AirPlay and Picture in Picture'  
+- Turn on 'Voice over IP'
+
+Privacy permissions, in your plist add two new keys: 
+- Privacy - Camera Usage Description
+- Privacy - Microphone Usage Description
 
 ### Installation with CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 ```bash
-$ gem install cocoapods
+$ sudo gem install activesupport -v 4.2.6
+$ sudo gem install cocoapods
 ```
 
 To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
@@ -51,7 +56,7 @@ To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in yo
 use_frameworks!
 
 target "YourTarget" do
-       pod 'VoxeetSDK', '~> 1.0'
+       pod 'VoxeetSDK', '1.0.1.10'
 end
 ```
 
@@ -75,7 +80,7 @@ $ brew install carthage
 To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "voxeet/ios-sdk-sample" ~> 1.0
+github "voxeet/ios-sdk-sample" == 1.0.1.10
 ```
 
 Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project.
@@ -93,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         // Initialization of the Voxeet SDK.
-        VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+        VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
 
         return true
     }
@@ -107,14 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ### Initializing
 
 ```swift
-VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret")
+VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
 ```
 
 If you use external login like O365, LDAP, or custom login to retrieve contact details it's now possible to also add your contact ID with the display name and the photo URL avatar.  
 This allows you to ask guest users to introduce themselves and provide their display name and for your authenticated users in your enterprise or for your clients the ID that can be retrieved from O365 (name, department, etc).
 
 ```swift
-VoxeetSDK.sharedInstance.initializeSDK("consumerKey", consumerSecret: "consumerSecret", externalID: "ID", name: "name", avatarURL: "URL")
+VoxeetSDK.sharedInstance.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret", externalID: "ID", name: "name", avatarURL: "URL")
 ```
 
 ### Creating a demo conference
@@ -181,21 +186,21 @@ let infos = VoxeetSDK.sharedInstance.conference.getUserInfo("userID")
 
 ```swift
 // Values for angle and distance are between: angle = [-1, 1] and distance = [0, 1]
-VoxeetSDK.sharedInstance.conference.setUserPosition("userID", angle: 0, distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserPosition(angle: 0, distance: 0, userID: "userID")
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.conference.setUserAngle("userID", angle: 0)
+VoxeetSDK.sharedInstance.conference.setUserAngle(0, userID: "userID")
 ```
 
 ```swift
-VoxeetSDK.sharedInstance.conference.setUserDistance("userID", distance: 0)
+VoxeetSDK.sharedInstance.conference.setUserDistance(0, userID: "userID")
 ```
 
 ### Getting a specific user position
 
 ```swift
-let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition("userID")
+let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition(userID: "userID")
 ```
 
 ### Sending broadcast message in a conference
@@ -208,27 +213,46 @@ VoxeetSDK.sharedInstance.conference.sendBroadcastMessage("message", completion: 
 ### Muting / Unmuting a user
 
 ```swift
-VoxeetSDK.sharedInstance.conference.muteUser("userID", mute: true)
+VoxeetSDK.sharedInstance.conference.muteUser(true, userID: "userID")
 ```
 
 ### Checking if a user is muted
 
 ```swift
-let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted("userID")
+let isMute = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: "userID")
 ```
 
-### Changing output device
+### Getting the participant's voice level
 
 ```swift
-if VoxeetSDK.sharedInstance.conference.setOutputDevice(VTOutputDeviceType.BuildInReceiver) {
-    print("The output device has been changed.")
-}
+VoxeetSDK.sharedInstance.conference.getVoiceLevel(userID: "userID")
 ```
 
-### Getting output devices
+### Switching between BuiltInSpeaker and BuildInReceiver
 
 ```swift
-let (currentOutputDevice, availableOutputDevices) = VoxeetSDK.sharedInstance.conference.getOutputDevices()
+VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
+
+// You can also force the BuiltInSpeaker / BuildInReceiver
+VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker(forceBuiltInSpeaker: true)
+```
+
+### Attaching a media stream to a renderer
+
+```swift
+VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
+```
+
+### Unattaching a media stream to a renderer
+
+```swift
+VoxeetSDK.sharedInstance.conference.unattachMediaStream(stream, renderer: videoRenderer)
+```
+
+### Flipping the device camera (front/back)
+
+```swift
+VoxeetSDK.sharedInstance.conference.flipCamera()
 ```
 
 ### Connecting the SDK with the API (manually)
@@ -314,7 +338,7 @@ class myClass: VTConferenceMediaDelegate {
 
     func streamAdded(stream: MediaStream, peerID: String) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
     }
     
     func streamRemovedForPeer(peerID: String) {
@@ -322,7 +346,7 @@ class myClass: VTConferenceMediaDelegate {
     
     func streamScreenShareAdded(stream: MediaStream, peerID: String) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(videoRenderer, stream: stream)
+        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
     }
     
     func streamScreenShareRemoved(peerID: String) {
@@ -354,21 +378,6 @@ public enum VTSessionState {
     case Connected
     case Connecting
     case Reconnecting
-}
-```
-
-### Output devices:
-
-```swift
-public enum VTOutputDeviceType: Int {
-    case BuildInReceiver
-    case BuiltInSpeaker
-    case Headset
-    case LineOut
-    case Bluetooth
-    case CarAudio
-    case HDMI
-    case AirPlay
 }
 ```
 
@@ -477,7 +486,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.9
+1.0.1.10
 
 ## Tech
 

@@ -53,13 +53,16 @@ class ConferenceTableViewCell: UITableViewCell {
             task.resume()
         }
         
+        // Setting user distance to 0.
+        VoxeetSDK.sharedInstance.conference.setUserDistance(0, userID: currentUser.userID)
+        
         // Slider update.
-        let position = VoxeetSDK.sharedInstance.conference.getUserPosition(currentUser.userID)
+        let position = VoxeetSDK.sharedInstance.conference.getUserPosition(userID: currentUser.userID)
         self.angleSlider.setValue(Float(position.angle), animated: false)
         self.distanceSlider.setValue(Float(position.distance), animated: false)
         
         // Background update.
-        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(currentUser.userID) ? UIColor.redColor() : UIColor.whiteColor()
+        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: currentUser.userID) ? UIColor.redColor() : UIColor.whiteColor()
     }
     
     /*
@@ -71,7 +74,7 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <angle> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserAngle(currentUser.userID, angle: Double(sender.value))
+        VoxeetSDK.sharedInstance.conference.setUserAngle(Double(sender.value), userID: currentUser.userID)
     }
     
     @IBAction func distance(sender: UISlider) {
@@ -79,6 +82,6 @@ class ConferenceTableViewCell: UITableViewCell {
         print("::DEBUG:: <distance> \(sender.value)")
         
         // Setting user position.
-        VoxeetSDK.sharedInstance.conference.setUserDistance(currentUser.userID, distance: Double(sender.value))
+        VoxeetSDK.sharedInstance.conference.setUserDistance(Double(sender.value), userID: currentUser.userID)
     }
 }

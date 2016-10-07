@@ -41,7 +41,7 @@ typedef enum{
 }QosStatus;
 
 
-@interface VoxeetMedia : NSObject <CBCentralManagerDelegate> {
+@interface VoxeetMedia : NSObject {
     //ICoreMedia*  m_coreMedia;
     AudioProfile m_profile;
     CBCentralManager *m_manager;
@@ -55,7 +55,6 @@ typedef enum{
 - (BOOL)needSwitchToPstn;
 - (BOOL)createConnectionWithPeer:(NSString *)peerId isMaster:(BOOL)isMaster;
 - (BOOL)closeConnectionWithPeer:(NSString *)peerId;
-- (BOOL)createOfferForPeer:(NSString *)peerId;
 - (BOOL)createAnswerForPeer:(NSString *)peerId;
 - (BOOL)setDescriptionForPeer:(NSString *)peerId withSsrc:(long)ssrc type:(NSString *)type andSdp:(NSString *)sdp;
 - (BOOL)setCandidateForPeer:(NSString *)peerId withsdpMid:(NSString *)sdpMid sdpIndex:(NSInteger)sdpMLineIndex andSdp:(NSString *)sdp;
@@ -66,34 +65,12 @@ typedef enum{
 - (void)setAudioOptions:(BOOL)ns agc:(BOOL)agc ec:(BOOL)ec typingDetection:(BOOL)typingDetection;
 - (NSInteger)getLocalVuMeter;
 - (NSInteger)getVuMeterForPeer:(NSString *)peerId;
-- (BOOL)setRecordingDevice:(NSInteger)deviceId;
-- (NSArray *)getOutputDevicesList;
-- (NSArray *)availableAudioDevices;
-- (BOOL)hasHeadsetPlugged;
-- (void)setLoudSpeakerActive:(BOOL)isActive;
+- (void)setLoudSpeakerStatus:(BOOL)isEnable;
 - (BOOL)isLoudSpeakerActive;
-- (BOOL)setBluetoothAllowed:(BOOL)isActive;
-- (BOOL)isBluetoothAllowed;
-- (BOOL)shouldBeMono;
-- (void)initAudioSession:(BOOL)isHardwareAEC;
--(void)forceSpeaker:(BOOL)force;
-- (void)routeChange:(NSNotification*)notification;
-- (void)setCodecQuality:(NSInteger)quality;
-- (SenderNetworkReport *)getLocalNeworkReporting;
-- (ReceiverNetworkReport *)getNetworkReportingForPeer:(NSString *)peerId;
-- (AudioCoreCodec *)getSendCodec;
-- (void)audioRouteChangeHandler;
-- (void)setHardwareGain:(float)gain;
-- (void)reset;
-- (void)stopAudioDevice;
-- (void)startAudioDevice;
+- (void)setHardwareAec:(BOOL)isHardwareAEC;
+- (BOOL)isHardwareAec;
 - (void)stop;
 - (void)dealloc;
-- (void)printTraceWithLevel:(int)level withMessage:(const char*)message ofLength:(int)length;
-- (void)callbackOnChannel:(int)channel withErrorCode:(int)errCode;
-- (void)stopTimerDelegate;
 - (void)flipCamera;
-#pragma mark - Old audio core methods
-
 
 @end

@@ -146,7 +146,7 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 @protocol VTConferenceMediaDelegate;
 
 SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
-@interface VTConference : NSObject <MediaAPIDelegate>
+@interface VTConference : NSObject
 
 /// Conference delegate.
 @property (nonatomic, weak) id <VTConferenceDelegate> _Nullable delegate;
@@ -156,14 +156,18 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 
 /// Conference media delegate.
 @property (nonatomic, weak) id <VTConferenceMediaDelegate> _Nullable mediaDelegate;
-@property (nonatomic, copy) void (^ _Nullable streamAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull peerID);
-@property (nonatomic, copy) void (^ _Nullable streamRemoved)(NSString * _Nonnull peerID);
-@property (nonatomic, copy) void (^ _Nullable streamScreenShareAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull peerID);
-@property (nonatomic, copy) void (^ _Nullable streamScreenShareRemoved)(NSString * _Nonnull peerID);
-- (void)streamAddedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
-- (void)streamRemovedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
-- (void)screenShareStreamAddedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
-- (void)screenShareStreamRemovedForPeer:(NSString * _Nonnull)peerID withStream:(MediaStream * _Nonnull)withStream;
+@property (nonatomic, copy) void (^ _Nullable streamAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull userID);
+@property (nonatomic, copy) void (^ _Nullable streamRemoved)(NSString * _Nonnull userID);
+@property (nonatomic, copy) void (^ _Nullable streamScreenShareAdded)(MediaStream * _Nonnull stream, NSString * _Nonnull userID);
+@property (nonatomic, copy) void (^ _Nullable streamScreenShareRemoved)(NSString * _Nonnull userID);
+@end
+
+
+@interface VTConference (SWIFT_EXTENSION(VoxeetSDK)) <MediaAPIDelegate>
+- (void)streamAddedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
+- (void)streamRemovedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
+- (void)screenShareStreamAddedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
+- (void)screenShareStreamRemovedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
 @end
 
 
@@ -187,44 +191,66 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 /// \param angle Changes the user position with an angle.
 ///
 /// \param distance Changes the user position with a distance.
-- (void)setUserPosition:(NSString * _Nonnull)userID angle:(double)angle distance:(double)distance;
+- (void)setUserPositionWithAngle:(double)angle distance:(double)distance userID:(NSString * _Nonnull)userID;
 
 /// Changing the user position (with just an angle, see setUserPosition(userID: String, angle: Double, distance: Double)).
 ///
 /// \param userID User ID.
 ///
 /// \param angle Changes the user position with an angle.
-- (void)setUserAngle:(NSString * _Nonnull)userID angle:(double)angle;
+- (void)setUserAngle:(double)angle userID:(NSString * _Nonnull)userID;
 
 /// Changing the user position (with just a distance, see setUserPosition(userID: String, angle: Double, distance: Double)).
 ///
 /// \param userID User ID.
 ///
 /// \param distance Changes the user position with a distance.
-- (void)setUserDistance:(NSString * _Nonnull)userID distance:(double)distance;
+- (void)setUserDistance:(double)distance userID:(NSString * _Nonnull)userID;
 
 /// Muting / Unmuting a user.
 ///
-/// \param userID User ID.
-///
 /// \param mute Mute or unmute a user.
-- (void)muteUser:(NSString * _Nonnull)userID mute:(BOOL)mute;
+///
+/// \param userID User ID.
+- (void)muteUser:(BOOL)mute userID:(NSString * _Nonnull)userID;
 
 /// Checking if a user is currently muted or not.
 ///
 /// \param userID User ID.
 ///
 /// \returns  Return a boolean that indicates if a user is currently muted.
-- (BOOL)isUserMuted:(NSString * _Nonnull)userID;
+- (BOOL)isUserMutedWithUserID:(NSString * _Nonnull)userID;
+
+/// Switching between BuiltInSpeaker and BuildInReceiver.
+- (void)switchDeviceSpeaker;
+
+/// Switching between BuiltInSpeaker and BuildInReceiver.
+///
+/// \param forceBuiltInSpeaker Forces the audio to get set on the main speaker if <code>true
+/// </code>. If the value is <code>false
+/// </code> the buildInReceiver will be forced.
+- (void)switchDeviceSpeaker:(BOOL)forceBuiltInSpeaker;
 
 /// Attaching a media stream to a renderer.
 ///
+/// \param stream Stream to be rendered into the view.
+///
 /// \param renderer The view renderer that will display the video.
+- (void)attachMediaStream:(MediaStream * _Nonnull)stream renderer:(VideoRenderer * _Nonnull)renderer;
+
+/// Unattaching a media stream to a renderer.
 ///
 /// \param stream Stream to be rendered into the view.
-- (void)attachMediaStream:(VideoRenderer * _Nonnull)renderer stream:(MediaStream * _Nonnull)stream;
+///
+/// \param renderer The view renderer that will display the video.
+- (void)unattachMediaStream:(MediaStream * _Nonnull)stream renderer:(VideoRenderer * _Nonnull)renderer;
 
-/// Flip the camera (front/back).
+/// Getting the participant's voice level.
+///
+/// \param userID User ID.
+- (double)getVoiceLevelWithUserID:(NSString * _Nonnull)userID;
+
+/// Flipping the device camera (front/back).
 - (void)flipCamera;
 @end
 
@@ -241,10 +267,10 @@ SWIFT_PROTOCOL("_TtP9VoxeetSDK20VTConferenceDelegate_")
 SWIFT_PROTOCOL("_TtP9VoxeetSDK25VTConferenceMediaDelegate_")
 @protocol VTConferenceMediaDelegate
 @optional
-- (void)streamAdded:(MediaStream * _Nonnull)stream peerID:(NSString * _Nonnull)peerID;
-- (void)streamRemoved:(NSString * _Nonnull)peerID;
-- (void)streamScreenShareAdded:(MediaStream * _Nonnull)stream peerID:(NSString * _Nonnull)peerID;
-- (void)streamScreenShareRemoved:(NSString * _Nonnull)peerID;
+- (void)streamAdded:(MediaStream * _Nonnull)stream userID:(NSString * _Nonnull)userID;
+- (void)streamRemoved:(NSString * _Nonnull)userID;
+- (void)streamScreenShareAdded:(MediaStream * _Nonnull)stream userID:(NSString * _Nonnull)userID;
+- (void)streamScreenShareRemoved:(NSString * _Nonnull)userID;
 @end
 
 #pragma clang diagnostic pop

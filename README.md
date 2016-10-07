@@ -56,7 +56,7 @@ To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in yo
 use_frameworks!
 
 target "YourTarget" do
-       pod 'VoxeetSDK', '1.0.1.10'
+       pod 'VoxeetSDK', '1.0.1.9.1'
 end
 ```
 
@@ -80,7 +80,7 @@ $ brew install carthage
 To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "voxeet/ios-sdk-sample" == 1.0.1.10
+github "voxeet/ios-sdk-sample" == 1.0.1.9.1
 ```
 
 Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project.
@@ -486,7 +486,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.10
+1.0.1.9.1
 
 ## Tech
 

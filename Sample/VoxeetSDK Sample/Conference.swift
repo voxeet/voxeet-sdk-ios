@@ -31,6 +31,7 @@ class Conference: UIViewController {
     @IBOutlet weak var broadcastMessageTextView: UITextView!
     @IBOutlet weak var screenShareView: VideoRenderer!
     @IBOutlet weak var ownCameraView: VideoRenderer!
+    @IBOutlet weak var switchDeviceSpeakerButton: UIButton!
     
     // Current conference ID.
     var conferenceID: String?
@@ -46,11 +47,14 @@ class Conference: UIViewController {
         // Setting label.
         conferenceIDLabel.text = conferenceID
         
+        // Conference delegate.
+        VoxeetSDK.sharedInstance.conference.delegate = self
+        
+        // Conference media delegate.
+        VoxeetSDK.sharedInstance.conference.mediaDelegate = self
+        
         // Joining / Launching demo.
         if let confID = conferenceID {
-            // Conference media delegate.
-            VoxeetSDK.sharedInstance.conference.mediaDelegate = self
-            
             // Joining Conference.
             VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID) { (error) in
                 if error != nil {
@@ -74,17 +78,19 @@ class Conference: UIViewController {
             }
         }
         
-        // Conference delegate.
-        VoxeetSDK.sharedInstance.conference.delegate = self
+        // Select/Deselect the switchDeviceSpeakerButton when an audio session route is changed.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(audioSessionRouteChange), name: AVAudioSessionRouteChangeNotification, object: nil)
     }
     
     deinit {
         // Debug.
         print("::DEBUG:: <deinitConference>")
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     /*
-     *  MARK: Action
+     *  MARK: Actions
      */
     
     @IBAction func sendBroadcastMessage(sender: AnyObject) {
@@ -115,10 +121,8 @@ class Conference: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func switchAudioRoute(button: UIButton) {
+    @IBAction func switchDeviceSpeaker(button: UIButton) {
         VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
-                
-        button.selected = !button.selected
     }
     
     @IBAction func hangUp(sender: AnyObject) {
@@ -132,6 +136,16 @@ class Conference: UIViewController {
     
     @IBAction func switchCamera(sender: AnyObject) {
         VoxeetSDK.sharedInstance.conference.flipCamera()
+    }
+    
+    /*
+     *  MARK: Observer
+     */
+    
+    @objc func audioSessionRouteChange() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.switchDeviceSpeakerButton.selected = AVAudioSession.sharedInstance().currentRoute.outputs.first?.portType == AVAudioSessionPortBuiltInSpeaker
+        })
     }
 }
 

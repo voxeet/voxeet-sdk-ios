@@ -101,7 +101,7 @@
                                 <rect key="frame" x="524" y="25" width="56" height="30"/>
                                 <state key="normal" title="Speaker"/>
                                 <connections>
-                                    <action selector="switchAudioRoute:" destination="xz4-0q-Ums" eventType="touchUpInside" id="AA6-Ew-pDF"/>
+                                    <action selector="switchDeviceSpeaker:" destination="xz4-0q-Ums" eventType="touchUpInside" id="NhU-mh-h73"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cB5-iF-alW" customClass="VideoRenderer">
@@ -342,6 +342,7 @@
                         <outlet property="conferenceIDLabel" destination="JuV-4G-Qqs" id="THL-MO-mHR"/>
                         <outlet property="ownCameraView" destination="cB5-iF-alW" id="mIu-Ti-BY1"/>
                         <outlet property="screenShareView" destination="gF2-ZF-hsr" id="4oN-c9-c1g"/>
+                        <outlet property="switchDeviceSpeakerButton" destination="S36-eT-oBk" id="UEb-uk-R1i"/>
                         <outlet property="tableView" destination="cT5-op-laW" id="AT0-Gh-3aY"/>
                     </connections>
                 </viewController>

@@ -19,7 +19,7 @@ class AudioEngineDemo: UIViewController {
                 elephantSound = try VTAudioSound(url: URL(fileURLWithPath: path))
             } catch let error {
                 // Debug.
-                print("::DEBUG:: <AudioEngineDemo> \(error)")
+                print("[ERROR] \(#function) - Error: \(error)")
             }
         }
     }
@@ -58,11 +58,11 @@ class AudioEngineDemo: UIViewController {
         do {
             try elephantSound?.play() {
                 // Debug.
-                print("::DEBUG:: The sound has finished being played.")
+                print("[DEBUG] \(#function) - The sound has finished being played.")
             }
         } catch let error {
             // Debug.
-            print("::DEBUG:: <play> \(error)")
+            print("[ERROR] \(#function) - Error: \(error)")
         }
     }
 }

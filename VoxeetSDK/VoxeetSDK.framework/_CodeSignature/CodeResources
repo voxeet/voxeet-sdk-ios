@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/MediaStream.h</key>
 		<data>
-		I4cZTGuFkBRNuKBhedaDfOt6a7M=
+		L0RWrj/uN4NG1NJzrwETPTY2a2I=
 		</data>
 		<key>Headers/NetworkCodec.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		G8LZ5lojkifFeeevhhleThpkk/w=
+		85Rg+Y+dgWpxLRN0TXnpI07YDiU=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		uAAOI4F+OLP0YmHgl616Dirmt3g=
+		Oza/H3kp/q61x4d0DC7DGD3ORe0=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		XpMU24H+hi2uog3ehudxItSn2ME=
+		rB8rJ+L5wLmrX1OkjeLR1dYGQnA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -223,11 +223,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			I4cZTGuFkBRNuKBhedaDfOt6a7M=
+			L0RWrj/uN4NG1NJzrwETPTY2a2I=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZWvFRvskjYNvVewhBCHGcIP4UnqWOOy6GDotGVqJhWQ=
+			i8FRcxEpXtRXHNPKvyJI7tEHodf2nYmdyIyqPTR6Yqo=
 			</data>
 		</dict>
 		<key>Headers/NetworkCodec.h</key>
@@ -399,11 +399,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uAAOI4F+OLP0YmHgl616Dirmt3g=
+			Oza/H3kp/q61x4d0DC7DGD3ORe0=
 			</data>
 			<key>hash2</key>
 			<data>
-			wF0dm++arUF+tz7UiwxCzsZ2WHO1TUDl3G3FvPkFy48=
+			eHyhg5hB89hvA/hZ+MvhDFIZHxIkvwbwzEwteubx6vY=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
@@ -421,11 +421,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XpMU24H+hi2uog3ehudxItSn2ME=
+			rB8rJ+L5wLmrX1OkjeLR1dYGQnA=
 			</data>
 			<key>hash2</key>
 			<data>
-			u9UjOe4IG+9nVB8fkBlgJVLjaLpvpPDKMhhQGrf5PgU=
+			TGOgXS3lSNbght5gw9sNlBecvX7Hflb4qUL+zW3LB2o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

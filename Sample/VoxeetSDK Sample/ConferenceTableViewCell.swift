@@ -47,7 +47,7 @@ class ConferenceTableViewCell: UITableViewCell {
                     }
                 } else {
                     // Debug.
-                    print("::DEBUG:: <avatar> \(error?.localizedDescription)")
+                    print("[ERROR] \(#function) - Error: \(error?.localizedDescription)")
                 }
             }) 
             task.resume()
@@ -71,7 +71,7 @@ class ConferenceTableViewCell: UITableViewCell {
     
     @IBAction func angle(_ sender: UISlider) {
         // Debug.
-        print("::DEBUG:: <angle> \(sender.value)")
+        print("[DEBUG] \(#function) - Angle: \(sender.value)")
         
         // Setting user position.
         VoxeetSDK.sharedInstance.conference.setUserAngle(Double(sender.value), userID: currentUser.userID)
@@ -79,7 +79,7 @@ class ConferenceTableViewCell: UITableViewCell {
     
     @IBAction func distance(_ sender: UISlider) {
         // Debug.
-        print("::DEBUG:: <distance> \(sender.value)")
+        print("[DEBUG] \(#function) - Distance: \(sender.value)")
         
         // Setting user position.
         VoxeetSDK.sharedInstance.conference.setUserDistance(Double(sender.value), userID: currentUser.userID)

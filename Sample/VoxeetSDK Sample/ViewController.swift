@@ -30,14 +30,14 @@ class ViewController: UIViewController {
         // Conference creation.
         VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
             // Debug.
-            print("::DEBUG:: <createConference> \(confID), \(confAlias)")
+            print("[DEBUG] \(#function) - Conference ID: \(confID), conference Alias: \(confAlias)")
             
             // Start the conference viewController.
             self.presentConferenceVC(confAlias)
             
             }, fail: { (error) in
                 // Debug.
-                print("::DEBUG:: <createConference> \(error)")
+                print("[ERROR] \(#function) - Error: \(error)")
         })
     }
     

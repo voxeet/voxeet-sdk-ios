@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
     
     func sessionStateChanged(state: VTSessionState) {
         // Debug.
-        print("::DEBUG:: <sessionStateChanged> \(state)")
+        print("[DEBUG] \(#function) - State: \(state)")
     }
     
     // MARK: - Core Data stack

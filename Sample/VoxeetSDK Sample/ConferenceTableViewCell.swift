@@ -24,7 +24,7 @@ class ConferenceTableViewCell: UITableViewCell {
      *  MARK: Set Up
      */
     
-    func setUp(currentUser: User) {
+    func setUp(_ currentUser: User) {
         self.currentUser = currentUser
         
         // Cell label.
@@ -36,20 +36,20 @@ class ConferenceTableViewCell: UITableViewCell {
         
         // Cell avatar.
         if let avatarURL = currentUser.avatarUrl {
-            let imgURL: NSURL = NSURL(string: avatarURL)!
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            let imgURL: URL = URL(string: avatarURL)!
+            let request: URLRequest = URLRequest(url: imgURL)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
                 if error == nil {
                     if let data = data {
-                        dispatch_async(dispatch_get_main_queue()) {
+                        DispatchQueue.main.async {
                             self.userPhoto.image = UIImage(data: data)
                         }
                     }
                 } else {
                     // Debug.
-                    print("::DEBUG:: <avatar> \(error?.localizedDescription)")
+                    print("[ERROR] \(#function) - Error: \(error?.localizedDescription)")
                 }
-            }
+            }) 
             task.resume()
         }
         
@@ -62,24 +62,24 @@ class ConferenceTableViewCell: UITableViewCell {
         self.distanceSlider.setValue(Float(position.distance), animated: false)
         
         // Background update.
-        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: currentUser.userID) ? UIColor.redColor() : UIColor.whiteColor()
+        self.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: currentUser.userID) ? UIColor.red : UIColor.white
     }
     
     /*
      *  MARK: Action
      */
     
-    @IBAction func angle(sender: UISlider) {
+    @IBAction func angle(_ sender: UISlider) {
         // Debug.
-        print("::DEBUG:: <angle> \(sender.value)")
+        print("[DEBUG] \(#function) - Angle: \(sender.value)")
         
         // Setting user position.
         VoxeetSDK.sharedInstance.conference.setUserAngle(Double(sender.value), userID: currentUser.userID)
     }
     
-    @IBAction func distance(sender: UISlider) {
+    @IBAction func distance(_ sender: UISlider) {
         // Debug.
-        print("::DEBUG:: <distance> \(sender.value)")
+        print("[DEBUG] \(#function) - Distance: \(sender.value)")
         
         // Setting user position.
         VoxeetSDK.sharedInstance.conference.setUserDistance(Double(sender.value), userID: currentUser.userID)

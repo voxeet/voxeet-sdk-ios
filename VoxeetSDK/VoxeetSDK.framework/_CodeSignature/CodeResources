@@ -74,31 +74,31 @@
 		</data>
 		<key>Headers/VoxeetSDK-Swift.h</key>
 		<data>
-		++IoFLt1cHv5HHsAsW/rHA2rl9Y=
+		lqcMbd8doNzSWGzd92LrQB0Nmc4=
 		</data>
 		<key>Headers/VoxeetSDK.h</key>
 		<data>
-		eJuOkvP6+HoEfXbMTVV51V5Fdlo=
+		sTm+bBshaCQAodFrxse7GbIhknk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gcJ3nSoFheXSKxO7TkyH54A0zNw=
+		G8LZ5lojkifFeeevhhleThpkk/w=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		/q8uy/UglWvcWVWcSqIfq52IbTU=
+		x3ADnMf0STQzm9SHR1AaIwqOfXQ=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		Rj2ud8Xv9JgfYOyPB6KSupoMedo=
+		Oza/H3kp/q61x4d0DC7DGD3ORe0=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		V1KYDMrHliRFhtl6AFMdOui6l4I=
+		cCJ8lg1ImNQFhfXC4+OLFSDBObg=
 		</data>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ACK59Y2W33d6fgiy+jP5dgKzBMQ=
+		rB8rJ+L5wLmrX1OkjeLR1dYGQnA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,6 +107,14 @@
 		<key>PrivateHeaders/AVFoundationVideoCapturer.h</key>
 		<data>
 		o3ThdVZ3U1H9qFlhS1YEsAEZ+Y0=
+		</data>
+		<key>PrivateHeaders/Alamofire.h</key>
+		<data>
+		MkxSbVCbnr649u1kjJl/qmydvNQ=
+		</data>
+		<key>PrivateHeaders/CryptoSwift.h</key>
+		<data>
+		spmS3Ur7W7wnG1nc6iY/t4Q7X0c=
 		</data>
 		<key>PrivateHeaders/Dispatcher+Private.h</key>
 		<data>
@@ -131,6 +139,10 @@
 		<key>PrivateHeaders/ProxySettings.h</key>
 		<data>
 		lWlnKrlVmyHpHpULoKVJv239e9Y=
+		</data>
+		<key>PrivateHeaders/Starscream.h</key>
+		<data>
+		bIF/9oSljUDPWlbHwEoxEPdpaHo=
 		</data>
 		<key>PrivateHeaders/VideoFrame+Private.h</key>
 		<data>
@@ -354,66 +366,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			++IoFLt1cHv5HHsAsW/rHA2rl9Y=
+			lqcMbd8doNzSWGzd92LrQB0Nmc4=
 			</data>
 			<key>hash2</key>
 			<data>
-			zkV+aTmrBeQ9cPrHCa0/Lgz+qwrjXhGNu7cDhtnHBoM=
+			9vNtQy7ITTiuvoHg4E7uTrnaxlAV3d8oc9jc+k47d1w=
 			</data>
 		</dict>
 		<key>Headers/VoxeetSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eJuOkvP6+HoEfXbMTVV51V5Fdlo=
+			sTm+bBshaCQAodFrxse7GbIhknk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zuf9RfSz/t1oxM2aWJAoxWJwAKdDvZTcG9t/Uyf5/bo=
+			MmHmz+MYVmvEmhIJPW2iIlTf9qYrs0OCh63R6yBIcOI=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/q8uy/UglWvcWVWcSqIfq52IbTU=
+			x3ADnMf0STQzm9SHR1AaIwqOfXQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			3YjbvLrGBlDbHIHXQUmE2KK6TVezhc1OkZ8ruQzx5CM=
+			wELt/waGfX+ToPP+EEtZDC2xmPGHjDc+jhOU7C9JNlI=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Rj2ud8Xv9JgfYOyPB6KSupoMedo=
+			Oza/H3kp/q61x4d0DC7DGD3ORe0=
 			</data>
 			<key>hash2</key>
 			<data>
-			zof41/0j+C+6WKHZfjAC233i7u4RodMxVeaHRCGWA4U=
+			eHyhg5hB89hvA/hZ+MvhDFIZHxIkvwbwzEwteubx6vY=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			V1KYDMrHliRFhtl6AFMdOui6l4I=
+			cCJ8lg1ImNQFhfXC4+OLFSDBObg=
 			</data>
 			<key>hash2</key>
 			<data>
-			HcJuXFQX/Vts8AfZfogkHYoCEqn09VJry0rYNnDkOag=
+			L9pP5+QATj7GNLEa3GEVQYa818K5XrfREbgEJnCafzE=
 			</data>
 		</dict>
 		<key>Modules/VoxeetSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ACK59Y2W33d6fgiy+jP5dgKzBMQ=
+			rB8rJ+L5wLmrX1OkjeLR1dYGQnA=
 			</data>
 			<key>hash2</key>
 			<data>
-			i859M1BF3CM80n3rqDiAjThNhbSs+17gwElqXO9UmxE=
+			TGOgXS3lSNbght5gw9sNlBecvX7Hflb4qUL+zW3LB2o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -436,6 +448,28 @@
 			<key>hash2</key>
 			<data>
 			iyI2zYgIm1OzI6hu5PFqwPuf5hc7pD16N0WzhOLxQKw=
+			</data>
+		</dict>
+		<key>PrivateHeaders/Alamofire.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			MkxSbVCbnr649u1kjJl/qmydvNQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			sVJkysHFIbUiAzfAq/iru6/B7jmxx8gOxi2Too0HdRk=
+			</data>
+		</dict>
+		<key>PrivateHeaders/CryptoSwift.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			spmS3Ur7W7wnG1nc6iY/t4Q7X0c=
+			</data>
+			<key>hash2</key>
+			<data>
+			LKTFZeCP6yi+xx9GiYdLvJom52FZ5NRrUx7+M7cJWyM=
 			</data>
 		</dict>
 		<key>PrivateHeaders/Dispatcher+Private.h</key>
@@ -502,6 +536,17 @@
 			<key>hash2</key>
 			<data>
 			dQ1WFQfAG17uhKG3fH4gJytOoUCYjiStvJSnYIwVtTg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/Starscream.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bIF/9oSljUDPWlbHwEoxEPdpaHo=
+			</data>
+			<key>hash2</key>
+			<data>
+			uDB1F1BYBSS///5Kx3sW3b25gGjxudlItQDs2UvmKGE=
 			</data>
 		</dict>
 		<key>PrivateHeaders/VideoFrame+Private.h</key>

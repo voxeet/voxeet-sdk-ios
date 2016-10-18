@@ -22,8 +22,9 @@ The Voxeet SDK is a Swift library allowing users to:
 
 ## Requirements
 
-  - iOS 8.0+
-  - Xcode 7.3+
+  - iOS 9.0+
+  - Xcode 8.0+
+  - Swift 3.0+
 
 ## Sample Application
 
@@ -46,8 +47,7 @@ Privacy permissions, in your plist add two new keys:
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 ```bash
-$ sudo gem install activesupport -v 4.2.6
-$ sudo gem install cocoapods
+$ sudo gem install cocoapods --pre
 ```
 
 To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
@@ -56,7 +56,7 @@ To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in yo
 use_frameworks!
 
 target "YourTarget" do
-       pod 'VoxeetSDK', '1.0.1.9.2'
+       pod 'VoxeetSDK', '~> 1.0'
 end
 ```
 
@@ -80,7 +80,7 @@ $ brew install carthage
 To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "voxeet/ios-sdk-sample" == 1.0.1.9.2
+github "voxeet/ios-sdk-sample" ~> 1.0
 ```
 
 Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project.
@@ -486,7 +486,7 @@ let distance = sound?.distance
 
 ## Version
 
-1.0.1.9.2
+1.0.2.4
 
 ## Tech
 

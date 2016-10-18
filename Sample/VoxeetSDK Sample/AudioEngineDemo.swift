@@ -14,17 +14,17 @@ class AudioEngineDemo: UIViewController {
     
     override func viewDidLoad() {
         // Initializes VTAudioSound.
-        if let path = NSBundle.mainBundle().pathForResource("Elephant-mono", ofType: "mp3") {
+        if let path = Bundle.main.path(forResource: "Elephant-mono", ofType: "mp3") {
             do {
-                elephantSound = try VTAudioSound(url: NSURL(fileURLWithPath: path))
+                elephantSound = try VTAudioSound(url: URL(fileURLWithPath: path))
             } catch let error {
                 // Debug.
-                print("::DEBUG:: <AudioEngineDemo> \(error)")
+                print("[ERROR] \(#function) - Error: \(error)")
             }
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         // Stopping the current sound.
         elephantSound?.stop()
     }
@@ -33,36 +33,36 @@ class AudioEngineDemo: UIViewController {
      *  MARK: Actions
      */
     
-    @IBAction func angle(sender: UISlider) {
+    @IBAction func angle(_ sender: UISlider) {
         // Updating sound spatialization.
         elephantSound?.angle = Double(sender.value)
     }
     
-    @IBAction func distance(sender: UISlider) {
+    @IBAction func distance(_ sender: UISlider) {
         // Updating sound spatialization.
         elephantSound?.distance = Double(sender.value)
     }
     
-    @IBAction func loop(sender: UISwitch) {
+    @IBAction func loop(_ sender: UISwitch) {
         // Playing in loop the current sound.
-        elephantSound?.loop = sender.on
+        elephantSound?.loop = sender.isOn
         
-        if sender.on == false {
+        if sender.isOn == false {
             // Stopping the current sound.
             elephantSound?.stop()
         }
     }
     
-    @IBAction func play(sender: AnyObject) {
+    @IBAction func play(_ sender: AnyObject) {
         // Playing sound.
         do {
             try elephantSound?.play() {
                 // Debug.
-                print("::DEBUG:: The sound has finished being played.")
+                print("[DEBUG] \(#function) - The sound has finished being played.")
             }
         } catch let error {
             // Debug.
-            print("::DEBUG:: <play> \(error)")
+            print("[ERROR] \(#function) - Error: \(error)")
         }
     }
 }

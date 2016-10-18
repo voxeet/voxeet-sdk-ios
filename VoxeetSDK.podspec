@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.frameworks = 'UIKit', 'AVFoundation', 'VideoToolbox'
   s.requires_arc = true
-  s.xcconfig = { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/VoxeetSDK"', 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/Headers/VoxeetSDK"' }
+  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/Headers/VoxeetSDK"' }
   s.license = {
     :type => 'Copyright',
     :text => <<-LICENSE

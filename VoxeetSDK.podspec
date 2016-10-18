@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name = "VoxeetSDK"
-  s.version = "1.0.2.4.1.1"
+  s.version = "1.0.2.4.1.2"
   s.summary = "iOS library for Voxeet"
   s.homepage = "http://voxeet.com"
   s.author = { "Voxeet, Inc" => "support@voxeet.com" }
   s.platform = :ios
-  s.source = { :git => "https://github.com/voxeet/ios-sdk-sample.git", :tag => s.version }
+  s.source = { :git => "https://github.com/voxeet/ios-sdk-sample.git", :tag => s.version, :branch => "swift3" }
   s.source_files = 'VoxeetSDK/VoxeetSDK.framework/Headers/*.h'
   s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
   s.vendored_frameworks = 'VoxeetSDK/VoxeetSDK.framework'

@@ -49,7 +49,7 @@ typedef enum{
 
 //@property (readwrite, nonatomic) CBCentralManager *manager;
 @property (nonatomic, assign) id <VoxeetMediaDelegate> delegate;
-- (id)initWithLocalPeer:(NSString *)localPeerId audioSettings:(AudioSettings *)settings;
+- (id)initWithLocalPeer:(NSString *)localPeerId audioSettings:(AudioSettings *)settings video:(BOOL)video microphone: (BOOL)microphone;
 - (void)attachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
 - (void)unattachMediaStream:(id<VideoRenderer>)renderer withStream: (MediaStream*) stream;
 - (BOOL)needSwitchToPstn;
@@ -72,5 +72,7 @@ typedef enum{
 - (void)stop;
 - (void)dealloc;
 - (void)flipCamera;
+- (void)startVideo;
+- (void)stopVideo;
 
 @end

@@ -302,69 +302,38 @@ class myClass: VTConferenceDelegate {
         // Conference delegate.
         VoxeetSDK.sharedInstance.conference.delegate = self
     }
-
-    func userJoined(userID: String, userInfo: [String: AnyObject]) {
+    
+    func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
     }
     
-    func userLeft(userID: String, userInfo: [String: AnyObject]) {
+    func participantRemoved(userID: String, userInfo: [String: Any]) {
     }
     
-    func messageReceived(userID: String, userInfo: [String: AnyObject], message: String) {
+    func messageReceived(userID: String, userInfo: [String: Any], message: String) {
+    }
+    
+    func screenShareStarted(userID: String, stream: MediaStream) {
+    }
+    
+    func screenShareStopped(userID: String) {
     }
 }
 ```
 or
 ```swift
-VoxeetSDK.sharedInstance.conference.userJoined = { (userID, userInfo) in
+VoxeetSDK.sharedInstance.conference.participantAdded = { (userID, userInfo, stream) in
 }
-        
-VoxeetSDK.sharedInstance.conference.userLeft = { (userID, userInfo) in
+
+VoxeetSDK.sharedInstance.conference.participantRemoved = { (userID, userInfo) in
 }
-        
+
 VoxeetSDK.sharedInstance.conference.messageReceived = { (userID, userInfo, message) in
 }
-```
 
-### Conference media
-
-```swift
-class myClass: VTConferenceMediaDelegate {
-    @IBOutlet weak var videoRenderer: VideoRenderer!
-
-    init() {
-        // Conference media delegate.
-        VoxeetSDK.sharedInstance.conference.mediaDelegate = self
-    }
-
-    func streamAdded(stream: MediaStream, peerID: String) {
-        // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
-    }
-    
-    func streamRemovedForPeer(peerID: String) {
-    }
-    
-    func streamScreenShareAdded(stream: MediaStream, peerID: String) {
-        // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: videoRenderer)
-    }
-    
-    func streamScreenShareRemoved(peerID: String) {
-    }
-}
-```
-or
-```swift
-VoxeetSDK.sharedInstance.conference.streamAdded = { (stream: MediaStream, peerID: String) in
+VoxeetSDK.sharedInstance.conference.screenShareStarted = { (userID, stream) in
 }
 
-VoxeetSDK.sharedInstance.conference.streamRemoved = { (peerID: String) in
-}
-
-VoxeetSDK.sharedInstance.conference.streamScreenShareAdded = { (stream: MediaStream, peerID: String) in
-}
-
-VoxeetSDK.sharedInstance.conference.streamScreenShareRemoved = { (peerID: String) in
+VoxeetSDK.sharedInstance.conference.screenShareStopped = { (userID) in
 }
 ```
 

@@ -257,10 +257,17 @@
                                     <action selector="hangUp:" destination="xz4-0q-Ums" eventType="touchUpInside" id="wpe-BI-JAG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXG-So-eiZ">
+                                <state key="normal" title="Own video"/>
+                                <connections>
+                                    <action selector="ownVideo:" destination="xz4-0q-Ums" eventType="touchUpInside" id="RJx-th-5yM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cB5-iF-alW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gUF-nJ-mfr" secondAttribute="trailing" id="3J7-8B-sx8"/>
+                            <constraint firstItem="cT5-op-laW" firstAttribute="top" secondItem="OXG-So-eiZ" secondAttribute="bottom" id="7xy-5c-lVP"/>
                             <constraint firstItem="gUF-nJ-mfr" firstAttribute="top" secondItem="azc-ak-ujf" secondAttribute="bottom" constant="5" id="AyQ-89-Ymv"/>
                             <constraint firstItem="6tU-xC-HC6" firstAttribute="top" secondItem="Pva-7N-6ja" secondAttribute="bottom" id="FEU-mC-x2n"/>
                             <constraint firstItem="Pva-7N-6ja" firstAttribute="leading" secondItem="zOh-bz-1UM" secondAttribute="leading" id="MnW-0e-mUt"/>
@@ -271,18 +278,20 @@
                             <constraint firstItem="cB5-iF-alW" firstAttribute="bottom" secondItem="S36-eT-oBk" secondAttribute="bottom" id="Y3r-ZJ-7TO"/>
                             <constraint firstItem="S36-eT-oBk" firstAttribute="top" secondItem="azc-ak-ujf" secondAttribute="bottom" constant="5" id="Zpu-EX-cQI"/>
                             <constraint firstItem="cB5-iF-alW" firstAttribute="top" secondItem="zOh-bz-1UM" secondAttribute="topMargin" constant="5" id="Zzv-Nq-dw1"/>
-                            <constraint firstItem="cT5-op-laW" firstAttribute="top" secondItem="i8K-0V-uLt" secondAttribute="bottom" constant="15" id="enK-hu-X1Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S36-eT-oBk" secondAttribute="trailing" id="g5k-Q4-DBy"/>
+                            <constraint firstItem="OXG-So-eiZ" firstAttribute="centerX" secondItem="cB5-iF-alW" secondAttribute="centerX" id="hiS-CV-gCV"/>
                             <constraint firstAttribute="trailing" secondItem="Pva-7N-6ja" secondAttribute="trailing" id="i6F-5l-sJh"/>
                             <constraint firstItem="Pva-7N-6ja" firstAttribute="top" secondItem="Mql-c5-X59" secondAttribute="bottom" id="k3z-vi-fYI"/>
-                            <constraint firstItem="S36-eT-oBk" firstAttribute="leading" secondItem="cB5-iF-alW" secondAttribute="trailing" constant="15" id="oiu-pK-fUL"/>
+                            <constraint firstItem="S36-eT-oBk" firstAttribute="leading" secondItem="cB5-iF-alW" secondAttribute="trailing" constant="25" id="oiu-pK-fUL"/>
                             <constraint firstItem="Mql-c5-X59" firstAttribute="leading" secondItem="zOh-bz-1UM" secondAttribute="leading" constant="2" id="qoE-ge-ysx"/>
                             <constraint firstItem="cT5-op-laW" firstAttribute="leading" secondItem="zOh-bz-1UM" secondAttribute="leading" id="v5v-yw-KMz"/>
+                            <constraint firstItem="OXG-So-eiZ" firstAttribute="top" secondItem="cB5-iF-alW" secondAttribute="bottom" id="w66-EU-ETK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="broadcastMessageTextView" destination="biH-xo-QQJ" id="J0p-6K-FLo"/>
                         <outlet property="conferenceIDLabel" destination="JuV-4G-Qqs" id="THL-MO-mHR"/>
+                        <outlet property="ownCameraHandlerButton" destination="OXG-So-eiZ" id="iq5-bA-SBW"/>
                         <outlet property="ownCameraView" destination="cB5-iF-alW" id="mIu-Ti-BY1"/>
                         <outlet property="screenShareView" destination="gF2-ZF-hsr" id="4oN-c9-c1g"/>
                         <outlet property="switchDeviceSpeakerButton" destination="S36-eT-oBk" id="6vr-Fg-wPC"/>

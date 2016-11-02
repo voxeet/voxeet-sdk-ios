@@ -31,6 +31,7 @@ class Conference: UIViewController {
     @IBOutlet weak var broadcastMessageTextView: UITextView!
     @IBOutlet weak var screenShareView: VideoRenderer!
     @IBOutlet weak var ownCameraView: VideoRenderer!
+    @IBOutlet weak var ownCameraHandlerButton: UIButton!
     @IBOutlet weak var switchDeviceSpeakerButton: UIButton!
     
     // Current conference ID.
@@ -50,13 +51,10 @@ class Conference: UIViewController {
         // Conference delegate.
         VoxeetSDK.sharedInstance.conference.delegate = self
         
-        // Conference media delegate.
-        VoxeetSDK.sharedInstance.conference.mediaDelegate = self
-        
         // Joining / Launching demo.
         if let confID = conferenceID {
             // Joining Conference.
-            VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID) { (error) in
+            VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID, video: true) { (error) in
                 if error != nil {
                     // Debug.
                     print("[ERROR] \(#function) - Error: \(error)")
@@ -76,6 +74,10 @@ class Conference: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             }
+            
+            // Hide own preview camera.
+            ownCameraView.isHidden = true
+            ownCameraHandlerButton.isHidden = true
         }
         
         // Select/Deselect the switchDeviceSpeakerButton when an audio session route is changed.
@@ -142,6 +144,24 @@ class Conference: UIViewController {
         VoxeetSDK.sharedInstance.conference.flipCamera()
     }
     
+    @IBAction func ownVideo(_ button: UIButton) {
+        guard let userID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID else {
+            return
+        }
+        
+        button.isEnabled = false
+        if button.isSelected {
+            VoxeetSDK.sharedInstance.conference.stopVideo(userID: userID, completion: { _ in
+                button.isEnabled = true
+            })
+        } else {
+            VoxeetSDK.sharedInstance.conference.startVideo(userID: userID, completion: { _ in
+                button.isEnabled = true
+            })
+        }
+        button.isSelected = !button.isSelected
+    }
+    
     /*
      *  MARK: Observer
      */
@@ -158,12 +178,25 @@ class Conference: UIViewController {
  */
 
 extension Conference: VTConferenceDelegate {
-    func userJoined(userID: String, userInfo: [String: Any]) {
-        users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
-        tableView.reloadData()
+    func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
+        if VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID == userID {
+            // Attaching own user's video stream.
+            ownCameraView.isHidden = false
+            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: ownCameraView)
+        } else {
+            // Save the user and refresh the tableView.
+            users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
+            tableView.reloadData()
+
+            if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
+                // Attaching user's video stream.
+                cell.userVideoView.isHidden = false
+                VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: cell.userVideoView)
+            }
+        }
     }
     
-    func userLeft(userID: String, userInfo: [String: Any]) {
+    func participantRemoved(userID: String, userInfo: [String: Any]) {
         users = users.filter({ $0.userID != userID })
         tableView.reloadData()
     }
@@ -175,37 +208,13 @@ extension Conference: VTConferenceDelegate {
             broadcastMessageTextView.text = "\(userID): \(message)"
         }
     }
-}
-
-/*
- *  MARK: - Voxeet SDK conference media delegate
- */
-
-extension Conference: VTConferenceMediaDelegate {
-    func streamAdded(stream: MediaStream, userID: String) {
-        if let ownUserID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID , ownUserID == userID {
-            // Attaching own user's video stream.
-            ownCameraView.isHidden = false
-            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: ownCameraView)
-        } else if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
-            // Attaching user's video stream.
-            cell.userVideoView.isHidden = false
-            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: cell.userVideoView)
-        }
-    }
     
-    func streamRemoved(userID: String) {
-        if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
-            cell.userVideoView.isHidden = true
-        }
-    }
-    
-    func streamScreenShareAdded(stream: MediaStream, userID: String) {
+    func screenShareStarted(stream: MediaStream, userID: String) {
         // Attaching a video stream to a renderer.
         VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: screenShareView)
     }
     
-    func streamScreenShareRemoved(userID: String) {
+    func screenShareStopped(userID: String) {
     }
 }
 

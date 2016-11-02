@@ -34,7 +34,7 @@
 @property (strong, nonatomic) AudioSettings *audioSettings;
 @property (copy, nonatomic) void(^audioRouteChangedBlock)(NSNumber *);
 
-- (id)initWithLocalUser:(NSString *)localUserId settings:(AudioSettings *)audioSettings andCompletionBlock:(void(^)(void))completionBlock;
+- (id)initWithLocalUser:(NSString *)localUserId settings:(AudioSettings *)audioSettings video:(BOOL)video microphone:(BOOL)microphone andCompletionBlock:(void(^)(void))completionBlock;
 - (void)stop;
 - (void)setHardwareAEC:(BOOL)isHardwareAEC;
 - (BOOL)isHardwareAEC;
@@ -55,5 +55,7 @@
 - (double)getLocalVuMeterLevel;
 - (double)getPeerVuMeterLevel:(NSString *)peerId;
 - (void)flipCamera;
+- (void)startVideo;
+- (void)stopVideo;
 
 @end

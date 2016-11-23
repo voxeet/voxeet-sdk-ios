@@ -21,6 +21,7 @@
 @protocol MediaAPIDelegate <NSObject>
   - (void)streamAddedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
   - (void)streamRemovedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
+  - (void)streamUpdatedForPeer:(NSString *) peerId withStream:(MediaStream *)mediaStream;
   - (void)screenShareStreamAddedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
   - (void)screenShareStreamRemovedForPeer:(NSString *)peerId withStream:(MediaStream *)mediaStream;
 @end

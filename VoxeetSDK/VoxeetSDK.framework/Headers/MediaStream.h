@@ -10,7 +10,7 @@
 #define MediaStream_h
 
 @interface MediaStream : NSObject
-@property(nonatomic, readonly) bool hasVideo;
+@property(nonatomic) bool hasVideo;
 @end
 
 #endif /* MediaStream_h */

@@ -619,6 +619,7 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 */
 @property (nonatomic, weak) id <VTConferenceDelegate> _Nullable delegate;
 @property (nonatomic, copy) void (^ _Nullable participantAdded)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nonnull, MediaStream * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable participantUpdated)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nonnull, MediaStream * _Nonnull);
 @property (nonatomic, copy) void (^ _Nullable participantRemoved)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nonnull);
 @property (nonatomic, copy) void (^ _Nullable messageReceived)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nonnull, NSString * _Nonnull);
 @property (nonatomic, copy) void (^ _Nullable screenShareStarted)(NSString * _Nonnull, MediaStream * _Nonnull);
@@ -628,8 +629,9 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 
 
 @interface VTConference (SWIFT_EXTENSION(VoxeetSDK)) <MediaAPIDelegate>
-- (void)streamAddedForPeer:(NSString * _Nonnull)userID withStream:(MediaStream * _Nonnull)stream;
-- (void)streamRemovedForPeer:(NSString * _Nonnull)userID withStream:(MediaStream * _Nonnull)stream;
+- (void)streamAddedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
+- (void)streamUpdatedForPeer:(NSString * _Null_unspecified)peerId withStream:(MediaStream * _Null_unspecified)mediaStream;
+- (void)streamRemovedForPeer:(NSString * _Nonnull)peerId withStream:(MediaStream * _Nonnull)mediaStream;
 - (void)screenShareStreamAddedForPeer:(NSString * _Nonnull)userID withStream:(MediaStream * _Nonnull)stream;
 - (void)screenShareStreamRemovedForPeer:(NSString * _Nonnull)userID withStream:(MediaStream * _Nonnull)stream;
 @end
@@ -726,7 +728,7 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
   \param renderer The view renderer that will display the video.
 
 */
-- (void)unattachMediaStream:(MediaStream * _Nonnull)stream renderer:(VideoRenderer * _Nonnull)renderer;
+- (void)unattachMediaStream:(MediaStream * _Nullable)stream renderer:(VideoRenderer * _Nonnull)renderer;
 /**
   Getting the participant’s voice level.
   \param userID User ID.
@@ -744,6 +746,7 @@ SWIFT_PROTOCOL("_TtP9VoxeetSDK20VTConferenceDelegate_")
 @protocol VTConferenceDelegate
 @optional
 - (void)participantAddedWithUserID:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo stream:(MediaStream * _Nonnull)stream;
+- (void)participantUpdatedWithUserID:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo stream:(MediaStream * _Nonnull)stream;
 - (void)participantRemovedWithUserID:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo;
 - (void)messageReceivedWithUserID:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo message:(NSString * _Nonnull)message;
 - (void)screenShareStartedWithUserID:(NSString * _Nonnull)userID stream:(MediaStream * _Nonnull)stream;

@@ -196,6 +196,27 @@ extension Conference: VTConferenceDelegate {
         }
     }
     
+    func participantUpdated(userID: String, userInfo: [String: Any], stream: MediaStream) {
+        var renderer: VideoRenderer?
+        
+        // Get the video renderer.
+        if VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID == userID {
+            renderer = ownCameraView
+        } else if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
+            renderer = cell.userVideoView
+            renderer?.isHidden = !stream.hasVideo
+        }
+        
+        // Attach/Unattach the stream.
+        if let renderer = renderer {
+            if stream.hasVideo {
+                VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: renderer)
+            } else {
+                VoxeetSDK.sharedInstance.conference.unattachMediaStream(stream, renderer: renderer)
+            }
+        }
+    }
+    
     func participantRemoved(userID: String, userInfo: [String: Any]) {
         users = users.filter({ $0.userID != userID })
         tableView.reloadData()

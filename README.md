@@ -19,12 +19,13 @@ The Voxeet SDK is a Swift library allowing users to:
   1. [SDK Usage](#sdk-usage)
   1. [VTAudioSound Usage](#vtaudiosound-usage)
   1. [Available delegates / callbacks](#available-delegates-callbacks)
+  1. [Publish your app with the Voxeet SDK](#publish-your-app-with-the-voxeet-sdk)
 
 ## Requirements
 
   - iOS 9.0+
   - Xcode 8.0+
-  - Swift 3.0+
+  - Swift 3.0.1+
 
 ## Sample Application
 
@@ -139,6 +140,8 @@ VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
 
 ### Joining a conference
 
+If you join a conference that does not exist, it will automatically create it. Basically you can use the join method instead of the create conference method above.
+
 ```swift
 VoxeetSDK.sharedInstance.conference.join(conferenceID: confID) { (error) in
 }
@@ -149,12 +152,30 @@ VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confAlias) { (error) i
 }
 ```
 
+There is optional parameter too:
+- parameter **video**: Starts own video by default.
+- parameter **userInfo**: With this dictionary, you can pass additional information. For example if the user is only in "listener" mode you can add: ["participantType": "listener"].
+
+```swift
+VoxeetSDK.sharedInstance.conference.join(conferenceID: conferenceID, video: true, userInfo: ["participantType": "listener"]) { (error) in
+}
+```
+
 ### Leaving a conference
 
 ```swift
 VoxeetSDK.sharedInstance.conference.leave { (error) in
 }
 ```
+
+### Sending broadcast message in a conference
+
+```swift
+VoxeetSDK.sharedInstance.conference.sendBroadcastMessage("message", completion: { (error) in
+})
+```
+
+To receive the broadcast message, you can use the messageReceived from the VTConferenceDelegate (see below: `Available delegates / callbacks` section)
 
 ### Getting a specific conference status
 
@@ -164,7 +185,19 @@ VoxeetSDK.sharedInstance.conference.status(conferenceID: "", success: { (json) i
 }
 ```
 
-### Getting own users
+### Subscribe to a conference to get its status within a notification
+Notification's name: `ConferenceStatusUpdated`
+```swift
+init() {
+    NotificationCenter.default.addObserver(self, selector: #selector(conferenceStatusUpdated), name: NSNotification.Name("ConferenceStatusUpdated"), object: nil)
+}
+
+func conferenceStatusUpdated(_ notification: Notification) {
+    //
+}
+```
+
+### Getting own user
 
 ```swift
 let ownUser = VoxeetSDK.sharedInstance.conference.getOwnUser()
@@ -201,13 +234,6 @@ VoxeetSDK.sharedInstance.conference.setUserDistance(0, userID: "userID")
 
 ```swift
 let (angle, distance) = VoxeetSDK.sharedInstance.conference.getUserPosition(userID: "userID")
-```
-
-### Sending broadcast message in a conference
-
-```swift
-VoxeetSDK.sharedInstance.conference.sendBroadcastMessage("message", completion: { (error) in
-})
 ```
 
 ### Muting / Unmuting a user
@@ -306,6 +332,9 @@ class myClass: VTConferenceDelegate {
     func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
     }
     
+    func participantUpdated(userID: String, userInfo: [String: Any], stream: MediaStream) {
+    }
+    
     func participantRemoved(userID: String, userInfo: [String: Any]) {
     }
     
@@ -322,6 +351,9 @@ class myClass: VTConferenceDelegate {
 or
 ```swift
 VoxeetSDK.sharedInstance.conference.participantAdded = { (userID, userInfo, stream) in
+}
+
+VoxeetSDK.sharedInstance.conference.participantUpdated = { (userID, userInfo, stream) in
 }
 
 VoxeetSDK.sharedInstance.conference.participantRemoved = { (userID, userInfo) in
@@ -367,6 +399,33 @@ public enum VTErrorType: ErrorType {
 }
 ```
 
+### Notification handler:
+
+Here is an example to handle the notification pushed by the Voxeet SDK (each time a notification is pushed, a log display the name of this one):
+
+```bash
+[DEBUG] Voxeet notification: \(NotificationName) (you can register to this notification to handle it)
+```
+
+```swift
+init() {
+    NotificationCenter.default.addObserver(self, selector: #selector(myFunc), name: NSNotification.Name("NotificationName"), object: nil)
+}
+
+func myFunc(notification: Notification) {
+    // Get JSON.
+    guard let userInfo = notification.userInfo?.values.first as? Data else {
+        return
+    }
+    
+    do {
+        let json = try JSONSerialization.jsonObject(with: userInfo, options: .mutableContainers)
+    } catch let error {
+        //
+    }
+}
+```
+
 ## VTAudioSound Usage
 
 VTAudioSound helps you to play a TrueVoice 3D audio sound into your application.  
@@ -377,9 +436,9 @@ The sound must be encoded in **mono** to be played spatialized.
 ```swift
 var sound: VTAudioSound?
 
-if let path = NSBundle.mainBundle().pathForResource("myFile", ofType: "mp3") {
+if let path = Bundle.main.path(forResource: "myFile", ofType: "mp3") {
     do {
-        sound = try VTAudioSound(url: NSURL(fileURLWithPath: path))
+        sound = try VTAudioSound(url: URL(fileURLWithPath: path))
     } catch let error {
         // Debug.
         print("::DEBUG:: \(error)")
@@ -453,9 +512,49 @@ sound?.distance = 0
 let distance = sound?.distance
 ```
 
+## Publish your app with the Voxeet SDK
+
+The SDK is built to compile with the simulator **AND** generic iOS device.
+Since november, Apple stop support "Fat libraries" like this one.
+So when you want to publish your app, you will need to execute a script that delete the simulator support:
+
+```bash
+APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
+
+# This script loops through the frameworks embedded in the application and
+# removes unused architectures.
+find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
+do
+    FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
+    FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
+    echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
+
+    EXTRACTED_ARCHS=()
+
+    for ARCH in $ARCHS
+    do
+        echo "Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME"
+        lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
+        EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
+    done
+
+    echo "Merging extracted architectures: ${ARCHS}"
+    lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
+    rm "${EXTRACTED_ARCHS[@]}"
+
+    echo "Replacing original executable with thinned version"
+    rm "$FRAMEWORK_EXECUTABLE_PATH"
+    mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
+
+done
+```
+
+You can add this script in the `Build Phases` of your project.
+Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/
+
 ## Version
 
-1.0.2.4
+1.0.2.5
 
 ## Tech
 

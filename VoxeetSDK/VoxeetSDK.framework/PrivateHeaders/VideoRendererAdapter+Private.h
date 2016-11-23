@@ -28,7 +28,7 @@
  * to this interface will be adapted and passed to the RTCVideoRenderer supplied
  * during construction. This pointer is unsafe and owned by this class.
  */
-@property(nonatomic, readonly)
+@property(nonatomic)
     rtc::VideoSinkInterface<cricket::VideoFrame> *nativeVideoRenderer;
 
 /** Initialize an RTCVideoRendererAdapter with an RTCVideoRenderer. */

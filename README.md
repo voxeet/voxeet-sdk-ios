@@ -33,9 +33,9 @@ A sample application is available on this [public repository](https://github.com
 
 ## Installing the iOS SDK
 
-You need to disable Bitcode in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
+You need to disable **Bitcode** in your Xcode target settings: 'Build Settings' -> 'Enable Bitcode' -> No
 
-To enable background mode, go to your target settings -> 'Capabilities' -> 'Background Modes'  
+To enable **background mode**, go to your target settings -> 'Capabilities' -> 'Background Modes'  
 - Turn on 'Audio, AirPlay and Picture in Picture'  
 - Turn on 'Voice over IP'
 
@@ -375,10 +375,10 @@ VoxeetSDK.sharedInstance.conference.screenShareStopped = { (userID) in
 
 ```swift
 public enum VTSessionState {
-    case NotConnected
-    case Connected
-    case Connecting
-    case Reconnecting
+    case notConnected
+    case connected
+    case connecting
+    case reconnecting
 }
 ```
 
@@ -386,16 +386,17 @@ public enum VTSessionState {
 
 ```swift
 public enum VTErrorType: ErrorType {
-    case Credential(String)
-    case InternalServer
-    case AccessToken
-    case NoLiveConference
-    case LeaveConference
-    case CreateConference
-    case JoinConference
-    case SendBroadcastMessage
-    case ServerError(String?)
-    case Error(ErrorType?)
+    case credential(String)
+    case internalServer
+    case accessToken
+    case noLiveConference
+    case leaveConference
+    case createConference
+    case joinConference
+    case sendBroadcastMessage
+    case statusCode(Int?)
+    case serverError(String?)
+    case error(Error?)
 }
 ```
 
@@ -515,7 +516,7 @@ let distance = sound?.distance
 ## Publish your app with the Voxeet SDK
 
 The SDK is built to compile with the simulator **AND** generic iOS device.
-Since november, Apple stop support "Fat libraries" like this one.
+Since november, Apple has stopped support "Fat libraries" like this one.
 So when you want to publish your app, you will need to execute a script that delete the simulator support:
 
 ```bash
@@ -554,7 +555,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.0.2.5
+1.0.2.5.1
 
 ## Tech
 

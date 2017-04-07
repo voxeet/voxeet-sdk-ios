@@ -14,13 +14,11 @@ class AudioEngineDemo: UIViewController {
     
     override func viewDidLoad() {
         // Initializes VTAudioSound.
-        if let path = Bundle.main.path(forResource: "Elephant-mono", ofType: "mp3") {
-            do {
-                elephantSound = try VTAudioSound(url: URL(fileURLWithPath: path))
-            } catch let error {
-                // Debug.
-                print("[ERROR] \(#function) - Error: \(error)")
-            }
+        do {
+            elephantSound = try VTAudioSound(forResource: "Elephant-mono", ofType: "mp3")
+        } catch let error {
+            // Debug.
+            print("[ERROR] \(#function) - Error: \(error)")
         }
     }
     
@@ -35,12 +33,12 @@ class AudioEngineDemo: UIViewController {
     
     @IBAction func angle(_ sender: UISlider) {
         // Updating sound spatialization.
-        elephantSound?.angle = Double(sender.value)
+        elephantSound?.angle = sender.value
     }
     
     @IBAction func distance(_ sender: UISlider) {
         // Updating sound spatialization.
-        elephantSound?.distance = Double(sender.value)
+        elephantSound?.distance = sender.value
     }
     
     @IBAction func loop(_ sender: UISwitch) {
@@ -54,15 +52,6 @@ class AudioEngineDemo: UIViewController {
     }
     
     @IBAction func play(_ sender: AnyObject) {
-        // Playing sound.
-        do {
-            try elephantSound?.play() {
-                // Debug.
-                print("[DEBUG] \(#function) - The sound has finished being played.")
-            }
-        } catch let error {
-            // Debug.
-            print("[ERROR] \(#function) - Error: \(error)")
-        }
+        try? elephantSound?.play()
     }
 }

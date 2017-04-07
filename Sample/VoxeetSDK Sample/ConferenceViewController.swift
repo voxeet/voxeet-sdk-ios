@@ -1,5 +1,5 @@
 //
-//  Conference.swift
+//  ConferenceViewController.swift
 //  VoxeetSDK Sample
 //
 //  Created by Coco on 28/04/16.
@@ -24,7 +24,7 @@ struct User {
  *  MARK: - Conference class
  */
 
-class Conference: UIViewController {
+class ConferenceViewController: UIViewController {
     // UI.
     @IBOutlet weak var conferenceIDLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -49,25 +49,23 @@ class Conference: UIViewController {
         conferenceIDLabel.text = conferenceID
         
         // Conference delegate.
-        VoxeetSDK.sharedInstance.conference.delegate = self
+        VoxeetSDK.shared.conference.delegate = self
         
         // Joining / Launching demo.
         if let confID = conferenceID {
             // Joining Conference.
-            VoxeetSDK.sharedInstance.conference.join(conferenceAlias: confID, video: true) { (error) in
-                if error != nil {
-                    // Debug.
-                    print("[ERROR] \(#function) - Error: \(error)")
-                    
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            VoxeetSDK.shared.conference.join(conferenceID: confID, video: true, fail: { (error) in
+                // Debug.
+                print("[ERROR] \(#function) - Error: \(error)")
+                
+                self.dismiss(animated: true, completion: nil)
+            })
         } else {
             conferenceIDLabel.text = "Demo"
             
             // Creating Voxeet demo conference.
-            VoxeetSDK.sharedInstance.conference.createDemo { (error) in
-                if error != nil {
+            VoxeetSDK.shared.conference.createDemo { (error) in
+                if let error = error {
                     // Debug.
                     print("[ERROR] \(#function) - Error: \(error)")
                     
@@ -104,8 +102,8 @@ class Conference: UIViewController {
             if let textField = alertController.textFields?[0],
                 let message = textField.text {
                 // Sending a broadcast message.
-                VoxeetSDK.sharedInstance.conference.sendBroadcastMessage(message, completion: { (error) in
-                    if error != nil {
+                VoxeetSDK.shared.conference.sendBroadcastMessage(message, completion: { (error) in
+                    if let error = error {
                         // Debug.
                         print("[ERROR] \(#function) - Error: \(error)")
                     }
@@ -126,12 +124,12 @@ class Conference: UIViewController {
     }
     
     @IBAction func switchDeviceSpeaker(_ button: UIButton) {
-        VoxeetSDK.sharedInstance.conference.switchDeviceSpeaker()
+        VoxeetSDK.shared.conference.switchDeviceSpeaker()
     }
     
     @IBAction func hangUp(_ sender: AnyObject) {
-        VoxeetSDK.sharedInstance.conference.leave { (error) in
-            if error != nil {
+        VoxeetSDK.shared.conference.leave { (error) in
+            if let error = error {
                 // Debug.
                 print("[ERROR] \(#function) - Error: \(error)")
             }
@@ -141,21 +139,21 @@ class Conference: UIViewController {
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
-        VoxeetSDK.sharedInstance.conference.flipCamera()
+        VoxeetSDK.shared.conference.flipCamera()
     }
     
     @IBAction func ownVideo(_ button: UIButton) {
-        guard let userID = VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID else {
+        guard let userID = VoxeetSDK.shared.conference.getOwnUser()?.userID else {
             return
         }
         
         button.isEnabled = false
         if button.isSelected {
-            VoxeetSDK.sharedInstance.conference.stopVideo(userID: userID, completion: { _ in
+            VoxeetSDK.shared.conference.stopVideo(userID: userID, completion: { _ in
                 button.isEnabled = true
             })
         } else {
-            VoxeetSDK.sharedInstance.conference.startVideo(userID: userID, completion: { _ in
+            VoxeetSDK.shared.conference.startVideo(userID: userID, completion: { _ in
                 button.isEnabled = true
             })
         }
@@ -177,21 +175,21 @@ class Conference: UIViewController {
  *  MARK: - Voxeet SDK conference delegate
  */
 
-extension Conference: VTConferenceDelegate {
+extension ConferenceViewController: VTConferenceDelegate {
     func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
-        if VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID == userID {
+        if VoxeetSDK.shared.conference.getOwnUser()?.userID == userID {
             // Attaching own user's video stream.
             ownCameraView.isHidden = false
-            VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: ownCameraView)
+            VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
         } else {
             // Save the user and refresh the tableView.
             users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
             tableView.reloadData()
-
+            
             if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
                 // Attaching user's video stream.
                 cell.userVideoView.isHidden = false
-                VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: cell.userVideoView)
+                VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: cell.userVideoView)
             }
         }
     }
@@ -200,7 +198,7 @@ extension Conference: VTConferenceDelegate {
         var renderer: VideoRenderer?
         
         // Get the video renderer.
-        if VoxeetSDK.sharedInstance.conference.getOwnUser()?.userID == userID {
+        if VoxeetSDK.shared.conference.getOwnUser()?.userID == userID {
             renderer = ownCameraView
         } else if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
             renderer = cell.userVideoView
@@ -210,9 +208,9 @@ extension Conference: VTConferenceDelegate {
         // Attach/Unattach the stream.
         if let renderer = renderer {
             if stream.hasVideo {
-                VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: renderer)
+                VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: renderer)
             } else {
-                VoxeetSDK.sharedInstance.conference.unattachMediaStream(stream, renderer: renderer)
+                VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: renderer)
             }
         }
     }
@@ -230,20 +228,19 @@ extension Conference: VTConferenceDelegate {
         }
     }
     
-    func screenShareStarted(stream: MediaStream, userID: String) {
+    func screenShareStarted(userID: String, stream: MediaStream) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.sharedInstance.conference.attachMediaStream(stream, renderer: screenShareView)
+        VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: screenShareView)
     }
     
-    func screenShareStopped(userID: String) {
-    }
+    func screenShareStopped(userID: String) {}
 }
 
 /*
  *  MARK: - Conference tableView dataSource & delegate
  */
 
-extension Conference: UITableViewDataSource, UITableViewDelegate {
+extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
@@ -265,11 +262,11 @@ extension Conference: UITableViewDataSource, UITableViewDelegate {
         
         // Mutes a user.
         let user = users[(indexPath as NSIndexPath).row]
-        VoxeetSDK.sharedInstance.conference.muteUser(!VoxeetSDK.sharedInstance.conference.isUserMuted(userID: user.userID), userID: user.userID)
+        VoxeetSDK.shared.conference.muteUser(!VoxeetSDK.shared.conference.isUserMuted(userID: user.userID), userID: user.userID)
         
         // Update background color.
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.backgroundColor = VoxeetSDK.sharedInstance.conference.isUserMuted(userID: user.userID) ? UIColor.red : UIColor.white
+            cell.backgroundColor = VoxeetSDK.shared.conference.isUserMuted(userID: user.userID) ? UIColor.red : UIColor.white
         }
     }
 }

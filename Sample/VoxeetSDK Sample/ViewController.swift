@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     @IBAction func createConference(_ sender: AnyObject) {
         // Conference creation.
-        VoxeetSDK.sharedInstance.conference.create(success: { (confID, confAlias) in
+        VoxeetSDK.shared.conference.create(success: { (confID, confAlias) in
             // Debug.
             print("[DEBUG] \(#function) - Conference ID: \(confID), conference Alias: \(confAlias)")
             
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     fileprivate func presentConferenceVC(_ confID: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! Conference
+        let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
         conferenceVC.conferenceID = confID
         self.present(conferenceVC, animated: true, completion: nil)
     }

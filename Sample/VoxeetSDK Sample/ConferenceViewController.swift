@@ -54,7 +54,7 @@ class ConferenceViewController: UIViewController {
         // Joining / Launching demo.
         if let confID = conferenceID {
             // Joining Conference.
-            VoxeetSDK.shared.conference.join(conferenceID: confID, video: true, fail: { (error) in
+            VoxeetSDK.shared.conference.join(conferenceID: confID, video: true, success: nil, fail: { (error) in
                 // Debug.
                 print("[ERROR] \(#function) - Error: \(error)")
                 

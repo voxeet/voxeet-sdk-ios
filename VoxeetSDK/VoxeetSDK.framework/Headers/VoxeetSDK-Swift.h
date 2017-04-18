@@ -178,10 +178,6 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 - (void)screenShareStreamRemovedForPeer:(NSString * _Nonnull)userID withStream:(MediaStream * _Nonnull)stream;
 @end
 
-
-@interface VTConference (SWIFT_EXTENSION(VoxeetSDK))
-@end
-
 @class VideoRenderer;
 
 @interface VTConference (SWIFT_EXTENSION(VoxeetSDK))
@@ -247,6 +243,10 @@ SWIFT_CLASS("_TtC9VoxeetSDK12VTConference")
 - (double)getVoiceLevelWithUserID:(NSString * _Nonnull)userID SWIFT_WARN_UNUSED_RESULT;
 /// Flipping the device camera (front/back).
 - (void)flipCamera;
+@end
+
+
+@interface VTConference (SWIFT_EXTENSION(VoxeetSDK))
 @end
 
 

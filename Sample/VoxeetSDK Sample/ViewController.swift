@@ -28,16 +28,21 @@ class ViewController: UIViewController {
     
     @IBAction func createConference(_ sender: AnyObject) {
         // Conference creation.
-        VoxeetSDK.shared.conference.create(success: { (confID, confAlias) in
+        VoxeetSDK.shared.conference.create(success: { (json) in
+            guard let confID = json?["conferenceId"] as? String, let confAlias = json?["conferenceAlias"] as? String else {
+                // Debug.
+                print("[ERROR] \(String(describing: self)).\(#function).\(#line)")
+                return
+            }
+            
             // Debug.
-            print("[DEBUG] \(#function) - Conference ID: \(confID), conference Alias: \(confAlias)")
+            print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - Conference ID: \(confID), conference Alias: \(confAlias)")
             
             // Start the conference viewController.
             self.presentConferenceVC(confAlias)
-            
-            }, fail: { (error) in
-                // Debug.
-                print("[ERROR] \(#function) - Error: \(error)")
+        }, fail: { (error) in
+            // Debug.
+            print("[ERROR] \(String(describing: self)).\(#function).\(#line) - Error: \(error)")
         })
     }
     

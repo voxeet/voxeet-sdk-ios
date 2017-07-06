@@ -1,6 +1,8 @@
 # Voxeet iOS SDK
 
-![Voxeet SDK logo](http://www.voxeet.com/wp-content/uploads/2016/05/SDK-API-768x180.png "Voxeet SDK logo")
+<p align="center">
+<img src="http://www.voxeet.com/wp-content/uploads/2016/05/SDK-API-768x180.png" alt="Voxeet SDK logo" title="Voxeet SDK logo" width="700"/>
+</p>
 
 The Voxeet SDK is a Swift library allowing users to:
 
@@ -31,8 +33,8 @@ The Voxeet SDK is a Swift library allowing users to:
 
 ## Sample Application
 
-A sample application is available on this [public repository](https://github.com/voxeet/ios-sdk-sample/tree/master/Sample) on GitHub.
-You can also use a ready to go UI with the **VoxeetConferenceKit** available at this [link](https://github.com/voxeet/ios-conferencekit-sample) which use this SDK.
+A sample application is available on this [public repository](https://github.com/voxeet/voxeet-ios-sdk/tree/master/Sample) on GitHub.
+You can also use a ready to go UI with the **VoxeetConferenceKit** available at this [link](https://github.com/voxeet/voxeet-ios-conferencekit) which use this SDK.
 
 ## Installing the iOS SDK
 
@@ -44,7 +46,9 @@ To enable **background mode**, go to your target settings -> 'Capabilities' -> '
 
 If you want to support CallKit (receiving incoming call when application is killed) and VoIP push notifications, also enable 'Push Notifications' (you will need to send your voip push certificates to Voxeet).
 
-![Capabilities](http://cdn.voxeet.com/images/VoxeetConferenceKitCapabilitiesXCode2.png "Capabilities")
+<p align="center">
+<img src="http://cdn.voxeet.com/images/VoxeetConferenceKitCapabilitiesXCode2.png" alt="Capabilities" title="Capabilities" width="500"/>
+</p>
 
 Privacy **permissions**, in your plist add two new keys: 
 - Privacy - Camera Usage Description
@@ -88,7 +92,7 @@ $ brew install carthage
 To integrate VoxeetSDK into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "voxeet/ios-sdk-sample" ~> 1.0
+github "voxeet/voxeet-ios-sdk" ~> 1.0
 ```
 
 Run `carthage update` to build the framework and drag the built `VoxeetSDK.framework` into your Xcode project *(needs to be dropped in 'Embedded Binaries' and 'Linked Frameworks and Libraries')*.
@@ -139,7 +143,7 @@ This allows you to ask guest users to introduce themselves and provide their dis
 VoxeetSDK.shared.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret", userInfo: ["externalId": "1234", "externalName": "User", "externalPhotoUrl": "http://voxeet.com/voxeet-logo.jpg"])
 ```
 
-### Openning a session *(optional)*
+### Openning a session *(manually)*
 
 Openning a session is like a login. However you need to have initialized the SDK with `automaticallyOpenSession` sets to **false**.
 
@@ -156,7 +160,7 @@ VoxeetSDK.shared.openSession(userID: userID, userInfo: userInfo, completion: { (
 })
 ```
 
-### Closing a session *(optional)*
+### Closing a session *(manually)*
 
 Closing a session is like a logout, it will stop the socket and stop sending VoIP push notification.
 
@@ -406,7 +410,7 @@ You can also start the VoxeetSDK with the built in speaker enable by default or 
 VoxeetSDK.shared.defaultBuiltInSpeaker = true / false
 ```
 
-### Flipping the device camera (front/back)
+### Flipping the device camera (front / back)
 
 ```swift
 VoxeetSDK.shared.conference.flipCamera()

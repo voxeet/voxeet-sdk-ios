@@ -28,8 +28,8 @@ The Voxeet SDK is a Swift library allowing users to:
 ## Requirements
 
   - iOS 9.0+
-  - Xcode 8.0+
-  - Swift 3.1+
+  - Xcode 9.0+
+  - Swift 4.0+
 
 ## Sample Application
 
@@ -749,7 +749,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.0.5
+1.0.6
 
 ## Tech
 

@@ -64,7 +64,7 @@ class ConferenceViewController: UIViewController {
             conferenceIDLabel.text = "Demo"
             
             // Creating Voxeet demo conference.
-            VoxeetSDK.shared.conference.createDemo { (error) in
+            VoxeetSDK.shared.conference.demo { (error) in
                 if let error = error {
                     // Debug.
                     print("[ERROR] \(#function) - Error: \(error)")
@@ -102,7 +102,7 @@ class ConferenceViewController: UIViewController {
             if let textField = alertController.textFields?[0],
                 let message = textField.text {
                 // Sending a broadcast message.
-                VoxeetSDK.shared.conference.sendBroadcastMessage(message, completion: { (error) in
+                VoxeetSDK.shared.conference.broadcast(message: message, completion: { (error) in
                     if let error = error {
                         // Debug.
                         print("[ERROR] \(#function) - Error: \(error)")

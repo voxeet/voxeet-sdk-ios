@@ -9,8 +9,8 @@
 import UIKit
 import VoxeetSDK
 
-// NSUserDefaults.
-let VTConfID = "VTConfID"
+// Constant NSUserDefaults to save previous conference name.
+let VTConferenceName = "VTConferenceName"
 
 class ViewController: UIViewController {
     
@@ -29,17 +29,17 @@ class ViewController: UIViewController {
     @IBAction func createConference(_ sender: AnyObject) {
         // Conference creation.
         VoxeetSDK.shared.conference.create(success: { (json) in
-            guard let confID = json?["conferenceId"] as? String, let confAlias = json?["conferenceAlias"] as? String else {
+            guard let conferenceID = json?["conferenceId"] as? String, let conferenceAlias = json?["conferenceAlias"] as? String else {
                 // Debug.
                 print("[ERROR] \(String(describing: self)).\(#function).\(#line)")
                 return
             }
             
             // Debug.
-            print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - Conference ID: \(confID), conference Alias: \(confAlias)")
+            print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - Conference ID: \(conferenceID), conference alias: \(conferenceAlias)")
             
             // Start the conference viewController.
-            self.presentConferenceVC(confAlias)
+            self.presentConferenceVC(conferenceName: conferenceAlias)
         }, fail: { (error) in
             // Debug.
             print("[ERROR] \(String(describing: self)).\(#function).\(#line) - Error: \(error)")
@@ -53,13 +53,13 @@ class ViewController: UIViewController {
         // Alert actions.
         let confirmAction = UIAlertAction(title: "Join", style: .default) { (_) in
             if let textField = alertController.textFields?[0],
-                let confID = textField.text {
+                let conferenceName = textField.text {
                 
                 // Start the conference viewController.
-                self.presentConferenceVC(confID)
+                self.presentConferenceVC(conferenceName: conferenceName)
                 
-                // Save the current conference ID.
-                UserDefaults.standard.set(confID, forKey: VTConfID)
+                // Save the current conference name.
+                UserDefaults.standard.set(conferenceName, forKey: VTConferenceName)
                 UserDefaults.standard.synchronize()
             }
         }
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
             textField.clearButtonMode = .whileEditing
             
             // Setting the textfield's text with the previous text saved (NSUserDefaults).
-            let text = UserDefaults.standard.string(forKey: VTConfID)
+            let text = UserDefaults.standard.string(forKey: VTConferenceName)
             textField.text = text
         }
         
@@ -84,10 +84,10 @@ class ViewController: UIViewController {
      *  MARK: Present conference viewController
      */
     
-    fileprivate func presentConferenceVC(_ confID: String) {
+    private func presentConferenceVC(conferenceName: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
-        conferenceVC.conferenceID = confID
+        conferenceVC.conferenceID = conferenceName
         self.present(conferenceVC, animated: true, completion: nil)
     }
 }

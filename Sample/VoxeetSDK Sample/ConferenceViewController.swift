@@ -10,17 +10,6 @@ import UIKit
 import VoxeetSDK
 
 /*
- *  MARK: - User structure
- */
-
-struct User {
-    var userID: String
-    var externalID: String?
-    var avatarUrl: String?
-    var name: String?
-}
-
-/*
  *  MARK: - Conference class
  */
 
@@ -37,9 +26,6 @@ class ConferenceViewController: UIViewController {
     // Current conference ID.
     var conferenceID: String?
     
-    // Users' data.
-    var users = [User]()
-    
     /*
      *  MARK: Load / Unload
      */
@@ -51,7 +37,7 @@ class ConferenceViewController: UIViewController {
         // Conference delegate.
         VoxeetSDK.shared.conference.delegate = self
         
-        // Joining / Launching demo.
+        // Joining / launching demo.
         if let confID = conferenceID {
             // Joining Conference.
             VoxeetSDK.shared.conference.join(conferenceID: confID, video: true, userInfo: nil, success: nil, fail: { (error) in
@@ -78,7 +64,7 @@ class ConferenceViewController: UIViewController {
             ownCameraHandlerButton.isHidden = true
         }
         
-        // Select/Deselect the switchDeviceSpeakerButton when an audio session route is changed.
+        // Select / deselect the switchDeviceSpeakerButton when an headset is plugged.
         NotificationCenter.default.addObserver(self, selector: #selector(audioSessionRouteChange), name: NSNotification.Name.AVAudioSessionRouteChange, object: nil)
     }
     
@@ -143,7 +129,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func ownVideo(_ button: UIButton) {
-        guard let userID = VoxeetSDK.shared.conference.getOwnUser()?.userID else {
+        guard let userID = VoxeetSDK.shared.conference.ownUser?.id else {
             return
         }
         
@@ -164,7 +150,7 @@ class ConferenceViewController: UIViewController {
      *  MARK: Observer
      */
     
-    dynamic func audioSessionRouteChange() {
+    @objc func audioSessionRouteChange() {
         DispatchQueue.main.async {
             self.switchDeviceSpeakerButton.isSelected = AVAudioSession.sharedInstance().currentRoute.outputs.first?.portType == AVAudioSessionPortBuiltInSpeaker
         }
@@ -177,16 +163,17 @@ class ConferenceViewController: UIViewController {
 
 extension ConferenceViewController: VTConferenceDelegate {
     func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
-        if VoxeetSDK.shared.conference.getOwnUser()?.userID == userID {
+        if VoxeetSDK.shared.conference.ownUser?.id == userID {
             // Attaching own user's video stream.
             ownCameraView.isHidden = false
             VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
         } else {
             // Save the user and refresh the tableView.
-            users.append(User(userID: userID, externalID: userInfo["externalId"] as? String, avatarUrl: userInfo["avatarUrl"] as? String, name: userInfo["name"] as? String))
             tableView.reloadData()
             
-            if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
+            // Getting user's cell.
+            let users = VoxeetSDK.shared.conference.users
+            if let index = users.index(where: { $0.id == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
                 // Attaching user's video stream.
                 cell.userVideoView.isHidden = false
                 VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: cell.userVideoView)
@@ -195,17 +182,18 @@ extension ConferenceViewController: VTConferenceDelegate {
     }
     
     func participantUpdated(userID: String, userInfo: [String: Any], stream: MediaStream) {
+        let users = VoxeetSDK.shared.conference.users
         var renderer: VideoRenderer?
         
         // Get the video renderer.
-        if VoxeetSDK.shared.conference.getOwnUser()?.userID == userID {
+        if VoxeetSDK.shared.conference.ownUser?.id == userID {
             renderer = ownCameraView
-        } else if let index = self.users.index(where: { $0.userID == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
+        } else if let index = users.index(where: { $0.id == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
             renderer = cell.userVideoView
             renderer?.isHidden = !stream.hasVideo
         }
         
-        // Attach/Unattach the stream.
+        // Attach / unattach the stream.
         if let renderer = renderer {
             if stream.hasVideo {
                 VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: renderer)
@@ -216,12 +204,11 @@ extension ConferenceViewController: VTConferenceDelegate {
     }
     
     func participantRemoved(userID: String, userInfo: [String: Any]) {
-        users = users.filter({ $0.userID != userID })
         tableView.reloadData()
     }
     
     func messageReceived(userID: String, userInfo: [String: Any], message: String) {
-        if let name = users.filter({ $0.userID == userID }).first?.name {
+        if let name = VoxeetSDK.shared.conference.user(userID: userID)?.externalName() {
             broadcastMessageTextView.text = "\(name): \(message)"
         } else {
             broadcastMessageTextView.text = "\(userID): \(message)"
@@ -242,17 +229,18 @@ extension ConferenceViewController: VTConferenceDelegate {
 
 extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return VoxeetSDK.shared.conference.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! ConferenceTableViewCell
         
         // Getting the current user.
+        let users = VoxeetSDK.shared.conference.users
         let user = users[(indexPath as NSIndexPath).row]
         
         // Setting up the cell.
-        cell.setUp(user)
+        cell.setUp(user: user)
         
         return cell
     }
@@ -260,13 +248,16 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Mutes a user.
+        // Mute a user.
+        let users = VoxeetSDK.shared.conference.users
         let user = users[(indexPath as NSIndexPath).row]
-        VoxeetSDK.shared.conference.muteUser(!VoxeetSDK.shared.conference.isUserMuted(userID: user.userID), userID: user.userID)
-        
-        // Update background color.
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.backgroundColor = VoxeetSDK.shared.conference.isUserMuted(userID: user.userID) ? UIColor.red : UIColor.white
+        if let userID = user.id {
+            let isMuted = VoxeetSDK.shared.conference.toggleMute(userID: userID)
+            
+            // Update background color.
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.backgroundColor = isMuted ? UIColor.red : UIColor.white
+            }
         }
     }
 }

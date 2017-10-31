@@ -11,31 +11,29 @@ import CoreData
 import VoxeetSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionStateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
     
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Initialization of the Voxeet SDK.
+        VoxeetSDK.shared.initialize(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
+        
         // Start conference on the main speaker by default.
         VoxeetSDK.shared.defaultBuiltInSpeaker = true
-        // Disable CallKit.
-        VoxeetSDK.shared.enableCallKit = false
-        
-        // Initialization of the Voxeet SDK.
-        VoxeetSDK.shared.initializeSDK(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
         
         // Session delegate.
-        VoxeetSDK.shared.sessionStateDelegate = self
+        VoxeetSDK.shared.session.delegate = self
         
         return true
     }
     
     /*
-     *  MARK: VTSessionState Delegate
+     *  MARK: VTSessionDelegate example
      */
     
-    func sessionStateChanged(state: VTSessionState) {
+    func sessionUpdated(state: VTSessionState) {
         // Debug.
-        print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - State: \(state)")
+        print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - State: \(state.rawValue)")
     }
 }

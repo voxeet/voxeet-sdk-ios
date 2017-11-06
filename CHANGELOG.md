@@ -3,13 +3,22 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.0.8](#108) Release
 - [1.0.7](#107) Release
 
 ---
 
+## [1.0.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.8)
+
+Released on 2017-11-06.
+
+Convert for Swift 4.0.2.
+
 ## [1.0.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.7)
 
 Released on 2017-10-31.
+
+VoxeetSDK is now fully compatible with Swift / Objective-C.
 
 #### Added
 

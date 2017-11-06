@@ -706,7 +706,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.0.7
+1.0.8
 
 ## Tech
 

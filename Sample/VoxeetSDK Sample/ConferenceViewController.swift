@@ -129,7 +129,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func ownVideo(_ button: UIButton) {
-        guard let userID = VoxeetSDK.shared.conference.ownUser?.id else {
+        guard let userID = VoxeetSDK.shared.session.user?.id else {
             return
         }
         
@@ -163,7 +163,7 @@ class ConferenceViewController: UIViewController {
 
 extension ConferenceViewController: VTConferenceDelegate {
     func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
-        if VoxeetSDK.shared.conference.ownUser?.id == userID {
+        if VoxeetSDK.shared.session.user?.id == userID {
             // Attaching own user's video stream.
             ownCameraView.isHidden = false
             VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
@@ -186,7 +186,7 @@ extension ConferenceViewController: VTConferenceDelegate {
         var renderer: VideoRenderer?
         
         // Get the video renderer.
-        if VoxeetSDK.shared.conference.ownUser?.id == userID {
+        if VoxeetSDK.shared.session.user?.id == userID {
             renderer = ownCameraView
         } else if let index = users.index(where: { $0.id == userID }), let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ConferenceTableViewCell {
             renderer = cell.userVideoView

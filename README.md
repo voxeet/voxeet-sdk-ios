@@ -227,6 +227,17 @@ VoxeetSDK.shared.conference.leave { (error) in
 }
 ```
 
+### Getting conference ID / alias
+
+Getting current conference identifiers (`id` is the internal Voxeet identifier for a conference despite `alias` is your custom ID).
+Both are nulls if there a no live conference.
+
+```swift
+let confID = VoxeetSDK.shared.conference.id
+
+let confAlias = VoxeetSDK.shared.conference.alias
+```
+
 ### Sending broadcast message in a conference
 
 ```swift
@@ -338,7 +349,7 @@ VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, offset: 1000, com
 Returns a VTUser object.
 
 ```swift
-let ownUser = VoxeetSDK.shared.conference.ownUser
+let ownUser = VoxeetSDK.shared.session.user
 
 let user = VoxeetSDK.shared.conference.user(userID: "userID")
 ```
@@ -352,6 +363,8 @@ let users = VoxeetSDK.shared.conference.users
 ```
 
 ### Changing user position
+
+With this method you can spatialized sound for a user with the TrueVoice technology (only locally).
 
 ```swift
 // Values for angle and distance are between: angle = [-1, 1], distance = [0, 1]
@@ -415,7 +428,7 @@ VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: videoRenderer)
 You can "mute / unmute" someone's video with its user ID (however you can't force starting or stopping a video from a specific user other than you).
 
 ```swift
-let ownUserID = VoxeetSDK.shared.conference.ownUser!.id!
+let ownUserID = VoxeetSDK.shared.session.user!.id!
 
 // Start own video.
 VoxeetSDK.shared.conference.startVideo(userID: ownUserID, completion: { (error) in
@@ -706,7 +719,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.0.8
+1.0.9
 
 ## Tech
 

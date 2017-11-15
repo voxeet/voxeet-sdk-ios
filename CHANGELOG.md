@@ -3,10 +3,26 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.0.9](#109) Release
 - [1.0.8](#108) Release
 - [1.0.7](#107) Release
 
 ---
+
+## [1.0.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.9)
+
+Released on 2017-11-15.
+
+#### Added
+
+- VoxeetSDK.shared.conference.alias (custom conference identifier)
+
+#### Updated
+
+- VoxeetSDK.shared.conference.id is now the internal Voxeet identifier for a live conference.
+
+- VoxeetSDK.shared.conference.ownUser
+    - VoxeetSDK.shared.session.user
 
 ## [1.0.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.8)
 

@@ -21,6 +21,9 @@ Released on 2017-11-15.
 
 - VoxeetSDK.shared.conference.id is now the internal Voxeet identifier for a live conference.
 
+- VoxeetSDK.shared.conference.liveConferenceID()
+    - VoxeetSDK.shared.conference.id
+
 - VoxeetSDK.shared.conference.ownUser
     - VoxeetSDK.shared.session.user
 

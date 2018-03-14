@@ -1,7 +1,7 @@
 # Voxeet iOS SDK
 
 <p align="center">
-<img src="http://www.voxeet.com/wp-content/uploads/2016/05/SDK-API-768x180.png" alt="Voxeet SDK logo" title="Voxeet SDK logo" width="700"/>
+<img src="https://www.voxeet.com/wp-content/themes/wp-theme/assets/images/logo.svg" alt="Voxeet SDK logo" title="Voxeet SDK logo" width="100"/>
 </p>
 
 Voxeet SDK is a Swift library allowing users to:
@@ -21,7 +21,7 @@ Voxeet SDK is a Swift library allowing users to:
   1. [SDK Initialization](#sdk-initialization)
   1. [SDK Usage](#sdk-usage)
   1. [VTAudioSound Usage](#vtaudiosound-usage)
-  1. [Available delegates / callbacks](#available-delegates-callbacks)
+  1. [Available delegates / callbacks](#available-delegates--callbacks)
   1. [Publish your app with the Voxeet SDK](#publish-your-app-with-the-voxeet-sdk)
 
 ## Requirements

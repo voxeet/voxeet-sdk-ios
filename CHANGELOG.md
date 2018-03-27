@@ -3,11 +3,33 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.1.0](#110) Release
 - [1.0.9](#109) Release
 - [1.0.8](#108) Release
 - [1.0.7](#107) Release
 
 ---
+
+## [1.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.1.0)
+
+Released on 2018-03-27.
+
+#### Added
+
+- VoxeetSDK.shared.conference.subscribe(conferenceAlias:success:fail:)
+- VoxeetSDK.shared.conference.unsubscribe(conferenceAlias:success:fail:)
+- VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID:completion:)
+- VoxeetSDK.shared.blacklist(externalID:ban:completion:)
+- VoxeetSDK.shared.callKit
+- VoxeetSDK.shared.defaultVideo
+- VoxeetSDK.shared.incomingCallTimeout
+
+#### Updated
+
+- VoxeetSDK.shared.conference.subscribe(conferenceID:completion:)
+    - VoxeetSDK.shared.conference.statusSubscribe(conferenceID:completion:)
+- VoxeetSDK.shared.conference.startRecording(conferenceID:completion:)
+    - VoxeetSDK.shared.conference.startRecording(conferenceID:fireInterval:completion:)
 
 ## [1.0.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.9)
 

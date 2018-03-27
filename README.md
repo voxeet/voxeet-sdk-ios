@@ -267,7 +267,12 @@ Notification's name: `VTConferenceStatusUpdated`
 init() {
     NotificationCenter.default.addObserver(self, selector: #selector(conferenceStatusUpdated), name: .VTConferenceStatusUpdated, object: nil)
     
-    VoxeetSDK.shared.conference.subscribe(conferenceID: conferenceID, completion: { (error) in 
+    // Subscribe.
+    VoxeetSDK.shared.conference.statusSubscribe(conferenceID: conferenceID, completion: { (error) in 
+    })
+    
+    // Unsubscribe.
+    VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID: conferenceID, completion: { (error) in 
     })
 }
 
@@ -313,6 +318,20 @@ VoxeetSDK.shared.conference.decline(conferenceID: confID, completion: { (error) 
 })
 ```
 
+### Subscribe / unsubscribe to an invitation simulation
+
+```swift
+// Subscribe.
+VoxeetSDK.shared.conference.subscribe(conferenceAlias: conferenceAlias, success: { (json) in
+}, fail: { (error) in
+})
+
+// Unsubscribe.
+VoxeetSDK.shared.conference.unsubscribe(conferenceAlias: conferenceAlias, success: { (json) in
+}, fail: { (error) in
+})
+```
+
 ### Start / stop recording the current conference
 
 To record you need to be in the conference.
@@ -341,6 +360,15 @@ You can pass an additional argument to start the replay after x milliseconds (of
 ```swift
 // Replay a conference without the first second.
 VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, offset: 1000, completion: { (error) in
+})
+```
+
+### Blacklisting / unblacklisting
+
+Blacklisting / unblacklisting an external ID to not receive notifications from this user anymore.
+
+```swift
+VoxeetSDK.shared.blacklist(externalID: "1234", ban: true, completion: { (error) in
 })
 ```
 
@@ -719,7 +747,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.0.9
+1.1.0
 
 ## Tech
 

@@ -747,7 +747,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.1.0
+1.1.1
 
 ## Tech
 

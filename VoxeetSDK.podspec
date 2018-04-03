@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "VoxeetSDK"
-  s.version = "1.1.0"
+  s.version = "1.1.1"
   s.summary = "iOS library for Voxeet"
   s.homepage = "http://voxeet.com"
   s.author = { "Voxeet, Inc" => "support@voxeet.com" }

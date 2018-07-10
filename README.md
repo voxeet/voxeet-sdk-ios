@@ -747,7 +747,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.1.1
+1.1.2
 
 ## Tech
 
@@ -758,4 +758,4 @@ The Voxeet iOS SDK uses a number of open source projects to work properly:
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
 * [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) - Crypto related functions and helpers for Swift implemented in Swift.
 
-© Voxeet, 2017
+© Voxeet, 2018

@@ -53,30 +53,6 @@ Privacy **permissions**, add two new keys in the Info.plist:
 - Privacy - Microphone Usage Description
 - Privacy - Camera Usage Description
 
-### Installation with CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ sudo gem install cocoapods --pre
-```
-
-To integrate VoxeetSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-use_frameworks!
-
-target "YourTarget" do
-       pod 'VoxeetSDK', '~> 1.0'
-end
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
-
 ### Installation with Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.

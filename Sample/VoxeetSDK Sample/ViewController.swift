@@ -9,10 +9,10 @@
 import UIKit
 import VoxeetSDK
 
-// Constant NSUserDefaults to save previous conference name.
-let VTConferenceName = "VTConferenceName"
-
 class ViewController: UIViewController {
+    
+    // Constant NSUserDefaults to save previous conference name.
+    let conferenceName = "VTConferenceName"
     
     /*
      *  MARK: Load
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
                 self.presentConferenceVC(conferenceName: conferenceName)
                 
                 // Save the current conference name.
-                UserDefaults.standard.set(conferenceName, forKey: VTConferenceName)
+                UserDefaults.standard.set(conferenceName, forKey: self.conferenceName)
                 UserDefaults.standard.synchronize()
             }
         }
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
             textField.clearButtonMode = .whileEditing
             
             // Setting the textfield's text with the previous text saved (NSUserDefaults).
-            let text = UserDefaults.standard.string(forKey: VTConferenceName)
+            let text = UserDefaults.standard.string(forKey: self.conferenceName)
             textField.text = text
         }
         

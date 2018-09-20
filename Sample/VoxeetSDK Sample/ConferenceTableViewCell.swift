@@ -10,15 +10,16 @@ import Foundation
 import VoxeetSDK
 
 class ConferenceTableViewCell: UITableViewCell {
+    
     // UI.
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var angleSlider: UISlider!
-    @IBOutlet weak var distanceSlider: UISlider!
-    @IBOutlet weak var userVideoView: VideoRenderer!
+    @IBOutlet weak private var userLabel: UILabel!
+    @IBOutlet weak private var userPhoto: UIImageView!
+    @IBOutlet weak private var angleSlider: UISlider!
+    @IBOutlet weak private var distanceSlider: UISlider!
+    @IBOutlet weak private var userVideoView: VTVideoView!
     
     // Data.
-    var user: VTUser!
+    private var user: VTUser!
     
     /*
      *  MARK: Init
@@ -28,14 +29,10 @@ class ConferenceTableViewCell: UITableViewCell {
         self.user = user
         
         // Cell label.
-        if let name = user.externalName() {
-            userLabel.text = name
-        } else {
-            userLabel.text = user.id
-        }
+        userLabel.text = user.name ?? user.id
         
         // Cell avatar.
-        if let photoURL = URL(string: user.externalPhotoURL() ?? "") {
+        if let photoURL = URL(string: user.avatarURL ?? "") {
             let request = URLRequest(url: photoURL)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let error = error {
@@ -53,11 +50,28 @@ class ConferenceTableViewCell: UITableViewCell {
         }
         
         // Slider update.
-        self.angleSlider.setValue(Float(user.conferenceInfo.angle), animated: false)
-        self.distanceSlider.setValue(Float(user.conferenceInfo.distance), animated: false)
+        angleSlider.setValue(Float(user.angle), animated: false)
+        distanceSlider.setValue(Float(user.distance), animated: false)
         
         // Background update.
-        self.backgroundColor = user.conferenceInfo.mute ? UIColor.red : UIColor.white
+        backgroundColor = user.mute ? UIColor.red : UIColor.white
+        
+        // Update renderer's stream.
+        if let userID = user.id, let stream = VoxeetSDK.shared.conference.getMediaStream(userID: userID), !stream.videoTracks.isEmpty {
+            VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: userVideoView)
+            userVideoView.isHidden = false
+        } else {
+            userVideoView.isHidden = true
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Unattach the old stream before reusing the cell.
+        if let userID = user?.id, let stream = VoxeetSDK.shared.conference.getMediaStream(userID: userID), !stream.videoTracks.isEmpty {
+            VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: userVideoView)
+        }
     }
     
     /*

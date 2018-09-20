@@ -3,12 +3,38 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.2.1](#112) Release
+- [1.2.0](#112) Release
+- [1.1.2](#112) Release
+- [1.1.1](#111) Release
 - [1.1.0](#110) Release
 - [1.0.9](#109) Release
 - [1.0.8](#108) Release
 - [1.0.7](#107) Release
 
 ---
+
+## [1.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.1)
+
+Released on 2018-11-20.
+
+Convert for Swift 4.2.
+
+## [1.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.0)
+
+Released on 2018-11-20.
+
+## [1.1.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.1.2)
+
+Released on 2018-07-10.
+
+Convert for Swift 4.1.2.
+
+## [1.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.1.1)
+
+Released on 2018-04-03.
+
+Convert for Swift 4.1.
 
 ## [1.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.1.0)
 

@@ -512,11 +512,6 @@ class myClass: VTSessionDelegate {
     }
 }
 ```
-or
-```swift
-VoxeetSDK.shared.session.updated = { (state) in
-}
-```
 
 ### Conference delegate
 
@@ -527,16 +522,16 @@ class myClass: VTConferenceDelegate {
         VoxeetSDK.shared.conference.delegate = self
     }
     
-    func participantAdded(userID: String, userInfo: [String: Any], stream: MediaStream) {
+    func participantJoined(userID: String, stream: MediaStream) {
     }
     
-    func participantUpdated(userID: String, userInfo: [String: Any], stream: MediaStream) {
+    func participantUpdated(userID: String, stream: MediaStream) {
     }
     
-    func participantRemoved(userID: String, userInfo: [String: Any]) {
+    func participantLeft(userID: String) {
     }
     
-    func messageReceived(userID: String, userInfo: [String: Any], message: String) {
+    func messageReceived(userID: String, message: String) {
     }
     
     func screenShareStarted(userID: String, stream: MediaStream) {
@@ -544,26 +539,6 @@ class myClass: VTConferenceDelegate {
     
     func screenShareStopped(userID: String) {
     }
-}
-```
-or
-```swift
-VoxeetSDK.shared.conference.participantAdded = { (userID, userInfo, stream) in
-}
-
-VoxeetSDK.shared.conference.participantUpdated = { (userID, userInfo, stream) in
-}
-
-VoxeetSDK.shared.conference.participantRemoved = { (userID, userInfo) in
-}
-
-VoxeetSDK.shared.conference.messageReceived = { (userID, userInfo, message) in
-}
-
-VoxeetSDK.shared.conference.screenShareStarted = { (userID, stream) in
-}
-
-VoxeetSDK.shared.conference.screenShareStopped = { (userID) in
 }
 ```
 
@@ -747,7 +722,7 @@ Here is a tutorial if you want more details: http://ikennd.ac/blog/2015/02/strip
 
 ## Version
 
-1.1.2
+1.2.1
 
 ## Tech
 

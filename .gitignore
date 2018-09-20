@@ -15,3 +15,6 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
+# Carthage
+Sample/Carthage

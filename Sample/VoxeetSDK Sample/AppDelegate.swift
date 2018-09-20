@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import VoxeetSDK
 
 @UIApplicationMain
@@ -20,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
         VoxeetSDK.shared.initialize(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
         
         // Start conference on the main speaker by default.
-        VoxeetSDK.shared.defaultBuiltInSpeaker = true
+        VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
         
         // Session delegate.
         VoxeetSDK.shared.session.delegate = self

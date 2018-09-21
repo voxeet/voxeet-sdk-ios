@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.1)
 
-Released on 2018-11-20.
+Released on 2018-11-21.
 
 Convert for Swift 4.2.
 

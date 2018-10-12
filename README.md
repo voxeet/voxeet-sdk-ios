@@ -103,19 +103,19 @@ import VoxeetSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+        // Example of public variables to change the conference behavior.
+        VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
+        VoxeetSDK.shared.conference.defaultVideo = false
+        VoxeetSDK.shared.callKit = false
+        VoxeetSDK.shared.audio3D = true
 
-// Example of public variables to change the conference behavior.
-VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
-VoxeetSDK.shared.conference.defaultVideo = false
-VoxeetSDK.shared.callKit = false
-VoxeetSDK.shared.audio3D = true
+        // Initialization of the Voxeet SDK.
+        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
 
-// Initialization of the Voxeet SDK.
-VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
-
-return true
-}
+        return true
+    }
 }
 ```
 
@@ -137,9 +137,9 @@ Initializes the SDK with a valid token and a method to refresh it.
 #### Examples
 ```swift
 VoxeetSDK.shared.initialize(accessToken: “token”, userInfo: nil, refreshTokenClosure: { closure in
-yourRefreshTokenMethod() { token in
-closure(token)
-}
+    yourRefreshTokenMethod() { token in
+        closure(token)
+    }
 })
 ```
 
@@ -160,20 +160,20 @@ VoxeetSDK.shared.callKit = true
 VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
 
 /*
-*  MARK: - Voxeet VoIP push notifications
-*  To handle VoIP push notifications before iOS 10, you must use this AppDelegate extension:
-*/
+ *  MARK: - Voxeet VoIP push notifications
+ *  To handle VoIP push notifications before iOS 10, you must use this AppDelegate extension:
+ */
 
 extension AppDelegate {
-// Useful for iOS versions before iOS 10.
-func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-VoxeetSDK.shared.application(application, didReceive: notification)
-}
+    // Useful for iOS versions before iOS 10.
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        VoxeetSDK.shared.application(application, didReceive: notification)
+    }
 
-// Useful for iOS versions before iOS 10.
-func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-VoxeetSDK.shared.application(application, handleActionWithIdentifier: identifier, for: notification, completionHandler: completionHandler)
-}
+    // Useful for iOS versions before iOS 10.
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
+        VoxeetSDK.shared.application(application, handleActionWithIdentifier: identifier, for: notification, completionHandler: completionHandler)
+    }
 }
 ```
 
@@ -205,12 +205,12 @@ A delegate is also available to observe session updates:
 
 ```swift
 class myClass: VTSessionDelegate {
-init() {
-VoxeetSDK.shared.session.delegate = self
-}
+    init() {
+        VoxeetSDK.shared.session.delegate = self
+    }
 
-func sessionUpdated(state: VTSessionState) {
-}
+    func sessionUpdated(state: VTSessionState) {
+    }
 }
 ```
 
@@ -300,10 +300,10 @@ Creates a conference. You can call `join` method if creation succeeds.
 #### Example
 ```swift
 VoxeetSDK.shared.conference.create(success: { json in
-guard let confID = json?["conferenceId"] as? String,
-let confAlias = json?["conferenceAlias"] as? String else {
-return
-}
+    guard let confID = json?["conferenceId"] as? String,
+          let confAlias = json?["conferenceAlias"] as? String else {
+        return
+    }
 }, fail: { error in
 })
 ```
@@ -328,12 +328,12 @@ Joins the created conference.
 #### Examples
 ```swift
 VoxeetSDK.shared.conference.create(success: { json in
-guard let conferenceID = json?["conferenceId"] as? String else { return }
-
-VoxeetSDK.shared.conference.join(conferenceID: conferenceID, success: { json in
-}, fail: { error in
-})
-
+    guard let conferenceID = json?["conferenceId"] as? String else { return }
+    
+    VoxeetSDK.shared.conference.join(conferenceID: conferenceID, success: { json in
+    }, fail: { error in
+    })
+    
 }, fail: { error in
 })
 ```
@@ -386,10 +386,10 @@ Subscribes to all status updates for a specified conference, such as added/remov
 #### Example
 ```swift
 init() {
-NotificationCenter.default.addObserver(self, selector: #selector(conferenceStatusUpdated), name: .VTConferenceStatusUpdated, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(conferenceStatusUpdated), name: .VTConferenceStatusUpdated, object: nil)
 
-VoxeetSDK.shared.conference.statusSubscribe(conferenceID: conferenceID, completion: { error in
-})
+    VoxeetSDK.shared.conference.statusSubscribe(conferenceID: conferenceID, completion: { error in
+    })
 }
 
 @objc func conferenceStatusUpdated(_ notification: Notification) {
@@ -687,27 +687,27 @@ VoxeetSDK.shared.conference.broadcast(message: "message", completion: { error in
 
 ```swift
 class myClass: VTSessionDelegate {
-init() {
-VoxeetSDK.shared.session.delegate = self
-}
+    init() {
+        VoxeetSDK.shared.session.delegate = self
+    }
 
-func sessionUpdated(state: VTSessionState) {}
+    func sessionUpdated(state: VTSessionState) {}
 }
 ```
 
 #### `VTConferenceDelegate`
 ```swift
 class myClass: VTConferenceDelegate {
-init() {
-VoxeetSDK.shared.conference.delegate = self
-}
+    init() {
+        VoxeetSDK.shared.conference.delegate = self
+    }
 
-func participantJoined(userID: String, stream: MediaStream) {}
-func participantUpdated(userID: String, stream: MediaStream) {}
-func participantLeft(userID: String) {}
-func messageReceived(userID: String, message: String) {}
-func screenShareStarted(userID: String, stream: MediaStream) {}
-func screenShareStopped(userID: String) {}
+    func participantJoined(userID: String, stream: MediaStream) {}
+    func participantUpdated(userID: String, stream: MediaStream) {}
+    func participantLeft(userID: String) {}
+    func messageReceived(userID: String, message: String) {}
+    func screenShareStarted(userID: String, stream: MediaStream) {}
+    func screenShareStopped(userID: String) {}
 }
 ```
 
@@ -718,50 +718,49 @@ Here is an example of how to handle notifications pushed by the Voxeet SDK.
 
 ```swift
 init() {
-NotificationCenter.default.addObserver(self, selector: #selector(conferenceDestroyedPush), name: .VTConferenceDestroyedPush, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(conferenceDestroyedPush), name: .VTConferenceDestroyedPush, object: nil)
 }
 
 @objc func conferenceDestroyedPush(notification: Notification) {
-guard let userInfo = notification.userInfo?.values.first as? Data else {
-return
-}
-let json = try? JSONSerialization.jsonObject(with: userInfo, options: .mutableContainers)
+    guard let userInfo = notification.userInfo?.values.first as? Data else {
+        return
+    }
+    let json = try? JSONSerialization.jsonObject(with: userInfo, options: .mutableContainers)
 }
 ```
 
 ```swift
 extension Notification.Name {
-public static let VTOfferCreated = Notification.Name("OfferCreated")
-public static let VTParticipantAdded = Notification.Name("ParticipantAdded")
-public static let VTParticipantUpdated = Notification.Name("ParticipantUpdated")
-public static let VTParticipantSwitched = Notification.Name("ParticipantSwitched")
-
-public static let VTOwnConferenceCreatedEvent = Notification.Name("OwnConferenceCreatedEvent")
-public static let VTConferenceStatusUpdated = Notification.Name("ConferenceStatusUpdated")
-public static let VTConferenceDestroyedPush = Notification.Name("ConferenceDestroyedPush")
-public static let VTConferenceMessageReceived = Notification.Name("ConferenceMessageReceived")
-public static let VTOwnParticipantSwitched = Notification.Name("OwnParticipantSwitched")
-public static let VTQualityIndicators = Notification.Name("QualityIndicators")
-
-public static let VTOwnUserInvitedEvent = Notification.Name("OwnUserInvitedEvent")
-public static let VTInvitationReceivedEvent = Notification.Name("InvitationReceivedEvent")
-
-public static let VTFileSharedEvent = Notification.Name("FileSharedEvent")
-public static let VTFileConvertedEvent = Notification.Name("FileConvertedEvent")
-public static let VTFilePresentationStarted = Notification.Name("FilePresentationStarted")
-public static let VTFilePresentationUpdated = Notification.Name("FilePresentationUpdated")
-public static let VTFilePresentationStopped = Notification.Name("FilePresentationStopped")
-
-public static let VTVideoPresentationStarted = Notification.Name("VideoPresentationStarted")
-public static let VTVideoPresentationStopped = Notification.Name("VideoPresentationStopped")
-public static let VTVideoPresentationPlay = Notification.Name("VideoPresentationPlay")
-public static let VTVideoPresentationPause = Notification.Name("VideoPresentationPause")
-public static let VTVideoPresentationSeek = Notification.Name("VideoPresentationSeek")
-
-public static let VTCallKitStarted = Notification.Name("VTCallKitStarted")
-public static let VTCallKitSwapped = Notification.Name("VTCallKitSwapped")
-public static let VTCallKitEnded = Notification.Name("VTCallKitEnded")
-
+    public static let VTOfferCreated = Notification.Name("OfferCreated")
+    public static let VTParticipantAdded = Notification.Name("ParticipantAdded")
+    public static let VTParticipantUpdated = Notification.Name("ParticipantUpdated")
+    public static let VTParticipantSwitched = Notification.Name("ParticipantSwitched")
+    
+    public static let VTOwnConferenceCreatedEvent = Notification.Name("OwnConferenceCreatedEvent")
+    public static let VTConferenceStatusUpdated = Notification.Name("ConferenceStatusUpdated")
+    public static let VTConferenceDestroyedPush = Notification.Name("ConferenceDestroyedPush")
+    public static let VTConferenceMessageReceived = Notification.Name("ConferenceMessageReceived")
+    public static let VTOwnParticipantSwitched = Notification.Name("OwnParticipantSwitched")
+    public static let VTQualityIndicators = Notification.Name("QualityIndicators")
+    
+    public static let VTOwnUserInvitedEvent = Notification.Name("OwnUserInvitedEvent")
+    public static let VTInvitationReceivedEvent = Notification.Name("InvitationReceivedEvent")
+    
+    public static let VTFileSharedEvent = Notification.Name("FileSharedEvent")
+    public static let VTFileConvertedEvent = Notification.Name("FileConvertedEvent")
+    public static let VTFilePresentationStarted = Notification.Name("FilePresentationStarted")
+    public static let VTFilePresentationUpdated = Notification.Name("FilePresentationUpdated")
+    public static let VTFilePresentationStopped = Notification.Name("FilePresentationStopped")
+    
+    public static let VTVideoPresentationStarted = Notification.Name("VideoPresentationStarted")
+    public static let VTVideoPresentationStopped = Notification.Name("VideoPresentationStopped")
+    public static let VTVideoPresentationPlay = Notification.Name("VideoPresentationPlay")
+    public static let VTVideoPresentationPause = Notification.Name("VideoPresentationPause")
+    public static let VTVideoPresentationSeek = Notification.Name("VideoPresentationSeek")
+    
+    public static let VTCallKitStarted = Notification.Name("VTCallKitStarted")
+    public static let VTCallKitSwapped = Notification.Name("VTCallKitSwapped")
+    public static let VTCallKitEnded = Notification.Name("VTCallKitEnded")
 }
 ```
 

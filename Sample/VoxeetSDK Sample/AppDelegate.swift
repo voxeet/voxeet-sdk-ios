@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Initialization of the Voxeet SDK.
-        VoxeetSDK.shared.initialize(consumerKey: "consumerKey", consumerSecret: "consumerSecret")
+        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
         
         // Start conference on the main speaker by default.
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true

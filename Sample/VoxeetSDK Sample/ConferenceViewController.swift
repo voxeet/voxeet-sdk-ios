@@ -85,6 +85,13 @@ class ConferenceViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStartedUpdated), name: .VTFilePresentationStarted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStartedUpdated), name: .VTFilePresentationUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStopped), name: .VTFilePresentationStopped, object: nil)
+        
+        // Video presentation observers.
+        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationStarted), name: .VTVideoPresentationStarted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationStopped), name: .VTVideoPresentationStopped, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationPlay), name: .VTVideoPresentationPlay, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationPause), name: .VTVideoPresentationPause, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationSeek), name: .VTVideoPresentationSeek, object: nil)
     }
     
     deinit {
@@ -336,5 +343,73 @@ extension ConferenceViewController {
     @objc func filePresentationStopped(notification: Notification) {
         filePresentationImageView.image = nil
         filePresentationImageView.isHidden = true
+    }
+}
+
+/*
+ *  MARK: - Conference video presentation
+ */
+
+extension ConferenceViewController {
+    @objc func videoPresentationStarted(notification: Notification) {
+        guard let userInfo = notification.userInfo?.values.first as? Data else {
+            return
+        }
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
+                if let url = URL(string: json["url"] as? String ?? ""), let timestamp = json["timestamp"] as? Int {
+                    player = AVPlayer(url: url)
+                    let playerLayer = AVPlayerLayer(player: player)
+                    playerLayer.frame = videoPresentationView.bounds
+                    playerLayer.backgroundColor = UIColor.black.cgColor
+                    videoPresentationView.layer.addSublayer(playerLayer)
+                    
+                    player?.play()
+                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
+                    
+                    videoPresentationView.isHidden = false
+                }
+            }
+        } catch {}
+    }
+    
+    @objc func videoPresentationStopped(notification: Notification) {
+        player?.pause()
+        player = nil
+        videoPresentationView.isHidden = true
+    }
+    
+    @objc func videoPresentationPlay(notification: Notification) {
+        guard let userInfo = notification.userInfo?.values.first as? Data else {
+            return
+        }
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
+                if let timestamp = json["timestamp"] as? Int {
+                    player?.play()
+                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
+                }
+            }
+        } catch {}
+    }
+    
+    @objc func videoPresentationPause(notification: Notification) {
+        player?.pause()
+    }
+    
+    @objc func videoPresentationSeek(notification: Notification) {
+        guard let userInfo = notification.userInfo?.values.first as? Data else {
+            return
+        }
+        
+        do {
+            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
+                if let timestamp = json["timestamp"] as? Int {
+                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
+                }
+            }
+        } catch {}
     }
 }

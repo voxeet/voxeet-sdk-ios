@@ -3,8 +3,10 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
-- [1.2.1](#112) Release
-- [1.2.0](#112) Release
+- [1.2.3](#123) Release
+- [1.2.2](#122) Release
+- [1.2.1](#121) Release
+- [1.2.0](#120) Release
 - [1.1.2](#112) Release
 - [1.1.1](#111) Release
 - [1.1.0](#110) Release
@@ -14,15 +16,39 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.2.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.3)
+
+Released on 2018-10-15.
+
+Close CallKit when declining a call outside a conference.
+
+## [1.2.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.2)
+
+Released on 2018-10-12.
+
+#### Updated
+
+- VTUser(id:name:photoURL:)
+    - VTUser(externalID:name:avatarURL:)
+- connect(userID:userInfo:completion:)
+    - connect(user:completion:)
+- invite(conferenceID:ids:completion:)
+    - invite(conferenceID:externalIDs:completion:)
+- VTCallKitUpdated notification
+    - VTCallKitSwapped notification
+
 ## [1.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.1)
 
-Released on 2018-11-21.
+Released on 2018-09-21.
 
 Convert for Swift 4.2.
 
 ## [1.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.0)
 
-Released on 2018-11-20.
+Released on 2018-09-20.
+
+Bitcode support.
+Stop supporting simulator architecture.
 
 ## [1.1.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.1.2)
 

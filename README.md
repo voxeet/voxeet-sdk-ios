@@ -59,27 +59,19 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate [VoxeetConferenceKit](https://github.com/voxeet/voxeet-ios-conferencekit) into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "voxeet/voxeet-ios-conferencekit" ~> 1.0
-```
-
-Or if you just want to integrate [VoxeetSDK](https://github.com/voxeet/voxeet-ios-sdk):
+To integrate [VoxeetSDK](https://github.com/voxeet/voxeet-ios-sdk) into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "voxeet/voxeet-ios-sdk" ~> 1.0
 ```
 
-Run `carthage update` to build the frameworks and drag `VoxeetConferenceKit.framework`, `VoxeetSDK.framework` and `WebRTC.framework` into your Xcode project *(needs to be dropped in 'Embedded Binaries')*.
+Run `carthage update` to build the frameworks and drag `VoxeetSDK.framework` and `WebRTC.framework` into your Xcode project *(needs to be dropped in 'Embedded Binaries')*.
 More information at [https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
 ### Manually
 
 Download the lastest release zip:
 
-**VoxeetConferenceKit:** https://github.com/voxeet/voxeet-ios-conferencekit/releases
-*or*
 **VoxeetSDK:** https://github.com/voxeet/voxeet-ios-sdk/releases
 
 Unzip and drag and drop frameworks into your project, select 'Copy items if needed' with the right target. Then in the general tab of your target, add the `VoxeetConferenceKit.framework`, `VoxeetSDK.framework` and `WebRTC.framework` into **'Embedded Binaries'**.
@@ -380,7 +372,7 @@ Subscribes to all status updates for a specified conference, such as added/remov
 **The conference must be created before using this method**
 
 #### Parameters
--   `conferenceID` **String** - The ID of the conference whose status updates you want to subscribe to.
+-   `conferenceID` **String** - The ID of the conference whose status updates you want to subscribe to (also compatible with conference alias).
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
@@ -400,7 +392,7 @@ init() {
 Unsubscribes from status updates [notifications](#Events) for the specified conference.
 
 #### Parameters
--   `conferenceID` **String** - The ID of the conference whose status events you want to unsubscribe from.
+-   `conferenceID` **String** - The ID of the conference whose status events you want to unsubscribe from (also compatible with conference alias).
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
@@ -428,7 +420,7 @@ VoxeetSDK.shared.conference.startRecording(completion: { error in
 
 
 ### `stopRecording`
-Stops the current recording.
+Stops the current recording (a recording needs to be started before with `startRecording` method).
 
 #### Parameters
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
@@ -447,7 +439,7 @@ VoxeetSDK.shared.conference.stopRecording(completion: { error in
 Replays a recorded conference.
 
 #### Parameters
--   `conferenceID` **String** - The ID of the conference you want to replay. Do not pass a conference alias---pass only an ID, such as the Voxeet conference UUID returned by the `join` method.
+-   `conferenceID` **String** - The ID of the conference you want to replay. Do not pass a conference alias --- pass only an ID, such as the Voxeet conference UUID returned by the `join` method.
 -   `offset` **Int?** - The recording offset from the beginning of the conference. In milliseconds (default `0`).
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
@@ -768,7 +760,6 @@ extension Notification.Name {
 
 The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
-* [Kingfisher](https://github.com/onevcat/Kingfisher), a lightweight, pure-Swift library for downloading and caching images from the web.
 * [Starscream](https://github.com/daltoniam/Starscream), a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
 * [Alamofire](https://github.com/Alamofire/Alamofire), an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), a tool for handling JSON data in Swift.

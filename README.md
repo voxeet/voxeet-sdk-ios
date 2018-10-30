@@ -388,6 +388,7 @@ init() {
 }
 ```
 
+
 ### `statusUnsubscribe`
 Unsubscribes from status updates [notifications](#Events) for the specified conference.
 
@@ -399,6 +400,21 @@ Unsubscribes from status updates [notifications](#Events) for the specified conf
 ```swift
 VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID: conferenceID, completion: { error in
 })
+```
+
+
+### `localStats`
+Gets local WebRTC stats.
+
+#### Parameters
+-   `userID` **String** - The ID of the user whose local WebRTC stats you want to retrieve.
+
+#### Returns
+-   **[[String: Any]]?** - An array that contains all information in a `Dictionary`.
+
+#### Example
+```swift
+let stats = VoxeetSDK.shared.conference.localStats(userID: "userID")
 ```
 
 
@@ -484,6 +500,35 @@ VoxeetSDK.shared.conference.flipCamera()
 ```
 
 
+### `mediaStream`
+
+Gets the current stream of a user.
+
+#### Parameters
+-   `userID` **String** - User ID.
+
+#### Returns
+-   **RTCMediaStream?** - The stream to be rendered into the view.
+
+#### Example
+```swift
+let stream = VoxeetSDK.shared.conference.mediaStream(userID: "userID")
+```
+
+
+### `screenShareMediaStream`
+
+Gets the current screen share stream.
+
+#### Returns
+-   **RTCMediaStream?** - The stream to be rendered into the view.
+
+#### Example
+```swift
+let stream = VoxeetSDK.shared.conference.screenShareMediaStream()
+```
+
+
 ### `attachMediaStream`
 Attaches a media stream to a renderer. You can create a renderer with a UIView that inherits from `VTVideoView`.
 
@@ -493,6 +538,7 @@ Attaches a media stream to a renderer. You can create a renderer with a UIView t
 
 #### Example
 ```swift
+let stream = VoxeetSDK.shared.conference.mediaStream(userID: "userID")
 let videoRenderer = VTVideoView()
 VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: videoRenderer)
 ```
@@ -509,36 +555,9 @@ This method is useful for switching among several streams with the same video re
 
 #### Example
 ```swift
+let stream = VoxeetSDK.shared.conference.mediaStream(userID: "userID")
+let videoRenderer = VTVideoView()
 VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: videoRenderer)
-```
-
-
-### `getMediaStream`
-
-Gets the current stream of a user.
-
-#### Parameters
--   `userID` **String** - User ID.
-
-#### Returns
--   **RTCMediaStream?** - The stream to be rendered into the view.
-
-#### Example
-```swift
-let stream = VoxeetSDK.shared.conference.getMediaStream(userID: "userID")
-```
-
-
-### `getScreenShareMediaStream`
-
-Gets the current screen share stream.
-
-#### Returns
--   **RTCMediaStream?** - The stream to be rendered into the view.
-
-#### Example
-```swift
-let stream = VoxeetSDK.shared.conference.getScreenShareMediaStream()
 ```
 
 
@@ -638,7 +657,7 @@ let isMuted = VoxeetSDK.shared.conference.toggleMute(userID: "userID")
 Retrieves the specified user's current audio level, normalized between `0.0` and `1.0`.
 
 #### Parameters
--   `userID` **String** - The ID of the user whose level you want to retreive.
+-   `userID` **String** - The ID of the user whose level you want to retrieve.
 
 #### Returns
 `Double` - The user's current voice level, between `0.0` and `1.0`.
@@ -767,7 +786,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.2.3
+1.2.4
 
 © Voxeet, 2018
-

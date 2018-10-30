@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.2.4](#124) Release
 - [1.2.3](#123) Release
 - [1.2.2](#122) Release
 - [1.2.1](#121) Release
@@ -15,6 +16,22 @@ All notable changes to this project will be documented in this file.
 - [1.0.7](#107) Release
 
 ---
+
+## [1.2.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.3)
+
+Released on 2018-10-30.
+
+#### Added
+
+- VoxeetSDK.shared.conference.localStats(userID:)
+- VTConferenceStats *notification*
+
+#### Updated
+
+- VoxeetSDK.shared.conference.mediaStream(userID:)
+    - VoxeetSDK.shared.conference.getMediaStream(userID:)
+- VoxeetSDK.shared.conference.screenShareMediaStream()
+    - VoxeetSDK.shared.conference.getScreenShareMediaStream()
 
 ## [1.2.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.3)
 
@@ -30,12 +47,12 @@ Released on 2018-10-12.
 
 - VTUser(id:name:photoURL:)
     - VTUser(externalID:name:avatarURL:)
-- connect(userID:userInfo:completion:)
+- VoxeetSDK.shared.session.connect(userID:userInfo:completion:)
     - connect(user:completion:)
-- invite(conferenceID:ids:completion:)
+- VoxeetSDK.shared.conference.invite(conferenceID:ids:completion:)
     - invite(conferenceID:externalIDs:completion:)
-- VTCallKitUpdated notification
-    - VTCallKitSwapped notification
+- VTCallKitUpdated *notification*
+    - VTCallKitSwapped *notification*
 
 ## [1.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.1)
 

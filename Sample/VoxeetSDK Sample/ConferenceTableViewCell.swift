@@ -57,7 +57,7 @@ class ConferenceTableViewCell: UITableViewCell {
         backgroundColor = user.mute ? UIColor.red : UIColor.white
         
         // Update renderer's stream.
-        if let userID = user.id, let stream = VoxeetSDK.shared.conference.getMediaStream(userID: userID), !stream.videoTracks.isEmpty {
+        if let userID = user.id, let stream = VoxeetSDK.shared.conference.mediaStream(userID: userID), !stream.videoTracks.isEmpty {
             VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: userVideoView)
             userVideoView.isHidden = false
         } else {
@@ -69,7 +69,7 @@ class ConferenceTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         // Unattach the old stream before reusing the cell.
-        if let userID = user?.id, let stream = VoxeetSDK.shared.conference.getMediaStream(userID: userID), !stream.videoTracks.isEmpty {
+        if let userID = user?.id, let stream = VoxeetSDK.shared.conference.mediaStream(userID: userID), !stream.videoTracks.isEmpty {
             VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: userVideoView)
         }
     }

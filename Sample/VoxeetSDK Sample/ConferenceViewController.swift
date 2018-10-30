@@ -142,7 +142,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func startScreenShare(_ sender: UIButton) {
-        guard VoxeetSDK.shared.conference.getScreenShareMediaStream() == nil else {
+        guard VoxeetSDK.shared.conference.screenShareMediaStream() == nil else {
             // Debug.
             print("[ERROR] \(#function) - Error: Only one screen share allowed.")
             return

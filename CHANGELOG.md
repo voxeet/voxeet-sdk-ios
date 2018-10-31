@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.2.5](#125) Release
 - [1.2.4](#124) Release
 - [1.2.3](#123) Release
 - [1.2.2](#122) Release
@@ -17,7 +18,13 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [1.2.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.3)
+## [1.2.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.5)
+
+Released on 2018-10-31 (happy halloween! 🎃 👻).
+
+Convert for Swift 4.2.1.
+
+## [1.2.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.4)
 
 Released on 2018-10-30.
 

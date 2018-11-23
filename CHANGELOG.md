@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.2.7](#127) Release
 - [1.2.6](#126) Release
 - [1.2.5](#125) Release
 - [1.2.4](#124) Release
@@ -18,6 +19,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.7](#107) Release
 
 ---
+
+## [1.2.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.7)
+
+Released on 2018-11-23.
+
+Keep the same socket identification after a disconnection.
 
 ## [1.2.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.6)
 

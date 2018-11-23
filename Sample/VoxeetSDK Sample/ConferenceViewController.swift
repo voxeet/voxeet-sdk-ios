@@ -142,14 +142,14 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func startScreenShare(_ sender: UIButton) {
-        guard VoxeetSDK.shared.conference.screenShareMediaStream() == nil else {
-            // Debug.
-            print("[ERROR] \(#function) - Error: Only one screen share allowed.")
-            return
-        }
-        
         if #available(iOS 11.0, *) {
             if sender.isSelected {
+                guard VoxeetSDK.shared.conference.screenShareMediaStream() == nil else {
+                    // Debug.
+                    print("[ERROR] \(#function) - Error: Only one screen share allowed.")
+                    return
+                }
+                
                 VoxeetSDK.shared.conference.startScreenShare(completion: { (error) in
                     if let error = error {
                         // Debug.
@@ -289,7 +289,7 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Getting the current user.
         let users = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
-        let user = users[(indexPath as NSIndexPath).row]
+        let user = users[indexPath.row]
         
         // Setting up the cell.
         cell.setUp(user: user)

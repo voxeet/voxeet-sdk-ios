@@ -11,7 +11,7 @@
 * **Operating systems:** iOS 9.0 and later versions
 * **IDE:** [Xcode 10.0+](https://developer.apple.com/xcode/)
 * **Languages:** Swift 4.2+, Objective-C
-* **Supported architectures:** armv7, arm64
+* **Supported architectures:** armv7, arm64, i386, x86_64
 
 
 ## Sample Application
@@ -786,6 +786,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.2.7
+1.2.8
 
 © Voxeet, 2018

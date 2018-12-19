@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
+- [1.2.9](#129) Release
 - [1.2.8](#128) Release
 - [1.2.7](#127) Release
 - [1.2.6](#126) Release
@@ -20,6 +21,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.7](#107) Release
 
 ---
+
+## [1.2.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.9)
+
+Released on 2018-12-19.
+
+Initialize with access token Objective-C compatibility.
 
 ## [1.2.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.8)
 

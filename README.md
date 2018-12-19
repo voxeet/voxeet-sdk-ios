@@ -786,6 +786,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.2.8
+1.2.9
 
 © Voxeet, 2018

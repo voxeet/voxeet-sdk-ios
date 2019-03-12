@@ -7,38 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E4856541CDA4D9B00E684E1 /* Elephant-mono.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */; };
 		CC6777E61D7720F500FF056D /* ConferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6777E51D7720F500FF056D /* ConferenceTableViewCell.swift */; };
-		CCB78A1721A83D8600ED1BCA /* VoxeetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB78A1521A83D8600ED1BCA /* VoxeetSDK.framework */; };
-		CCB78A1821A83D8600ED1BCA /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB78A1621A83D8600ED1BCA /* WebRTC.framework */; };
-		CCB9E4371CE1F10B0076A886 /* AudioEngineDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB9E4361CE1F10B0076A886 /* AudioEngineDemo.swift */; };
+		CC80E1A62236C07E001DE6E3 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC80E1A42236C07E001DE6E3 /* WebRTC.framework */; };
+		CC80E1A72236C07E001DE6E3 /* VoxeetSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC80E1A52236C07E001DE6E3 /* VoxeetSDK.framework */; };
 		CCD8B66C1CD266DD00831710 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8B66B1CD266DD00831710 /* ConferenceViewController.swift */; };
 		CCF12CA31CCA5EFC000D0D12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */; };
 		CCF12CA51CCA5EFC000D0D12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */; };
 		CCF12CA81CCA5EFC000D0D12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */; };
-		CCF12CAB1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */; };
 		CCF12CAD1CCA5EFC000D0D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */; };
 		CCF12CB01CCA5EFC000D0D12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */; };
-		CCF12CBB1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */; };
-		CCF12CC61CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CCF12CB71CCA5EFC000D0D12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCF12C971CCA5EFC000D0D12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CCF12C9E1CCA5EFC000D0D12;
-			remoteInfo = "VoxeetSDK Sample";
-		};
-		CCF12CC21CCA5EFC000D0D12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCF12C971CCA5EFC000D0D12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CCF12C9E1CCA5EFC000D0D12;
-			remoteInfo = "VoxeetSDK Sample";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CCDC55561CCA63490086C2FA /* Embed Frameworks */ = {
@@ -54,26 +32,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Elephant-mono.mp3"; sourceTree = "<group>"; };
 		CC6777E51D7720F500FF056D /* ConferenceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferenceTableViewCell.swift; sourceTree = "<group>"; };
-		CCB78A1521A83D8600ED1BCA /* VoxeetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoxeetSDK.framework; path = Carthage/Build/iOS/VoxeetSDK.framework; sourceTree = "<group>"; };
-		CCB78A1621A83D8600ED1BCA /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = Carthage/Build/iOS/WebRTC.framework; sourceTree = "<group>"; };
-		CCB9E4361CE1F10B0076A886 /* AudioEngineDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineDemo.swift; sourceTree = "<group>"; };
+		CC80E1A42236C07E001DE6E3 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = Carthage/Build/iOS/WebRTC.framework; sourceTree = "<group>"; };
+		CC80E1A52236C07E001DE6E3 /* VoxeetSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VoxeetSDK.framework; path = Carthage/Build/iOS/VoxeetSDK.framework; sourceTree = "<group>"; };
 		CCD8B66B1CD266DD00831710 /* ConferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
 		CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoxeetSDK Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF12CA21CCA5EFC000D0D12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CCF12CA71CCA5EFC000D0D12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoxeetSDK_Sample.xcdatamodel; sourceTree = "<group>"; };
 		CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCF12CAF1CCA5EFC000D0D12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCF12CB11CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoxeetSDK SampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoxeetSDK_SampleTests.swift; sourceTree = "<group>"; };
-		CCF12CBC1CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoxeetSDK SampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoxeetSDK_SampleUITests.swift; sourceTree = "<group>"; };
-		CCF12CC71CCA5EFC000D0D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,54 +50,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCB78A1721A83D8600ED1BCA /* VoxeetSDK.framework in Frameworks */,
-				CCB78A1821A83D8600ED1BCA /* WebRTC.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCF12CB31CCA5EFC000D0D12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCF12CBE1CCA5EFC000D0D12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				CC80E1A72236C07E001DE6E3 /* VoxeetSDK.framework in Frameworks */,
+				CC80E1A62236C07E001DE6E3 /* WebRTC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC6777E31D77118700FF056D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */,
-				6E4856531CDA4D9B00E684E1 /* Elephant-mono.mp3 */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		CC6777E41D77119800FF056D /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				CCF12CB11CCA5EFC000D0D12 /* Info.plist */,
-				CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
 		CCF12C961CCA5EFC000D0D12 = {
 			isa = PBXGroup;
 			children = (
-				CCB78A1521A83D8600ED1BCA /* VoxeetSDK.framework */,
-				CCB78A1621A83D8600ED1BCA /* WebRTC.framework */,
+				CC80E1A52236C07E001DE6E3 /* VoxeetSDK.framework */,
+				CC80E1A42236C07E001DE6E3 /* WebRTC.framework */,
 				CCF12CA11CCA5EFC000D0D12 /* VoxeetSDK Sample */,
-				CCF12CB91CCA5EFC000D0D12 /* VoxeetSDK SampleTests */,
-				CCF12CC41CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */,
 				CCF12CA01CCA5EFC000D0D12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */,
-				CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */,
-				CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,31 +83,12 @@
 				CCF12CA41CCA5EFC000D0D12 /* ViewController.swift */,
 				CCD8B66B1CD266DD00831710 /* ConferenceViewController.swift */,
 				CC6777E51D7720F500FF056D /* ConferenceTableViewCell.swift */,
-				CCB9E4361CE1F10B0076A886 /* AudioEngineDemo.swift */,
 				CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */,
 				CCF12CAE1CCA5EFC000D0D12 /* LaunchScreen.storyboard */,
-				CC6777E31D77118700FF056D /* Resources */,
-				CC6777E41D77119800FF056D /* Settings */,
+				CCF12CAC1CCA5EFC000D0D12 /* Assets.xcassets */,
+				CCF12CB11CCA5EFC000D0D12 /* Info.plist */,
 			);
 			path = "VoxeetSDK Sample";
-			sourceTree = "<group>";
-		};
-		CCF12CB91CCA5EFC000D0D12 /* VoxeetSDK SampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				CCF12CBA1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift */,
-				CCF12CBC1CCA5EFC000D0D12 /* Info.plist */,
-			);
-			path = "VoxeetSDK SampleTests";
-			sourceTree = "<group>";
-		};
-		CCF12CC41CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CCF12CC51CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift */,
-				CCF12CC71CCA5EFC000D0D12 /* Info.plist */,
-			);
-			path = "VoxeetSDK SampleUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +102,7 @@
 				CCF12C9C1CCA5EFC000D0D12 /* Frameworks */,
 				CCF12C9D1CCA5EFC000D0D12 /* Resources */,
 				CCDC55561CCA63490086C2FA /* Embed Frameworks */,
-				CCB78A1921A83DB200ED1BCA /* Carthage Run Script */,
+				CC80E1A82236C0C5001DE6E3 /* Carthage Run Script */,
 			);
 			buildRules = (
 			);
@@ -198,42 +112,6 @@
 			productName = "VoxeetSDK Sample";
 			productReference = CCF12C9F1CCA5EFC000D0D12 /* VoxeetSDK Sample.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CCF12CB51CCA5EFC000D0D12 /* VoxeetSDK SampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCF12CCD1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleTests" */;
-			buildPhases = (
-				CCF12CB21CCA5EFC000D0D12 /* Sources */,
-				CCF12CB31CCA5EFC000D0D12 /* Frameworks */,
-				CCF12CB41CCA5EFC000D0D12 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CCF12CB81CCA5EFC000D0D12 /* PBXTargetDependency */,
-			);
-			name = "VoxeetSDK SampleTests";
-			productName = "VoxeetSDK SampleTests";
-			productReference = CCF12CB61CCA5EFC000D0D12 /* VoxeetSDK SampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CCF12CC01CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCF12CD01CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleUITests" */;
-			buildPhases = (
-				CCF12CBD1CCA5EFC000D0D12 /* Sources */,
-				CCF12CBE1CCA5EFC000D0D12 /* Frameworks */,
-				CCF12CBF1CCA5EFC000D0D12 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CCF12CC31CCA5EFC000D0D12 /* PBXTargetDependency */,
-			);
-			name = "VoxeetSDK SampleUITests";
-			productName = "VoxeetSDK SampleUITests";
-			productReference = CCF12CC11CCA5EFC000D0D12 /* VoxeetSDK SampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -259,16 +137,6 @@
 							};
 						};
 					};
-					CCF12CB51CCA5EFC000D0D12 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 1000;
-						TestTargetID = CCF12C9E1CCA5EFC000D0D12;
-					};
-					CCF12CC01CCA5EFC000D0D12 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 1000;
-						TestTargetID = CCF12C9E1CCA5EFC000D0D12;
-					};
 				};
 			};
 			buildConfigurationList = CCF12C9A1CCA5EFC000D0D12 /* Build configuration list for PBXProject "VoxeetSDK Sample" */;
@@ -285,8 +153,6 @@
 			projectRoot = "";
 			targets = (
 				CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */,
-				CCF12CB51CCA5EFC000D0D12 /* VoxeetSDK SampleTests */,
-				CCF12CC01CCA5EFC000D0D12 /* VoxeetSDK SampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,29 +164,14 @@
 			files = (
 				CCF12CB01CCA5EFC000D0D12 /* LaunchScreen.storyboard in Resources */,
 				CCF12CAD1CCA5EFC000D0D12 /* Assets.xcassets in Resources */,
-				6E4856541CDA4D9B00E684E1 /* Elephant-mono.mp3 in Resources */,
 				CCF12CA81CCA5EFC000D0D12 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCF12CB41CCA5EFC000D0D12 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCF12CBF1CCA5EFC000D0D12 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CCB78A1921A83DB200ED1BCA /* Carthage Run Script */ = {
+		CC80E1A82236C0C5001DE6E3 /* Carthage Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -350,44 +201,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCF12CA51CCA5EFC000D0D12 /* ViewController.swift in Sources */,
-				CCB9E4371CE1F10B0076A886 /* AudioEngineDemo.swift in Sources */,
-				CCF12CAB1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld in Sources */,
 				CC6777E61D7720F500FF056D /* ConferenceTableViewCell.swift in Sources */,
 				CCF12CA31CCA5EFC000D0D12 /* AppDelegate.swift in Sources */,
 				CCD8B66C1CD266DD00831710 /* ConferenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CCF12CB21CCA5EFC000D0D12 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCF12CBB1CCA5EFC000D0D12 /* VoxeetSDK_SampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CCF12CBD1CCA5EFC000D0D12 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCF12CC61CCA5EFC000D0D12 /* VoxeetSDK_SampleUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CCF12CB81CCA5EFC000D0D12 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */;
-			targetProxy = CCF12CB71CCA5EFC000D0D12 /* PBXContainerItemProxy */;
-		};
-		CCF12CC31CCA5EFC000D0D12 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CCF12C9E1CCA5EFC000D0D12 /* VoxeetSDK Sample */;
-			targetProxy = CCF12CC21CCA5EFC000D0D12 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CCF12CA61CCA5EFC000D0D12 /* Main.storyboard */ = {
@@ -565,56 +385,6 @@
 			};
 			name = Release;
 		};
-		CCF12CCE1CCA5EFC000D0D12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "VoxeetSDK SampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoxeetSDK Sample.app/VoxeetSDK Sample";
-			};
-			name = Debug;
-		};
-		CCF12CCF1CCA5EFC000D0D12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "VoxeetSDK SampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoxeetSDK Sample.app/VoxeetSDK Sample";
-			};
-			name = Release;
-		};
-		CCF12CD11CCA5EFC000D0D12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "VoxeetSDK SampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = "VoxeetSDK Sample";
-			};
-			name = Debug;
-		};
-		CCF12CD21CCA5EFC000D0D12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "VoxeetSDK SampleUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.voxeet.VoxeetSDK-SampleUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = "VoxeetSDK Sample";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -636,38 +406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCF12CCD1CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CCF12CCE1CCA5EFC000D0D12 /* Debug */,
-				CCF12CCF1CCA5EFC000D0D12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CCF12CD01CCA5EFC000D0D12 /* Build configuration list for PBXNativeTarget "VoxeetSDK SampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CCF12CD11CCA5EFC000D0D12 /* Debug */,
-				CCF12CD21CCA5EFC000D0D12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CCF12CA91CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */,
-			);
-			currentVersion = CCF12CAA1CCA5EFC000D0D12 /* VoxeetSDK_Sample.xcdatamodel */;
-			path = VoxeetSDK_Sample.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CCF12C971CCA5EFC000D0D12 /* Project object */;
 }

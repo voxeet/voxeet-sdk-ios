@@ -15,11 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Initialization of the Voxeet SDK.
-        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
-        
-        // Start conference on the main speaker by default.
+        // Example of public variables to change the conference behavior.
+        VoxeetSDK.shared.callKit = false
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
+        VoxeetSDK.shared.conference.defaultVideo = true
+        VoxeetSDK.shared.conference.audio3D = true
+        
+        // Voxeet SDK initialization.
+        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
         
         // Session delegate.
         VoxeetSDK.shared.session.delegate = self
@@ -33,6 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
     
     func sessionUpdated(state: VTSessionState) {
         // Debug.
-        print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - State: \(state.rawValue)")
+        print("[Sample] \(String(describing: AppDelegate.self)).\(#function).\(#line) - State: \(state.rawValue)")
     }
 }

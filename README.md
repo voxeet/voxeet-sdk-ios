@@ -96,12 +96,12 @@ import VoxeetSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
+
         // Example of public variables to change the conference behavior.
+        VoxeetSDK.shared.callKit = false
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
         VoxeetSDK.shared.conference.defaultVideo = false
-        VoxeetSDK.shared.callKit = false
-        VoxeetSDK.shared.audio3D = true
+        VoxeetSDK.shared.conference.audio3D = true
 
         // Initialization of the Voxeet SDK.
         VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
@@ -141,7 +141,7 @@ Display the system-calling UI for your app's VoIP services.
 
 [CallKit](https://developer.apple.com/documentation/callkit) is disabled by default. 'Push Notifications' capability needs to be enabled.
 
-Some [notifications](#Events) can be used along with `callKit` to update the UI, such as `VTCallKitStarted`, `VTCallKitSwapped`, and `VTCallKitEnded`.
+Some [notifications](#Events) can be used along with `callKit` to update the UI, such as `VTCallKitStarted`, `VTCallKitSwapped`, `VTCallKitEnded`, ...
 
 #### Examples
 
@@ -722,6 +722,20 @@ class myClass: VTConferenceDelegate {
 }
 ```
 
+#### `VTConferenceCryptoDelegate`
+```swift
+class myClass: VTConferenceCryptoDelegate {
+    init() {
+        VoxeetSDK.shared.conference.cryptoDelegate = self
+    }
+    
+    func encrypt(type: Int, ssrc: Int, frame: UnsafePointer<UInt8>, frameSize: Int, encryptedFrame: UnsafeMutablePointer<UInt8>, encryptedFrameSize: Int) {}
+    func getMaxCiphertextByteSize(type: Int, size: Int) {}
+    func decrypt(type: Int, ssrc: Int, encryptedFrame: UnsafePointer<UInt8>, encryptedFrameSize: Int, frame: UnsafeMutablePointer<UInt8>, frameSize: Int) {}
+    func getMaxPlaintextByteSize(type: Int, size: Int) {}
+}
+```
+
 
 ### Handling notifications
 
@@ -733,9 +747,7 @@ init() {
 }
 
 @objc func conferenceDestroyedPush(notification: Notification) {
-    guard let userInfo = notification.userInfo?.values.first as? Data else {
-        return
-    }
+    guard let userInfo = notification.userInfo?.values.first as? Data else { return }
     let json = try? JSONSerialization.jsonObject(with: userInfo, options: .mutableContainers)
 }
 ```
@@ -772,6 +784,7 @@ extension Notification.Name {
     public static let VTCallKitStarted = Notification.Name("VTCallKitStarted")
     public static let VTCallKitSwapped = Notification.Name("VTCallKitSwapped")
     public static let VTCallKitEnded = Notification.Name("VTCallKitEnded")
+    public static let VTCallKitMuteToggled = Notification.Name("VTCallKitMuteToggled")
 }
 ```
 
@@ -782,10 +795,9 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 * [Starscream](https://github.com/daltoniam/Starscream), a conforming WebSocket (RFC 6455) client library in Swift for iOS and OSX.
 * [Alamofire](https://github.com/Alamofire/Alamofire), an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON), a tool for handling JSON data in Swift.
-* [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift), a collection of Crypto-related functions and helpers for Swift implemented in Swift.
 
 ## SDK version
 
-1.2.9
+1.3.0
 
-© Voxeet, 2018
+© Voxeet, 2019

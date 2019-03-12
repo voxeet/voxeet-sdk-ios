@@ -15,43 +15,15 @@ class ViewController: UIViewController {
     let conferenceName = "VTConferenceName"
     
     /*
-     *  MARK: Load
-     */
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    /*
      *  MARK: Action
      */
     
-    @IBAction func createConference(_ sender: AnyObject) {
-        // Conference creation.
-        VoxeetSDK.shared.conference.create(success: { (json) in
-            guard let conferenceID = json?["conferenceId"] as? String, let conferenceAlias = json?["conferenceAlias"] as? String else {
-                // Debug.
-                print("[ERROR] \(String(describing: self)).\(#function).\(#line)")
-                return
-            }
-            
-            // Debug.
-            print("[DEBUG] \(String(describing: self)).\(#function).\(#line) - Conference ID: \(conferenceID), conference alias: \(conferenceAlias)")
-            
-            // Start the conference viewController.
-            self.presentConferenceVC(conferenceName: conferenceAlias)
-        }, fail: { (error) in
-            // Debug.
-            print("[ERROR] \(String(describing: self)).\(#function).\(#line) - Error: \(error)")
-        })
-    }
-    
     @IBAction func joinConference(_ sender: AnyObject) {
         // Alert view.
-        let alertController = UIAlertController(title: "Conference ID", message: "Please input the conference ID:", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Conference name", message: "Please input the conference name:", preferredStyle: .alert)
         
         // Alert actions.
-        let confirmAction = UIAlertAction(title: "Join", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: "Join", style: .default) { _ in
             if let textField = alertController.textFields?[0],
                 let conferenceName = textField.text {
                 
@@ -63,11 +35,11 @@ class ViewController: UIViewController {
                 UserDefaults.standard.synchronize()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         // Alert textField.
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Conference ID"
+        alertController.addTextField { textField in
+            textField.placeholder = "Conference name"
             textField.clearButtonMode = .whileEditing
             
             // Setting the textfield's text with the previous text saved (NSUserDefaults).
@@ -77,6 +49,7 @@ class ViewController: UIViewController {
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        alertController.preferredAction = confirmAction
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -87,7 +60,7 @@ class ViewController: UIViewController {
     private func presentConferenceVC(conferenceName: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
-        conferenceVC.conferenceID = conferenceName
+        conferenceVC.alias = conferenceName
         self.present(conferenceVC, animated: true, completion: nil)
     }
 }

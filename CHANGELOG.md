@@ -3,24 +3,43 @@
 All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
-- [1.2.9](#129) Release
-- [1.2.8](#128) Release
-- [1.2.7](#127) Release
-- [1.2.6](#126) Release
-- [1.2.5](#125) Release
-- [1.2.4](#124) Release
-- [1.2.3](#123) Release
-- [1.2.2](#122) Release
-- [1.2.1](#121) Release
-- [1.2.0](#120) Release
-- [1.1.2](#112) Release
-- [1.1.1](#111) Release
-- [1.1.0](#110) Release
-- [1.0.9](#109) Release
-- [1.0.8](#108) Release
-- [1.0.7](#107) Release
+
+- [1.3.0](#130)
+- [1.2.9](#129)
+- [1.2.8](#128)
+- [1.2.7](#127)
+- [1.2.6](#126)
+- [1.2.5](#125)
+- [1.2.4](#124)
+- [1.2.3](#123)
+- [1.2.2](#122)
+- [1.2.1](#121)
+- [1.2.0](#120)
+- [1.1.2](#112)
+- [1.1.1](#111)
+- [1.1.0](#110)
+- [1.0.9](#109)
+- [1.0.8](#108)
+- [1.0.7](#107)
 
 ---
+
+## [1.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.0)
+
+Released on 2019-03-12.
+
+Add conference encryption. Also add the ability for the client to manage their own PushKit instance.
+
+#### Added
+
+- VTConferenceCryptoDelegate *delegate*
+- VTCallKitMuteToggled *notification*
+- VoxeetSDK.shared.callKit(enable:initPushNotification:)
+
+#### Updated
+
+- RTCMediaStream *class*
+    - MediaStream *class*
 
 ## [1.2.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.9)
 
@@ -63,10 +82,10 @@ Released on 2018-10-30.
 
 #### Updated
 
-- VoxeetSDK.shared.conference.mediaStream(userID:)
-    - VoxeetSDK.shared.conference.getMediaStream(userID:)
-- VoxeetSDK.shared.conference.screenShareMediaStream()
-    - VoxeetSDK.shared.conference.getScreenShareMediaStream()
+- VoxeetSDK.shared.conference.getMediaStream(userID:)
+    - VoxeetSDK.shared.conference.mediaStream(userID:)
+- VoxeetSDK.shared.conference.getScreenShareMediaStream()
+    - VoxeetSDK.shared.conference.screenShareMediaStream()
 
 ## [1.2.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.3)
 
@@ -175,55 +194,38 @@ VoxeetSDK is now fully compatible with Swift / Objective-C.
 
 - VoxeetSDK.shared.initializeSDK(consumerKey:consumerSecret:userInfo:callKit:automaticallyOpenSession:)
     - VoxeetSDK.shared.initialize(consumerKey:consumerSecret:userInfo:callKit:connectSession:)
-
 - VoxeetSDK.shared.connect(:)
     - VoxeetSDK.shared.session.connect(completion:)
-    
 - VoxeetSDK.shared.disconnect(:)
     - VoxeetSDK.shared.session.disconnect(completion:)
-
 - VoxeetSDK.shared.openSession(userID:userInfo:completion:)
     - VoxeetSDK.shared.session.connect(userID:userInfo:completion:)
-
 - VoxeetSDK.shared.closeSession(completion:)
     - VoxeetSDK.shared.session.disconnect(completion:)
-
 - VoxeetSDK.shared.sessionState()
     - VoxeetSDK.shared.session.state
-
 - VoxeetSDK.shared.sessionStateDelegate
     - VoxeetSDK.shared.session.delegate
-
 - VoxeetSDK.shared.sessionStateChanged
     - VoxeetSDK.shared.session.updated
-
 - VoxeetSDK.shared.enableCallKit
     - VoxeetSDK.shared.initialize(consumerKey:consumerSecret:userInfo:callKit:connectSession:)
-
 - VoxeetSDK.shared.conference.createDemo(:)
     - VoxeetSDK.shared.conference.demo(completion:)
-
 - VoxeetSDK.shared.conference.hasLiveConference()
     - VoxeetSDK.shared.conference.liveConferenceID()
-
 - VoxeetSDK.shared.conference.getUsers()
     - VoxeetSDK.shared.conference.users
-
 - VoxeetSDK.shared.conference.getOwnUser()
     - VoxeetSDK.shared.conference.ownUser
-
 - VoxeetSDK.shared.conference.setUserPosition(angle:distance:userID:)
     - VoxeetSDK.shared.conference.userPosition(userID:angle:distance:)
-
 - VoxeetSDK.shared.conference.setUserAngle(:userID:)
     - VoxeetSDK.shared.conference.userPosition(userID:angle:)
-
 - VoxeetSDK.shared.conference.setUserDistance(:userID:)
     - VoxeetSDK.shared.conference.userPosition(userID:distance:)
-
 - VoxeetSDK.shared.conference.muteUser(mute:userID:)
     - VoxeetSDK.shared.conference.mute(userID:isMuted:)
-
 - VoxeetSDK.shared.conference.getVoiceLevel(userID:)
     - VoxeetSDK.shared.conference.voiceLevel(userID:)
 

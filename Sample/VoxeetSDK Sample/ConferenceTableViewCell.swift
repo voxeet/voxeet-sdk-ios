@@ -79,22 +79,22 @@ class ConferenceTableViewCell: UITableViewCell {
      */
     
     @IBAction func angle(_ sender: UISlider) {
-        // Debug.
-        print("[DEBUG] \(#function) - Angle: \(sender.value)")
-        
         // Setting user position.
         if let userID = user.id {
             VoxeetSDK.shared.conference.userPosition(userID: userID, angle: Double(sender.value))
         }
+        
+        // Debug.
+        print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Angle: \(sender.value)")
     }
     
     @IBAction func distance(_ sender: UISlider) {
-        // Debug.
-        print("[DEBUG] \(#function) - Distance: \(sender.value)")
-        
         // Setting user position.
         if let userID = user.id {
             VoxeetSDK.shared.conference.userPosition(userID: userID, distance: Double(sender.value))
         }
+        
+        // Debug.
+        print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Distance: \(sender.value)")
     }
 }

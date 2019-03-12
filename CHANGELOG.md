@@ -21,6 +21,10 @@ All notable changes to this project will be documented in this file.
 - [1.0.9](#109)
 - [1.0.8](#108)
 - [1.0.7](#107)
+- [1.0.6](#106)
+- [1.0.5](#105)
+- [1.0.4](#104)
+- [1.0.3](#103)
 
 ---
 
@@ -75,6 +79,8 @@ Convert for Swift 4.2.1.
 
 Released on 2018-10-30.
 
+Add a new `stats` method and notification.
+
 #### Added
 
 - VoxeetSDK.shared.conference.localStats(userID:)
@@ -96,6 +102,8 @@ Close CallKit when declining a call outside a conference.
 ## [1.2.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.2.2)
 
 Released on 2018-10-12.
+
+Re-enable video presentation.
 
 #### Updated
 
@@ -137,6 +145,8 @@ Convert for Swift 4.1.
 
 Released on 2018-03-27.
 
+Swift 4.0.3 compatibility.
+
 #### Added
 
 - VoxeetSDK.shared.conference.subscribe(conferenceAlias:success:fail:)
@@ -158,17 +168,18 @@ Released on 2018-03-27.
 
 Released on 2017-11-15.
 
+Remove ownUser from conference and replace it by the session user.
+CallKit new optimizations and bug fixes.
+
 #### Added
 
 - VoxeetSDK.shared.conference.alias (custom conference identifier)
 
 #### Updated
 
-- VoxeetSDK.shared.conference.id is now the internal Voxeet identifier for a live conference.
-
+- VoxeetSDK.shared.conference.id _is now the internal Voxeet identifier for a live conference_.
 - VoxeetSDK.shared.conference.liveConferenceID()
     - VoxeetSDK.shared.conference.id
-
 - VoxeetSDK.shared.conference.ownUser
     - VoxeetSDK.shared.session.user
 
@@ -191,7 +202,6 @@ VoxeetSDK is now fully compatible with Swift / Objective-C.
 #### Updated
 
 - CallKit isn't enabled by default anymore.
-
 - VoxeetSDK.shared.initializeSDK(consumerKey:consumerSecret:userInfo:callKit:automaticallyOpenSession:)
     - VoxeetSDK.shared.initialize(consumerKey:consumerSecret:userInfo:callKit:connectSession:)
 - VoxeetSDK.shared.connect(:)
@@ -234,3 +244,30 @@ VoxeetSDK is now fully compatible with Swift / Objective-C.
 - VoxeetSDK.shared.conference.getUserInfo(userID:)
 - VoxeetSDK.shared.conference.getUserPosition(userID:)
 - VoxeetSDK.shared.conference.isUserMuted(userID:)
+
+## [1.0.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.6)
+
+Released on 2017-09-19.
+
+Convert for Swift 4.
+
+## [1.0.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.5)
+
+Released on 2017-07-04.
+
+Also add 2 new conference methods: invite and decline (for CallKit).
+Update create and join completion return value to have more information about the conference.
+
+## [1.0.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.4)
+
+Released on 2017-04-18.
+
+Add 5 new endpoints: history, histories, start / stop recording, replay.
+
+## [1.0.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.0.3)
+
+Released on 2017-04-07.
+
+Convert for Swift 3.1.
+Change sharedInstance by shared like native iOS SDKs with swift >= 3 and update other methods names.
+VoxeetSDK bug fixes and prepare to merge with CallKit (will be implemented in the next version).

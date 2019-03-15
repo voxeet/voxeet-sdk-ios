@@ -367,7 +367,7 @@ extension ConferenceViewController: VTConferenceCryptoDelegate {
         // Without any cryptography.
         memcpy(encryptedBuffer.baseAddress, buffer.baseAddress, frameSize)
         
-        return frameSize
+        return encryptedFrameSize
     }
     
     func getMaxCiphertextByteSize(type: Int, size: Int) -> Int {
@@ -381,7 +381,7 @@ extension ConferenceViewController: VTConferenceCryptoDelegate {
         // Without any cryptography.
         memcpy(buffer.baseAddress, encryptedBuffer.baseAddress, encryptedFrameSize)
         
-        return encryptedFrameSize
+        return frameSize
     }
     
     func getMaxPlaintextByteSize(type: Int, size: Int) -> Int {

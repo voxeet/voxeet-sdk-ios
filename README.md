@@ -65,8 +65,7 @@ To integrate [VoxeetSDK](https://github.com/voxeet/voxeet-ios-sdk) into your Xco
 github "voxeet/voxeet-ios-sdk" ~> 1.0
 ```
 
-Run `carthage update` to build the frameworks and drag `VoxeetSDK.framework` and `WebRTC.framework` into your Xcode project *(needs to be dropped in 'Embedded Binaries')*.
-More information at [https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
+Run `carthage update` to build the frameworks and drag `VoxeetSDK.framework` and `WebRTC.framework` into your Xcode project. More information at [https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
 ### Manually
 
@@ -798,6 +797,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.3.2
+1.3.3
 
 © Voxeet, 2019

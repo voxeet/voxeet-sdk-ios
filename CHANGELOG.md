@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
-- [1.3.1](#132)
+- [1.3.3](#133)
+- [1.3.2](#132)
 - [1.3.1](#131)
 - [1.3.0](#130)
 - [1.2.9](#129)
@@ -29,6 +30,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.3.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.3)
+
+Released on 2019-03-22.
+
+Fix a crash that can happen when joining / leaving a conference quickly.
 
 ## [1.3.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.2)
 

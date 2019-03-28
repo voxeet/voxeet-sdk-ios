@@ -326,7 +326,7 @@ extension ConferenceViewController: VTConferenceDelegate {
             if !stream.videoTracks.isEmpty {
                 VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
             }
-        } else if let index = users.index(where: { $0.id == userID }) {
+        } else if let index = users.firstIndex(where: { $0.id == userID }) {
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
     }

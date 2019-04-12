@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  VoxeetSDK Sample
 //
-//  Created by Coco on 22/04/16.
-//  Copyright © 2016 Corentin Larroque. All rights reserved.
+//  Created by Corentin Larroque on 22/04/16.
+//  Copyright © 2016 Voxeet. All rights reserved.
 //
 
 import UIKit

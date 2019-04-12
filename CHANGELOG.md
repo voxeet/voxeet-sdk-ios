@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.3.5](#135)
 - [1.3.4](#134)
 - [1.3.3](#133)
 - [1.3.2](#132)
@@ -31,6 +32,27 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.3.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.5)
+
+Released on 2019-04-12.
+
+Implement standard push notification alongside CallKit.
+Also add the possibility for a client to fully handle its own push notifications.
+Expose publicly conference modes: standard, listen, replay.
+
+#### Added
+
+VoxeetSDK.shared.session.pushToken = *string*
+
+#### Updated
+
+- VoxeetSDK.shared.callKit = *bool*
+    - VoxeetSDK.shared.pushNotification.type = *VTPushNotificationType*
+- VoxeetSDK.shared.includesCallsInRecents = *bool*
+    - VoxeetSDK.shared.pushNotification.includesCallsInRecents = *bool*
+- VoxeetSDK.shared.incomingCallTimeout = *bool*
+    - VoxeetSDK.shared.pushNotification.incomingCallTimeout = *bool*
 
 ## [1.3.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.4)
 

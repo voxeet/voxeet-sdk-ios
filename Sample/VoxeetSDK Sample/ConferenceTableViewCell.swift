@@ -2,8 +2,8 @@
 //  ConferenceTableViewCell.swift
 //  VoxeetSDK Sample
 //
-//  Created by Coco on 31/08/16.
-//  Copyright © 2016 Corentin Larroque. All rights reserved.
+//  Created by Corentin Larroque on 31/08/16.
+//  Copyright © 2016 Voxeet. All rights reserved.
 //
 
 import Foundation

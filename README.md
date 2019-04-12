@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         // Example of public variables to change the conference behavior.
-        VoxeetSDK.shared.callKit = false
+        VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
         VoxeetSDK.shared.conference.defaultVideo = false
         VoxeetSDK.shared.conference.audio3D = true
@@ -147,7 +147,7 @@ Some [notifications](#Events) can be used along with `callKit` to update the UI,
 To handle VoIP push notifications for iOS versions before iOS 10, you must use this AppDelegate extension:
 
 ```swift
-VoxeetSDK.shared.callKit = true
+VoxeetSDK.shared.pushNotification.type = .callKit
 VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
 
 /*
@@ -156,14 +156,14 @@ VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "Y
  */
 
 extension AppDelegate {
-    // Useful for iOS versions before iOS 10.
+    /// Useful below iOS 10.
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        VoxeetSDK.shared.application(application, didReceive: notification)
+        VoxeetSDK.shared.pushNotification.application(application, didReceive: notification)
     }
-
-    // Useful for iOS versions before iOS 10.
+    
+    /// Useful below iOS 10.
     func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
-        VoxeetSDK.shared.application(application, handleActionWithIdentifier: identifier, for: notification, completionHandler: completionHandler)
+        VoxeetSDK.shared.pushNotification.application(application, handleActionWithIdentifier: identifier, for: notification, completionHandler: completionHandler)
     }
 }
 ```

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Example of public variables to change the conference behavior.
-        VoxeetSDK.shared.callKit = false
+        VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
         VoxeetSDK.shared.conference.defaultVideo = true
         VoxeetSDK.shared.conference.audio3D = true

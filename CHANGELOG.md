@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.3.6](#136)
 - [1.3.5](#135)
 - [1.3.4](#134)
 - [1.3.3](#133)
@@ -32,6 +33,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.3.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.6)
+
+Released on 2019-04-15.
+
+Stop camera if `startVideo` method failed.
+Stop screen share if `startScreenShare` method failed.
 
 ## [1.3.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.5)
 

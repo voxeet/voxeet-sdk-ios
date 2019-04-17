@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
         // Example of public variables to change the conference behavior.
         VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
-        VoxeetSDK.shared.conference.defaultVideo = true
+        VoxeetSDK.shared.conference.defaultVideo = false
         VoxeetSDK.shared.conference.audio3D = true
         
         // Voxeet SDK initialization.

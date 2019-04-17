@@ -9,8 +9,8 @@
 
 
 * **Operating systems:** iOS 9.0 and later versions
-* **IDE:** [Xcode 10.0+](https://developer.apple.com/xcode/)
-* **Languages:** Swift 4.2+, Objective-C
+* **IDE:** [Xcode 10.2+](https://developer.apple.com/xcode/)
+* **Languages:** Swift 5+, Objective-C
 * **Supported architectures:** armv7, arm64, i386, x86_64
 
 
@@ -507,7 +507,7 @@ Gets the current stream of a user.
 -   `userID` **String** - User ID.
 
 #### Returns
--   **RTCMediaStream?** - The stream to be rendered into the view.
+-   **MediaStream?** - The stream to be rendered into the view.
 
 #### Example
 ```swift
@@ -520,7 +520,7 @@ let stream = VoxeetSDK.shared.conference.mediaStream(userID: "userID")
 Gets the current screen share stream.
 
 #### Returns
--   **RTCMediaStream?** - The stream to be rendered into the view.
+-   **MediaStream?** - The stream to be rendered into the view.
 
 #### Example
 ```swift
@@ -532,7 +532,7 @@ let stream = VoxeetSDK.shared.conference.screenShareMediaStream()
 Attaches a media stream to a renderer. You can create a renderer with a UIView that inherits from `VTVideoView`.
 
 #### Parameters
--   `stream` **RTCMediaStream** - The stream to be rendered into the view.
+-   `stream` **MediaStream** - The stream to be rendered into the view.
 -   `renderer` **RTCVideoRenderer** - The view renderer that will display the video.
 
 #### Example
@@ -549,7 +549,7 @@ Unattaches a media stream from a renderer. If you remove the video renderer from
 This method is useful for switching among several streams with the same video renderer.
 
 #### Parameters
--   `stream` **RTCMediaStream** - The stream to be rendered into the view.
+-   `stream` **MediaStream** - The stream to be rendered into the view.
 -   `renderer` **RTCVideoRenderer** - The view renderer that will display the video.
 
 #### Example
@@ -797,6 +797,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.3.6
+1.3.7
 
 © Voxeet, 2019

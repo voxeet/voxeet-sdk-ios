@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.3.7](#137)
 - [1.3.6](#136)
 - [1.3.5](#135)
 - [1.3.4](#134)
@@ -33,6 +34,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.3.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.7)
+
+Released on 2019-04-16.
+
+Don't start a video capturer if the simulator is running.
 
 ## [1.3.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.6)
 

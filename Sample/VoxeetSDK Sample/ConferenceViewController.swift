@@ -39,7 +39,7 @@ class ConferenceViewController: UIViewController {
     var player: AVPlayer?
     
     /*
-     *  MARK: Load/unload
+     *  MARK: Load / unload
      */
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class ConferenceViewController: UIViewController {
             startScreenShareButton.isHidden = true
         }
         
-        // Select/deselect the switchDeviceSpeakerButton when an headset is plugged/unplugged.
+        // Select / deselect the switchDeviceSpeakerButton when an headset is plugged / unplugged.
         NotificationCenter.default.addObserver(self, selector: #selector(audioSessionRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
         
         // File presentation observers.
@@ -77,7 +77,7 @@ class ConferenceViewController: UIViewController {
         VoxeetSDK.shared.conference.delegate = self
 //        VoxeetSDK.shared.conference.cryptoDelegate = self
         
-        // Joining/launching demo.
+        // Joining / launching demo.
         if let alias = alias {
             aliasLabel.text = alias
             
@@ -113,10 +113,6 @@ class ConferenceViewController: UIViewController {
                     return
                 }
             }
-            
-            // Hide own preview camera.
-            ownCameraView.isHidden = true
-            ownCameraHandlerButton.isHidden = true
             
             // Disable useless buttons in demo.
             broadcastMessageButton.isEnabled = false
@@ -222,8 +218,11 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
-        VoxeetSDK.shared.conference.flipCamera()
-        ownCameraView.mirrorEffect.toggle()
+        VoxeetSDK.shared.conference.flipCamera {
+            DispatchQueue.main.async {
+                self.ownCameraView.mirrorEffect.toggle()
+            }
+        }
     }
     
     @IBAction func ownVideo(_ button: UIButton) {

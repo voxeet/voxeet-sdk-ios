@@ -15,8 +15,6 @@
 
 
 ## Sample Application
-
-
 A sample application is available on this [GitHub repository](https://github.com/voxeet/voxeet-ios-sdk/tree/master/Sample).
 You can also use a ready to go UI: **VoxeetConferenceKit** available at this link [https://github.com/voxeet/voxeet-ios-conferencekit](https://github.com/voxeet/voxeet-ios-conferencekit) (which embed this SDK).
 
@@ -25,13 +23,11 @@ You can also use a ready to go UI: **VoxeetConferenceKit** available at this lin
 
 
 ### 1. Get your credentials
-
 Get a consumer key and consumer secret for your app from [your developer account dashboard](https://developer.voxeet.com).
 
 **If you are a new user, you'll need to sign up for a Voxeet developer account and add an app.** You can create one app with a trial account. Upgrade to a paid account for multiple apps and to continue using Voxeet after your trial expires. We will give you dedicated help to get you up and running fast.
 
 ### 2. Project setup
-
 Enable **background mode** (go to your target settings -> 'Capabilities' -> 'Background Modes')
 - Turn on 'Audio, AirPlay and Picture in Picture'  
 - Turn on 'Voice over IP'
@@ -49,7 +45,6 @@ Privacy **permissions**, add two new keys in the Info.plist:
 ### 3. Installation
 
 #### Carthage
-
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
 You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
@@ -68,7 +63,6 @@ github "voxeet/voxeet-ios-sdk" ~> 1.0
 Run `carthage update` to build the frameworks and drag `VoxeetSDK.framework` and `WebRTC.framework` into your Xcode project. More information at [https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
 ### Manually
-
 Download the lastest release zip:
 
 **VoxeetSDK:** https://github.com/voxeet/voxeet-ios-sdk/releases
@@ -77,10 +71,12 @@ Unzip and drag and drop frameworks into your project, select 'Copy items if need
 
 
 ## Initialize the Voxeet SDK
-
+Two methods are currently available to initialize the SDK:
+- Set the API keys in the app
+- Use an OAuth2 server to provide the keys
 
 ### `initialize`
-Initializes the SDK with your Voxeet user information.
+Initialize the SDK with your Voxeet user information.
 
 #### Parameters
 -   `consumerKey` **String** - The consumer key for your app from [your developer account dashboard](https://developer.voxeet.com).
@@ -118,16 +114,16 @@ VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "Y
 
 
 ### `initialize` with Oauth2
-Initializes the SDK with a valid token and a method to refresh it.
+Initialize the SDK with a valid token and a method to refresh it.
 
 #### Parameters
 -   `accessToken` **String** - A valid tokenAccess obtained from your own Oauth2 server.
 -   `userInfo` **[String: Any]?** - A dictionnary object that contains custom user information `["externalId": "1234", "externalName": "Username", "externalPhotoUrl": "https://voxeet.com/logo.jpg", ...]`.
 -   `refreshTokenClosure` **@escaping ((_ closure: @escaping (_ token: String) -> Void) -> Void)** - This closure will be called when the access token needs to be refreshed from your server. Inside this one, refresh your access token and use the closure parameter to notify Voxeet of the changement: `closure("token")`.
 
-#### Examples
+#### Example
 ```swift
-VoxeetSDK.shared.initialize(accessToken: “token”, userInfo: nil, refreshTokenClosure: { closure in
+VoxeetSDK.shared.initialize(accessToken: "YOUR_TOKEN", userInfo: nil, refreshTokenClosure: { closure in
     yourRefreshTokenMethod() { token in
         closure(token)
     }
@@ -142,8 +138,7 @@ Display the system-calling UI for your app's VoIP services.
 
 Some [notifications](#Events) can be used along with `callKit` to update the UI, such as `VTCallKitStarted`, `VTCallKitSwapped`, `VTCallKitEnded`, ...
 
-#### Examples
-
+#### Example
 To handle VoIP push notifications for iOS versions before iOS 10, you must use this AppDelegate extension:
 
 ```swift
@@ -173,21 +168,18 @@ extension AppDelegate {
 
 
 ### `user`
-Gets current session user (`VTUser`).
+Get current session's user (`VTUser`).
 
-#### Examples
-
+#### Example
 ```swift
 let user = VoxeetSDK.shared.session.user
 ```
 
 ### `state`
-
-Gets current session state. 
+Get current session's state. 
 `VTSessionState` enum: `connecting`, `connected`, `reconnecting` or `disconnected`.
 
 #### Examples
-
 ```swift
 let state = VoxeetSDK.shared.session.state
 ```
@@ -211,12 +203,10 @@ class myClass: VTSessionDelegate {
 Connect a session is like a login, however the SDK needs to be initialized with `connectSession` sets to `false`. This method can be useful if CallKit is implemented (VoIP push notifications) because once the session is openned, notifications can be received if there is an invitation.
 
 #### Parameters
-
 -   `user` **VTUser?** - A user to be linked to our server.
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether or not the connection to the server succeeded.
 
-#### Examples
-
+#### Example
 ```swift
 let user = VTUser(externalID: "1234", name: "Username", avatarURL: "https://voxeet.com/logo.jpg")
 VoxeetSDK.shared.session.connect(user: user) { error in
@@ -228,12 +218,10 @@ VoxeetSDK.shared.session.connect(user: user) { error in
 *This method is optional.*
 Close a session is like a logout, it will stop the socket and stop sending VoIP push notification.
 
-#### Parameters
-
+#### Parameter
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether or not the connection to the server succeeded.
 
-#### Examples
-
+#### Example
 ```swift
 VoxeetSDK.shared.session.disconnect { error in
 }
@@ -244,21 +232,17 @@ VoxeetSDK.shared.session.disconnect { error in
 
 
 ### `id`
+Get the live conference ID (Voxeet internal identifier). If `nil` there is no conference going on.
 
-Gets the live conference ID (Voxeet internal identifier). If `nil` there is no conference going on.
-
-#### Examples
-
+#### Example
 ```swift
 let conferenceID = VoxeetSDK.shared.conference.id
 ```
 
 ### `alias`
+Get the live conference alias. If `nil` there is no conference going on.
 
-Gets the live conference alias. If `nil` there is no conference going on.
-
-#### Examples
-
+#### Example
 ```swift
 let conferenceAlias = VoxeetSDK.shared.conference.alias
 ```
@@ -267,7 +251,6 @@ let conferenceAlias = VoxeetSDK.shared.conference.alias
 Get current conference users (`[VTUser]`).
 
 #### Examples
-
 ```swift
 let users = VoxeetSDK.shared.conference.users
 ```
@@ -281,14 +264,14 @@ let liveUsers = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
 
 
 ### `create`
-Creates a conference. You can call `join` method if creation succeeds.
+Create a conference. You can call `join` method if creation succeeds.
 
 #### Parameters
 -   `parameters` **[String: Any]?** - Option for passing some parameters when you create a conference, such as `conferenceAlias` (e.g., `["conferenceAlias": "myCustomConferenceAlias", "conferenceType": "standard", "metadata": ["stats": false, "liveRecording": false], "params": ["videoCodec": "VP8"/"H264"]]`). Those parameters are specific to a conference and should not be confused with `userInfo`.
 -   `success` **((_ json: [String: Any]?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a `[String: Any]` argument that corresponds to a JSON dictionary object.
 -   `fail` **((_ error: NSError) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
-#### Example
+#### Examples
 ```swift
 VoxeetSDK.shared.conference.create(success: { json in
     guard let confID = json?["conferenceId"] as? String,
@@ -307,7 +290,7 @@ VoxeetSDK.shared.conference.create(parameters: ["conferenceAlias": "myCustomConf
 
 
 ### `join`
-Joins the created conference.
+Join the created conference.
 
 #### Parameters
 -   `conferenceID` **String** - Conference identifier retrieved from `create` response (also compatible with conference alias).
@@ -337,9 +320,9 @@ VoxeetSDK.shared.conference.join(conferenceID: conferenceID, video: true, userIn
 
 
 ### `leave`
-Leaves the current conference.
+Leave the current conference.
 
-#### Parameters
+#### Parameter
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
@@ -350,7 +333,7 @@ VoxeetSDK.shared.conference.leave { error in
 
 
 ### `status`
-Retrieves the status of specified conference.
+Retrieve the status of specified conference.
 
 #### Parameters
 -   `conferenceID` **String** - The ID of the conference whose status you want to retrieve.
@@ -366,7 +349,7 @@ VoxeetSDK.shared.conference.status(conferenceID: conferenceID, success: { json i
 
 
 ### `statusSubscribe`
-Subscribes to all status updates for a specified conference, such as added/removed participants and conference ended, within a [notification](#Events) and **without joinning the conference**.
+Subscribe to all status updates for a specified conference, such as added / removed participants and conference ended, within a [notification](#Events) and **without joinning the conference**.
 
 **The conference must be created before using this method**
 
@@ -389,7 +372,7 @@ init() {
 
 
 ### `statusUnsubscribe`
-Unsubscribes from status updates [notifications](#Events) for the specified conference.
+Unsubscribe from status updates [notifications](#Events) for the specified conference.
 
 #### Parameters
 -   `conferenceID` **String** - The ID of the conference whose status events you want to unsubscribe from (also compatible with conference alias).
@@ -403,9 +386,9 @@ VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID: conferenceID, comple
 
 
 ### `localStats`
-Gets local WebRTC stats.
+Get local WebRTC stats.
 
-#### Parameters
+#### Parameter
 -   `userID` **String** - The ID of the user whose local WebRTC stats you want to retrieve.
 
 #### Returns
@@ -421,7 +404,7 @@ let stats = VoxeetSDK.shared.conference.localStats(userID: "userID")
 
 
 ### `startRecording`
-Records a conference so you can replay it after it ends.
+Record a conference so you can replay it after it ends.
 
 #### Parameters
 -   `fireInterval` **Int?** - Useful when replaying a conference with an offset (in milliseconds). Allows the video stream to be more or less reactive depending on the length of the record. By default at 10000 milliseconds.
@@ -435,9 +418,9 @@ VoxeetSDK.shared.conference.startRecording(completion: { error in
 
 
 ### `stopRecording`
-Stops the current recording (a recording needs to be started before with `startRecording` method).
+Stop the current recording (a recording needs to be started before with `startRecording` method).
 
-#### Parameters
+#### Parameter
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
@@ -451,7 +434,7 @@ VoxeetSDK.shared.conference.stopRecording(completion: { error in
 
 
 ### `replay`
-Replays a recorded conference.
+Replay a recorded conference.
 
 #### Parameters
 -   `conferenceID` **String** - The ID of the conference you want to replay. Do not pass a conference alias --- pass only an ID, such as the Voxeet conference UUID returned by the `join` method.
@@ -475,9 +458,9 @@ VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, offset: 1000, com
 
 
 ### `switchDeviceSpeaker`
-Switches between BuiltInSpeaker and BuiltInReceiver.
+Switch between BuiltInSpeaker and BuiltInReceiver.
 
-#### Parameters
+#### Parameter
 -   `forceBuiltInSpeaker` **Bool?** - If `true`, forces the audio to set on the main speaker. If `false`, forces the builtInReceiver.
 
 #### Examples
@@ -491,7 +474,7 @@ VoxeetSDK.shared.conference.switchDeviceSpeaker(forceBuiltInSpeaker: true)
 
 
 ### `flipCamera`
-Changes the device camera (front or back).
+Change the device camera (front or back).
 
 #### Example
 ```swift
@@ -500,10 +483,9 @@ VoxeetSDK.shared.conference.flipCamera()
 
 
 ### `mediaStream`
+Get the current stream of a user.
 
-Gets the current stream of a user.
-
-#### Parameters
+#### Parameter
 -   `userID` **String** - User ID.
 
 #### Returns
@@ -516,8 +498,7 @@ let stream = VoxeetSDK.shared.conference.mediaStream(userID: "userID")
 
 
 ### `screenShareMediaStream`
-
-Gets the current screen share stream.
+Get the current screen share stream.
 
 #### Returns
 -   **MediaStream?** - The stream to be rendered into the view.
@@ -529,7 +510,7 @@ let stream = VoxeetSDK.shared.conference.screenShareMediaStream()
 
 
 ### `attachMediaStream`
-Attaches a media stream to a renderer. You can create a renderer with a UIView that inherits from `VTVideoView`.
+Attach a media stream to a renderer. You can create a renderer with a UIView that inherits from `VTVideoView`.
 
 #### Parameters
 -   `stream` **MediaStream** - The stream to be rendered into the view.
@@ -544,7 +525,7 @@ VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: videoRenderer)
 
 
 ### `unattachMediaStream`
-Unattaches a media stream from a renderer. If you remove the video renderer from the UI, you do not need to call this method.
+Unattach a media stream from a renderer. If you remove the video renderer from the UI, you do not need to call this method.
 
 This method is useful for switching among several streams with the same video renderer.
 
@@ -561,7 +542,7 @@ VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: videoRenderer)
 
 
 ### `startVideo`
-Starts the video for the specified user (typically, your own user ID). However you can't force starting or stopping a video from a specific user other than you.
+Start the video for the specified user (typically, your own user ID). However you can't force starting or stopping a video from a specific user other than you.
 
 #### Parameters
 -   `userID` **String** - The ID for the user whose video you want to start.
@@ -576,7 +557,7 @@ VoxeetSDK.shared.conference.startVideo(userID: ownUserID, completion: { error in
 
 
 ### `stopVideo`
-Stops video for the specified user.
+Stop video for the specified user.
 
 #### Parameters
 -   `userID` **String** - The ID for the user whose video you want to stop.
@@ -593,8 +574,7 @@ VoxeetSDK.shared.conference.stopVideo(userID: ownUserID, completion: { error in
 
 
 ### `invite`
-
-Invites users to a conference. Users will receive an [invitationReceived](#Events) event.
+Invite users to a conference. Users will receive an [invitationReceived](#Events) event.
 
 If `callKit` and push notifications are **enabled**, the invitation will ring on invited users' devices with the Apple incoming call user interface.
 
@@ -611,7 +591,7 @@ VoxeetSDK.shared.conference.invite(conferenceID: conferenceID, externalIDs: ["us
 
 
 ### `userPosition`
-Sets user position for the spatialized audio mode.
+Set user position for the spatialized audio mode.
 
 #### Parameters
 -   `userID` **String** - The ID for the user whose position you want to set.
@@ -625,7 +605,7 @@ VoxeetSDK.shared.conference.userPosition(userID: "userID", angle: 0, distance: 0
 
 
 ### `mute`
-Mutes or unmutes the specified user.
+Mute or unmute the specified user.
 
 #### Parameters
 -   `userID` **String** - The ID of the user you want to mute.
@@ -638,7 +618,7 @@ VoxeetSDK.shared.conference.mute(userID: "userID", isMuted: true)
 
 
 ### `toggleMute`
-Toggles mute for the specified user.
+Toggle mute for the specified user.
 
 #### Parameters
 -   `userID` **string** - The ID of the user you want to mute or unmute.
@@ -653,9 +633,9 @@ let isMuted = VoxeetSDK.shared.conference.toggleMute(userID: "userID")
 
 
 ### `voiceLevel`
-Retrieves the specified user's current audio level, normalized between `0.0` and `1.0`.
+Retrieve the specified user's current audio level, normalized between `0.0` and `1.0`.
 
-#### Parameters
+#### Parameter
 -   `userID` **String** - The ID of the user whose level you want to retrieve.
 
 #### Returns
@@ -671,7 +651,7 @@ let voiceLevel = VoxeetSDK.shared.conference.voiceLevel(userID: "userID")
 
 
 ### `broadcast`
-Broadcasts messages as raw strings of any type (including JSON, XML, simple string) to all conference participants.
+Broadcast messages as raw strings of any type (including JSON, XML, simple string) to all conference participants.
 
 To receive a broadcast message, use the `messageReceived` method from the [VTConferenceDelegate](#Events) event.
 
@@ -692,7 +672,6 @@ VoxeetSDK.shared.conference.broadcast(message: "message", completion: { error in
 ### Delegates
 
 #### `VTSessionDelegate`
-
 `VTSessionState` enum: `connecting`, `connected`, `reconnecting` or `disconnected`.
 
 ```swift
@@ -737,7 +716,6 @@ class myClass: VTConferenceCryptoDelegate {
 
 
 ### Handling notifications
-
 Here is an example of how to handle notifications pushed by the Voxeet SDK.
 
 ```swift

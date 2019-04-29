@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.3.9](#139)
 - [1.3.8](#138)
 - [1.3.7](#137)
 - [1.3.6](#136)
@@ -35,6 +36,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.3.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.9)
+
+Released on 2019-04-29.
+
+Socket bug fix that can ring CallKit multiple times.
 
 ## [1.3.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.8)
 

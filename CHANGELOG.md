@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.0](#140)
 - [1.3.9](#139)
 - [1.3.8](#138)
 - [1.3.7](#137)
@@ -36,6 +37,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.0)
+
+Released on 2019-05-20.
+
+Remove 3D audio by default.
+Conference decline bug fix for CallKit and standard notifications.
 
 ## [1.3.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.3.9)
 

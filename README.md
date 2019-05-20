@@ -136,10 +136,9 @@ Display the system-calling UI for your app's VoIP services.
 
 [CallKit](https://developer.apple.com/documentation/callkit) is disabled by default. 'Push Notifications' capability needs to be enabled.
 
-Some [notifications](#Events) can be used along with `callKit` to update the UI, such as `VTCallKitStarted`, `VTCallKitSwapped`, `VTCallKitEnded`, ...
+Some [events](#Events) can be used along with `callKit` to update the UI, such as `VTCallKitStarted`, `VTCallKitSwapped`, `VTCallKitEnded`, `VTCallKitMuteToggled`.
 
 #### Example
-To handle VoIP push notifications for iOS versions before iOS 10, you must use this AppDelegate extension:
 
 ```swift
 VoxeetSDK.shared.pushNotification.type = .callKit
@@ -775,6 +774,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.3.9
+1.4.0
 
 © Voxeet, 2019

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.1](#141)
 - [1.4.0](#140)
 - [1.3.9](#139)
 - [1.3.8](#138)
@@ -37,6 +38,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.1)
+
+Released on 2019-05-22.
+
+Voice level getter bug fix.
 
 ## [1.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.0)
 

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.2](#142)
 - [1.4.1](#141)
 - [1.4.0](#140)
 - [1.3.9](#139)
@@ -38,6 +39,21 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.2)
+
+Released on 2019-08-07.
+
+Patch Objective C simulator compilation due to a known issue from Xcode 10.2 (https://developer.apple.com/documentation/xcode_release_notes/xcode_10_2_release_notes).
+Implement `isDefaultFrontFacing` to `startVideo` method.
+Rename `flipCamera` to `switchCamera` to match with `switchDeviceSpeaker` and Android.
+
+#### Updated
+- VoxeetSDK.shared.conference.flipCamera(completion:)
+    - VoxeetSDK.shared.conference.switchCamera(completion:)
+    
+#### Removed
+- VoxeetSDK.shared.conference.audio3D
 
 ## [1.4.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.1)
 

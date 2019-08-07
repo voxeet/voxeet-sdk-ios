@@ -39,7 +39,7 @@ class ConferenceViewController: UIViewController {
     var player: AVPlayer?
     
     /*
-     *  MARK: Load / unload
+     *  MARK: Load / Unload
      */
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class ConferenceViewController: UIViewController {
             startScreenShareButton.isHidden = true
         }
         
-        // Select / deselect the switchDeviceSpeakerButton when an headset is plugged / unplugged.
+        // Select / Deselect the switchDeviceSpeakerButton when an headset is plugged/unplugged.
         NotificationCenter.default.addObserver(self, selector: #selector(audioSessionRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
         
         // File presentation observers.
@@ -70,6 +70,9 @@ class ConferenceViewController: UIViewController {
         
         // Force the device screen to never going to sleep mode.
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        // Hide empty cells.
+        tableView.tableFooterView = UIView()
     }
     
     func initConference() {
@@ -77,7 +80,7 @@ class ConferenceViewController: UIViewController {
         VoxeetSDK.shared.conference.delegate = self
 //        VoxeetSDK.shared.conference.cryptoDelegate = self
         
-        // Joining / launching demo.
+        // Joining / Launching demo.
         if let alias = alias {
             aliasLabel.text = alias
             
@@ -218,7 +221,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
-        VoxeetSDK.shared.conference.flipCamera {
+        VoxeetSDK.shared.conference.switchCamera {
             DispatchQueue.main.async {
                 self.ownCameraView.mirrorEffect.toggle()
             }
@@ -226,20 +229,16 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func ownVideo(_ button: UIButton) {
-        guard let userID = VoxeetSDK.shared.session.user?.id else {
-            return
-        }
-        
         button.isEnabled = false
         if button.isSelected {
-            VoxeetSDK.shared.conference.stopVideo(userID: userID, completion: { _ in
+            VoxeetSDK.shared.conference.stopVideo() { _ in
                 button.isEnabled = true
-            })
+            }
         } else {
             ownCameraView.mirrorEffect = true
-            VoxeetSDK.shared.conference.startVideo(userID: userID, completion: { _ in
+            VoxeetSDK.shared.conference.startVideo() { _ in
                 button.isEnabled = true
-            })
+            }
         }
         button.isSelected.toggle()
     }
@@ -261,14 +260,14 @@ class ConferenceViewController: UIViewController {
 
 extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return VoxeetSDK.shared.conference.users.filter({ $0.asStream }).count
+        return VoxeetSDK.shared.conference.users.filter({ $0.hasStream }).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! ConferenceTableViewCell
         
         // Getting the current user.
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
+        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
         guard users.count != 0 && indexPath.row <= users.count else { return cell }
         let user = users[indexPath.row]
         
@@ -282,7 +281,7 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // Getting the current user.
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
+        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
         let user = users[(indexPath as NSIndexPath).row]
         
         // Mute a user.
@@ -306,8 +305,8 @@ extension ConferenceViewController: VTConferenceDelegate {
         if VoxeetSDK.shared.session.user?.id == userID {
             // Attaching own user's video stream.
             if !stream.videoTracks.isEmpty {
+                ownCameraView.attach(userID: userID, stream: stream)
                 ownCameraView.isHidden = false
-                VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
             }
         } else {
             tableView.reloadData()
@@ -315,7 +314,7 @@ extension ConferenceViewController: VTConferenceDelegate {
     }
     
     func participantUpdated(userID: String, stream: MediaStream) {
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
+        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
         
         // Get the video renderer.
         if VoxeetSDK.shared.session.user?.id == userID {
@@ -323,7 +322,7 @@ extension ConferenceViewController: VTConferenceDelegate {
             
             // Attaching own user's video stream.
             if !stream.videoTracks.isEmpty {
-                VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: ownCameraView)
+                ownCameraView.attach(userID: userID, stream: stream)
             }
         } else if let index = users.firstIndex(where: { $0.id == userID }) {
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
@@ -344,8 +343,7 @@ extension ConferenceViewController: VTConferenceDelegate {
     
     func screenShareStarted(userID: String, stream: MediaStream) {
         // Attaching a video stream to a renderer.
-        VoxeetSDK.shared.conference.attachMediaStream(stream, renderer: screenShareView)
-        
+        screenShareView.attach(userID: userID, stream: stream)
         screenShareView.alpha = 1
     }
     

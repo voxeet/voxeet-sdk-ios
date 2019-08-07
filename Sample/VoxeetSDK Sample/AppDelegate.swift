@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
         VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
         VoxeetSDK.shared.conference.defaultVideo = false
-        VoxeetSDK.shared.conference.audio3D = true
         
         // Voxeet SDK initialization.
         VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")

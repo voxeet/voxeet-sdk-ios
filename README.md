@@ -9,8 +9,8 @@
 
 
 * **Operating systems:** iOS 9.0 and later versions
-* **IDE:** [Xcode 10.2+](https://developer.apple.com/xcode/)
-* **Languages:** Swift 5+, Objective-C
+* **IDE:** [Xcode 10.3+](https://developer.apple.com/xcode/)
+* **Languages:** Swift 5.0.1+, Objective-C
 * **Supported architectures:** armv7, arm64, i386, x86_64
 
 
@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VoxeetSDK.shared.conference.defaultVideo = false
         VoxeetSDK.shared.conference.audio3D = true
 
-        // Initialization of the Voxeet SDK.
+        // Voxeet SDK initialization.
         VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
 
         return true
@@ -146,7 +146,7 @@ VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "Y
 
 /*
  *  MARK: - Voxeet VoIP push notifications
- *  To handle VoIP push notifications before iOS 10, you must use this AppDelegate extension:
+ *  To handle VoIP push notifications below iOS 10, you must use this AppDelegate extension:
  */
 
 extension AppDelegate {
@@ -472,12 +472,12 @@ VoxeetSDK.shared.conference.switchDeviceSpeaker(forceBuiltInSpeaker: true)
 ```
 
 
-### `flipCamera`
+### `switchCamera`
 Change the device camera (front or back).
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.flipCamera()
+VoxeetSDK.shared.conference.switchCamera()
 ```
 
 
@@ -774,6 +774,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.4.1
+1.4.2
 
 © Voxeet, 2019

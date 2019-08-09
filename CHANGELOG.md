@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.3](#143)
 - [1.4.2](#142)
 - [1.4.1](#141)
 - [1.4.0](#140)
@@ -39,6 +40,18 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.3)
+
+Released on 2019-08-09.
+
+Save last user metadata for CallKit.
+
+#### Updated
+- VoxeetSDK.shared.initialize(consumerKey:consumerSecret:userInfo:connectSession:)
+    - VoxeetSDK.shared.initialize(consumerKey:consumerSecret:)
+- VoxeetSDK.shared.initialize(accessToken:userInfo:refreshTokenClosure:)
+    - VoxeetSDK.shared.initialize(accessToken:refreshTokenClosure:)
 
 ## [1.4.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.2)
 

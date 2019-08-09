@@ -81,8 +81,6 @@ Initialize the SDK with your Voxeet user information.
 #### Parameters
 -   `consumerKey` **String** - The consumer key for your app from [your developer account dashboard](https://developer.voxeet.com).
 -   `consumerSecret` **String** - The consumer secret for your app from [your developer account dashboard](https://developer.voxeet.com).
--   `userInfo` **[String: Any]?** - A dictionnary object that contains custom user information `["externalId": "1234", "externalName": "Username", "externalPhotoUrl": "https://voxeet.com/logo.jpg", ...]`.
--   `connectSession` **Bool?** - Connect session at a later time by setting this parameter to `false` and calling `VoxeetSDK.shared.session.connect(user:completion:)` when you want to connect. If `true` (by default), the SDK automatically connects the user at initialization (anonymously, if the `userInfo` parameter is empty).
 
 #### Examples
 ```swift
@@ -96,7 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
         VoxeetSDK.shared.conference.defaultVideo = false
-        VoxeetSDK.shared.conference.audio3D = true
 
         // Voxeet SDK initialization.
         VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
@@ -106,24 +103,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-```swift
-let userInfo = ["externalId": "1234", "externalName": "Username", "externalPhotoUrl": "http://voxeet.com/image.jpg"]
-
-VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET", userInfo: userInfo, connectSession: true)
-```
-
 
 ### `initialize` with Oauth2
 Initialize the SDK with a valid token and a method to refresh it.
 
 #### Parameters
 -   `accessToken` **String** - A valid tokenAccess obtained from your own Oauth2 server.
--   `userInfo` **[String: Any]?** - A dictionnary object that contains custom user information `["externalId": "1234", "externalName": "Username", "externalPhotoUrl": "https://voxeet.com/logo.jpg", ...]`.
 -   `refreshTokenClosure` **@escaping ((_ closure: @escaping (_ token: String) -> Void) -> Void)** - This closure will be called when the access token needs to be refreshed from your server. Inside this one, refresh your access token and use the closure parameter to notify Voxeet of the changement: `closure("token")`.
 
 #### Example
 ```swift
-VoxeetSDK.shared.initialize(accessToken: "YOUR_TOKEN", userInfo: nil, refreshTokenClosure: { closure in
+VoxeetSDK.shared.initialize(accessToken: "YOUR_TOKEN", refreshTokenClosure: { closure in
     yourRefreshTokenMethod() { token in
         closure(token)
     }
@@ -191,8 +181,7 @@ class myClass: VTSessionDelegate {
         VoxeetSDK.shared.session.delegate = self
     }
 
-    func sessionUpdated(state: VTSessionState) {
-    }
+    func sessionUpdated(state: VTSessionState) {}
 }
 ```
 
@@ -208,8 +197,7 @@ Connect a session is like a login, however the SDK needs to be initialized with 
 #### Example
 ```swift
 let user = VTUser(externalID: "1234", name: "Username", avatarURL: "https://voxeet.com/logo.jpg")
-VoxeetSDK.shared.session.connect(user: user) { error in
-}
+VoxeetSDK.shared.session.connect(user: user) { error in }
 ```
 
 
@@ -222,8 +210,7 @@ Close a session is like a logout, it will stop the socket and stop sending VoIP 
 
 #### Example
 ```swift
-VoxeetSDK.shared.session.disconnect { error in
-}
+VoxeetSDK.shared.session.disconnect { error in }
 ```
 
 
@@ -326,8 +313,7 @@ Leave the current conference.
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.leave { error in
-}
+VoxeetSDK.shared.conference.leave { error in }
 ```
 
 
@@ -361,12 +347,10 @@ Subscribe to all status updates for a specified conference, such as added / remo
 init() {
     NotificationCenter.default.addObserver(self, selector: #selector(conferenceStatusUpdated), name: .VTConferenceStatusUpdated, object: nil)
 
-    VoxeetSDK.shared.conference.statusSubscribe(conferenceID: conferenceID, completion: { error in
-    })
+    VoxeetSDK.shared.conference.statusSubscribe(conferenceID: conferenceID, completion: { error in })
 }
 
-@objc func conferenceStatusUpdated(_ notification: Notification) {
-}
+@objc func conferenceStatusUpdated(_ notification: Notification) {}
 ```
 
 
@@ -379,8 +363,7 @@ Unsubscribe from status updates [notifications](#Events) for the specified confe
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID: conferenceID, completion: { error in
-})
+VoxeetSDK.shared.conference.statusUnsubscribe(conferenceID: conferenceID, completion: { error in })
 ```
 
 
@@ -411,8 +394,7 @@ Record a conference so you can replay it after it ends.
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.startRecording(completion: { error in
-})
+VoxeetSDK.shared.conference.startRecording(completion: { error in })
 ```
 
 
@@ -424,8 +406,7 @@ Stop the current recording (a recording needs to be started before with `startRe
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.stopRecording(completion: { error in
-})
+VoxeetSDK.shared.conference.stopRecording(completion: { error in })
 ```
 
 
@@ -442,14 +423,12 @@ Replay a recorded conference.
 
 #### Examples
 ```swift
-VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, completion: { error in
-})
+VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, completion: { error in })
 ```
 
 ```swift
 // Replay a conference without the first second.
-VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, offset: 1000, completion: { error in
-})
+VoxeetSDK.shared.conference.replay(conferenceID: conferenceID, offset: 1000, completion: { error in })
 ```
 
 
@@ -544,14 +523,12 @@ VoxeetSDK.shared.conference.unattachMediaStream(stream, renderer: videoRenderer)
 Start the video for the specified user (typically, your own user ID). However you can't force starting or stopping a video from a specific user other than you.
 
 #### Parameters
--   `userID` **String** - The ID for the user whose video you want to start.
+-   `userID` **String?** - The ID for the user whose video you want to start.
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
 ```swift
-let ownUserID = VoxeetSDK.shared.session.user!.id!
-VoxeetSDK.shared.conference.startVideo(userID: ownUserID, completion: { error in
-})
+VoxeetSDK.shared.conference.startVideo { error in }
 ```
 
 
@@ -559,13 +536,12 @@ VoxeetSDK.shared.conference.startVideo(userID: ownUserID, completion: { error in
 Stop video for the specified user.
 
 #### Parameters
--   `userID` **String** - The ID for the user whose video you want to stop.
+-   `userID` **String?** - The ID for the user whose video you want to stop.
 -   `completion` **((_ error: NSError?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.stopVideo(userID: ownUserID, completion: { error in
-})
+VoxeetSDK.shared.conference.stopVideo { error in }
 ```
 
 
@@ -660,8 +636,7 @@ To receive a broadcast message, use the `messageReceived` method from the [VTCon
 
 #### Example
 ```swift
-VoxeetSDK.shared.conference.broadcast(message: "message", completion: { error in
-})
+VoxeetSDK.shared.conference.broadcast(message: "message", completion: { error in })
 ```
 
 
@@ -774,6 +749,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.4.2
+1.4.3
 
 © Voxeet, 2019

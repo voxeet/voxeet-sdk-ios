@@ -89,15 +89,15 @@ import VoxeetSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
+        // Voxeet SDK initialization.
+        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
+        
         // Example of public variables to change the conference behavior.
         VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
         VoxeetSDK.shared.conference.defaultVideo = false
-
-        // Voxeet SDK initialization.
-        VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
-
+        
         return true
     }
 }
@@ -253,7 +253,7 @@ let liveUsers = VoxeetSDK.shared.conference.users.filter({ $0.asStream })
 Create a conference. You can call `join` method if creation succeeds.
 
 #### Parameters
--   `parameters` **[String: Any]?** - Option for passing some parameters when you create a conference, such as `conferenceAlias` (e.g., `["conferenceAlias": "myCustomConferenceAlias", "conferenceType": "standard", "metadata": ["stats": false, "liveRecording": false], "params": ["videoCodec": "VP8"/"H264"]]`). Those parameters are specific to a conference and should not be confused with `userInfo`.
+-   `parameters` **[String: Any]?** - Option for passing some parameters when you create a conference, such as `conferenceAlias` (e.g., `["conferenceAlias": "myCustomConferenceAlias", "metadata": ["stats": false, "liveRecording": false], "params": ["videoCodec": "VP8"/"H264"]]`). Those parameters are specific to a conference and should not be confused with `userInfo`.
 -   `success` **((_ json: [String: Any]?) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a `[String: Any]` argument that corresponds to a JSON dictionary object.
 -   `fail` **((_ error: NSError) -> Void)?** - A block object to be executed when the server connection sequence ends. This block has no return value and takes a single `NSError` argument that indicates whether the connection to the server succeeded.
 
@@ -749,6 +749,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.4.3
+1.4.4
 
 © Voxeet, 2019

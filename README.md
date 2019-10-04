@@ -97,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VoxeetSDK.shared.pushNotification.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = false
         VoxeetSDK.shared.conference.defaultVideo = false
+        VoxeetSDK.shared.conference.audio3D = false
         
         return true
     }
@@ -749,6 +750,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.4.5
+1.4.6
 
 © Voxeet, 2019

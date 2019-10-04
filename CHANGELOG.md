@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.6](#146)
 - [1.4.5](#145)
 - [1.4.4](#144)
 - [1.4.3](#143)
@@ -42,6 +43,15 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.6)
+
+Released on 2019-10-04.
+
+Fix iOS 13 crashes with stop video and screen share.
+
+#### Added
+- VoxeetSDK.shared.conference.audio3D
 
 ## [1.4.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.5)
 

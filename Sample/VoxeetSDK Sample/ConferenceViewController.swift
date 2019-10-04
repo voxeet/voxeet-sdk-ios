@@ -172,32 +172,45 @@ class ConferenceViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func startScreenShare(_ sender: UIButton) {
+    @IBAction func startScreenShare(_ button: UIButton) {
         if #available(iOS 11.0, *) {
-            if sender.isSelected {
+            if button.isSelected {
                 guard VoxeetSDK.shared.conference.screenShareMediaStream() == nil else {
                     // Debug.
                     print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: Only one screen share allowed.")
                     return
                 }
                 
+                button.isEnabled = false
                 VoxeetSDK.shared.conference.startScreenShare(completion: { error in
-                    if let error = error {
-                        // Debug.
-                        print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
+                    DispatchQueue.main.async {
+                        button.isEnabled = true
+                        
+                        if let error = error {
+                            // Debug.
+                            print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
+                        } else {
+                            button.isSelected = false
+                            button.setTitle("Stop screen share", for: .normal)
+                        }
                     }
                 })
             } else {
+                button.isEnabled = false
                 VoxeetSDK.shared.conference.stopScreenShare(completion: { error in
-                    if let error = error {
-                        // Debug.
-                        print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
+                    DispatchQueue.main.async {
+                        button.isEnabled = true
+                        
+                        if let error = error {
+                            // Debug.
+                            print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
+                        } else {
+                            button.isSelected = true
+                            button.setTitle("Start screen share", for: .normal)
+                        }
                     }
                 })
             }
-            
-            sender.isSelected.toggle()
-            sender.setTitle(sender.isSelected ? "Start screen share" : "Stop screen share", for: .normal)
         }
     }
     

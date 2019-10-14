@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.7](#147)
 - [1.4.6](#146)
 - [1.4.5](#145)
 - [1.4.4](#144)
@@ -43,6 +44,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.7)
+
+Released on 2019-10-04.
+
+CXCallUpdate takes the default video value from the conference service to display if the call is video or audio.
 
 ## [1.4.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.6)
 

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [1.4.8](#148)
 - [1.4.7](#147)
 - [1.4.6](#146)
 - [1.4.5](#145)
@@ -44,6 +45,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [1.4.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.8)
+
+Released on 2019-11-04.
+
+Convert for Swift 5.1.2.
 
 ## [1.4.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.7)
 

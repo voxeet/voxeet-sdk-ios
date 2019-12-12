@@ -10,7 +10,7 @@
 
 * **Operating systems:** iOS 9.0 and later versions
 * **IDE:** [Xcode 11+](https://developer.apple.com/xcode/)
-* **Languages:** Swift 5.1.2, Objective-C
+* **Languages:** Swift 5.1.3, Objective-C
 * **Supported architectures:** armv7, arm64, i386, x86_64
 
 
@@ -67,7 +67,7 @@ Download the lastest release zip:
 
 **VoxeetSDK:** https://github.com/voxeet/voxeet-ios-sdk/releases
 
-Unzip and drag and drop frameworks into your project, select 'Copy items if needed' with the right target. Then in the general tab of your target, add the `VoxeetConferenceKit.framework`, `VoxeetSDK.framework` and `WebRTC.framework` into **'Embedded Binaries'**.
+Unzip and drag and drop frameworks into your project, select 'Copy items if needed' with the right target. Then in the general tab of your target, add the `VoxeetSDK.framework` and `WebRTC.framework` into **'Embedded Binaries'**.
 
 
 ## Initialize the Voxeet SDK
@@ -132,8 +132,8 @@ Some [events](#Events) can be used along with `callKit` to update the UI, such a
 #### Example
 
 ```swift
-VoxeetSDK.shared.pushNotification.type = .callKit
 VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
+VoxeetSDK.shared.pushNotification.type = .callKit
 
 /*
  *  MARK: - Voxeet VoIP push notifications
@@ -189,7 +189,7 @@ class myClass: VTSessionDelegate {
 
 ### `connect`
 *This method is optional.*
-Connect a session is like a login, however the SDK needs to be initialized with `connectSession` sets to `false`. This method can be useful if CallKit is implemented (VoIP push notifications) because once the session is openned, notifications can be received if there is an invitation.
+Connect a session is like a login. This method can be useful if CallKit is implemented (VoIP push notifications) because once the session is openned, notifications can be received if there is an invitation.
 
 #### Parameters
 -   `user` **VTUser?** - A user to be linked to our server.
@@ -750,6 +750,6 @@ The Voxeet iOS SDK and ConferenceKit rely on these open source projects:
 
 ## SDK version
 
-1.4.8
+1.4.9
 
 © Voxeet, 2019

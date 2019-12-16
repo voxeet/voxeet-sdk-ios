@@ -55,18 +55,8 @@ class ConferenceViewController: UIViewController {
         
         // Select / Deselect the switchDeviceSpeakerButton when an headset is plugged/unplugged.
         NotificationCenter.default.addObserver(self, selector: #selector(audioSessionRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
-        
-        // File presentation observers.
-        NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStartedUpdated), name: .VTFilePresentationStarted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStartedUpdated), name: .VTFilePresentationUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(filePresentationStopped), name: .VTFilePresentationStopped, object: nil)
-        
-        // Video presentation observers.
-        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationStarted), name: .VTVideoPresentationStarted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationStopped), name: .VTVideoPresentationStopped, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationPlay), name: .VTVideoPresentationPlay, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationPause), name: .VTVideoPresentationPause, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(videoPresentationSeek), name: .VTVideoPresentationSeek, object: nil)
+        // Conference destroy observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(conferenceDestroyed), name: .VTConferenceDestroyed, object: nil)
         
         // Force the device screen to never going to sleep mode.
         UIApplication.shared.isIdleTimerDisabled = true
@@ -78,23 +68,24 @@ class ConferenceViewController: UIViewController {
     func initConference() {
         // Conference delegates.
         VoxeetSDK.shared.conference.delegate = self
-//        VoxeetSDK.shared.conference.cryptoDelegate = self
+        /* VoxeetSDK.shared.conference.cryptoDelegate = self */
+        // Command delegate.
+        VoxeetSDK.shared.command.delegate = self
+        // File presentation delegate.
+        VoxeetSDK.shared.filePresentation.delegate = self
+        // Video presentation delegate.
+        VoxeetSDK.shared.videoPresentation.delegate = self
         
         // Joining / Launching demo.
         if let alias = alias {
             aliasLabel.text = alias
             
             // Creating a conference.
-            VoxeetSDK.shared.conference.create(parameters: ["conferenceAlias": alias], success: { json in
-                guard let conferenceID = json?["conferenceId"] as? String else {
-                    // Debug.
-                    print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: Conference identifier not found.")
-                    self.dismiss(animated: true)
-                    return
-                }
-                
+            let options = VTConferenceOptions()
+            options.alias = alias
+            VoxeetSDK.shared.conference.create(options: options, success: { conference in
                 // Joining conference.
-                VoxeetSDK.shared.conference.join(conferenceID: conferenceID, success: nil, fail: { error in
+                VoxeetSDK.shared.conference.join(conference: conference, success: nil, fail: { error in
                     // Debug.
                     print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
                     self.dismiss(animated: true)
@@ -113,7 +104,6 @@ class ConferenceViewController: UIViewController {
                     // Debug.
                     print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
                     self.dismiss(animated: true)
-                    return
                 }
             }
             
@@ -138,6 +128,14 @@ class ConferenceViewController: UIViewController {
         print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line)")
     }
     
+    func activeParticipants() -> [VTParticipant] {
+        let participants = VoxeetSDK.shared.conference.current?.participants
+            .filter({ $0.id != VoxeetSDK.shared.session.participant?.id })
+            .filter({ $0.streams.isEmpty == false })
+        
+        return participants ?? [VTParticipant]()
+    }
+    
     /*
      *  MARK: Actions
      */
@@ -151,7 +149,7 @@ class ConferenceViewController: UIViewController {
             if let textField = alertController.textFields?[0],
                 let message = textField.text {
                 // Sending a broadcast message.
-                VoxeetSDK.shared.conference.broadcast(message: message, completion: { error in
+                VoxeetSDK.shared.command.send(message: message, completion: { error in
                     if let error = error {
                         // Debug.
                         print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
@@ -175,7 +173,7 @@ class ConferenceViewController: UIViewController {
     @IBAction func startScreenShare(_ button: UIButton) {
         if #available(iOS 11.0, *) {
             if button.isSelected {
-                guard VoxeetSDK.shared.conference.screenShareMediaStream() == nil else {
+                guard VoxeetSDK.shared.mediaDevice.screenShareMediaStream() == nil else {
                     // Debug.
                     print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: Only one screen share allowed.")
                     return
@@ -215,7 +213,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func switchDeviceSpeaker(_ button: UIButton) {
-        VoxeetSDK.shared.conference.switchDeviceSpeaker()
+        VoxeetSDK.shared.mediaDevice.switchDeviceSpeaker()
     }
     
     @IBAction func hangUp(_ sender: AnyObject) {
@@ -234,7 +232,7 @@ class ConferenceViewController: UIViewController {
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
-        VoxeetSDK.shared.conference.switchCamera {
+        VoxeetSDK.shared.mediaDevice.switchCamera {
             DispatchQueue.main.async {
                 self.ownCameraView.mirrorEffect.toggle()
             }
@@ -248,7 +246,6 @@ class ConferenceViewController: UIViewController {
                 button.isEnabled = true
             }
         } else {
-            ownCameraView.mirrorEffect = true
             VoxeetSDK.shared.conference.startVideo() { _ in
                 button.isEnabled = true
             }
@@ -257,12 +254,20 @@ class ConferenceViewController: UIViewController {
     }
     
     /*
-     *  MARK: Observer
+     *  MARK: Observers
      */
     
     @objc func audioSessionRouteChange() {
         DispatchQueue.main.async {
             self.switchDeviceSpeakerButton.isSelected = AVAudioSession.sharedInstance().currentRoute.outputs.first?.portType == AVAudioSession.Port.builtInSpeaker
+        }
+    }
+    
+    @objc func conferenceDestroyed(_ notification: Notification) {
+        if let conference = notification.userInfo?["conference"] as? VTConference {
+            if conference.id == VoxeetSDK.shared.conference.current?.id {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
@@ -273,19 +278,19 @@ class ConferenceViewController: UIViewController {
 
 extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return VoxeetSDK.shared.conference.users.filter({ $0.hasStream }).count
+        return activeParticipants().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! ConferenceTableViewCell
         
-        // Getting the current user.
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
-        guard users.count != 0 && indexPath.row <= users.count else { return cell }
-        let user = users[indexPath.row]
+        // Getting the current participant.
+        let participants = activeParticipants()
+        guard participants.count != 0 && indexPath.row <= participants.count else { return cell }
+        let participant = participants[indexPath.row]
         
         // Setting up the cell.
-        cell.setUp(user: user)
+        cell.setUp(participant: participant)
         
         return cell
     }
@@ -293,17 +298,19 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Getting the current user.
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
-        let user = users[(indexPath as NSIndexPath).row]
+        // Getting the current participant.
+        let participants = activeParticipants()
+        let participant = participants[(indexPath as NSIndexPath).row]
         
         // Mute a user.
-        if let userID = user.id {
-            let isMuted = VoxeetSDK.shared.conference.toggleMute(userID: userID)
-            
-            // Update background color.
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.backgroundColor = isMuted ? UIColor.red : UIColor.white
+        let isMuted = !participant.mute
+        VoxeetSDK.shared.conference.mute(participant: participant, isMuted: isMuted)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if #available(iOS 13.0, *) {
+                cell.contentView.backgroundColor = isMuted ? UIColor.systemRed : UIColor.systemBackground
+            } else {
+                cell.contentView.backgroundColor = isMuted ? UIColor.red : UIColor.white
             }
         }
     }
@@ -314,54 +321,51 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
  */
 
 extension ConferenceViewController: VTConferenceDelegate {
-    func participantJoined(userID: String, stream: MediaStream) {
-        if VoxeetSDK.shared.session.user?.id == userID {
-            // Attaching own user's video stream.
-            if !stream.videoTracks.isEmpty {
-                ownCameraView.attach(userID: userID, stream: stream)
-                ownCameraView.isHidden = false
+    func statusUpdated(status: VTConferenceStatus) {}
+    
+    func streamAdded(participant: VTParticipant, stream: MediaStream) {
+        switch stream.type {
+        case .Camera:
+            if participant.id == VoxeetSDK.shared.session.participant?.id {
+                // Attaching own participant's video stream to the renderer.
+                if !stream.videoTracks.isEmpty {
+                    ownCameraView.attach(participant: participant, stream: stream)
+                    ownCameraView.isHidden = false
+                }
+            } else {
+                tableView.reloadData()
             }
-        } else {
-            tableView.reloadData()
+        case .ScreenShare:
+            // Attaching a video stream to a renderer.
+            screenShareView.attach(participant: participant, stream: stream)
+            screenShareView.alpha = 1
+        default:
+            break
         }
     }
     
-    func participantUpdated(userID: String, stream: MediaStream) {
-        let users = VoxeetSDK.shared.conference.users.filter({ $0.hasStream })
-        
+    func streamUpdated(participant: VTParticipant, stream: MediaStream) {
         // Get the video renderer.
-        if VoxeetSDK.shared.session.user?.id == userID {
-            ownCameraView.isHidden = stream.videoTracks.isEmpty
-            
-            // Attaching own user's video stream.
+        if participant.id == VoxeetSDK.shared.session.participant?.id {
+            // Attaching own participant's video stream to the renderer.
             if !stream.videoTracks.isEmpty {
-                ownCameraView.attach(userID: userID, stream: stream)
+                ownCameraView.attach(participant: participant, stream: stream)
             }
-        } else if let index = users.firstIndex(where: { $0.id == userID }) {
+            ownCameraView.isHidden = stream.videoTracks.isEmpty
+        } else if let index = activeParticipants().firstIndex(where: { $0.id == participant.id }) {
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
     }
     
-    func participantLeft(userID: String) {
-        tableView.reloadData()
-    }
-    
-    func messageReceived(userID: String, message: String) {
-        if let name = VoxeetSDK.shared.conference.user(userID: userID)?.name {
-            broadcastMessageTextView.text = "\(name): \(message)"
-        } else {
-            broadcastMessageTextView.text = "\(userID): \(message)"
+    func streamRemoved(participant: VTParticipant, stream: MediaStream) {
+        switch stream.type {
+        case .Camera:
+            tableView.reloadData()
+        case .ScreenShare:
+            screenShareView.alpha = 0
+        default:
+            break
         }
-    }
-    
-    func screenShareStarted(userID: String, stream: MediaStream) {
-        // Attaching a video stream to a renderer.
-        screenShareView.attach(userID: userID, stream: stream)
-        screenShareView.alpha = 1
-    }
-    
-    func screenShareStopped(userID: String) {
-        screenShareView.alpha = 0
     }
 }
 
@@ -400,99 +404,80 @@ extension ConferenceViewController: VTConferenceCryptoDelegate {
 }
 
 /*
- *  MARK: - Conference file presentation
+ *  MARK: - Command delegate
  */
 
-extension ConferenceViewController {
-    @objc func filePresentationStartedUpdated(notification: Notification) {
-        guard let userInfo = notification.userInfo?.values.first as? Data else {
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
-                if let fileID = json["fileId"] as? String, let page = json["position"] as? Int {
-                    if let url = VoxeetSDK.shared.filePresentation.getImage(fileID: fileID, page: page) {
-                        let data = try Data(contentsOf: url)
-                        let image = UIImage(data: data)
-                        filePresentationImageView.image = image
-                        filePresentationImageView.isHidden = false
-                    }
-                }
-            }
-        } catch {}
+extension ConferenceViewController: VTCommandDelegate {
+    func received(participant: VTParticipant, message: String) {
+        broadcastMessageTextView.text = "\(participant.info.name ?? participant.id ?? ""): \(message)"
+    }
+}
+
+/*
+ *  MARK: - File presentation delegate
+ */
+
+extension ConferenceViewController: VTFilePresentationDelegate {
+    func converted(fileConverted: VTFileConverted) {}
+    
+    func started(filePresentation: VTFilePresentation) {
+        updated(filePresentation: filePresentation)
     }
     
-    @objc func filePresentationStopped(notification: Notification) {
+    func updated(filePresentation: VTFilePresentation) {
+        let fileURL = VoxeetSDK.shared.filePresentation.image(page: filePresentation.position)
+        
+        if let url = fileURL {
+            do {
+                let data = try Data(contentsOf: url)
+                let image = UIImage(data: data)
+                filePresentationImageView.image = image
+                filePresentationImageView.isHidden = false
+            } catch {}
+        }
+    }
+    
+    func stopped(filePresentation: VTFilePresentation) {
         filePresentationImageView.image = nil
         filePresentationImageView.isHidden = true
     }
 }
 
 /*
- *  MARK: - Conference video presentation
+ *  MARK: - Video presentation delegate
  */
 
-extension ConferenceViewController {
-    @objc func videoPresentationStarted(notification: Notification) {
-        guard let userInfo = notification.userInfo?.values.first as? Data else {
-            return
-        }
+extension ConferenceViewController: VTVideoPresentationDelegate {
+    func started(videoPresentation: VTVideoPresentation) {
+        player = AVPlayer(url: videoPresentation.url)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = videoPresentationView.bounds
+        playerLayer.backgroundColor = UIColor.black.cgColor
+        videoPresentationView.layer.addSublayer(playerLayer)
         
-        do {
-            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
-                if let url = URL(string: json["url"] as? String ?? ""), let timestamp = json["timestamp"] as? Int {
-                    player = AVPlayer(url: url)
-                    let playerLayer = AVPlayerLayer(player: player)
-                    playerLayer.frame = videoPresentationView.bounds
-                    playerLayer.backgroundColor = UIColor.black.cgColor
-                    videoPresentationView.layer.addSublayer(playerLayer)
-                    
-                    player?.play()
-                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
-                    
-                    videoPresentationView.isHidden = false
-                }
-            }
-        } catch {}
+        player?.play()
+        player?.seek(to: CMTimeMakeWithSeconds(videoPresentation.timestamp / 1000, preferredTimescale: 1000))
+        
+        videoPresentationView.isHidden = false
     }
     
-    @objc func videoPresentationStopped(notification: Notification) {
+    func stopped(videoPresentation: VTVideoPresentation) {
         player?.pause()
         player = nil
         videoPresentationView.isHidden = true
     }
     
-    @objc func videoPresentationPlay(notification: Notification) {
-        guard let userInfo = notification.userInfo?.values.first as? Data else {
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
-                if let timestamp = json["timestamp"] as? Int {
-                    player?.play()
-                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
-                }
-            }
-        } catch {}
+    func played(videoPresentation: VTVideoPresentation) {
+        player?.seek(to: CMTimeMakeWithSeconds(videoPresentation.timestamp / 1000, preferredTimescale: 1000))
+        player?.play()
     }
     
-    @objc func videoPresentationPause(notification: Notification) {
+    func paused(videoPresentation: VTVideoPresentation) {
         player?.pause()
+        player?.seek(to: CMTimeMakeWithSeconds(videoPresentation.timestamp / 1000, preferredTimescale: 1000))
     }
     
-    @objc func videoPresentationSeek(notification: Notification) {
-        guard let userInfo = notification.userInfo?.values.first as? Data else {
-            return
-        }
-        
-        do {
-            if let json = try JSONSerialization.jsonObject(with: userInfo) as? [String: Any] {
-                if let timestamp = json["timestamp"] as? Int {
-                    player?.seek(to: CMTimeMakeWithSeconds(Double(timestamp) / 1000, preferredTimescale: 1000))
-                }
-            }
-        } catch {}
+    func sought(videoPresentation: VTVideoPresentation) {
+        player?.seek(to: CMTimeMakeWithSeconds(videoPresentation.timestamp / 1000, preferredTimescale: 1000))
     }
 }

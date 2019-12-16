@@ -19,20 +19,20 @@ class ConferenceTableViewCell: UITableViewCell {
     @IBOutlet weak private var userVideoView: VTVideoView!
     
     // Data.
-    private var user: VTUser!
+    private var participant: VTParticipant!
     
     /*
      *  MARK: Init
      */
     
-    func setUp(user: VTUser) {
-        self.user = user
+    func setUp(participant: VTParticipant) {
+        self.participant = participant
         
         // Cell label.
-        userLabel.text = user.name ?? user.id
+        userLabel.text = participant.info.name ?? participant.id
         
         // Cell avatar.
-        if let photoURL = URL(string: user.avatarURL ?? "") {
+        if let photoURL = URL(string: participant.info.avatarURL ?? "") {
             let request = URLRequest(url: photoURL)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let error = error {
@@ -50,15 +50,15 @@ class ConferenceTableViewCell: UITableViewCell {
         }
         
         // Slider update.
-        angleSlider.setValue(Float(user.angle), animated: false)
-        distanceSlider.setValue(Float(user.distance), animated: false)
+        angleSlider.setValue(Float(participant.angle), animated: false)
+        distanceSlider.setValue(Float(participant.distance), animated: false)
         
         // Background update.
-        backgroundColor = user.mute ? UIColor.red : UIColor.white
+        backgroundColor = participant.mute ? UIColor.red : UIColor.white
         
         // Update renderer's stream.
-        if let userID = user.id, let stream = VoxeetSDK.shared.conference.mediaStream(userID: userID), !stream.videoTracks.isEmpty {
-            userVideoView.attach(userID: userID, stream: stream)
+        if let stream = participant.streams.first(where: { $0.type == .Camera }), !stream.videoTracks.isEmpty {
+            userVideoView.attach(participant: participant, stream: stream)
             userVideoView.isHidden = false
         } else {
             userVideoView.isHidden = true
@@ -69,7 +69,7 @@ class ConferenceTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         // Unattach the old stream before reusing the cell.
-        if let userID = user?.id, let stream = VoxeetSDK.shared.conference.mediaStream(userID: userID), !stream.videoTracks.isEmpty {
+        if let stream = participant.streams.first(where: { $0.type == .Camera }), !stream.videoTracks.isEmpty {
             userVideoView.unattach()
         }
     }
@@ -80,9 +80,7 @@ class ConferenceTableViewCell: UITableViewCell {
     
     @IBAction func angle(_ sender: UISlider) {
         // Setting user position.
-        if let userID = user.id {
-            VoxeetSDK.shared.conference.userPosition(userID: userID, angle: Double(sender.value))
-        }
+        VoxeetSDK.shared.conference.position(participant: participant, angle: Double(sender.value))
         
         // Debug.
         print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Angle: \(sender.value)")
@@ -90,9 +88,7 @@ class ConferenceTableViewCell: UITableViewCell {
     
     @IBAction func distance(_ sender: UISlider) {
         // Setting user position.
-        if let userID = user.id {
-            VoxeetSDK.shared.conference.userPosition(userID: userID, distance: Double(sender.value))
-        }
+        VoxeetSDK.shared.conference.position(participant: participant, distance: Double(sender.value))
         
         // Debug.
         print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Distance: \(sender.value)")

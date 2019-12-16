@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### 1.x Releases
 
+- [2.0.0](#200)
 - [1.4.9](#149)
 - [1.4.8](#148)
 - [1.4.7](#147)
@@ -46,6 +47,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [2.0.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/2.0.0)
+
+Released on 2019-12-16.
+
+Better segmentation of functionalities across a service based architecture and better robustness in conference.
 
 ## [1.4.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.9)
 

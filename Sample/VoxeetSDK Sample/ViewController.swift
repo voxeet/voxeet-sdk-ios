@@ -61,6 +61,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
         conferenceVC.alias = conferenceName
+        conferenceVC.modalPresentationStyle = .fullScreen
         self.present(conferenceVC, animated: true, completion: nil)
     }
 }

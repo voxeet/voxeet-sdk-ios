@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.author = "Voxeet"
   spec.homepage = "https://voxeet.com"
   spec.platform = :ios, "9.0"
-  spec.swift_version = '5.1.3'
-  spec.source = { :http => "https://voxeet-cdn.s3.amazonaws.com/sdk/ios/release/2.0.0/VoxeetSDK.zip" }
+  spec.swift_version = "5.1.3"
+  spec.source = { :http => "https://voxeet-cdn.s3.amazonaws.com/sdk/ios/release/#{spec.version}/VoxeetSDK.zip" }
   spec.vendored_frameworks = "VoxeetSDK.framework", "WebRTC.framework"
 end

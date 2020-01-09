@@ -2,9 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-#### 1.x Releases
+#### v2.x Releases
 
-- [2.0.0](#200)
+- [v2.0.0](#v200)
+
+#### v1.x Releases
+
 - [1.4.9](#149)
 - [1.4.8](#148)
 - [1.4.7](#147)
@@ -48,11 +51,112 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [2.0.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/2.0.0)
+## [v2.0.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.0.0)
 
 Released on 2019-12-16.
 
 Better segmentation of functionalities across a service based architecture and better robustness in conference.
+
+#### Added
+- VTConference *class*
+- VTConferenceStatus *enum*
+- VTConferenceOptions *class*
+- VTConferenceParameters *class*
+- VTJoinOptions *class*
+- VTJoinOptionsConstraints *class*
+- VoxeetSDK.shared.conference.current = *VTConference*
+- participantAdded(participant:) *VTConferenceDelegate*
+- participantUpdated(participant:) *VTConferenceDelegate*
+- statusUpdated(status:) *VTConferenceDelegate*
+- streamAdded(participant:stream:) *VTConferenceDelegate*
+- streamUpdated(participant:stream:) *VTConferenceDelegate*
+- streamRemoved(participant:stream:) *VTConferenceDelegate*
+- VTCommandDelegate *protocol*
+- received(participant:message:) *VTCommandDelegate*
+- VTFilePresentation *class*
+- VTFileConverted *class*
+- VTFilePresentationDelegate *protocol*
+- converted(fileConverted:) *VTFilePresentationDelegate*
+- started(filePresentation:) *VTFilePresentationDelegate*
+- updated(filePresentation:) *VTFilePresentationDelegate*
+- stopped(filePresentation:) *VTFilePresentationDelegate*
+- VTVideoPresentation *class*
+- VTVideoPresentationState *enum*
+- VTVideoPresentationDelegate *protocol*
+- started(videoPresentation:) *VTVideoPresentationDelegate*
+- stopped(videoPresentation:) *VTVideoPresentationDelegate*
+- played(videoPresentation:) *VTVideoPresentationDelegate*
+- paused(videoPresentation:) *VTVideoPresentationDelegate*
+- sought(videoPresentation:) *VTVideoPresentationDelegate*
+- VTParticipantInfo *class*
+- VTParticipantStatus *enum*
+
+#### Updated
+- VoxeetSDK.shared.session.participant (old)
+    - VoxeetSDK.shared.session.user (new)
+- VoxeetSDK.shared.conference.state
+    - VoxeetSDK.shared.conference.current.status
+- VoxeetSDK.shared.conference.id
+    - VoxeetSDK.shared.conference.current.id
+- VoxeetSDK.shared.conference.alias
+    - VoxeetSDK.shared.conference.current.alias
+- VoxeetSDK.shared.conference.users
+    - VoxeetSDK.shared.conference.current.participants
+- VoxeetSDK.shared.conference.isDefaultFrontFacing
+    - VoxeetSDK.shared.mediaDevice.isDefaultFrontFacing
+- VoxeetSDK.shared.conference.isFrontCamera
+    - VoxeetSDK.shared.mediaDevice.isFrontCamera
+- VoxeetSDK.shared.conference.create(parameters:success:fail)
+    - VoxeetSDK.shared.conference.create(options:success:fail:)
+- VoxeetSDK.shared.conference.join(conferenceID:video:userInfo:success:fail:)
+    - VoxeetSDK.shared.conference.join(conference:options:success:fail:)
+- VoxeetSDK.shared.conference.startRecording(fireInterval:completion:)
+    - VoxeetSDK.shared.recording.start(fireInterval:completion:)
+- VoxeetSDK.shared.conference.stopRecording(completion:)
+    - VoxeetSDK.shared.recording.stop(completion:)
+- VoxeetSDK.shared.conference.broadcast(message:completion:)
+    - VoxeetSDK.shared.command.send(message:completion:)
+- VoxeetSDK.shared.conference.mediaStream(userID:)
+    - VoxeetSDK.shared.mediaDevice.mediaStream(userID:)
+- VoxeetSDK.shared.conference.screenShareMediaStream()
+    - VoxeetSDK.shared.mediaDevice.screenShareMediaStream()
+- VoxeetSDK.shared.conference.attachMediaStream(stream:renderer:)
+    - VoxeetSDK.shared.mediaDevice.attachMediaStream(stream:renderer:)
+- VoxeetSDK.shared.conference.unattachMediaStream(stream:renderer:)
+    - VoxeetSDK.shared.mediaDevice.unattachMediaStream(stream:renderer:)
+- VoxeetSDK.shared.conference.switchDeviceSpeaker()
+    - VoxeetSDK.shared.mediaDevice.switchDeviceSpeaker()
+- VoxeetSDK.shared.conference.switchDeviceSpeaker(forceBuiltInSpeaker:completion:)
+    - VoxeetSDK.shared.mediaDevice.switchDeviceSpeaker(forceBuiltInSpeaker:completion:)
+- VoxeetSDK.shared.conference.switchCamera()
+    - VoxeetSDK.shared.mediaDevice.switchCamera()
+- messageReceived(userID:message:) *VTConferenceDelegate*
+    - received(participant:message:) *VTCommandDelegate*
+- participantJoined(userID:stream:) *VTConferenceDelegate*
+    - streamAdded(participant:stream:) *VTConferenceDelegate*
+- participantUpdated(userID:stream:) *VTConferenceDelegate*
+    - streamUpdated(participant:stream:) *VTConferenceDelegate*
+- participantLeft(userID:) *VTConferenceDelegate*
+    - streamRemoved(participant:stream:) *VTConferenceDelegate*
+- screenShareStarted(userID:stream:) *VTConferenceDelegate*
+    - streamAdded(participant:stream:) *VTConferenceDelegate*
+- screenShareStopped(userID:) *VTConferenceDelegate*
+    - streamRemoved(participant:stream:) *VTConferenceDelegate*
+- VTUser *class*
+    - VTParticipant *class*
+- VTUser.externalID *String*
+    - VTParticipant.info = *VTParticipantInfo*
+- VTUser.name *String*
+    - VTParticipant.info = *VTParticipantInfo*
+- VTUser.avatarURL *String*
+    - VTParticipant.info = *VTParticipantInfo*
+- VTUser.hasStream *Bool*
+    - VTParticipant.streams = *[MediaStream]*
+
+#### Removed
+- VTConferenceState *enum*
+- VoxeetSDK.shared.conference.user(userID:)
+- VTUser.metadata = *[String: Any]*
 
 ## [1.4.9](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.9)
 
@@ -66,9 +170,13 @@ Released on 2019-11-04.
 
 Convert for Swift 5.1.2.
 
+#### Updated
+- VoxeetSDK.shared.pushNotification = *VTNotificationService*
+    - VoxeetSDK.shared.notification = *VTNotificationService*
+
 ## [1.4.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/1.4.7)
 
-Released on 2019-10-04.
+Released on 2019-10-14.
 
 CXCallUpdate takes the default video value from the conference service to display if the call is video or audio.
 

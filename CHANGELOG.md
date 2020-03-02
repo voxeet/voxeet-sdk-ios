@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.1.0](#v210)
 - [v2.0.0](#v200)
 
 #### v1.x Releases
@@ -50,6 +51,16 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v2.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.1.0)
+
+Released on 2020-03-02.
+
+Add telemetry service and resolve video renderer crash.
+
+#### Updated
+- VoxeetSDK.shared.conference.invite(conferenceID:externalIDs:completion:) (old)
+    - VoxeetSDK.shared.notification.invite(conference:participantInfos:completion:) (new)
 
 ## [v2.0.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.0.0)
 

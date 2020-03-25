@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.1.1](#v211)
 - [v2.1.0](#v210)
 - [v2.0.0](#v200)
 
@@ -51,6 +52,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v2.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.1.1)
+
+Released on 2020-03-25.
+
+Convert for Swift 5.2.
 
 ## [v2.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.1.0)
 

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
         VoxeetSDK.shared.initialize(consumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET")
         
         // Example of public variables to change the conference behavior.
-        VoxeetSDK.shared.notification.type = .none
+        VoxeetSDK.shared.notification.push.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
         VoxeetSDK.shared.conference.defaultVideo = false
         VoxeetSDK.shared.conference.audio3D = true

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.2.0](#v220)
 - [v2.1.1](#v211)
 - [v2.1.0](#v210)
 - [v2.0.0](#v200)
@@ -52,6 +53,44 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v2.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.2.0)
+
+Released on 2020-03-30.
+
+Add new subsribe/unsubscribe methods.
+Also update Carthage source location from:
+binary "https://voxeet-cdn.s3.amazonaws.com/sdk/ios/release/VoxeetSDK.json"
+to:
+binary "https://raw.githubusercontent.com/voxeet/voxeet-sdk-ios/master/VoxeetSDK.json"
+
+#### Added
+- VTNotificationDelegate *protocol*
+- VTInvitationReceivedNotification *class*
+- VTConferenceStatusNotification *class*
+- VTConferenceCreatedNotification *class*
+- VTConferenceEndedNotification *class*
+- VTParticipantJoinedNotification *class*
+- VTParticipantLeftNotification *class*
+- VTSubscribeConferenceCreated *class*
+- VTSubscribeConferenceEnded *class*
+- VTSubscribeParticipantJoined *class*
+- VTSubscribeParticipantLeft *class*
+- VoxeetSDK.shared.notification.push = *VTNotificationPushManager*
+- VoxeetSDK.shared.notification.subscribe(subscriptions:completion:)
+- VoxeetSDK.shared.notification.unsubscribe(subscriptions:completion:)
+
+#### Updated
+- VoxeetSDK.shared.notification.type (old)
+    - VoxeetSDK.shared.notification.push.type (new)
+- VoxeetSDK.shared.notification.includesCallsInRecents
+    - VoxeetSDK.shared.notification.push.includesCallsInRecents
+- VoxeetSDK.shared.notification.incomingCallTimeout
+    - VoxeetSDK.shared.notification.push.incomingCallTimeout
+- VoxeetSDK.shared.notification.application(didReceive:)
+    - VoxeetSDK.shared.notification.push.application(didReceive:)
+- VoxeetSDK.shared.notification.application(handleActionWithIdentifier:notification:completionHandler:)
+    - VoxeetSDK.shared.notification.push.application(handleActionWithIdentifier:notification:completionHandler:)
 
 ## [v2.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.1.1)
 

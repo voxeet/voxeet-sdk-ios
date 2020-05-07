@@ -2,7 +2,7 @@
 
 ## Documentation
 
-A full documentation can be found here: [https://voxeet.com/documentation/sdk/overview](https://voxeet.com/documentation/sdk/overview).
+A full documentation can be found here: https://voxeet.com/documentation/sdk/overview.
 
 ## Tech
 

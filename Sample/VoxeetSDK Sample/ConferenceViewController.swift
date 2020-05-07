@@ -85,7 +85,7 @@ class ConferenceViewController: UIViewController {
             options.alias = alias
             VoxeetSDK.shared.conference.create(options: options, success: { conference in
                 // Joining conference.
-                VoxeetSDK.shared.conference.join(conference: conference, success: nil, fail: { error in
+                VoxeetSDK.shared.conference.join(conference: conference, options: nil, success: nil, fail: { error in
                     // Debug.
                     print("[Sample] \(String(describing: ConferenceViewController.self)).\(#function).\(#line) - Error: \(error)")
                     self.dismiss(animated: true)
@@ -131,8 +131,7 @@ class ConferenceViewController: UIViewController {
     func activeParticipants() -> [VTParticipant] {
         let participants = VoxeetSDK.shared.conference.current?.participants
             .filter({ $0.id != VoxeetSDK.shared.session.participant?.id })
-            .filter({ $0.streams.isEmpty == false })
-        
+            .filter({ $0.status == .connected })
         return participants ?? [VTParticipant]()
     }
     
@@ -303,14 +302,14 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
         let participant = participants[(indexPath as NSIndexPath).row]
         
         // Mute a user.
-        let isMuted = !participant.mute
-        VoxeetSDK.shared.conference.mute(participant: participant, isMuted: isMuted)
+        let mute = !participant.mute
+        VoxeetSDK.shared.conference.mute(participant: participant, isMuted: mute)
         
         if let cell = tableView.cellForRow(at: indexPath) {
             if #available(iOS 13.0, *) {
-                cell.contentView.backgroundColor = isMuted ? UIColor.systemRed : UIColor.systemBackground
+                cell.contentView.backgroundColor = mute ? UIColor.systemRed : UIColor.systemBackground
             } else {
-                cell.contentView.backgroundColor = isMuted ? UIColor.red : UIColor.white
+                cell.contentView.backgroundColor = mute ? UIColor.red : UIColor.white
             }
         }
     }
@@ -322,6 +321,14 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ConferenceViewController: VTConferenceDelegate {
     func statusUpdated(status: VTConferenceStatus) {}
+    
+    func participantAdded(participant: VTParticipant) {
+        tableView.reloadData()
+    }
+    
+    func participantUpdated(participant: VTParticipant) {
+        tableView.reloadData()
+    }
     
     func streamAdded(participant: VTParticipant, stream: MediaStream) {
         switch stream.type {

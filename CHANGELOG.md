@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.3.0](#v230)
 - [v2.2.1](#v221)
 - [v2.2.0](#v220)
 - [v2.1.1](#v211)
@@ -55,7 +56,24 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [v2.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.1.1)
+## [v2.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.3.0)
+
+Released on 2020-05-12.
+
+Implement new screen share broadcasting feature.
+
+#### Added
+- VTJoinOptionsConstraints.audio = *Bool*
+- VoxeetSDK.shared.conference.startAudio(participant:completion)
+- VoxeetSDK.shared.conference.stopAudio(participant:completion)
+
+#### Updated
+- VoxeetSDK.shared.conference.startScreenShare(completion:) (old)
+    - VoxeetSDK.shared.conference.startScreenShare(broadcast:completion:) (new)
+- VoxeetSDK.shared.conference.mute(participant:isMuted)
+    - VoxeetSDK.shared.conference.mute(isMuted)
+
+## [v2.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.2.1)
 
 Released on 2020-04-17.
 

@@ -61,6 +61,8 @@ All notable changes to this project will be documented in this file.
 Released on 2020-05-12.
 
 Implement new screen share broadcasting feature.
+Improve CallKit behaviour when ending a call.
+Telemetry crash fixed.
 
 #### Added
 - VTJoinOptionsConstraints.audio = *Bool*

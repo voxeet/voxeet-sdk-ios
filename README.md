@@ -2,7 +2,7 @@
 
 ## Documentation
 
-A full documentation can be found here: https://voxeet.com/documentation/sdk/overview.
+A full documentation can be found here: https://dolby.io/developers/interactivity-apis/client-sdk/overview.
 
 ## Tech
 

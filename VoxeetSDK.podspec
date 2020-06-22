@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "VoxeetSDK"
-  spec.version = "2.3.1"
+  spec.version = "2.4.0"
   spec.summary = "Voxeet provides a platform for unified communications and collaboration."
   spec.license = "MIT"
   spec.author = "Voxeet"

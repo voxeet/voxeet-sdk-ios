@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.4.0](#v240)
 - [v2.3.1](#v231)
 - [v2.3.0](#v230)
 - [v2.2.1](#v221)
@@ -56,6 +57,15 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v2.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.4.0)
+
+Released on 2020-06-22.
+
+Send some exceptions to the server in order to be visible in the developer portal.
+
+#### Added
+- VoxeetSDK.shared.conference.isSpeaking(participant:)
 
 ## [v2.3.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.3.1)
 

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v2.x Releases
 
+- [v2.4.1](#v241)
 - [v2.4.0](#v240)
 - [v2.3.1](#v231)
 - [v2.3.0](#v230)
@@ -57,6 +58,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v2.4.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.4.1)
+
+Released on 2020-09-17.
+
+Convert for Swift 5.3 and Xcode 12 compatibility (support for the simulator & CocoaPods has been temporarily removed).
 
 ## [v2.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.4.0)
 

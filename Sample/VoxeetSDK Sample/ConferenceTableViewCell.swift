@@ -49,13 +49,6 @@ class ConferenceTableViewCell: UITableViewCell {
             task.resume()
         }
         
-        // Slider update.
-        angleSlider.setValue(Float(participant.angle), animated: false)
-        distanceSlider.setValue(Float(participant.distance), animated: false)
-        
-        // Background update.
-        backgroundColor = participant.mute ? UIColor.red : UIColor.white
-        
         // Update renderer's stream.
         if let stream = participant.streams.first(where: { $0.type == .Camera }), !stream.videoTracks.isEmpty {
             userVideoView.attach(participant: participant, stream: stream)
@@ -72,25 +65,5 @@ class ConferenceTableViewCell: UITableViewCell {
         if let stream = participant.streams.first(where: { $0.type == .Camera }), !stream.videoTracks.isEmpty {
             userVideoView.unattach()
         }
-    }
-    
-    /*
-     *  MARK: Action
-     */
-    
-    @IBAction func angle(_ sender: UISlider) {
-        // Setting user position.
-        VoxeetSDK.shared.conference.position(participant: participant, angle: Double(sender.value))
-        
-        // Debug.
-        print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Angle: \(sender.value)")
-    }
-    
-    @IBAction func distance(_ sender: UISlider) {
-        // Setting user position.
-        VoxeetSDK.shared.conference.position(participant: participant, distance: Double(sender.value))
-        
-        // Debug.
-        print("[Sample] \(String(describing: ConferenceTableViewCell.self)).\(#function).\(#line) - Distance: \(sender.value)")
     }
 }

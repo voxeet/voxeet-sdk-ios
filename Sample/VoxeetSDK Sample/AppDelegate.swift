@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VTSessionDelegate {
         VoxeetSDK.shared.notification.push.type = .none
         VoxeetSDK.shared.conference.defaultBuiltInSpeaker = true
         VoxeetSDK.shared.conference.defaultVideo = false
-        VoxeetSDK.shared.conference.audio3D = true
         
         // Session delegate.
         VoxeetSDK.shared.session.delegate = self

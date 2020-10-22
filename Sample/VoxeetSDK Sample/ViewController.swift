@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     // Constant NSUserDefaults to save previous conference name.
     let conferenceName = "VTConferenceName"
+    @IBOutlet weak var dolbyVoiceSwitch: UISwitch!
     
     /*
      *  MARK: Action
@@ -28,7 +29,8 @@ class ViewController: UIViewController {
                 let conferenceName = textField.text {
                 
                 // Start the conference viewController.
-                self.presentConferenceVC(conferenceName: conferenceName)
+                let dolbyVoice = self.dolbyVoiceSwitch.isOn
+                self.presentConferenceVC(conferenceName: conferenceName, dolbyVoice:dolbyVoice)
                 
                 // Save the current conference name.
                 UserDefaults.standard.set(conferenceName, forKey: self.conferenceName)
@@ -57,10 +59,11 @@ class ViewController: UIViewController {
      *  MARK: Present conference viewController
      */
     
-    private func presentConferenceVC(conferenceName: String) {
+    private func presentConferenceVC(conferenceName: String, dolbyVoice: Bool) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conferenceVC = storyboard.instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController
         conferenceVC.alias = conferenceName
+        conferenceVC.dolbyVoice = dolbyVoice
         conferenceVC.modalPresentationStyle = .fullScreen
         self.present(conferenceVC, animated: true, completion: nil)
     }

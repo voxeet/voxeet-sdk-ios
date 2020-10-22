@@ -35,6 +35,9 @@ class ConferenceViewController: UIViewController {
     // Current conference ID.
     var alias: String?
     
+    // Use Dolby Voice for the conference
+    var dolbyVoice: Bool = false
+    
     // Player for video presentation.
     var player: AVPlayer?
     
@@ -83,6 +86,8 @@ class ConferenceViewController: UIViewController {
             // Creating a conference.
             let options = VTConferenceOptions()
             options.alias = alias
+            options.params.dolbyVoice = self.dolbyVoice
+            
             VoxeetSDK.shared.conference.create(options: options, success: { conference in
                 // Joining conference.
                 VoxeetSDK.shared.conference.join(conference: conference, options: nil, success: nil, fail: { error in
@@ -293,26 +298,6 @@ extension ConferenceViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        // Getting the current participant.
-        let participants = activeParticipants()
-        let participant = participants[(indexPath as NSIndexPath).row]
-        
-        // Mute a user.
-        let mute = !participant.mute
-        VoxeetSDK.shared.conference.mute(participant: participant, isMuted: mute)
-        
-        if let cell = tableView.cellForRow(at: indexPath) {
-            if #available(iOS 13.0, *) {
-                cell.contentView.backgroundColor = mute ? UIColor.systemRed : UIColor.systemBackground
-            } else {
-                cell.contentView.backgroundColor = mute ? UIColor.red : UIColor.white
-            }
-        }
-    }
 }
 
 /*
@@ -373,40 +358,6 @@ extension ConferenceViewController: VTConferenceDelegate {
         default:
             break
         }
-    }
-}
-
-/*
- *  MARK: - Conference encryption delegate
- */
-
-extension ConferenceViewController: VTConferenceCryptoDelegate {
-    func encrypt(type: Int, ssrc: Int, frame: UnsafePointer<UInt8>, frameSize: Int, encryptedFrame: UnsafeMutablePointer<UInt8>, encryptedFrameSize: Int) -> Int {
-        let buffer = UnsafeBufferPointer(start: frame, count: frameSize)
-        let encryptedBuffer = UnsafeMutableBufferPointer(start: encryptedFrame, count: encryptedFrameSize)
-        
-        // Without any cryptography.
-        memcpy(encryptedBuffer.baseAddress, buffer.baseAddress, frameSize)
-        
-        return encryptedFrameSize
-    }
-    
-    func getMaxCiphertextByteSize(type: Int, size: Int) -> Int {
-        return size
-    }
-    
-    func decrypt(type: Int, ssrc: Int, encryptedFrame: UnsafePointer<UInt8>, encryptedFrameSize: Int, frame: UnsafeMutablePointer<UInt8>, frameSize: Int) -> Int {
-        let encryptedBuffer = UnsafeBufferPointer(start: encryptedFrame, count: encryptedFrameSize)
-        let buffer = UnsafeMutableBufferPointer(start: frame, count: frameSize)
-        
-        // Without any cryptography.
-        memcpy(buffer.baseAddress, encryptedBuffer.baseAddress, encryptedFrameSize)
-        
-        return frameSize
-    }
-    
-    func getMaxPlaintextByteSize(type: Int, size: Int) -> Int {
-        return size
     }
 }
 

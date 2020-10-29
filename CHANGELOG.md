@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+#### v3.x Releases
+
+- [v3.0.0](#v300)
+
 #### v2.x Releases
 
 - [v2.4.1](#v241)
@@ -58,6 +62,18 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.0.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.0.0)
+
+Released on 2020-10-29.
+
+Dolby Voice integration.
+
+#### Updated
+- IPHONEOS_DEPLOYMENT_TARGET = 9.0 (old)
+    - IPHONEOS_DEPLOYMENT_TARGET = 11.0 (new)
+- ENABLE_BITCODE = YES
+    - ENABLE_BITCODE = NO
 
 ## [v2.4.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v2.4.1)
 

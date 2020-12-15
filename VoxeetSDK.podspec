@@ -1,12 +1,12 @@
 Pod::Spec.new do |spec|
   spec.name = "VoxeetSDK"
-  spec.version = "3.0.2"
+  spec.version = "3.0.3"
   spec.summary = "Voxeet provides a platform for unified communications and collaboration."
   spec.license = "Dolby Software License Agreement"
   spec.author = "Voxeet"
   spec.homepage = "https://dolby.io"
   spec.platform = :ios, "11.0"
-  spec.swift_version = "5.3.1"
+  spec.swift_version = "5.3.2"
   spec.source = { :http => "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/sdk/ios/release/v#{spec.version}/VoxeetSDK.zip" }
   spec.vendored_frameworks = "VoxeetSDK.framework", "WebRTC.framework", "dvclient.framework"
 

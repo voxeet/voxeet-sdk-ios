@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.0](#v310)
 - [v3.0.3](#v303)
 - [v3.0.2](#v302)
 - [v3.0.1](#v301)
@@ -65,6 +66,14 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.0)
+
+Released on 2021-03-01.
+
+### Features
+- Introduced the Video Forwarding feature to allow participants to dynamically control the number of transmitted video streams. The Video Forwarding article describes in detail the changes to Interactivity APIs.
+- Introduced updates to the client SDK to support the use of conference access tokens for limiting the scope of participant permissions. The Enhanced Conference Access Control article describes in detail the changes to Interactivity APIs.
 
 ## [v3.0.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.0.3)
 

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.1](#v311)
 - [v3.1.0](#v310)
 - [v3.0.3](#v303)
 - [v3.0.2](#v302)
@@ -66,6 +67,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.1)
+
+Released on 2021-03-09.
+
+- Fixed an issue with the startVideo and stopVideo methods that did not work properly in the listener mode.
+- Fixed the maxVideoForwarding accessor to make it compatible with Objective-C.
 
 ## [v3.1.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.0)
 

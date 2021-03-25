@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.2](#v312)
 - [v3.1.1](#v311)
 - [v3.1.0](#v310)
 - [v3.0.3](#v303)
@@ -67,6 +68,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.2)
+
+Released on 2021-03-25.
+
+- Fixed an issue where the Xcode `po` debug command returns an error.
+- Fixed an issue with black frames visible for the local participant during a screen-share session.
 
 ## [v3.1.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.1)
 

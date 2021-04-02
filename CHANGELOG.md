@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.3](#v313)
 - [v3.1.2](#v312)
 - [v3.1.1](#v311)
 - [v3.1.0](#v310)
@@ -68,6 +69,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.3)
+
+Released on 2021-04-05.
+
+- Added the possibility to subscribe to the streamAdded, streamUpdated, and streamRemoved events using the Apple NotificationCenter.
 
 ## [v3.1.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.2)
 

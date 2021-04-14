@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.4](#v314)
 - [v3.1.3](#v313)
 - [v3.1.2](#v312)
 - [v3.1.1](#v311)
@@ -69,6 +70,12 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.4)
+
+Released on 2021-04-14.
+
+- Fixed an issue where a conference participant who tries to join a conference as a listener, joins a conference as a user who can broadcast media.
 
 ## [v3.1.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.3)
 

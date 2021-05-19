@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.6](#v316)
 - [v3.1.5](#v315)
 - [v3.1.4](#v314)
 - [v3.1.3](#v313)
@@ -71,6 +72,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.6)
+
+Released on 2021-05-19.
+
+- Fixed an issue where the completion handler is not called after using the muteOutput method.
+- Modified data filtering to improve telemetry statistics.
 
 ## [v3.1.5](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.5)
 

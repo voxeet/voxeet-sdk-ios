@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.7](#v317)
 - [v3.1.6](#v316)
 - [v3.1.5](#v315)
 - [v3.1.4](#v314)
@@ -72,6 +73,17 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.7)
+
+Released on 2021-06-29.
+
+### Features
+Added the WebRTC dSYM debugging information file that allows formatting crash reports to improve their readability.
+
+### Bug Fixes
+- Fixed an issue where iOS users join a conference with disabled microphones that cannot be enabled and, after a short time, the users are kicked out of the conference.
+- Fixed an issue where a conference freezes for three seconds after using the leave method. After the fix, the conference may still freeze, but the freeze does not last for more than one second.
 
 ## [v3.1.6](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.6)
 

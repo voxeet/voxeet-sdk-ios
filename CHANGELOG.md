@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.1.8](#v318)
 - [v3.1.7](#v317)
 - [v3.1.6](#v316)
 - [v3.1.5](#v315)
@@ -73,6 +74,13 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.1.8](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.8-beta.1)
+
+Released on 2021-07-05.
+
+### Features
+Added Xcode 13.0 beta 2 and Swift 5.5 compatibility
 
 ## [v3.1.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.7)
 

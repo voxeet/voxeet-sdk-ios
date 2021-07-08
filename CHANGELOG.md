@@ -77,7 +77,7 @@ All notable changes to this project will be documented in this file.
 
 ## [v3.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.0)
 
-Released on 2021-07-07.
+Released on 2021-07-08.
 
 ### Features
 - Modified the startAudio and stopAudio APIs to allow muting remote participants in Dolby Voice conferences.

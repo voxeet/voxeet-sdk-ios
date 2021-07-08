@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.2.0](#v320)
 - [v3.1.7](#v317)
 - [v3.1.6](#v316)
 - [v3.1.5](#v315)
@@ -73,6 +74,18 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.0)
+
+Released on 2021-07-08.
+
+### Features
+- Modified the startAudio and stopAudio APIs to allow muting remote participants in Dolby Voice conferences.
+- Introduced the setComfortNoiseLevel and getComfortNoiseLevel methods to allow checking the comfort noise level and setting the level to the desired value.
+- Added the audioTransmitting and audioReceivingFrom properties to the VTParticipant model. The audioTransmitting property informs whether the participant transmits audio to the backend. The audioReceivingFrom property informs whether the participant receives audio from the asked participant.
+
+### Bug Fixes
+- Fixed an issue where moving objects are displayed with poor video quality.
 
 ## [v3.1.7](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.1.7)
 

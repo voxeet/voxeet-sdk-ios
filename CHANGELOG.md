@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.2.1](#v321)
 - [v3.2.0](#v320)
 - [v3.1.7](#v317)
 - [v3.1.6](#v316)
@@ -74,6 +75,14 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.1)
+
+Released on 2021-08-26.
+
+### Bug Fixes
+- Fixed an issue with audio and video synchronization.
+- Fixed an issue with reporting Dolby Voice errors to the SDK.
 
 ## [v3.2.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.0)
 

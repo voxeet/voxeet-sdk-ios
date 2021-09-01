@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.3.0](#v330)
 - [v3.2.1](#v321)
 - [v3.2.0](#v320)
 - [v3.1.7](#v317)
@@ -75,6 +76,17 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.1)
+
+Released on 2021-08-31.
+
+### Features
+- Modified the audioLevel value for the muted local participant. When the local participant is muted, the audioLevel value will be non zero value, and isSpeaking will be true if audioLevel is > to 0.05. This implementation allows adding a warning message to notify the local participant that their audio is not sent to a conference.
+
+### Bug Fixes
+- Fixed an issue where participant is unable to turn on the screenshare immediately after turning it off.
+- Fixed an issue where stream id is set to nil.
 
 ## [v3.2.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.1)
 

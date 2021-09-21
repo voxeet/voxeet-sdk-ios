@@ -2,11 +2,11 @@
 
 ## Documentation
 
-A full documentation can be found here: https://docs.dolby.io/interactivity/docs/ios-client-sdk-voxeetsdk.
+The complete documentation can be found here: https://docs.dolby.io/communications/docs/ios-client-sdk-voxeetsdk.
 
 ## Tech
 
-The Voxeet iOS SDK and UXKit rely on these open source projects:
+The Dolby.io Communications SDK for iOS and iOS UXKit rely on these open source projects:
 
 * [Starscream](https://github.com/daltoniam/Starscream), a conforming WebSocket (RFC 6455) client library.
 * [Alamofire](https://github.com/Alamofire/Alamofire), an HTTP networking library.

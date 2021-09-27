@@ -77,11 +77,12 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.1)
+## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.2)
 
-Released on 2021-08-31.
+Released on 2021-09-27.
 
 ### Features
+- Added support for Xcode 13 and Swift 5.5.
 - Modified the audioLevel value for the muted local participant. When the local participant is muted, the audioLevel value will be non zero value, and isSpeaking will be true if audioLevel is > to 0.05. This implementation allows adding a warning message to notify the local participant that their audio is not sent to a conference.
 
 ### Bug Fixes

@@ -78,16 +78,15 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.3)
+## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.4)
 
-Released on 2021-10-07.
+Released on 2021-10-15.
 
 ### Features
-- Added in VTConferenceParameters a new audioOnly parameter that allows creating audio-only conferences where participants cannot enable cameras.
-- Added in VTSessionService a new isOpen method that checks whether there is an open session that connects SDK with backend.
+- Conferences are now dolby voice enabled by default.
 
 ### Bug Fixes
-- Modified the VTParticipantPermissions.permissions and VTConference.permissions parameters. These parameters are now compatible with Objective-C.
+- Modified the VTParticipantInvited to be compatible with Objective-C.
 
 ## [v3.2.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.2)
 

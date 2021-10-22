@@ -78,15 +78,12 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.4)
+## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0-beta.5)
 
-Released on 2021-10-15.
-
-### Features
-- Conferences are now dolby voice enabled by default.
+Released on 2021-10-22.
 
 ### Bug Fixes
-- Modified the VTParticipantInvited to be compatible with Objective-C.
+- Fixed an issue where a participantUpdated event does not update the externalID field.
 
 ## [v3.2.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.2)
 

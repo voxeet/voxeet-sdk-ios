@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.3.0](#v330)
+- [v3.2.4](#v324)
 - [v3.2.3](#v323)
 - [v3.2.2](#v322)
 - [v3.2.1](#v321)
@@ -77,6 +79,22 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0)
+
+Released on 2021-11-09.
+
+### Features
+
+- Added a new subscription type that allows receiving a new [activeParticipants](doc:ios-client-sdk-notificationservice#activeparticipants) event that informs how many participants are in a conference. The event is beneficial during large webinars, where participants do not receive the participantAdded and participantUpdated events about listeners.
+
+- Added a new [audioOnly](doc:ios-client-sdk-model-vtconferenceparameters#audioonly) parameter that allows creating audio-only conferences where participants cannot enable cameras.
+
+## [v3.2.4](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.4)
+
+Released on 2021-11-03.
+
+- Fix SDK version reported by internal services.
 
 ## [v3.2.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.2.3)
 

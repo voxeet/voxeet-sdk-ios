@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.3.1](#v331)
 - [v3.3.0](#v330)
 - [v3.2.4](#v324)
 - [v3.2.3](#v323)
@@ -79,6 +80,16 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.3.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.1)
+
+Released on 2021-14-12.
+
+### Features
+
+- Added a new dvc log system.
+
+- Added support for Xcode 13.2 and Swift 5.5.2.
 
 
 ## [v3.3.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.0)

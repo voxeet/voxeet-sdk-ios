@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [v3.3.2](#v332)
 - [v3.3.1](#v331)
 - [v3.3.0](#v330)
 - [v3.2.4](#v324)
@@ -80,6 +81,14 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [v3.3.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.2)
+
+Released on 2021-21-12.
+
+### Features
+
+- Added XCFramework support.
 
 ## [v3.3.1](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.1)
 

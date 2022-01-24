@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-#### v3.x Releases
+#### 3.x Releases
 
-- [v3.4.0](#v340)
+- [3.4.0](#340)
 - [v3.3.2](#v332)
 - [v3.3.1](#v331)
 - [v3.3.0](#v330)
@@ -83,23 +83,23 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [v3.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.4.0-beta.1)
+## [3.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/3.4.0-beta.2)
 
-Released on 2022-04-01.
+Released on 2022-24-01.
 
-### Features
+### Changes
 
-- Introduced a new [Spatial Audio](https://docs.dolby.io/communications-apis/docs/guides-spatial-audio) feature that allows placing conference participants spatially in a 3D rendered audio scene and hearing the audio from the participants rendered at the given locations. This feature replicates audio conditions similar to real conference room conditions to make virtual meetings more natural and realistic. Spatial Audio is supported on Dolby Voice Clients and Stereo Opus Clients in Dolby Voice conferences. The Spatial Audio feature offers the following APIs for the iOS SDK:
+- The [setSpatialDirection](doc:ios-client-sdk-conferenceservice#setspatialdirection), [setSpatialEnvironment](doc:ios-client-sdk-conferenceservice#setspatialenvironment), and [setSpatialPosition](doc:ios-client-sdk-conferenceservice#setspatialposition) methods are not available for listeners. Setting a spatial audio scene for listeners requires using the [Set Spatial Listeners Audio](ref:putspatiallistenersaudio) REST API. Using the mentioned methods for listeners triggers the [spatialAudio](doc:ios-client-sdk-model-vterrorcode) error.
 
-  - [spatialAudio](https://docs.dolby.io/communications-apis/docs/ios-client-sdk-model-vtjoinoptions#spatialaudio): Enables spatial audio for the local participant. When set to true, the application must place remote participants in a 3D space using the [setSpatialPosition](https://docs.dolby.io/communications-apis/docs/ios-client-sdk-conferenceservice#setspatialposition) method.
+- Changed the default value of the defaultBuiltInSpeaker variable to true.
 
-  - [setSpatialEnvironment](https://docs.dolby.io/communications-apis/docs/ios-client-sdk-conferenceservice#setspatialenvironment): Allows an application to configure the spatial audio environment to work with the application's coordinate system. This way, the audio renderer understands which directions the application considers forward, up, and right and which units it uses for distance.
+### Bug Fixes
 
-  - [setSpatialPosition](https://docs.dolby.io/communications-apis/docs/ios-client-sdk-conferenceservice#setspatialposition): Sets a participant's position in space to enable the spatial audio experience during a Dolby Voice conference. Depending on the specified participant in the participant parameter, the setSpatialPosition method impacts the location from which audio is heard or from which audio is rendered.
+- Fixed an issue where participants who use Bluetooth headsets are kicked out of a conference after 10 seconds.
 
-  - [setSpatialDirection](https://docs.dolby.io/communications-apis/docs/ios-client-sdk-conferenceservice#setspatialdirection): Defines the direction the local participant is facing; this allows for rotation of the local participant's head and modifies their audio depending on the new direction they are facing in space.
+- Fixed an issue where initializing the iOS Client SDK lowers [AVPlayer](https://developer.apple.com/documentation/avfoundation/avplayer) sound.
 
-- The iOS Client SDK now supports Swift Package Manager. To install the SDK using Swift Package Manager, follow [this procedure](https://docs.dolby.io/communications-apis/docs/set-up-your-project#install-sdk-with-swift-package-manager).
+- Fixed an issue where a 503 error occurs after a remote participant leaves a conference that is enabled spatial audio.
 
 ## [v3.3.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.2)
 

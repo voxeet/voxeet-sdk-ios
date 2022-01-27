@@ -12,7 +12,12 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "VoxeetSDK",
-            targets: ["VoxeetSDK", "WebRTC", "dvclient"]),
+            targets: [
+                "VoxeetSDK",
+                "WebRTC",
+                "dvclient",
+            ]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,15 +28,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "VoxeetSDK",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/v3.3.2/VoxeetSDK.zip",
-            checksum: "aeea312b41be2d0e37fc53afb7a23800db24822e2ee76e4b96fad07a2def7779"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3-beta.1/VoxeetSDK.zip",
+            checksum: "1085a0625f32171dbf79c54102700147592927d0ffa24e1bcb0d33ec8322c714"),
         .binaryTarget(
             name: "WebRTC",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/v3.3.2/WebRTC.zip",
-            checksum: "a5e7fb8c6aa989dbb0a3ee9906fa2aee9ffdf382ab7385071c228e5ee7d9f9ae"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3-beta.1/WebRTC.zip",
+            checksum: "afef17b52685fe26e25ef47a39525c5e42c462670f4bc5bb65ce788abd977ff9"),
         .binaryTarget(
             name: "dvclient",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/v3.3.2/dvclient.zip",
-            checksum: "b55a2a9a519b124b8637465386c046ff56d015f79d4a4dc5728f133dc45bf537"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3-beta.1/dvclient.zip",
+            checksum: "337d53b9f41fca31e270b7161a305b305989146ec69ae5c574962aa9770b6a19"),
     ]
 )

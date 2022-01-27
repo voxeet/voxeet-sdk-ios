@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 #### v3.x Releases
 
+- [3.3.3](#333)
 - [v3.3.2](#v332)
 - [v3.3.1](#v331)
 - [v3.3.0](#v330)
@@ -81,6 +82,18 @@ All notable changes to this project will be documented in this file.
 - [1.0.3](#103)
 
 ---
+
+## [3.3.3](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/3.3.3-beta.1)
+
+Released on 2022-27-01.
+
+### Changes
+
+Changed the default value of the defaultBuiltInSpeaker variable to true.
+
+### Bug Fixes
+
+Fixed an issue where initializing the iOS Client SDK lowers [AVPlayer](https://developer.apple.com/documentation/avfoundation/avplayer) sound.
 
 ## [v3.3.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.2)
 

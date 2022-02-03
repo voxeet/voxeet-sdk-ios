@@ -83,23 +83,19 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [3.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/3.4.0-beta.2)
+## [3.4.0](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/3.4.0-beta.3)
 
-Released on 2022-24-01.
+Released on 2022-03-02.
 
-### Changes
+### Features
 
-- The [setSpatialDirection](doc:ios-client-sdk-conferenceservice#setspatialdirection), [setSpatialEnvironment](doc:ios-client-sdk-conferenceservice#setspatialenvironment), and [setSpatialPosition](doc:ios-client-sdk-conferenceservice#setspatialposition) methods are not available for listeners. Setting a spatial audio scene for listeners requires using the [Set Spatial Listeners Audio](ref:putspatiallistenersaudio) REST API. Using the mentioned methods for listeners triggers the [spatialAudio](doc:ios-client-sdk-model-vterrorcode) error.
-
-- Changed the default value of the defaultBuiltInSpeaker variable to true.
+- Optimized communication with the Dolby.io server to not update unchanged participants' positions.
 
 ### Bug Fixes
 
-- Fixed an issue where participants who use Bluetooth headsets are kicked out of a conference after 10 seconds.
+- Fixed an issue where the [audioTransmitting](doc:ios-client-sdk-model-vtparticipant#audiotransmitting) property does not reflect the correct audio transmitting status.
 
-- Fixed an issue where initializing the iOS Client SDK lowers [AVPlayer](https://developer.apple.com/documentation/avfoundation/avplayer) sound.
-
-- Fixed an issue where a 503 error occurs after a remote participant leaves a conference that is enabled spatial audio.
+- Fixed an issue where some conference participants are not heard during a conference enabled with Spatial Audio.
 
 ## [v3.3.2](https://github.com/voxeet/voxeet-ios-sdk/releases/tag/v3.3.2)
 

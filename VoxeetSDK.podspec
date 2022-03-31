@@ -9,11 +9,8 @@ Pod::Spec.new do |spec|
   spec.vendored_frameworks = "VoxeetSDK.xcframework", "WebRTC.xcframework", "dvclient.xcframework"
 
   spec.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'ENABLE_BITCODE' => 'NO' # Disable bitcode to support dvclient.framework dependency.
   }
-  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-
 
   spec.license = { :type => "Dolby Software License Agreement", :text => <<-LICENSE
     **BEFORE DOWNLOADING THE SOFTWARE, PLEASE CAREFULLY READ THE FOLLOWING AGREEMENT. DO NOT DOWNLOAD, INSTALL, ACTIVATE OR USE THIS SOFTWARE IF YOU HAVE NOT

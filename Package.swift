@@ -12,7 +12,12 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "VoxeetSDK",
-            targets: ["VoxeetSDK", "WebRTC", "dvclient"]),
+            targets: [
+                "VoxeetSDK", 
+                "WebRTC", 
+                "dvclient", 
+            ]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,15 +28,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "VoxeetSDK",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3/VoxeetSDK.zip",
-            checksum: "8d3aea8455b4c7edaa2e5a41098f1b774cf7e1789aa13046b0ae5e7026c57950"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/VoxeetSDK.zip",
+            checksum: "c57ea8ac2e034e6838ee098bf3c47bccf0e818b73abe6066160da3452cb7c9eb"),
         .binaryTarget(
             name: "WebRTC",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3/WebRTC.zip",
-            checksum: "8942b78134eb6d3b7e2deb0d76ec750e8323157e70f27a6bec4366f91f20d7b1"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/WebRTC.zip",
+            checksum: "f0a9e8459362e54ce9d0f689d5d5955b260eec98d75a7b08442e645e2d6ca93c"),
         .binaryTarget(
             name: "dvclient",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.3.3/dvclient.zip",
-            checksum: "b37a17a0e78dfe3e285438076cfc28be5604a4cbd792de0946198b4fc9b4ce28"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/dvclient.zip",
+            checksum: "7d5e22f1e29a013f70f218ba2b8555e0c9dc93b0892389d7586451ee8d795ecd"),
     ]
 )

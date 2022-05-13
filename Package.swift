@@ -28,15 +28,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "VoxeetSDK",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.1/VoxeetSDK.zip",
-            checksum: "86758e51543175c9a123ce18d366c076e8a0f16d17560a1800af5eae12b58188"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/VoxeetSDK.zip",
+            checksum: "c57ea8ac2e034e6838ee098bf3c47bccf0e818b73abe6066160da3452cb7c9eb"),
         .binaryTarget(
             name: "WebRTC",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.1/WebRTC.zip",
-            checksum: "5ebf45dc9849b9335af1727a4ca958089c06f3a71a7a27c437054673398c1d28"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/WebRTC.zip",
+            checksum: "f0a9e8459362e54ce9d0f689d5d5955b260eec98d75a7b08442e645e2d6ca93c"),
         .binaryTarget(
             name: "dvclient",
-            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.1/dvclient.zip",
-            checksum: "235fad350d3b6d588a71f3c84d8d08673bfc0f39dc36e5762478fa1f2598ac72"),
+            url: "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.4.0/dvclient.zip",
+            checksum: "7d5e22f1e29a013f70f218ba2b8555e0c9dc93b0892389d7586451ee8d795ecd"),
     ]
 )

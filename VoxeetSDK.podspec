@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.summary = "Voxeet provides a platform for unified communications and collaboration."
   spec.author = "Voxeet"
   spec.homepage = "https://dolby.io"
-  spec.platform = :ios, "11.0"
+  spec.platform = :ios, "12.0"
   spec.source = { :http => "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/#{spec.version}/VoxeetSDKXCFrameworks.zip" }
   spec.vendored_frameworks = "VoxeetSDK.xcframework", "WebRTC.xcframework", "dvclient.xcframework"
 

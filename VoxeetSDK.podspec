@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "VoxeetSDK"
-  spec.version = "3.7.3"
+  spec.version = "3.7.4"
   spec.summary = "Voxeet provides a platform for unified communications and collaboration."
   spec.author = "Voxeet"
   spec.homepage = "https://dolby.io"

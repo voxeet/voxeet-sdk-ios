@@ -48,5 +48,6 @@
   "3.8.0-beta.1": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.8.0-beta.1/VoxeetSDKXCFrameworks.zip",
   "3.8.1": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.8.1/VoxeetSDKXCFrameworks.zip",
   "3.8.2": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.8.2/VoxeetSDKXCFrameworks.zip",
-  "3.8.2-beta.1": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.8.2-beta.1/VoxeetSDKXCFrameworks.zip"
+  "3.8.2-beta.1": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.8.2-beta.1/VoxeetSDKXCFrameworks.zip",
+  "3.9.0-beta.1": "https://vox-ios-sdk.s3.us-east-1.amazonaws.com/voxeetsdk/release/3.9.0-beta.1/VoxeetSDKXCFrameworks.zip"
 }
